@@ -1,0 +1,184 @@
+// Graphical variables
+@import "config/fonts";
+@import "config/colors";
+@import "config/bootstrap_variables";
+
+// External libraries
+@import "bootstrap";
+@import "font-awesome";
+
+
+
+// Your CSS partials
+@import "components/index";
+@import "pages/index";
+
+// Rehyan, Jon check out the scss files in the config folder you can experiment
+// with stuff like this below; then you just add the classes to your html
+// markup then rather than changing all the css in this file, you just change
+// the variables in the config files!
+.bg-red {
+  background-color: $red;
+}
+.bg-blue {
+  background-color: $blue;
+}
+.bg-yellow {
+  background-color: $yellow;
+}
+
+// Theme class definitions
+.hd-font {
+  font-family: $headers-font !important;
+}
+.bd-font {
+  font-family: $body-font !important;
+}
+
+.bg-primary {
+  background-color: $primary;
+}
+.text-primary {
+  color: $primary;
+}
+
+.bg-secondary {
+  background-color: $secondary;
+}
+.text-secondary {
+  color: $secondary;
+}
+
+.bg-tertiary {
+  background-color: $tertiary;
+}
+.text-tertiary {
+  color: $tertiary;
+}
+
+.bg-quarternary {
+  background-color: $quarternary;
+}
+.text-quarternary {
+  color: $quarternary;
+}
+
+.bg-quinary {
+  background-color: $quinary;
+}
+.text-quinary {
+  color: $quinary;
+}
+
+
+// Copied over from AirCNC
+body {
+  // Should be: font-family: "Playwrite DE Grund", cursive;
+  // see config/_fonts.scs to change this globally
+  background-color: $body-bg;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}
+h1, h2, h3, h4, h5, h6 {
+  // Should be: Urbanist, see config/_fonts.scs to change this globally
+  font-optical-sizing: auto;
+  font-weight: 300;
+  font-style: normal;
+}
+.navbar {
+  font-family: $body-font;
+  font-weight: 300;
+}
+.navbar .nav-item .avatar {
+  font-size: 1.5rem;
+  color: var(--bs-nav-link-color);
+  margin-left: 5px;
+}
+
+
+.animate-shadow {
+  box-shadow: 0 1px 2px rgba(0,0,0,0.15);
+  transition: box-shadow 0.3s ease-in-out;
+}
+.animate-shadow:hover {
+  box-shadow: inset 0 5px 15px rgba(0,0,0,0.3);
+}
+.animate-inset-shadow {
+  box-shadow: 0 1px 2px rgba(0,0,0,0.15);
+  transition: box-shadow 0.3s ease-in-out;
+}
+.animate-inset-shadow:hover {
+  box-shadow: inset 0 5px 15px rgba(0,0,0,0.3);
+}
+.animate-text-shadow {
+  text-shadow: 0 1px 2px rgba(0,0,0,0.15);
+  transition: box-shadow 0.3s ease-in-out;
+}
+.animate-text-shadow:hover {
+  text-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+div.navbar.sticky-top {
+  border-bottom: 7px solid $success;
+}
+
+.text-nowrap {
+  white-space: nowrap;
+}
+
+.devise-signup-links a {
+  color: $gray;
+  text-decoration: none;
+  font-size: .75rem;
+  font-style: italic;
+}
+
+.btn {
+  color: white;
+  font-weight: 900;
+  text-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+  box-shadow: inset 0 10px 15px rgba(0, 0, 0, 0.2);
+}
+
+.card {
+  background-color: $primary;
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2);
+}
+.card .card-title .lead {
+  font-size: small;
+  font-weight: 200;
+  font-style: italic;
+}
+
+.form {
+  font-size: 0.75rem !important;
+}
+
+.jumbotron {
+  position: relative;
+  background-position: center;
+  background-size: cover;
+  background-color: $primary;
+
+  .container .banner {
+    height: calc(100vh - 66px);
+    color: white;
+    font-weight: 900;
+
+    h1 {
+      text-shadow: 0 10px 15px rgba(0, 0, 0, 0.2);
+      .btn {
+        margin-top: 35px;
+        color: inherit;
+        box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2);
+      }
+    }
+  }
+}
+
+footer {
+  margin-top: 75px;
+  height: 300px;
+  background-color: $secondary;
+}
