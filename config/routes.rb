@@ -4,7 +4,5 @@ Rails.application.routes.draw do
   get "/todays-log", to: "logs#today"
   root to: "pages#home"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
-
-  # Defines the root path route ("/")
-  # root "articles#index"
+  resources :tasks
 end

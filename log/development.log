@@ -2530,3 +2530,2837 @@ Migrating to ChangeDefaultValueforRoutineTo0InTasks (20241015150424)
   [1m[36mTRANSACTION (17.0ms)[0m  [1m[35mCOMMIT[0m
   [1m[35m (0.5ms)[0m  [1m[34mSELECT pg_advisory_unlock(1184012072199246360)[0m
   [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/tasks" for ::1 at 2024-10-15 16:14:17 +0100
+  [1m[36mActiveRecord::SchemaMigration Load (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+ActionController::RoutingError (uninitialized constant TasksController):
+  
+Started GET "/tasks" for ::1 at 2024-10-15 16:20:51 +0100
+Processing by TasksController#index as HTML
+  [1m[36mUser Load (52.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering tasks/index.html.erb within layouts/application
+  Rendered tasks/index.html.erb within layouts/application (Duration: 1.2ms | Allocations: 91)
+  Rendered shared/_navbar.html.erb (Duration: 2.1ms | Allocations: 701)
+  Rendered shared/_flashes.html.erb (Duration: 0.8ms | Allocations: 216)
+  Rendered shared/_footer.html.erb (Duration: 2.1ms | Allocations: 117)
+  Rendered layout layouts/application.html.erb (Duration: 289.1ms | Allocations: 68220)
+Completed 500 Internal Server Error in 499ms (Views: 296.4ms | ActiveRecord: 71.7ms | Allocations: 97320)
+
+
+  
+Pundit::PolicyScopingNotPerformedError (TasksController):
+  
+pundit (2.4.0) lib/pundit/authorization.rb:57:in `verify_policy_scoped'
+activesupport (7.1.3.4) lib/active_support/callbacks.rb:403:in `block in make_lambda'
+activesupport (7.1.3.4) lib/active_support/callbacks.rb:239:in `block in halting_and_conditional'
+activesupport (7.1.3.4) lib/active_support/callbacks.rb:602:in `block in invoke_after'
+activesupport (7.1.3.4) lib/active_support/callbacks.rb:602:in `each'
+activesupport (7.1.3.4) lib/active_support/callbacks.rb:602:in `invoke_after'
+activesupport (7.1.3.4) lib/active_support/callbacks.rb:135:in `block in run_callbacks'
+turbo-rails (2.0.9) lib/turbo-rails.rb:24:in `with_request_id'
+turbo-rails (2.0.9) app/controllers/concerns/turbo/request_id_tracking.rb:10:in `turbo_tracking_request_id'
+activesupport (7.1.3.4) lib/active_support/callbacks.rb:130:in `block in run_callbacks'
+actiontext (7.1.3.4) lib/action_text/rendering.rb:23:in `with_renderer'
+actiontext (7.1.3.4) lib/action_text/engine.rb:69:in `block (4 levels) in <class:Engine>'
+activesupport (7.1.3.4) lib/active_support/callbacks.rb:130:in `instance_exec'
+activesupport (7.1.3.4) lib/active_support/callbacks.rb:130:in `block in run_callbacks'
+activesupport (7.1.3.4) lib/active_support/callbacks.rb:141:in `run_callbacks'
+actionpack (7.1.3.4) lib/abstract_controller/callbacks.rb:258:in `process_action'
+actionpack (7.1.3.4) lib/action_controller/metal/rescue.rb:25:in `process_action'
+actionpack (7.1.3.4) lib/action_controller/metal/instrumentation.rb:74:in `block in process_action'
+activesupport (7.1.3.4) lib/active_support/notifications.rb:206:in `block in instrument'
+activesupport (7.1.3.4) lib/active_support/notifications/instrumenter.rb:58:in `instrument'
+activesupport (7.1.3.4) lib/active_support/notifications.rb:206:in `instrument'
+actionpack (7.1.3.4) lib/action_controller/metal/instrumentation.rb:73:in `process_action'
+actionpack (7.1.3.4) lib/action_controller/metal/params_wrapper.rb:261:in `process_action'
+activerecord (7.1.3.4) lib/active_record/railties/controller_runtime.rb:32:in `process_action'
+actionpack (7.1.3.4) lib/abstract_controller/base.rb:160:in `process'
+actionview (7.1.3.4) lib/action_view/rendering.rb:40:in `process'
+actionpack (7.1.3.4) lib/action_controller/metal.rb:227:in `dispatch'
+actionpack (7.1.3.4) lib/action_controller/metal.rb:309:in `dispatch'
+actionpack (7.1.3.4) lib/action_dispatch/routing/route_set.rb:49:in `dispatch'
+actionpack (7.1.3.4) lib/action_dispatch/routing/route_set.rb:32:in `serve'
+actionpack (7.1.3.4) lib/action_dispatch/journey/router.rb:51:in `block in serve'
+actionpack (7.1.3.4) lib/action_dispatch/journey/router.rb:131:in `block in find_routes'
+actionpack (7.1.3.4) lib/action_dispatch/journey/router.rb:124:in `each'
+actionpack (7.1.3.4) lib/action_dispatch/journey/router.rb:124:in `find_routes'
+actionpack (7.1.3.4) lib/action_dispatch/journey/router.rb:32:in `serve'
+actionpack (7.1.3.4) lib/action_dispatch/routing/route_set.rb:882:in `call'
+warden (1.2.9) lib/warden/manager.rb:36:in `block in call'
+warden (1.2.9) lib/warden/manager.rb:34:in `catch'
+warden (1.2.9) lib/warden/manager.rb:34:in `call'
+rack (3.1.7) lib/rack/tempfile_reaper.rb:20:in `call'
+rack (3.1.7) lib/rack/etag.rb:29:in `call'
+rack (3.1.7) lib/rack/conditional_get.rb:31:in `call'
+rack (3.1.7) lib/rack/head.rb:15:in `call'
+actionpack (7.1.3.4) lib/action_dispatch/http/permissions_policy.rb:36:in `call'
+actionpack (7.1.3.4) lib/action_dispatch/http/content_security_policy.rb:33:in `call'
+rack-session (2.0.0) lib/rack/session/abstract/id.rb:272:in `context'
+rack-session (2.0.0) lib/rack/session/abstract/id.rb:266:in `call'
+actionpack (7.1.3.4) lib/action_dispatch/middleware/cookies.rb:689:in `call'
+activerecord (7.1.3.4) lib/active_record/migration.rb:655:in `call'
+actionpack (7.1.3.4) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+activesupport (7.1.3.4) lib/active_support/callbacks.rb:101:in `run_callbacks'
+actionpack (7.1.3.4) lib/action_dispatch/middleware/callbacks.rb:28:in `call'
+actionpack (7.1.3.4) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.1.3.4) lib/action_dispatch/middleware/actionable_exceptions.rb:16:in `call'
+actionpack (7.1.3.4) lib/action_dispatch/middleware/debug_exceptions.rb:29:in `call'
+web-console (4.2.1) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.2.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.2.1) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.2.1) lib/web_console/middleware.rb:17:in `call'
+actionpack (7.1.3.4) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (7.1.3.4) lib/rails/rack/logger.rb:37:in `call_app'
+railties (7.1.3.4) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (7.1.3.4) lib/active_support/tagged_logging.rb:135:in `block in tagged'
+activesupport (7.1.3.4) lib/active_support/tagged_logging.rb:39:in `tagged'
+activesupport (7.1.3.4) lib/active_support/tagged_logging.rb:135:in `tagged'
+activesupport (7.1.3.4) lib/active_support/broadcast_logger.rb:240:in `method_missing'
+railties (7.1.3.4) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.5.2) lib/sprockets/rails/quiet_assets.rb:17:in `call'
+actionpack (7.1.3.4) lib/action_dispatch/middleware/remote_ip.rb:92:in `call'
+actionpack (7.1.3.4) lib/action_dispatch/middleware/request_id.rb:28:in `call'
+rack (3.1.7) lib/rack/method_override.rb:28:in `call'
+rack (3.1.7) lib/rack/runtime.rb:24:in `call'
+activesupport (7.1.3.4) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (7.1.3.4) lib/action_dispatch/middleware/server_timing.rb:59:in `block in call'
+actionpack (7.1.3.4) lib/action_dispatch/middleware/server_timing.rb:24:in `collect_events'
+actionpack (7.1.3.4) lib/action_dispatch/middleware/server_timing.rb:58:in `call'
+actionpack (7.1.3.4) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.1.3.4) lib/action_dispatch/middleware/static.rb:25:in `call'
+rack (3.1.7) lib/rack/sendfile.rb:114:in `call'
+actionpack (7.1.3.4) lib/action_dispatch/middleware/host_authorization.rb:141:in `call'
+railties (7.1.3.4) lib/rails/engine.rb:536:in `call'
+puma (6.4.3) lib/puma/configuration.rb:272:in `call'
+puma (6.4.3) lib/puma/request.rb:100:in `block in handle_request'
+puma (6.4.3) lib/puma/thread_pool.rb:378:in `with_force_shutdown'
+puma (6.4.3) lib/puma/request.rb:99:in `handle_request'
+puma (6.4.3) lib/puma/server.rb:464:in `process_client'
+puma (6.4.3) lib/puma/server.rb:245:in `block in run'
+puma (6.4.3) lib/puma/thread_pool.rb:155:in `block in spawn_thread'
+  [1m[36mTask Count (47.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "tasks"[0m
+Started GET "/" for ::1 at 2024-10-15 17:43:17 +0100
+  [1m[36mActiveRecord::SchemaMigration Load (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by PagesController#home as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering pages/home.html.erb within layouts/application
+  Rendered shared/_jumbotron.html.erb (Duration: 0.4ms | Allocations: 153)
+  Rendered pages/home.html.erb within layouts/application (Duration: 1.9ms | Allocations: 564)
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/shared/_navbar.html.erb:16
+  Rendered shared/_navbar.html.erb (Duration: 98.2ms | Allocations: 26170)
+  Rendered shared/_flashes.html.erb (Duration: 0.8ms | Allocations: 216)
+  Rendered shared/_footer.html.erb (Duration: 0.5ms | Allocations: 117)
+  Rendered layout layouts/application.html.erb (Duration: 314.2ms | Allocations: 95585)
+Completed 200 OK in 820ms (Views: 322.4ms | ActiveRecord: 13.4ms | Allocations: 381824)
+
+
+Started GET "/todays-log" for ::1 at 2024-10-15 17:43:25 +0100
+Processing by LogsController#today as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering logs/today.html.erb within layouts/application
+  Rendered logs/today.html.erb within layouts/application (Duration: 2.7ms | Allocations: 2171)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/shared/_navbar.html.erb:16
+  Rendered shared/_navbar.html.erb (Duration: 3.1ms | Allocations: 866)
+  Rendered shared/_flashes.html.erb (Duration: 0.1ms | Allocations: 22)
+  Rendered shared/_footer.html.erb (Duration: 0.1ms | Allocations: 8)
+  Rendered layout layouts/application.html.erb (Duration: 28.0ms | Allocations: 11216)
+Completed 200 OK in 32ms (Views: 29.7ms | ActiveRecord: 0.3ms | Allocations: 11850)
+
+
+Started DELETE "/users/sign_out?_method=delete" for ::1 at 2024-10-15 17:43:27 +0100
+Processing by Devise::SessionsController#destroy as TURBO_STREAM
+  [1m[36mUser Load (1.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Redirected to http://localhost:3000/
+Completed 303 See Other in 36ms (ActiveRecord: 1.2ms | Allocations: 3194)
+
+
+Started GET "/" for ::1 at 2024-10-15 17:43:27 +0100
+Processing by PagesController#home as TURBO_STREAM
+  Rendering layout layouts/application.html.erb
+  Rendering pages/home.html.erb within layouts/application
+  Rendered shared/_jumbotron.html.erb (Duration: 0.0ms | Allocations: 9)
+  Rendered pages/home.html.erb within layouts/application (Duration: 0.3ms | Allocations: 116)
+  Rendered shared/_navbar.html.erb (Duration: 2.6ms | Allocations: 214)
+  Rendered shared/_flashes.html.erb (Duration: 0.1ms | Allocations: 29)
+  Rendered shared/_footer.html.erb (Duration: 0.1ms | Allocations: 8)
+  Rendered layout layouts/application.html.erb (Duration: 16.9ms | Allocations: 8324)
+Completed 200 OK in 18ms (Views: 17.4ms | ActiveRecord: 0.0ms | Allocations: 8610)
+
+
+Started GET "/users/sign_in" for ::1 at 2024-10-15 17:43:30 +0100
+Processing by Devise::SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (Duration: 1.5ms | Allocations: 541)
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 90.2ms | Allocations: 10651)
+  Rendered shared/_navbar.html.erb (Duration: 0.3ms | Allocations: 116)
+  Rendered shared/_flashes.html.erb (Duration: 0.1ms | Allocations: 27)
+  Rendered shared/_footer.html.erb (Duration: 0.0ms | Allocations: 9)
+  Rendered layout layouts/application.html.erb (Duration: 107.9ms | Allocations: 18837)
+Completed 200 OK in 134ms (Views: 128.6ms | ActiveRecord: 0.0ms | Allocations: 20130)
+
+
+Started POST "/users/sign_in" for ::1 at 2024-10-15 17:43:35 +0100
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"email"=>"pauldevanney92@gmail.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  [1m[36mUser Load (17.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "pauldevanney92@gmail.com"], ["LIMIT", 1]]
+Redirected to http://localhost:3000/
+Completed 303 See Other in 625ms (ActiveRecord: 17.1ms | Allocations: 3796)
+
+
+Started GET "/" for ::1 at 2024-10-15 17:43:36 +0100
+Processing by PagesController#home as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering pages/home.html.erb within layouts/application
+  Rendered shared/_jumbotron.html.erb (Duration: 0.3ms | Allocations: 9)
+  Rendered pages/home.html.erb within layouts/application (Duration: 1.3ms | Allocations: 73)
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/shared/_navbar.html.erb:16
+  Rendered shared/_navbar.html.erb (Duration: 4.7ms | Allocations: 847)
+  Rendered shared/_flashes.html.erb (Duration: 0.1ms | Allocations: 27)
+  Rendered shared/_footer.html.erb (Duration: 0.0ms | Allocations: 8)
+  Rendered layout layouts/application.html.erb (Duration: 23.6ms | Allocations: 8888)
+Completed 200 OK in 25ms (Views: 23.6ms | ActiveRecord: 0.9ms | Allocations: 9128)
+
+
+Started GET "/tasks" for ::1 at 2024-10-15 17:43:48 +0100
+Processing by TasksController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering tasks/index.html.erb within layouts/application
+  Rendered tasks/index.html.erb within layouts/application (Duration: 0.5ms | Allocations: 91)
+  Rendered shared/_navbar.html.erb (Duration: 0.6ms | Allocations: 189)
+  Rendered shared/_flashes.html.erb (Duration: 0.1ms | Allocations: 22)
+  Rendered shared/_footer.html.erb (Duration: 0.0ms | Allocations: 8)
+  Rendered layout layouts/application.html.erb (Duration: 24.4ms | Allocations: 8297)
+Completed 500 Internal Server Error in 34ms (Views: 25.4ms | ActiveRecord: 0.3ms | Allocations: 10688)
+
+
+  
+Pundit::PolicyScopingNotPerformedError (TasksController):
+  
+pundit (2.4.0) lib/pundit/authorization.rb:57:in `verify_policy_scoped'
+activesupport (7.1.3.4) lib/active_support/callbacks.rb:403:in `block in make_lambda'
+activesupport (7.1.3.4) lib/active_support/callbacks.rb:239:in `block in halting_and_conditional'
+activesupport (7.1.3.4) lib/active_support/callbacks.rb:602:in `block in invoke_after'
+activesupport (7.1.3.4) lib/active_support/callbacks.rb:602:in `each'
+activesupport (7.1.3.4) lib/active_support/callbacks.rb:602:in `invoke_after'
+activesupport (7.1.3.4) lib/active_support/callbacks.rb:135:in `block in run_callbacks'
+turbo-rails (2.0.9) lib/turbo-rails.rb:24:in `with_request_id'
+turbo-rails (2.0.9) app/controllers/concerns/turbo/request_id_tracking.rb:10:in `turbo_tracking_request_id'
+activesupport (7.1.3.4) lib/active_support/callbacks.rb:130:in `block in run_callbacks'
+actiontext (7.1.3.4) lib/action_text/rendering.rb:23:in `with_renderer'
+actiontext (7.1.3.4) lib/action_text/engine.rb:69:in `block (4 levels) in <class:Engine>'
+activesupport (7.1.3.4) lib/active_support/callbacks.rb:130:in `instance_exec'
+activesupport (7.1.3.4) lib/active_support/callbacks.rb:130:in `block in run_callbacks'
+activesupport (7.1.3.4) lib/active_support/callbacks.rb:141:in `run_callbacks'
+actionpack (7.1.3.4) lib/abstract_controller/callbacks.rb:258:in `process_action'
+actionpack (7.1.3.4) lib/action_controller/metal/rescue.rb:25:in `process_action'
+actionpack (7.1.3.4) lib/action_controller/metal/instrumentation.rb:74:in `block in process_action'
+activesupport (7.1.3.4) lib/active_support/notifications.rb:206:in `block in instrument'
+activesupport (7.1.3.4) lib/active_support/notifications/instrumenter.rb:58:in `instrument'
+activesupport (7.1.3.4) lib/active_support/notifications.rb:206:in `instrument'
+actionpack (7.1.3.4) lib/action_controller/metal/instrumentation.rb:73:in `process_action'
+actionpack (7.1.3.4) lib/action_controller/metal/params_wrapper.rb:261:in `process_action'
+activerecord (7.1.3.4) lib/active_record/railties/controller_runtime.rb:32:in `process_action'
+actionpack (7.1.3.4) lib/abstract_controller/base.rb:160:in `process'
+actionview (7.1.3.4) lib/action_view/rendering.rb:40:in `process'
+actionpack (7.1.3.4) lib/action_controller/metal.rb:227:in `dispatch'
+actionpack (7.1.3.4) lib/action_controller/metal.rb:309:in `dispatch'
+actionpack (7.1.3.4) lib/action_dispatch/routing/route_set.rb:49:in `dispatch'
+actionpack (7.1.3.4) lib/action_dispatch/routing/route_set.rb:32:in `serve'
+actionpack (7.1.3.4) lib/action_dispatch/journey/router.rb:51:in `block in serve'
+actionpack (7.1.3.4) lib/action_dispatch/journey/router.rb:131:in `block in find_routes'
+actionpack (7.1.3.4) lib/action_dispatch/journey/router.rb:124:in `each'
+actionpack (7.1.3.4) lib/action_dispatch/journey/router.rb:124:in `find_routes'
+actionpack (7.1.3.4) lib/action_dispatch/journey/router.rb:32:in `serve'
+actionpack (7.1.3.4) lib/action_dispatch/routing/route_set.rb:882:in `call'
+warden (1.2.9) lib/warden/manager.rb:36:in `block in call'
+warden (1.2.9) lib/warden/manager.rb:34:in `catch'
+warden (1.2.9) lib/warden/manager.rb:34:in `call'
+rack (3.1.7) lib/rack/tempfile_reaper.rb:20:in `call'
+rack (3.1.7) lib/rack/etag.rb:29:in `call'
+rack (3.1.7) lib/rack/conditional_get.rb:31:in `call'
+rack (3.1.7) lib/rack/head.rb:15:in `call'
+actionpack (7.1.3.4) lib/action_dispatch/http/permissions_policy.rb:36:in `call'
+actionpack (7.1.3.4) lib/action_dispatch/http/content_security_policy.rb:33:in `call'
+rack-session (2.0.0) lib/rack/session/abstract/id.rb:272:in `context'
+rack-session (2.0.0) lib/rack/session/abstract/id.rb:266:in `call'
+actionpack (7.1.3.4) lib/action_dispatch/middleware/cookies.rb:689:in `call'
+activerecord (7.1.3.4) lib/active_record/migration.rb:655:in `call'
+actionpack (7.1.3.4) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+activesupport (7.1.3.4) lib/active_support/callbacks.rb:101:in `run_callbacks'
+actionpack (7.1.3.4) lib/action_dispatch/middleware/callbacks.rb:28:in `call'
+actionpack (7.1.3.4) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.1.3.4) lib/action_dispatch/middleware/actionable_exceptions.rb:16:in `call'
+actionpack (7.1.3.4) lib/action_dispatch/middleware/debug_exceptions.rb:29:in `call'
+web-console (4.2.1) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.2.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.2.1) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.2.1) lib/web_console/middleware.rb:17:in `call'
+actionpack (7.1.3.4) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (7.1.3.4) lib/rails/rack/logger.rb:37:in `call_app'
+railties (7.1.3.4) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (7.1.3.4) lib/active_support/tagged_logging.rb:135:in `block in tagged'
+activesupport (7.1.3.4) lib/active_support/tagged_logging.rb:39:in `tagged'
+activesupport (7.1.3.4) lib/active_support/tagged_logging.rb:135:in `tagged'
+activesupport (7.1.3.4) lib/active_support/broadcast_logger.rb:240:in `method_missing'
+railties (7.1.3.4) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.5.2) lib/sprockets/rails/quiet_assets.rb:17:in `call'
+actionpack (7.1.3.4) lib/action_dispatch/middleware/remote_ip.rb:92:in `call'
+actionpack (7.1.3.4) lib/action_dispatch/middleware/request_id.rb:28:in `call'
+rack (3.1.7) lib/rack/method_override.rb:28:in `call'
+rack (3.1.7) lib/rack/runtime.rb:24:in `call'
+activesupport (7.1.3.4) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (7.1.3.4) lib/action_dispatch/middleware/server_timing.rb:59:in `block in call'
+actionpack (7.1.3.4) lib/action_dispatch/middleware/server_timing.rb:24:in `collect_events'
+actionpack (7.1.3.4) lib/action_dispatch/middleware/server_timing.rb:58:in `call'
+actionpack (7.1.3.4) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.1.3.4) lib/action_dispatch/middleware/static.rb:25:in `call'
+rack (3.1.7) lib/rack/sendfile.rb:114:in `call'
+actionpack (7.1.3.4) lib/action_dispatch/middleware/host_authorization.rb:141:in `call'
+railties (7.1.3.4) lib/rails/engine.rb:536:in `call'
+puma (6.4.3) lib/puma/configuration.rb:272:in `call'
+puma (6.4.3) lib/puma/request.rb:100:in `block in handle_request'
+puma (6.4.3) lib/puma/thread_pool.rb:378:in `with_force_shutdown'
+puma (6.4.3) lib/puma/request.rb:99:in `handle_request'
+puma (6.4.3) lib/puma/server.rb:464:in `process_client'
+puma (6.4.3) lib/puma/server.rb:245:in `block in run'
+puma (6.4.3) lib/puma/thread_pool.rb:155:in `block in spawn_thread'
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTask Create (49.8ms)[0m  [1m[32mINSERT INTO "tasks" ("user_id", "task_type", "routine", "order", "title", "description", "comment", "start_date", "due_date", "completed", "active", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13) RETURNING "id"[0m  [["user_id", 1], ["task_type", 0], ["routine", 0], ["order", nil], ["title", "Be More Stoic"], ["description", "Develop Iron Clad Discipline"], ["comment", nil], ["start_date", "2024-10-15 00:00:00"], ["due_date", nil], ["completed", nil], ["active", nil], ["created_at", "2024-10-15 16:48:33.033504"], ["updated_at", "2024-10-15 16:48:33.033504"]]
+  [1m[36mTRANSACTION (26.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTask Load (0.5ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" /* loading for pp */ LIMIT $1[0m  [["LIMIT", 11]]
+  [1m[36mTask Load (0.4ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" ORDER BY "tasks"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Started GET "/tasks" for ::1 at 2024-10-15 18:11:45 +0100
+Processing by TasksController#index as HTML
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 81ms (ActiveRecord: 30.2ms | Allocations: 11209)
+
+
+  
+Pundit::NotDefinedError (unable to find policy `NilClassPolicy` for `nil`):
+  
+app/controllers/tasks_controller.rb:3:in `index'
+Started GET "/tasks" for ::1 at 2024-10-15 18:13:14 +0100
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by TasksController#index as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 110ms (ActiveRecord: 12.1ms | Allocations: 29509)
+
+
+  
+Pundit::NotDefinedError (unable to find policy `NilClassPolicy` for `nil`):
+  
+app/controllers/tasks_controller.rb:3:in `index'
+Started GET "/tasks" for ::1 at 2024-10-15 18:13:19 +0100
+Processing by TasksController#index as HTML
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 19ms (ActiveRecord: 0.8ms | Allocations: 2273)
+
+
+  
+Pundit::NotDefinedError (unable to find policy `NilClassPolicy` for `nil`):
+  
+app/controllers/tasks_controller.rb:3:in `index'
+Started GET "/tasks" for ::1 at 2024-10-15 18:28:36 +0100
+Processing by TasksController#index as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 35ms (ActiveRecord: 6.5ms | Allocations: 10787)
+
+
+  
+ArgumentError (wrong number of arguments (given 0, expected 1..2)):
+  
+app/controllers/tasks_controller.rb:4:in `index'
+Started GET "/tasks" for ::1 at 2024-10-15 18:32:16 +0100
+Processing by TasksController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 55ms (ActiveRecord: 6.5ms | Allocations: 11457)
+
+
+  
+NotImplementedError (You must define #resolve in TaskPolicy::Scope):
+  
+app/policies/application_policy.rb:46:in `resolve'
+app/controllers/tasks_controller.rb:4:in `index'
+Started GET "/tasks" for ::1 at 2024-10-15 18:36:29 +0100
+Processing by TasksController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering tasks/index.html.erb within layouts/application
+  Rendered tasks/index.html.erb within layouts/application (Duration: 1.5ms | Allocations: 93)
+  Rendered shared/_navbar.html.erb (Duration: 2.4ms | Allocations: 707)
+  Rendered shared/_flashes.html.erb (Duration: 0.8ms | Allocations: 216)
+  Rendered shared/_footer.html.erb (Duration: 0.6ms | Allocations: 117)
+  Rendered layout layouts/application.html.erb (Duration: 353.5ms | Allocations: 68245)
+Completed 200 OK in 437ms (Views: 395.9ms | ActiveRecord: 6.2ms | Allocations: 81171)
+
+
+Started GET "/tasks" for ::1 at 2024-10-15 18:38:14 +0100
+Processing by TasksController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering tasks/index.html.erb within layouts/application
+  Rendered tasks/index.html.erb within layouts/application (Duration: 0.8ms | Allocations: 98)
+  Rendered shared/_navbar.html.erb (Duration: 1.1ms | Allocations: 603)
+  Rendered shared/_flashes.html.erb (Duration: 0.4ms | Allocations: 192)
+  Rendered shared/_footer.html.erb (Duration: 0.3ms | Allocations: 115)
+  Rendered layout layouts/application.html.erb (Duration: 40.8ms | Allocations: 28300)
+Completed 200 OK in 77ms (Views: 43.3ms | ActiveRecord: 5.7ms | Allocations: 40863)
+
+
+Started GET "/tasks" for ::1 at 2024-10-15 18:42:42 +0100
+Processing by TasksController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering tasks/index.html.erb within layouts/application
+  Rendered tasks/index.html.erb within layouts/application (Duration: 0.6ms | Allocations: 98)
+  Rendered shared/_navbar.html.erb (Duration: 1.2ms | Allocations: 603)
+  Rendered shared/_flashes.html.erb (Duration: 0.5ms | Allocations: 192)
+  Rendered shared/_footer.html.erb (Duration: 0.4ms | Allocations: 115)
+  Rendered layout layouts/application.html.erb (Duration: 42.2ms | Allocations: 28301)
+Completed 200 OK in 80ms (Views: 44.9ms | ActiveRecord: 5.9ms | Allocations: 40875)
+
+
+Started GET "/tasks" for ::1 at 2024-10-15 18:44:57 +0100
+Processing by TasksController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering tasks/index.html.erb within layouts/application
+  Rendered tasks/index.html.erb within layouts/application (Duration: 0.4ms | Allocations: 102)
+  Rendered shared/_navbar.html.erb (Duration: 1.1ms | Allocations: 603)
+  Rendered shared/_flashes.html.erb (Duration: 0.6ms | Allocations: 192)
+  Rendered shared/_footer.html.erb (Duration: 0.3ms | Allocations: 115)
+  Rendered layout layouts/application.html.erb (Duration: 39.9ms | Allocations: 28300)
+Completed 200 OK in 77ms (Views: 41.5ms | ActiveRecord: 5.3ms | Allocations: 40869)
+
+
+Started GET "/tasks" for ::1 at 2024-10-15 18:45:30 +0100
+Processing by TasksController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering tasks/index.html.erb within layouts/application
+  Rendered tasks/index.html.erb within layouts/application (Duration: 0.5ms | Allocations: 102)
+  Rendered shared/_navbar.html.erb (Duration: 4.5ms | Allocations: 601)
+  Rendered shared/_flashes.html.erb (Duration: 0.8ms | Allocations: 192)
+  Rendered shared/_footer.html.erb (Duration: 2.5ms | Allocations: 115)
+  Rendered layout layouts/application.html.erb (Duration: 47.5ms | Allocations: 28302)
+Completed 200 OK in 88ms (Views: 49.1ms | ActiveRecord: 5.9ms | Allocations: 40879)
+
+
+Started GET "/tasks" for ::1 at 2024-10-15 18:45:58 +0100
+Processing by TasksController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering tasks/index.html.erb within layouts/application
+  Rendered tasks/index.html.erb within layouts/application (Duration: 0.5ms | Allocations: 102)
+  Rendered shared/_navbar.html.erb (Duration: 1.9ms | Allocations: 601)
+  Rendered shared/_flashes.html.erb (Duration: 0.6ms | Allocations: 192)
+  Rendered shared/_footer.html.erb (Duration: 0.9ms | Allocations: 115)
+  Rendered layout layouts/application.html.erb (Duration: 39.5ms | Allocations: 28301)
+Completed 200 OK in 79ms (Views: 42.0ms | ActiveRecord: 5.8ms | Allocations: 40894)
+
+
+Started GET "/tasks" for ::1 at 2024-10-15 18:49:50 +0100
+Processing by TasksController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering tasks/index.html.erb within layouts/application
+  Rendered tasks/index.html.erb within layouts/application (Duration: 0.5ms | Allocations: 102)
+  Rendered shared/_navbar.html.erb (Duration: 1.3ms | Allocations: 601)
+  Rendered shared/_flashes.html.erb (Duration: 0.7ms | Allocations: 192)
+  Rendered shared/_footer.html.erb (Duration: 0.5ms | Allocations: 115)
+  Rendered layout layouts/application.html.erb (Duration: 38.5ms | Allocations: 28302)
+Completed 200 OK in 79ms (Views: 40.2ms | ActiveRecord: 4.6ms | Allocations: 40883)
+
+
+Started GET "/tasks" for ::1 at 2024-10-15 18:50:28 +0100
+Processing by TasksController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering tasks/index.html.erb within layouts/application
+  Rendered tasks/index.html.erb within layouts/application (Duration: 0.4ms | Allocations: 102)
+  Rendered shared/_navbar.html.erb (Duration: 1.7ms | Allocations: 603)
+  Rendered shared/_flashes.html.erb (Duration: 0.9ms | Allocations: 192)
+  Rendered shared/_footer.html.erb (Duration: 0.5ms | Allocations: 115)
+  Rendered layout layouts/application.html.erb (Duration: 46.8ms | Allocations: 28249)
+Completed 200 OK in 86ms (Views: 48.4ms | ActiveRecord: 6.2ms | Allocations: 40826)
+
+
+Started GET "/tasks" for ::1 at 2024-10-15 18:50:49 +0100
+Processing by TasksController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering tasks/index.html.erb within layouts/application
+  Rendered tasks/index.html.erb within layouts/application (Duration: 0.4ms | Allocations: 102)
+  Rendered shared/_navbar.html.erb (Duration: 1.8ms | Allocations: 601)
+  Rendered shared/_flashes.html.erb (Duration: 0.7ms | Allocations: 192)
+  Rendered shared/_footer.html.erb (Duration: 0.5ms | Allocations: 115)
+  Rendered layout layouts/application.html.erb (Duration: 40.8ms | Allocations: 28302)
+Completed 200 OK in 77ms (Views: 42.8ms | ActiveRecord: 6.9ms | Allocations: 40889)
+
+
+Started GET "/tasks" for ::1 at 2024-10-15 18:50:52 +0100
+Processing by TasksController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering tasks/index.html.erb within layouts/application
+  Rendered tasks/index.html.erb within layouts/application (Duration: 0.3ms | Allocations: 7)
+  Rendered shared/_navbar.html.erb (Duration: 0.4ms | Allocations: 173)
+  Rendered shared/_flashes.html.erb (Duration: 0.1ms | Allocations: 22)
+  Rendered shared/_footer.html.erb (Duration: 0.0ms | Allocations: 8)
+  Rendered layout layouts/application.html.erb (Duration: 19.8ms | Allocations: 8182)
+Completed 200 OK in 31ms (Views: 21.2ms | ActiveRecord: 0.4ms | Allocations: 9921)
+
+
+Started GET "/tasks" for ::1 at 2024-10-15 18:52:20 +0100
+Processing by TasksController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering tasks/index.html.erb within layouts/application
+  Rendered tasks/index.html.erb within layouts/application (Duration: 0.4ms | Allocations: 102)
+  Rendered shared/_navbar.html.erb (Duration: 1.2ms | Allocations: 601)
+  Rendered shared/_flashes.html.erb (Duration: 0.6ms | Allocations: 192)
+  Rendered shared/_footer.html.erb (Duration: 0.4ms | Allocations: 115)
+  Rendered layout layouts/application.html.erb (Duration: 37.5ms | Allocations: 28302)
+Completed 200 OK in 76ms (Views: 39.5ms | ActiveRecord: 5.8ms | Allocations: 40919)
+
+
+Started GET "/tasks" for ::1 at 2024-10-15 18:52:23 +0100
+Processing by TasksController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering tasks/index.html.erb within layouts/application
+  Rendered tasks/index.html.erb within layouts/application (Duration: 0.1ms | Allocations: 7)
+  Rendered shared/_navbar.html.erb (Duration: 0.5ms | Allocations: 173)
+  Rendered shared/_flashes.html.erb (Duration: 0.1ms | Allocations: 22)
+  Rendered shared/_footer.html.erb (Duration: 0.0ms | Allocations: 8)
+  Rendered layout layouts/application.html.erb (Duration: 17.1ms | Allocations: 8178)
+Completed 200 OK in 27ms (Views: 17.7ms | ActiveRecord: 0.3ms | Allocations: 9922)
+
+
+Started GET "/tasks" for ::1 at 2024-10-15 18:52:23 +0100
+Processing by TasksController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering tasks/index.html.erb within layouts/application
+  Rendered tasks/index.html.erb within layouts/application (Duration: 0.1ms | Allocations: 7)
+  Rendered shared/_navbar.html.erb (Duration: 0.3ms | Allocations: 173)
+  Rendered shared/_flashes.html.erb (Duration: 0.1ms | Allocations: 22)
+  Rendered shared/_footer.html.erb (Duration: 0.0ms | Allocations: 8)
+  Rendered layout layouts/application.html.erb (Duration: 12.4ms | Allocations: 8123)
+Completed 200 OK in 19ms (Views: 13.0ms | ActiveRecord: 0.2ms | Allocations: 9858)
+
+
+Started GET "/tasks" for ::1 at 2024-10-15 18:56:31 +0100
+Processing by TasksController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering tasks/index.html.erb within layouts/application
+  [1m[36mTask Load (0.4ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/views/tasks/index.html.erb:6
+  Rendered tasks/index.html.erb within layouts/application (Duration: 42.8ms | Allocations: 14341)
+  Rendered shared/_navbar.html.erb (Duration: 1.2ms | Allocations: 601)
+  Rendered shared/_flashes.html.erb (Duration: 0.6ms | Allocations: 192)
+  Rendered shared/_footer.html.erb (Duration: 0.5ms | Allocations: 115)
+  Rendered layout layouts/application.html.erb (Duration: 85.9ms | Allocations: 42544)
+Completed 200 OK in 122ms (Views: 85.8ms | ActiveRecord: 8.5ms | Allocations: 55132)
+
+
+Started GET "/tasks" for ::1 at 2024-10-15 18:57:02 +0100
+Processing by TasksController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering tasks/index.html.erb within layouts/application
+  [1m[36mTask Load (0.4ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/views/tasks/index.html.erb:7
+  Rendered tasks/index.html.erb within layouts/application (Duration: 12.7ms | Allocations: 5250)
+  Rendered shared/_navbar.html.erb (Duration: 1.1ms | Allocations: 601)
+  Rendered shared/_flashes.html.erb (Duration: 0.4ms | Allocations: 192)
+  Rendered shared/_footer.html.erb (Duration: 0.3ms | Allocations: 115)
+  Rendered layout layouts/application.html.erb (Duration: 47.6ms | Allocations: 33445)
+Completed 200 OK in 84ms (Views: 46.0ms | ActiveRecord: 9.5ms | Allocations: 46031)
+
+
+Started GET "/tasks/1" for ::1 at 2024-10-15 18:59:11 +0100
+Processing by TasksController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (1.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mRestaurant Load (165.8ms)[0m  [1m[34mSELECT "restaurants".* FROM "restaurants" WHERE "restaurants"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/tasks_controller.rb:20:in `set_task'
+Completed 404 Not Found in 208ms (ActiveRecord: 169.9ms | Allocations: 6541)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Restaurant with 'id'=1):
+  
+app/controllers/tasks_controller.rb:20:in `set_task'
+Started GET "/tasks/1" for ::1 at 2024-10-15 19:00:05 +0100
+Processing by TasksController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mTask Load (0.3ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/tasks_controller.rb:21:in `set_task'
+  Rendering layout layouts/application.html.erb
+  Rendering tasks/show.html.erb within layouts/application
+  Rendered tasks/show.html.erb within layouts/application (Duration: 0.4ms | Allocations: 93)
+  Rendered shared/_navbar.html.erb (Duration: 1.3ms | Allocations: 613)
+  Rendered shared/_flashes.html.erb (Duration: 0.7ms | Allocations: 192)
+  Rendered shared/_footer.html.erb (Duration: 0.4ms | Allocations: 115)
+  Rendered layout layouts/application.html.erb (Duration: 44.1ms | Allocations: 28298)
+Completed 500 Internal Server Error in 132ms (Views: 46.7ms | ActiveRecord: 7.7ms | Allocations: 46088)
+
+
+  
+Pundit::AuthorizationNotPerformedError (TasksController):
+  
+pundit (2.4.0) lib/pundit/authorization.rb:46:in `verify_authorized'
+activesupport (7.1.3.4) lib/active_support/callbacks.rb:403:in `block in make_lambda'
+activesupport (7.1.3.4) lib/active_support/callbacks.rb:239:in `block in halting_and_conditional'
+activesupport (7.1.3.4) lib/active_support/callbacks.rb:602:in `block in invoke_after'
+activesupport (7.1.3.4) lib/active_support/callbacks.rb:602:in `each'
+activesupport (7.1.3.4) lib/active_support/callbacks.rb:602:in `invoke_after'
+activesupport (7.1.3.4) lib/active_support/callbacks.rb:135:in `block in run_callbacks'
+turbo-rails (2.0.9) lib/turbo-rails.rb:24:in `with_request_id'
+turbo-rails (2.0.9) app/controllers/concerns/turbo/request_id_tracking.rb:10:in `turbo_tracking_request_id'
+activesupport (7.1.3.4) lib/active_support/callbacks.rb:130:in `block in run_callbacks'
+actiontext (7.1.3.4) lib/action_text/rendering.rb:23:in `with_renderer'
+actiontext (7.1.3.4) lib/action_text/engine.rb:69:in `block (4 levels) in <class:Engine>'
+activesupport (7.1.3.4) lib/active_support/callbacks.rb:130:in `instance_exec'
+activesupport (7.1.3.4) lib/active_support/callbacks.rb:130:in `block in run_callbacks'
+activesupport (7.1.3.4) lib/active_support/callbacks.rb:141:in `run_callbacks'
+actionpack (7.1.3.4) lib/abstract_controller/callbacks.rb:258:in `process_action'
+actionpack (7.1.3.4) lib/action_controller/metal/rescue.rb:25:in `process_action'
+actionpack (7.1.3.4) lib/action_controller/metal/instrumentation.rb:74:in `block in process_action'
+activesupport (7.1.3.4) lib/active_support/notifications.rb:206:in `block in instrument'
+activesupport (7.1.3.4) lib/active_support/notifications/instrumenter.rb:58:in `instrument'
+activesupport (7.1.3.4) lib/active_support/notifications.rb:206:in `instrument'
+actionpack (7.1.3.4) lib/action_controller/metal/instrumentation.rb:73:in `process_action'
+actionpack (7.1.3.4) lib/action_controller/metal/params_wrapper.rb:261:in `process_action'
+activerecord (7.1.3.4) lib/active_record/railties/controller_runtime.rb:32:in `process_action'
+actionpack (7.1.3.4) lib/abstract_controller/base.rb:160:in `process'
+actionview (7.1.3.4) lib/action_view/rendering.rb:40:in `process'
+actionpack (7.1.3.4) lib/action_controller/metal.rb:227:in `dispatch'
+actionpack (7.1.3.4) lib/action_controller/metal.rb:309:in `dispatch'
+actionpack (7.1.3.4) lib/action_dispatch/routing/route_set.rb:49:in `dispatch'
+actionpack (7.1.3.4) lib/action_dispatch/routing/route_set.rb:32:in `serve'
+actionpack (7.1.3.4) lib/action_dispatch/journey/router.rb:51:in `block in serve'
+actionpack (7.1.3.4) lib/action_dispatch/journey/router.rb:131:in `block in find_routes'
+actionpack (7.1.3.4) lib/action_dispatch/journey/router.rb:124:in `each'
+actionpack (7.1.3.4) lib/action_dispatch/journey/router.rb:124:in `find_routes'
+actionpack (7.1.3.4) lib/action_dispatch/journey/router.rb:32:in `serve'
+actionpack (7.1.3.4) lib/action_dispatch/routing/route_set.rb:882:in `call'
+warden (1.2.9) lib/warden/manager.rb:36:in `block in call'
+warden (1.2.9) lib/warden/manager.rb:34:in `catch'
+warden (1.2.9) lib/warden/manager.rb:34:in `call'
+rack (3.1.7) lib/rack/tempfile_reaper.rb:20:in `call'
+rack (3.1.7) lib/rack/etag.rb:29:in `call'
+rack (3.1.7) lib/rack/conditional_get.rb:31:in `call'
+rack (3.1.7) lib/rack/head.rb:15:in `call'
+actionpack (7.1.3.4) lib/action_dispatch/http/permissions_policy.rb:36:in `call'
+actionpack (7.1.3.4) lib/action_dispatch/http/content_security_policy.rb:33:in `call'
+rack-session (2.0.0) lib/rack/session/abstract/id.rb:272:in `context'
+rack-session (2.0.0) lib/rack/session/abstract/id.rb:266:in `call'
+actionpack (7.1.3.4) lib/action_dispatch/middleware/cookies.rb:689:in `call'
+activerecord (7.1.3.4) lib/active_record/migration.rb:655:in `call'
+actionpack (7.1.3.4) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+activesupport (7.1.3.4) lib/active_support/callbacks.rb:101:in `run_callbacks'
+actionpack (7.1.3.4) lib/action_dispatch/middleware/callbacks.rb:28:in `call'
+actionpack (7.1.3.4) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.1.3.4) lib/action_dispatch/middleware/actionable_exceptions.rb:16:in `call'
+actionpack (7.1.3.4) lib/action_dispatch/middleware/debug_exceptions.rb:29:in `call'
+web-console (4.2.1) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.2.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.2.1) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.2.1) lib/web_console/middleware.rb:17:in `call'
+actionpack (7.1.3.4) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (7.1.3.4) lib/rails/rack/logger.rb:37:in `call_app'
+railties (7.1.3.4) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (7.1.3.4) lib/active_support/tagged_logging.rb:135:in `block in tagged'
+activesupport (7.1.3.4) lib/active_support/tagged_logging.rb:39:in `tagged'
+activesupport (7.1.3.4) lib/active_support/tagged_logging.rb:135:in `tagged'
+activesupport (7.1.3.4) lib/active_support/broadcast_logger.rb:240:in `method_missing'
+railties (7.1.3.4) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.5.2) lib/sprockets/rails/quiet_assets.rb:17:in `call'
+actionpack (7.1.3.4) lib/action_dispatch/middleware/remote_ip.rb:92:in `call'
+actionpack (7.1.3.4) lib/action_dispatch/middleware/request_id.rb:28:in `call'
+rack (3.1.7) lib/rack/method_override.rb:28:in `call'
+rack (3.1.7) lib/rack/runtime.rb:24:in `call'
+activesupport (7.1.3.4) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (7.1.3.4) lib/action_dispatch/middleware/server_timing.rb:59:in `block in call'
+actionpack (7.1.3.4) lib/action_dispatch/middleware/server_timing.rb:24:in `collect_events'
+actionpack (7.1.3.4) lib/action_dispatch/middleware/server_timing.rb:58:in `call'
+actionpack (7.1.3.4) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.1.3.4) lib/action_dispatch/middleware/static.rb:25:in `call'
+rack (3.1.7) lib/rack/sendfile.rb:114:in `call'
+actionpack (7.1.3.4) lib/action_dispatch/middleware/host_authorization.rb:141:in `call'
+railties (7.1.3.4) lib/rails/engine.rb:536:in `call'
+puma (6.4.3) lib/puma/configuration.rb:272:in `call'
+puma (6.4.3) lib/puma/request.rb:100:in `block in handle_request'
+puma (6.4.3) lib/puma/thread_pool.rb:378:in `with_force_shutdown'
+puma (6.4.3) lib/puma/request.rb:99:in `handle_request'
+puma (6.4.3) lib/puma/server.rb:464:in `process_client'
+puma (6.4.3) lib/puma/server.rb:245:in `block in run'
+puma (6.4.3) lib/puma/thread_pool.rb:155:in `block in spawn_thread'
+Started GET "/tasks/1" for ::1 at 2024-10-15 19:00:24 +0100
+Processing by TasksController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mTask Load (0.4ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/tasks_controller.rb:21:in `set_task'
+  Rendering layout layouts/application.html.erb
+  Rendering tasks/show.html.erb within layouts/application
+  Rendered tasks/show.html.erb within layouts/application (Duration: 0.4ms | Allocations: 89)
+  Rendered shared/_navbar.html.erb (Duration: 1.3ms | Allocations: 601)
+  Rendered shared/_flashes.html.erb (Duration: 0.6ms | Allocations: 192)
+  Rendered shared/_footer.html.erb (Duration: 0.5ms | Allocations: 115)
+  Rendered layout layouts/application.html.erb (Duration: 39.9ms | Allocations: 28279)
+Completed 200 OK in 91ms (Views: 42.1ms | ActiveRecord: 10.9ms | Allocations: 45940)
+
+
+Started GET "/tasks/1" for ::1 at 2024-10-15 19:02:04 +0100
+Processing by TasksController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mTask Load (0.3ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/tasks_controller.rb:21:in `set_task'
+  Rendering layout layouts/application.html.erb
+  Rendering tasks/show.html.erb within layouts/application
+  Rendered tasks/show.html.erb within layouts/application (Duration: 1.2ms | Allocations: 146)
+  Rendered shared/_navbar.html.erb (Duration: 1.4ms | Allocations: 601)
+  Rendered shared/_flashes.html.erb (Duration: 0.8ms | Allocations: 192)
+  Rendered shared/_footer.html.erb (Duration: 0.5ms | Allocations: 115)
+  Rendered layout layouts/application.html.erb (Duration: 36.7ms | Allocations: 28337)
+Completed 200 OK in 82ms (Views: 38.4ms | ActiveRecord: 8.2ms | Allocations: 46003)
+
+
+Started GET "/tasks/1" for ::1 at 2024-10-15 19:04:59 +0100
+Processing by TasksController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mTask Load (0.4ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/tasks_controller.rb:21:in `set_task'
+  Rendering layout layouts/application.html.erb
+  Rendering tasks/show.html.erb within layouts/application
+  Rendered tasks/show.html.erb within layouts/application (Duration: 0.6ms | Allocations: 144)
+  Rendered shared/_navbar.html.erb (Duration: 1.1ms | Allocations: 601)
+  Rendered shared/_flashes.html.erb (Duration: 0.5ms | Allocations: 192)
+  Rendered shared/_footer.html.erb (Duration: 0.4ms | Allocations: 115)
+  Rendered layout layouts/application.html.erb (Duration: 33.6ms | Allocations: 28334)
+Completed 200 OK in 84ms (Views: 35.2ms | ActiveRecord: 10.2ms | Allocations: 45973)
+
+
+Started GET "/tasks/1" for ::1 at 2024-10-15 19:05:40 +0100
+Processing by TasksController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mTask Load (0.4ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/tasks_controller.rb:21:in `set_task'
+  Rendering layout layouts/application.html.erb
+  Rendering tasks/show.html.erb within layouts/application
+  Rendered tasks/show.html.erb within layouts/application (Duration: 0.6ms | Allocations: 144)
+  Rendered shared/_navbar.html.erb (Duration: 1.7ms | Allocations: 601)
+  Rendered shared/_flashes.html.erb (Duration: 0.9ms | Allocations: 192)
+  Rendered shared/_footer.html.erb (Duration: 1.3ms | Allocations: 115)
+  Rendered layout layouts/application.html.erb (Duration: 39.7ms | Allocations: 28335)
+Completed 200 OK in 91ms (Views: 41.6ms | ActiveRecord: 7.8ms | Allocations: 45983)
+
+
+Started GET "/tasks/new" for ::1 at 2024-10-15 19:10:05 +0100
+Processing by TasksController#new as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 21ms (ActiveRecord: 4.8ms | Allocations: 8329)
+
+
+  
+NameError (undefined local variable or method `task' for an instance of TasksController):
+  
+app/controllers/tasks_controller.rb:14:in `new'
+Started GET "/tasks/new" for ::1 at 2024-10-15 19:12:39 +0100
+Processing by TasksController#new as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 46ms (ActiveRecord: 7.9ms | Allocations: 16043)
+
+
+  
+Pundit::NotAuthorizedError (not allowed to TaskPolicy#new? this Task):
+  
+app/controllers/tasks_controller.rb:15:in `new'
+Started GET "/tasks/new" for ::1 at 2024-10-15 19:19:24 +0100
+Processing by TasksController#new as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering tasks/new.html.erb within layouts/application
+  Rendered tasks/new.html.erb within layouts/application (Duration: 0.4ms | Allocations: 93)
+  Rendered shared/_navbar.html.erb (Duration: 2.6ms | Allocations: 613)
+  Rendered shared/_flashes.html.erb (Duration: 0.9ms | Allocations: 192)
+  Rendered shared/_footer.html.erb (Duration: 0.3ms | Allocations: 115)
+  Rendered layout layouts/application.html.erb (Duration: 43.3ms | Allocations: 28301)
+Completed 500 Internal Server Error in 100ms (Views: 44.9ms | ActiveRecord: 7.1ms | Allocations: 47098)
+
+
+  
+Pundit::AuthorizationNotPerformedError (TasksController):
+  
+pundit (2.4.0) lib/pundit/authorization.rb:46:in `verify_authorized'
+activesupport (7.1.3.4) lib/active_support/callbacks.rb:403:in `block in make_lambda'
+activesupport (7.1.3.4) lib/active_support/callbacks.rb:239:in `block in halting_and_conditional'
+activesupport (7.1.3.4) lib/active_support/callbacks.rb:602:in `block in invoke_after'
+activesupport (7.1.3.4) lib/active_support/callbacks.rb:602:in `each'
+activesupport (7.1.3.4) lib/active_support/callbacks.rb:602:in `invoke_after'
+activesupport (7.1.3.4) lib/active_support/callbacks.rb:135:in `block in run_callbacks'
+turbo-rails (2.0.9) lib/turbo-rails.rb:24:in `with_request_id'
+turbo-rails (2.0.9) app/controllers/concerns/turbo/request_id_tracking.rb:10:in `turbo_tracking_request_id'
+activesupport (7.1.3.4) lib/active_support/callbacks.rb:130:in `block in run_callbacks'
+actiontext (7.1.3.4) lib/action_text/rendering.rb:23:in `with_renderer'
+actiontext (7.1.3.4) lib/action_text/engine.rb:69:in `block (4 levels) in <class:Engine>'
+activesupport (7.1.3.4) lib/active_support/callbacks.rb:130:in `instance_exec'
+activesupport (7.1.3.4) lib/active_support/callbacks.rb:130:in `block in run_callbacks'
+activesupport (7.1.3.4) lib/active_support/callbacks.rb:141:in `run_callbacks'
+actionpack (7.1.3.4) lib/abstract_controller/callbacks.rb:258:in `process_action'
+actionpack (7.1.3.4) lib/action_controller/metal/rescue.rb:25:in `process_action'
+actionpack (7.1.3.4) lib/action_controller/metal/instrumentation.rb:74:in `block in process_action'
+activesupport (7.1.3.4) lib/active_support/notifications.rb:206:in `block in instrument'
+activesupport (7.1.3.4) lib/active_support/notifications/instrumenter.rb:58:in `instrument'
+activesupport (7.1.3.4) lib/active_support/notifications.rb:206:in `instrument'
+actionpack (7.1.3.4) lib/action_controller/metal/instrumentation.rb:73:in `process_action'
+actionpack (7.1.3.4) lib/action_controller/metal/params_wrapper.rb:261:in `process_action'
+activerecord (7.1.3.4) lib/active_record/railties/controller_runtime.rb:32:in `process_action'
+actionpack (7.1.3.4) lib/abstract_controller/base.rb:160:in `process'
+actionview (7.1.3.4) lib/action_view/rendering.rb:40:in `process'
+actionpack (7.1.3.4) lib/action_controller/metal.rb:227:in `dispatch'
+actionpack (7.1.3.4) lib/action_controller/metal.rb:309:in `dispatch'
+actionpack (7.1.3.4) lib/action_dispatch/routing/route_set.rb:49:in `dispatch'
+actionpack (7.1.3.4) lib/action_dispatch/routing/route_set.rb:32:in `serve'
+actionpack (7.1.3.4) lib/action_dispatch/journey/router.rb:51:in `block in serve'
+actionpack (7.1.3.4) lib/action_dispatch/journey/router.rb:131:in `block in find_routes'
+actionpack (7.1.3.4) lib/action_dispatch/journey/router.rb:124:in `each'
+actionpack (7.1.3.4) lib/action_dispatch/journey/router.rb:124:in `find_routes'
+actionpack (7.1.3.4) lib/action_dispatch/journey/router.rb:32:in `serve'
+actionpack (7.1.3.4) lib/action_dispatch/routing/route_set.rb:882:in `call'
+warden (1.2.9) lib/warden/manager.rb:36:in `block in call'
+warden (1.2.9) lib/warden/manager.rb:34:in `catch'
+warden (1.2.9) lib/warden/manager.rb:34:in `call'
+rack (3.1.7) lib/rack/tempfile_reaper.rb:20:in `call'
+rack (3.1.7) lib/rack/etag.rb:29:in `call'
+rack (3.1.7) lib/rack/conditional_get.rb:31:in `call'
+rack (3.1.7) lib/rack/head.rb:15:in `call'
+actionpack (7.1.3.4) lib/action_dispatch/http/permissions_policy.rb:36:in `call'
+actionpack (7.1.3.4) lib/action_dispatch/http/content_security_policy.rb:33:in `call'
+rack-session (2.0.0) lib/rack/session/abstract/id.rb:272:in `context'
+rack-session (2.0.0) lib/rack/session/abstract/id.rb:266:in `call'
+actionpack (7.1.3.4) lib/action_dispatch/middleware/cookies.rb:689:in `call'
+activerecord (7.1.3.4) lib/active_record/migration.rb:655:in `call'
+actionpack (7.1.3.4) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+activesupport (7.1.3.4) lib/active_support/callbacks.rb:101:in `run_callbacks'
+actionpack (7.1.3.4) lib/action_dispatch/middleware/callbacks.rb:28:in `call'
+actionpack (7.1.3.4) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.1.3.4) lib/action_dispatch/middleware/actionable_exceptions.rb:16:in `call'
+actionpack (7.1.3.4) lib/action_dispatch/middleware/debug_exceptions.rb:29:in `call'
+web-console (4.2.1) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.2.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.2.1) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.2.1) lib/web_console/middleware.rb:17:in `call'
+actionpack (7.1.3.4) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (7.1.3.4) lib/rails/rack/logger.rb:37:in `call_app'
+railties (7.1.3.4) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (7.1.3.4) lib/active_support/tagged_logging.rb:135:in `block in tagged'
+activesupport (7.1.3.4) lib/active_support/tagged_logging.rb:39:in `tagged'
+activesupport (7.1.3.4) lib/active_support/tagged_logging.rb:135:in `tagged'
+activesupport (7.1.3.4) lib/active_support/broadcast_logger.rb:240:in `method_missing'
+railties (7.1.3.4) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.5.2) lib/sprockets/rails/quiet_assets.rb:17:in `call'
+actionpack (7.1.3.4) lib/action_dispatch/middleware/remote_ip.rb:92:in `call'
+actionpack (7.1.3.4) lib/action_dispatch/middleware/request_id.rb:28:in `call'
+rack (3.1.7) lib/rack/method_override.rb:28:in `call'
+rack (3.1.7) lib/rack/runtime.rb:24:in `call'
+activesupport (7.1.3.4) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (7.1.3.4) lib/action_dispatch/middleware/server_timing.rb:59:in `block in call'
+actionpack (7.1.3.4) lib/action_dispatch/middleware/server_timing.rb:24:in `collect_events'
+actionpack (7.1.3.4) lib/action_dispatch/middleware/server_timing.rb:58:in `call'
+actionpack (7.1.3.4) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.1.3.4) lib/action_dispatch/middleware/static.rb:25:in `call'
+rack (3.1.7) lib/rack/sendfile.rb:114:in `call'
+actionpack (7.1.3.4) lib/action_dispatch/middleware/host_authorization.rb:141:in `call'
+railties (7.1.3.4) lib/rails/engine.rb:536:in `call'
+puma (6.4.3) lib/puma/configuration.rb:272:in `call'
+puma (6.4.3) lib/puma/request.rb:100:in `block in handle_request'
+puma (6.4.3) lib/puma/thread_pool.rb:378:in `with_force_shutdown'
+puma (6.4.3) lib/puma/request.rb:99:in `handle_request'
+puma (6.4.3) lib/puma/server.rb:464:in `process_client'
+puma (6.4.3) lib/puma/server.rb:245:in `block in run'
+puma (6.4.3) lib/puma/thread_pool.rb:155:in `block in spawn_thread'
+Started GET "/tasks/new" for ::1 at 2024-10-15 19:19:52 +0100
+Processing by TasksController#new as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 51ms (ActiveRecord: 11.7ms | Allocations: 16104)
+
+
+  
+Pundit::NotAuthorizedError (not allowed to TaskPolicy#new? this Task):
+  
+app/controllers/tasks_controller.rb:15:in `new'
+Started GET "/tasks/new" for ::1 at 2024-10-15 19:20:43 +0100
+Processing by TasksController#new as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 45ms (ActiveRecord: 8.0ms | Allocations: 17075)
+
+
+  
+Pundit::NotAuthorizedError (not allowed to TaskPolicy#new? this Task):
+  
+app/controllers/tasks_controller.rb:15:in `new'
+Started GET "/tasks" for ::1 at 2024-10-15 19:21:57 +0100
+Processing by TasksController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering tasks/index.html.erb within layouts/application
+  [1m[36mTask Load (0.6ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/views/tasks/index.html.erb:7
+  Rendered tasks/index.html.erb within layouts/application (Duration: 3.9ms | Allocations: 729)
+  Rendered shared/_navbar.html.erb (Duration: 1.2ms | Allocations: 601)
+  Rendered shared/_flashes.html.erb (Duration: 0.6ms | Allocations: 192)
+  Rendered shared/_footer.html.erb (Duration: 0.7ms | Allocations: 115)
+  Rendered layout layouts/application.html.erb (Duration: 45.1ms | Allocations: 28921)
+Completed 200 OK in 57ms (Views: 47.7ms | ActiveRecord: 0.9ms | Allocations: 31513)
+
+
+Started GET "/tasks" for ::1 at 2024-10-15 19:22:08 +0100
+Processing by TasksController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering tasks/index.html.erb within layouts/application
+  [1m[36mTask Load (0.4ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/views/tasks/index.html.erb:7
+  Rendered tasks/index.html.erb within layouts/application (Duration: 2.1ms | Allocations: 488)
+  Rendered shared/_navbar.html.erb (Duration: 0.5ms | Allocations: 173)
+  Rendered shared/_flashes.html.erb (Duration: 0.1ms | Allocations: 22)
+  Rendered shared/_footer.html.erb (Duration: 0.0ms | Allocations: 8)
+  Rendered layout layouts/application.html.erb (Duration: 27.1ms | Allocations: 8665)
+Completed 200 OK in 37ms (Views: 27.2ms | ActiveRecord: 0.7ms | Allocations: 10408)
+
+
+Started GET "/tasks" for ::1 at 2024-10-15 19:22:08 +0100
+Processing by TasksController#index as HTML
+  [1m[36mUser Load (3.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering tasks/index.html.erb within layouts/application
+  [1m[36mTask Load (2.9ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/views/tasks/index.html.erb:7
+  Rendered tasks/index.html.erb within layouts/application (Duration: 6.2ms | Allocations: 897)
+  Rendered shared/_navbar.html.erb (Duration: 0.6ms | Allocations: 173)
+  Rendered shared/_flashes.html.erb (Duration: 0.1ms | Allocations: 22)
+  Rendered shared/_footer.html.erb (Duration: 0.0ms | Allocations: 8)
+  Rendered layout layouts/application.html.erb (Duration: 52.4ms | Allocations: 12629)
+Completed 200 OK in 70ms (Views: 51.1ms | ActiveRecord: 6.1ms | Allocations: 15062)
+
+
+Started GET "/tasks" for ::1 at 2024-10-15 19:22:08 +0100
+Processing by TasksController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering tasks/index.html.erb within layouts/application
+  [1m[36mTask Load (0.3ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/views/tasks/index.html.erb:7
+  Rendered tasks/index.html.erb within layouts/application (Duration: 2.3ms | Allocations: 488)
+  Rendered shared/_navbar.html.erb (Duration: 0.4ms | Allocations: 173)
+  Rendered shared/_flashes.html.erb (Duration: 0.1ms | Allocations: 22)
+  Rendered shared/_footer.html.erb (Duration: 0.0ms | Allocations: 8)
+  Rendered layout layouts/application.html.erb (Duration: 18.8ms | Allocations: 8438)
+Completed 200 OK in 24ms (Views: 20.0ms | ActiveRecord: 0.5ms | Allocations: 10181)
+
+
+Started GET "/tasks" for ::1 at 2024-10-15 19:22:44 +0100
+Processing by TasksController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering tasks/index.html.erb within layouts/application
+  [1m[36mTask Load (0.3ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/views/tasks/index.html.erb:7
+  Rendered tasks/index.html.erb within layouts/application (Duration: 8.7ms | Allocations: 5249)
+  Rendered shared/_navbar.html.erb (Duration: 1.2ms | Allocations: 603)
+  Rendered shared/_flashes.html.erb (Duration: 0.6ms | Allocations: 192)
+  Rendered shared/_footer.html.erb (Duration: 0.5ms | Allocations: 115)
+  Rendered layout layouts/application.html.erb (Duration: 53.1ms | Allocations: 33465)
+Completed 200 OK in 94ms (Views: 53.0ms | ActiveRecord: 7.4ms | Allocations: 46091)
+
+
+Started GET "/tasks/1" for ::1 at 2024-10-15 19:22:56 +0100
+Processing by TasksController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mTask Load (0.5ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/tasks_controller.rb:56:in `set_task'
+  Rendering layout layouts/application.html.erb
+  Rendering tasks/show.html.erb within layouts/application
+  Rendered tasks/show.html.erb within layouts/application (Duration: 0.7ms | Allocations: 132)
+  Rendered shared/_navbar.html.erb (Duration: 0.5ms | Allocations: 173)
+  Rendered shared/_flashes.html.erb (Duration: 0.1ms | Allocations: 22)
+  Rendered shared/_footer.html.erb (Duration: 0.0ms | Allocations: 8)
+  Rendered layout layouts/application.html.erb (Duration: 25.3ms | Allocations: 8243)
+Completed 200 OK in 38ms (Views: 26.6ms | ActiveRecord: 0.7ms | Allocations: 11091)
+
+
+Started GET "/tasks/new" for ::1 at 2024-10-15 19:23:08 +0100
+Processing by TasksController#new as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering tasks/new.html.erb within layouts/application
+  Rendered tasks/new.html.erb within layouts/application (Duration: 1.0ms | Allocations: 85)
+  Rendered shared/_navbar.html.erb (Duration: 0.3ms | Allocations: 173)
+  Rendered shared/_flashes.html.erb (Duration: 0.1ms | Allocations: 22)
+  Rendered shared/_footer.html.erb (Duration: 0.0ms | Allocations: 8)
+  Rendered layout layouts/application.html.erb (Duration: 24.0ms | Allocations: 8029)
+Completed 200 OK in 31ms (Views: 24.6ms | ActiveRecord: 0.2ms | Allocations: 9862)
+
+
+Started GET "/tasks/new" for ::1 at 2024-10-15 19:24:16 +0100
+Processing by TasksController#new as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering tasks/new.html.erb within layouts/application
+  Rendered tasks/new.html.erb within layouts/application (Duration: 0.5ms | Allocations: 93)
+  Rendered shared/_navbar.html.erb (Duration: 1.1ms | Allocations: 601)
+  Rendered shared/_flashes.html.erb (Duration: 0.5ms | Allocations: 192)
+  Rendered shared/_footer.html.erb (Duration: 0.4ms | Allocations: 115)
+  Rendered layout layouts/application.html.erb (Duration: 35.9ms | Allocations: 28289)
+Completed 200 OK in 84ms (Views: 37.6ms | ActiveRecord: 8.5ms | Allocations: 45446)
+
+
+Started GET "/tasks/new" for ::1 at 2024-10-15 19:24:17 +0100
+Processing by TasksController#new as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering tasks/new.html.erb within layouts/application
+  Rendered tasks/new.html.erb within layouts/application (Duration: 0.1ms | Allocations: 7)
+  Rendered shared/_navbar.html.erb (Duration: 0.5ms | Allocations: 173)
+  Rendered shared/_flashes.html.erb (Duration: 0.1ms | Allocations: 22)
+  Rendered shared/_footer.html.erb (Duration: 0.0ms | Allocations: 8)
+  Rendered layout layouts/application.html.erb (Duration: 41.4ms | Allocations: 8179)
+Completed 200 OK in 50ms (Views: 42.5ms | ActiveRecord: 0.4ms | Allocations: 9877)
+
+
+Started GET "/tasks/new" for ::1 at 2024-10-15 19:24:18 +0100
+Processing by TasksController#new as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering tasks/new.html.erb within layouts/application
+  Rendered tasks/new.html.erb within layouts/application (Duration: 0.1ms | Allocations: 7)
+  Rendered shared/_navbar.html.erb (Duration: 0.5ms | Allocations: 173)
+  Rendered shared/_flashes.html.erb (Duration: 0.2ms | Allocations: 22)
+  Rendered shared/_footer.html.erb (Duration: 0.1ms | Allocations: 8)
+  Rendered layout layouts/application.html.erb (Duration: 14.0ms | Allocations: 8151)
+Completed 200 OK in 21ms (Views: 15.0ms | ActiveRecord: 0.2ms | Allocations: 9868)
+
+
+Started GET "/tasks/new" for ::1 at 2024-10-15 19:24:18 +0100
+Started GET "/tasks/new" for ::1 at 2024-10-15 19:24:18 +0100
+Processing by TasksController#new as HTML
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering tasks/new.html.erb within layouts/application
+  Rendered tasks/new.html.erb within layouts/application (Duration: 0.0ms | Allocations: 7)
+  Rendered shared/_navbar.html.erb (Duration: 0.7ms | Allocations: 173)
+  Rendered shared/_flashes.html.erb (Duration: 0.1ms | Allocations: 22)
+  Rendered shared/_footer.html.erb (Duration: 0.1ms | Allocations: 8)
+  Rendered layout layouts/application.html.erb (Duration: 76.9ms | Allocations: 12645)
+Completed 200 OK in 85ms (Views: 78.0ms | ActiveRecord: 0.8ms | Allocations: 14633)
+
+
+Processing by TasksController#new as HTML
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering tasks/new.html.erb within layouts/application
+  Rendered tasks/new.html.erb within layouts/application (Duration: 0.1ms | Allocations: 7)
+  Rendered shared/_navbar.html.erb (Duration: 0.3ms | Allocations: 173)
+  Rendered shared/_flashes.html.erb (Duration: 0.1ms | Allocations: 22)
+  Rendered shared/_footer.html.erb (Duration: 0.0ms | Allocations: 8)
+  Rendered layout layouts/application.html.erb (Duration: 39.2ms | Allocations: 8820)
+Completed 200 OK in 49ms (Views: 39.9ms | ActiveRecord: 0.7ms | Allocations: 10609)
+
+
+Started GET "/tasks/new" for ::1 at 2024-10-15 19:24:18 +0100
+Processing by TasksController#new as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering tasks/new.html.erb within layouts/application
+  Rendered tasks/new.html.erb within layouts/application (Duration: 0.0ms | Allocations: 7)
+  Rendered shared/_navbar.html.erb (Duration: 0.6ms | Allocations: 173)
+  Rendered shared/_flashes.html.erb (Duration: 0.1ms | Allocations: 22)
+  Rendered shared/_footer.html.erb (Duration: 0.0ms | Allocations: 8)
+  Rendered layout layouts/application.html.erb (Duration: 19.1ms | Allocations: 8178)
+Completed 200 OK in 26ms (Views: 19.7ms | ActiveRecord: 0.2ms | Allocations: 9901)
+
+
+Started GET "/tasks/new" for ::1 at 2024-10-15 19:25:17 +0100
+Processing by TasksController#new as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering tasks/new.html.erb within layouts/application
+  Rendered tasks/new.html.erb within layouts/application (Duration: 0.5ms | Allocations: 93)
+  Rendered shared/_navbar.html.erb (Duration: 2.0ms | Allocations: 601)
+  Rendered shared/_flashes.html.erb (Duration: 0.7ms | Allocations: 192)
+  Rendered shared/_footer.html.erb (Duration: 0.5ms | Allocations: 115)
+  Rendered layout layouts/application.html.erb (Duration: 40.1ms | Allocations: 28289)
+Completed 200 OK in 91ms (Views: 41.8ms | ActiveRecord: 8.9ms | Allocations: 45465)
+
+
+Started GET "/tasks/new" for ::1 at 2024-10-15 19:25:18 +0100
+Processing by TasksController#new as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering tasks/new.html.erb within layouts/application
+  Rendered tasks/new.html.erb within layouts/application (Duration: 0.1ms | Allocations: 7)
+  Rendered shared/_navbar.html.erb (Duration: 0.4ms | Allocations: 173)
+  Rendered shared/_flashes.html.erb (Duration: 0.1ms | Allocations: 22)
+  Rendered shared/_footer.html.erb (Duration: 0.0ms | Allocations: 8)
+  Rendered layout layouts/application.html.erb (Duration: 16.5ms | Allocations: 8147)
+Completed 200 OK in 22ms (Views: 17.3ms | ActiveRecord: 0.2ms | Allocations: 9879)
+
+
+Started GET "/tasks/new" for ::1 at 2024-10-15 19:26:55 +0100
+Processing by TasksController#new as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering tasks/new.html.erb within layouts/application
+  Rendered tasks/new.html.erb within layouts/application (Duration: 0.5ms | Allocations: 93)
+  Rendered shared/_navbar.html.erb (Duration: 3.2ms | Allocations: 603)
+  Rendered shared/_flashes.html.erb (Duration: 0.6ms | Allocations: 192)
+  Rendered shared/_footer.html.erb (Duration: 0.4ms | Allocations: 115)
+  Rendered layout layouts/application.html.erb (Duration: 47.6ms | Allocations: 28294)
+Completed 200 OK in 96ms (Views: 49.2ms | ActiveRecord: 10.0ms | Allocations: 45479)
+
+
+Started GET "/tasks/new" for ::1 at 2024-10-15 19:27:17 +0100
+Processing by TasksController#new as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 50ms (ActiveRecord: 9.0ms | Allocations: 16426)
+
+
+  
+Pundit::NotAuthorizedError (not allowed to TaskPolicy#new? this Task):
+  
+app/controllers/tasks_controller.rb:15:in `new'
+Started GET "/tasks/new" for ::1 at 2024-10-15 19:27:56 +0100
+Processing by TasksController#new as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 43ms (ActiveRecord: 7.6ms | Allocations: 16401)
+
+
+  
+Pundit::NotDefinedError (unable to find policy `UserPolicy` for `#<User id: 1, email: "pauldevanney92@gmail.com", created_at: "2024-10-13 19:50:52.651698000 +0000", updated_at: "2024-10-13 19:50:52.651698000 +0000", admin: nil, username: nil, first_name: nil, last_name: nil, image_url: nil, bio: nil>`):
+  
+app/controllers/tasks_controller.rb:15:in `new'
+Started GET "/tasks/new" for ::1 at 2024-10-15 19:28:44 +0100
+Processing by TasksController#new as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering tasks/new.html.erb within layouts/application
+  Rendered tasks/new.html.erb within layouts/application (Duration: 0.4ms | Allocations: 91)
+  Rendered shared/_navbar.html.erb (Duration: 3.5ms | Allocations: 601)
+  Rendered shared/_flashes.html.erb (Duration: 0.7ms | Allocations: 192)
+  Rendered shared/_footer.html.erb (Duration: 0.6ms | Allocations: 115)
+  Rendered layout layouts/application.html.erb (Duration: 78.5ms | Allocations: 28292)
+Completed 200 OK in 126ms (Views: 82.8ms | ActiveRecord: 7.9ms | Allocations: 45013)
+
+
+Started GET "/tasks/new" for ::1 at 2024-10-15 19:29:42 +0100
+Processing by TasksController#new as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering tasks/new.html.erb within layouts/application
+  Rendered tasks/new.html.erb within layouts/application (Duration: 0.4ms | Allocations: 93)
+  Rendered shared/_navbar.html.erb (Duration: 1.3ms | Allocations: 601)
+  Rendered shared/_flashes.html.erb (Duration: 0.5ms | Allocations: 192)
+  Rendered shared/_footer.html.erb (Duration: 0.3ms | Allocations: 115)
+  Rendered layout layouts/application.html.erb (Duration: 36.4ms | Allocations: 27876)
+Completed 200 OK in 81ms (Views: 38.2ms | ActiveRecord: 7.3ms | Allocations: 44988)
+
+
+Started GET "/tasks/new" for ::1 at 2024-10-15 19:29:43 +0100
+Processing by TasksController#new as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering tasks/new.html.erb within layouts/application
+  Rendered tasks/new.html.erb within layouts/application (Duration: 0.1ms | Allocations: 7)
+  Rendered shared/_navbar.html.erb (Duration: 0.3ms | Allocations: 173)
+  Rendered shared/_flashes.html.erb (Duration: 0.1ms | Allocations: 22)
+  Rendered shared/_footer.html.erb (Duration: 0.0ms | Allocations: 8)
+  Rendered layout layouts/application.html.erb (Duration: 34.5ms | Allocations: 8121)
+Completed 200 OK in 49ms (Views: 36.2ms | ActiveRecord: 0.3ms | Allocations: 9838)
+
+
+Started GET "/tasks/1/edit" for ::1 at 2024-10-15 19:30:19 +0100
+Processing by TasksController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mTask Load (0.3ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/tasks_controller.rb:57:in `set_task'
+Completed 500 Internal Server Error in 11ms (ActiveRecord: 1.1ms | Allocations: 2992)
+
+
+  
+Pundit::NotAuthorizedError (not allowed to TaskPolicy#edit? this Task):
+  
+app/controllers/tasks_controller.rb:21:in `edit'
+Started GET "/tasks/1/edit" for ::1 at 2024-10-15 19:31:06 +0100
+Processing by TasksController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mTask Load (0.3ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/tasks_controller.rb:57:in `set_task'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/policies/task_policy.rb:29:in `if_user_or_admin?'
+Completed 406 Not Acceptable in 52ms (ActiveRecord: 8.1ms | Allocations: 19553)
+
+
+  
+ActionController::MissingExactTemplate (TasksController#edit is missing a template for request formats: text/html):
+  
+actionpack (7.1.3.4) lib/action_controller/metal/implicit_render.rb:47:in `default_render'
+actionpack (7.1.3.4) lib/action_controller/metal/basic_implicit_render.rb:7:in `send_action'
+actionpack (7.1.3.4) lib/abstract_controller/base.rb:224:in `process_action'
+actionpack (7.1.3.4) lib/action_controller/metal/rendering.rb:165:in `process_action'
+actionpack (7.1.3.4) lib/abstract_controller/callbacks.rb:259:in `block in process_action'
+activesupport (7.1.3.4) lib/active_support/callbacks.rb:121:in `block in run_callbacks'
+turbo-rails (2.0.9) lib/turbo-rails.rb:24:in `with_request_id'
+turbo-rails (2.0.9) app/controllers/concerns/turbo/request_id_tracking.rb:10:in `turbo_tracking_request_id'
+activesupport (7.1.3.4) lib/active_support/callbacks.rb:130:in `block in run_callbacks'
+actiontext (7.1.3.4) lib/action_text/rendering.rb:23:in `with_renderer'
+actiontext (7.1.3.4) lib/action_text/engine.rb:69:in `block (4 levels) in <class:Engine>'
+activesupport (7.1.3.4) lib/active_support/callbacks.rb:130:in `instance_exec'
+activesupport (7.1.3.4) lib/active_support/callbacks.rb:130:in `block in run_callbacks'
+activesupport (7.1.3.4) lib/active_support/callbacks.rb:141:in `run_callbacks'
+actionpack (7.1.3.4) lib/abstract_controller/callbacks.rb:258:in `process_action'
+actionpack (7.1.3.4) lib/action_controller/metal/rescue.rb:25:in `process_action'
+actionpack (7.1.3.4) lib/action_controller/metal/instrumentation.rb:74:in `block in process_action'
+activesupport (7.1.3.4) lib/active_support/notifications.rb:206:in `block in instrument'
+activesupport (7.1.3.4) lib/active_support/notifications/instrumenter.rb:58:in `instrument'
+activesupport (7.1.3.4) lib/active_support/notifications.rb:206:in `instrument'
+actionpack (7.1.3.4) lib/action_controller/metal/instrumentation.rb:73:in `process_action'
+actionpack (7.1.3.4) lib/action_controller/metal/params_wrapper.rb:261:in `process_action'
+activerecord (7.1.3.4) lib/active_record/railties/controller_runtime.rb:32:in `process_action'
+actionpack (7.1.3.4) lib/abstract_controller/base.rb:160:in `process'
+actionview (7.1.3.4) lib/action_view/rendering.rb:40:in `process'
+actionpack (7.1.3.4) lib/action_controller/metal.rb:227:in `dispatch'
+actionpack (7.1.3.4) lib/action_controller/metal.rb:309:in `dispatch'
+actionpack (7.1.3.4) lib/action_dispatch/routing/route_set.rb:49:in `dispatch'
+actionpack (7.1.3.4) lib/action_dispatch/routing/route_set.rb:32:in `serve'
+actionpack (7.1.3.4) lib/action_dispatch/journey/router.rb:51:in `block in serve'
+actionpack (7.1.3.4) lib/action_dispatch/journey/router.rb:131:in `block in find_routes'
+actionpack (7.1.3.4) lib/action_dispatch/journey/router.rb:124:in `each'
+actionpack (7.1.3.4) lib/action_dispatch/journey/router.rb:124:in `find_routes'
+actionpack (7.1.3.4) lib/action_dispatch/journey/router.rb:32:in `serve'
+actionpack (7.1.3.4) lib/action_dispatch/routing/route_set.rb:882:in `call'
+warden (1.2.9) lib/warden/manager.rb:36:in `block in call'
+warden (1.2.9) lib/warden/manager.rb:34:in `catch'
+warden (1.2.9) lib/warden/manager.rb:34:in `call'
+rack (3.1.7) lib/rack/tempfile_reaper.rb:20:in `call'
+rack (3.1.7) lib/rack/etag.rb:29:in `call'
+rack (3.1.7) lib/rack/conditional_get.rb:31:in `call'
+rack (3.1.7) lib/rack/head.rb:15:in `call'
+actionpack (7.1.3.4) lib/action_dispatch/http/permissions_policy.rb:36:in `call'
+actionpack (7.1.3.4) lib/action_dispatch/http/content_security_policy.rb:33:in `call'
+rack-session (2.0.0) lib/rack/session/abstract/id.rb:272:in `context'
+rack-session (2.0.0) lib/rack/session/abstract/id.rb:266:in `call'
+actionpack (7.1.3.4) lib/action_dispatch/middleware/cookies.rb:689:in `call'
+activerecord (7.1.3.4) lib/active_record/migration.rb:655:in `call'
+actionpack (7.1.3.4) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+activesupport (7.1.3.4) lib/active_support/callbacks.rb:101:in `run_callbacks'
+actionpack (7.1.3.4) lib/action_dispatch/middleware/callbacks.rb:28:in `call'
+actionpack (7.1.3.4) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.1.3.4) lib/action_dispatch/middleware/actionable_exceptions.rb:16:in `call'
+actionpack (7.1.3.4) lib/action_dispatch/middleware/debug_exceptions.rb:29:in `call'
+web-console (4.2.1) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.2.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.2.1) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.2.1) lib/web_console/middleware.rb:17:in `call'
+actionpack (7.1.3.4) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (7.1.3.4) lib/rails/rack/logger.rb:37:in `call_app'
+railties (7.1.3.4) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (7.1.3.4) lib/active_support/tagged_logging.rb:135:in `block in tagged'
+activesupport (7.1.3.4) lib/active_support/tagged_logging.rb:39:in `tagged'
+activesupport (7.1.3.4) lib/active_support/tagged_logging.rb:135:in `tagged'
+activesupport (7.1.3.4) lib/active_support/broadcast_logger.rb:240:in `method_missing'
+railties (7.1.3.4) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.5.2) lib/sprockets/rails/quiet_assets.rb:17:in `call'
+actionpack (7.1.3.4) lib/action_dispatch/middleware/remote_ip.rb:92:in `call'
+actionpack (7.1.3.4) lib/action_dispatch/middleware/request_id.rb:28:in `call'
+rack (3.1.7) lib/rack/method_override.rb:28:in `call'
+rack (3.1.7) lib/rack/runtime.rb:24:in `call'
+activesupport (7.1.3.4) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (7.1.3.4) lib/action_dispatch/middleware/server_timing.rb:59:in `block in call'
+actionpack (7.1.3.4) lib/action_dispatch/middleware/server_timing.rb:24:in `collect_events'
+actionpack (7.1.3.4) lib/action_dispatch/middleware/server_timing.rb:58:in `call'
+actionpack (7.1.3.4) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.1.3.4) lib/action_dispatch/middleware/static.rb:25:in `call'
+rack (3.1.7) lib/rack/sendfile.rb:114:in `call'
+actionpack (7.1.3.4) lib/action_dispatch/middleware/host_authorization.rb:141:in `call'
+railties (7.1.3.4) lib/rails/engine.rb:536:in `call'
+puma (6.4.3) lib/puma/configuration.rb:272:in `call'
+puma (6.4.3) lib/puma/request.rb:100:in `block in handle_request'
+puma (6.4.3) lib/puma/thread_pool.rb:378:in `with_force_shutdown'
+puma (6.4.3) lib/puma/request.rb:99:in `handle_request'
+puma (6.4.3) lib/puma/server.rb:464:in `process_client'
+puma (6.4.3) lib/puma/server.rb:245:in `block in run'
+puma (6.4.3) lib/puma/thread_pool.rb:155:in `block in spawn_thread'
+Started GET "/tasks/1/edit" for ::1 at 2024-10-15 19:33:04 +0100
+Processing by TasksController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mTask Load (0.3ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/tasks_controller.rb:57:in `set_task'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/policies/task_policy.rb:33:in `if_user_or_admin?'
+  Rendering layout layouts/application.html.erb
+  Rendering tasks/edit.html.erb within layouts/application
+  Rendered tasks/edit.html.erb within layouts/application (Duration: 0.4ms | Allocations: 81)
+  Rendered shared/_navbar.html.erb (Duration: 1.8ms | Allocations: 601)
+  Rendered shared/_flashes.html.erb (Duration: 0.7ms | Allocations: 192)
+  Rendered shared/_footer.html.erb (Duration: 0.7ms | Allocations: 115)
+  Rendered layout layouts/application.html.erb (Duration: 33.2ms | Allocations: 28271)
+Completed 200 OK in 82ms (Views: 35.0ms | ActiveRecord: 8.5ms | Allocations: 47679)
+
+
+Started GET "/todays-log" for ::1 at 2024-10-15 19:33:30 +0100
+Processing by LogsController#today as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering logs/today.html.erb within layouts/application
+  Rendered logs/today.html.erb within layouts/application (Duration: 10.0ms | Allocations: 2166)
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/shared/_navbar.html.erb:16
+  Rendered shared/_navbar.html.erb (Duration: 3.3ms | Allocations: 855)
+  Rendered shared/_flashes.html.erb (Duration: 0.1ms | Allocations: 22)
+  Rendered shared/_footer.html.erb (Duration: 0.0ms | Allocations: 8)
+  Rendered layout layouts/application.html.erb (Duration: 40.3ms | Allocations: 11158)
+Completed 200 OK in 43ms (Views: 41.6ms | ActiveRecord: 0.2ms | Allocations: 11789)
+
+
+Started GET "/tasks/new" for ::1 at 2024-10-15 20:40:13 +0100
+Processing by TasksController#new as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering tasks/new.html.erb within layouts/application
+  Rendered tasks/new.html.erb within layouts/application (Duration: 194.8ms | Allocations: 12787)
+  Rendered layout layouts/application.html.erb (Duration: 195.2ms | Allocations: 12874)
+Completed 500 Internal Server Error in 246ms (ActiveRecord: 5.6ms | Allocations: 31946)
+
+
+  
+ActionView::Template::Error (No input found for textarea):
+    20: 
+    21:         <%= f.input :title, input_html: { class: "form-control animate-inset-shadow" } %>
+    22: 
+    23:         <%= f.input :description, as: :textarea, input_html: { class: "form-control animate-inset-shadow" } %>
+    24: 
+    25:         <%= f.input :comment, as: :textarea, input_html: { class: "form-control animate-inset-shadow" } %>
+    26: 
+  
+app/views/tasks/new.html.erb:23
+app/views/tasks/new.html.erb:7
+Started GET "/tasks/new" for ::1 at 2024-10-15 20:42:38 +0100
+Processing by TasksController#new as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering tasks/new.html.erb within layouts/application
+  Rendered tasks/new.html.erb within layouts/application (Duration: 50.9ms | Allocations: 9606)
+  Rendered shared/_navbar.html.erb (Duration: 1.1ms | Allocations: 568)
+  Rendered shared/_flashes.html.erb (Duration: 0.5ms | Allocations: 192)
+  Rendered shared/_footer.html.erb (Duration: 0.4ms | Allocations: 115)
+  Rendered layout layouts/application.html.erb (Duration: 93.2ms | Allocations: 37748)
+Completed 200 OK in 142ms (Views: 95.1ms | ActiveRecord: 10.4ms | Allocations: 54888)
+
+
+Started POST "/tasks" for ::1 at 2024-10-15 20:46:12 +0100
+Processing by TasksController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "task"=>{"order"=>"1", "routine"=>"0", "task_type"=>"0", "title"=>"Test Two", "description"=>"This is another test task...", "comment"=>"", "start_date"=>"2024-10-17T14:49", "due_date"=>"2024-10-27T23:35", "completed"=>"0", "active"=>"1"}, "commit"=>"Create Task"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 21ms (ActiveRecord: 0.5ms | Allocations: 2246)
+
+
+  
+ArgumentError ('0' is not a valid task_type):
+  
+app/controllers/tasks_controller.rb:28:in `create'
+Started GET "/tasks/new" for ::1 at 2024-10-15 20:47:12 +0100
+Processing by TasksController#new as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering tasks/new.html.erb within layouts/application
+  Rendered tasks/new.html.erb within layouts/application (Duration: 11.7ms | Allocations: 7666)
+  Rendered shared/_navbar.html.erb (Duration: 0.5ms | Allocations: 160)
+  Rendered shared/_flashes.html.erb (Duration: 0.1ms | Allocations: 22)
+  Rendered shared/_footer.html.erb (Duration: 0.0ms | Allocations: 8)
+  Rendered layout layouts/application.html.erb (Duration: 26.1ms | Allocations: 15828)
+Completed 200 OK in 30ms (Views: 26.6ms | ActiveRecord: 0.3ms | Allocations: 17547)
+
+
+Started GET "/tasks/new" for ::1 at 2024-10-15 20:49:36 +0100
+Processing by TasksController#new as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering tasks/new.html.erb within layouts/application
+  Rendered tasks/new.html.erb within layouts/application (Duration: 7.5ms | Allocations: 6541)
+  Rendered shared/_navbar.html.erb (Duration: 1.1ms | Allocations: 569)
+  Rendered shared/_flashes.html.erb (Duration: 0.4ms | Allocations: 192)
+  Rendered shared/_footer.html.erb (Duration: 0.5ms | Allocations: 115)
+  Rendered layout layouts/application.html.erb (Duration: 38.0ms | Allocations: 34684)
+Completed 200 OK in 78ms (Views: 39.5ms | ActiveRecord: 8.4ms | Allocations: 51747)
+
+
+Started GET "/tasks/new" for ::1 at 2024-10-15 20:50:33 +0100
+Processing by TasksController#new as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering tasks/new.html.erb within layouts/application
+  Rendered tasks/new.html.erb within layouts/application (Duration: 8.2ms | Allocations: 6549)
+  Rendered shared/_navbar.html.erb (Duration: 1.0ms | Allocations: 568)
+  Rendered shared/_flashes.html.erb (Duration: 0.4ms | Allocations: 192)
+  Rendered shared/_footer.html.erb (Duration: 0.3ms | Allocations: 115)
+  Rendered layout layouts/application.html.erb (Duration: 36.2ms | Allocations: 34690)
+Completed 200 OK in 78ms (Views: 37.8ms | ActiveRecord: 7.8ms | Allocations: 51749)
+
+
+Started GET "/tasks/new" for ::1 at 2024-10-15 20:52:33 +0100
+Processing by TasksController#new as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering tasks/new.html.erb within layouts/application
+  Rendered tasks/new.html.erb within layouts/application (Duration: 11.6ms | Allocations: 5918)
+  Rendered shared/_navbar.html.erb (Duration: 0.3ms | Allocations: 160)
+  Rendered shared/_flashes.html.erb (Duration: 0.1ms | Allocations: 22)
+  Rendered shared/_footer.html.erb (Duration: 0.0ms | Allocations: 8)
+  Rendered layout layouts/application.html.erb (Duration: 8907.2ms | Allocations: 80831)
+Completed 200 OK in 8915ms (Views: 8907.8ms | ActiveRecord: 0.2ms | Allocations: 82541)
+
+
+Started GET "/tasks/new" for ::1 at 2024-10-15 20:54:04 +0100
+Processing by TasksController#new as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering tasks/new.html.erb within layouts/application
+  Rendered tasks/new.html.erb within layouts/application (Duration: 6.9ms | Allocations: 6551)
+  Rendered shared/_navbar.html.erb (Duration: 1.0ms | Allocations: 568)
+  Rendered shared/_flashes.html.erb (Duration: 0.5ms | Allocations: 192)
+  Rendered shared/_footer.html.erb (Duration: 0.4ms | Allocations: 115)
+  Rendered layout layouts/application.html.erb (Duration: 35.7ms | Allocations: 34452)
+Completed 200 OK in 74ms (Views: 37.4ms | ActiveRecord: 8.0ms | Allocations: 51515)
+
+
+Started GET "/tasks/new" for ::1 at 2024-10-15 20:55:30 +0100
+Processing by TasksController#new as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering tasks/new.html.erb within layouts/application
+  Rendered tasks/new.html.erb within layouts/application (Duration: 7.9ms | Allocations: 6550)
+  Rendered shared/_navbar.html.erb (Duration: 1.0ms | Allocations: 568)
+  Rendered shared/_flashes.html.erb (Duration: 0.5ms | Allocations: 192)
+  Rendered shared/_footer.html.erb (Duration: 0.3ms | Allocations: 115)
+  Rendered layout layouts/application.html.erb (Duration: 39.9ms | Allocations: 34662)
+Completed 200 OK in 87ms (Views: 41.5ms | ActiveRecord: 8.7ms | Allocations: 51718)
+
+
+Started GET "/tasks/new" for ::1 at 2024-10-15 20:55:40 +0100
+Processing by TasksController#new as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering tasks/new.html.erb within layouts/application
+  Rendered tasks/new.html.erb within layouts/application (Duration: 7.2ms | Allocations: 6551)
+  Rendered shared/_navbar.html.erb (Duration: 1.2ms | Allocations: 568)
+  Rendered shared/_flashes.html.erb (Duration: 0.5ms | Allocations: 192)
+  Rendered shared/_footer.html.erb (Duration: 0.3ms | Allocations: 115)
+  Rendered layout layouts/application.html.erb (Duration: 36.4ms | Allocations: 34661)
+Completed 200 OK in 80ms (Views: 38.2ms | ActiveRecord: 6.7ms | Allocations: 51733)
+
+
+Started GET "/tasks/new" for ::1 at 2024-10-15 20:56:14 +0100
+Processing by TasksController#new as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering tasks/new.html.erb within layouts/application
+  Rendered tasks/new.html.erb within layouts/application (Duration: 8.0ms | Allocations: 6550)
+  Rendered shared/_navbar.html.erb (Duration: 1.0ms | Allocations: 568)
+  Rendered shared/_flashes.html.erb (Duration: 0.4ms | Allocations: 192)
+  Rendered shared/_footer.html.erb (Duration: 0.3ms | Allocations: 115)
+  Rendered layout layouts/application.html.erb (Duration: 35.7ms | Allocations: 34658)
+Completed 200 OK in 76ms (Views: 37.2ms | ActiveRecord: 7.6ms | Allocations: 51714)
+
+
+Started GET "/tasks/new" for ::1 at 2024-10-15 20:56:34 +0100
+Processing by TasksController#new as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering tasks/new.html.erb within layouts/application
+  Rendered tasks/new.html.erb within layouts/application (Duration: 7.1ms | Allocations: 6551)
+  Rendered shared/_navbar.html.erb (Duration: 1.0ms | Allocations: 570)
+  Rendered shared/_flashes.html.erb (Duration: 0.5ms | Allocations: 192)
+  Rendered shared/_footer.html.erb (Duration: 0.3ms | Allocations: 115)
+  Rendered layout layouts/application.html.erb (Duration: 43.7ms | Allocations: 34630)
+Completed 200 OK in 84ms (Views: 45.3ms | ActiveRecord: 7.2ms | Allocations: 51684)
+
+
+Started GET "/tasks/new" for ::1 at 2024-10-15 20:56:56 +0100
+Processing by TasksController#new as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering tasks/new.html.erb within layouts/application
+  Rendered tasks/new.html.erb within layouts/application (Duration: 7.4ms | Allocations: 6549)
+  Rendered shared/_navbar.html.erb (Duration: 1.1ms | Allocations: 568)
+  Rendered shared/_flashes.html.erb (Duration: 0.5ms | Allocations: 192)
+  Rendered shared/_footer.html.erb (Duration: 0.4ms | Allocations: 115)
+  Rendered layout layouts/application.html.erb (Duration: 38.0ms | Allocations: 34660)
+Completed 200 OK in 80ms (Views: 39.7ms | ActiveRecord: 7.9ms | Allocations: 51714)
+
+
+Started GET "/tasks/new" for ::1 at 2024-10-15 20:57:11 +0100
+Processing by TasksController#new as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering tasks/new.html.erb within layouts/application
+  Rendered tasks/new.html.erb within layouts/application (Duration: 7.6ms | Allocations: 6551)
+  Rendered shared/_navbar.html.erb (Duration: 1.0ms | Allocations: 568)
+  Rendered shared/_flashes.html.erb (Duration: 0.5ms | Allocations: 192)
+  Rendered shared/_footer.html.erb (Duration: 0.4ms | Allocations: 115)
+  Rendered layout layouts/application.html.erb (Duration: 36.3ms | Allocations: 34618)
+Completed 200 OK in 76ms (Views: 38.0ms | ActiveRecord: 7.5ms | Allocations: 51678)
+
+
+Started GET "/tasks/new" for ::1 at 2024-10-15 20:58:03 +0100
+Processing by TasksController#new as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering tasks/new.html.erb within layouts/application
+  Rendered tasks/new.html.erb within layouts/application (Duration: 12.5ms | Allocations: 6554)
+  Rendered shared/_navbar.html.erb (Duration: 1.1ms | Allocations: 568)
+  Rendered shared/_flashes.html.erb (Duration: 0.4ms | Allocations: 192)
+  Rendered shared/_footer.html.erb (Duration: 0.4ms | Allocations: 115)
+  Rendered layout layouts/application.html.erb (Duration: 46.2ms | Allocations: 34669)
+Completed 200 OK in 86ms (Views: 47.7ms | ActiveRecord: 7.0ms | Allocations: 51734)
+
+
+Started GET "/tasks/new" for ::1 at 2024-10-15 20:59:05 +0100
+Processing by TasksController#new as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering tasks/new.html.erb within layouts/application
+  Rendered tasks/new.html.erb within layouts/application (Duration: 7.7ms | Allocations: 6552)
+  Rendered shared/_navbar.html.erb (Duration: 1.1ms | Allocations: 568)
+  Rendered shared/_flashes.html.erb (Duration: 0.4ms | Allocations: 192)
+  Rendered shared/_footer.html.erb (Duration: 0.3ms | Allocations: 115)
+  Rendered layout layouts/application.html.erb (Duration: 35.8ms | Allocations: 34662)
+Completed 200 OK in 75ms (Views: 37.4ms | ActiveRecord: 7.2ms | Allocations: 51737)
+
+
+Started POST "/tasks" for ::1 at 2024-10-15 20:59:13 +0100
+Processing by TasksController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "task"=>{"order"=>"", "routine"=>"", "task_type"=>"", "title"=>"", "description"=>"", "start_date"=>"", "due_date"=>""}, "commit"=>"Create Task"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/tasks_controller.rb:32:in `create'
+  [1m[36mTask Create (4.1ms)[0m  [1m[32mINSERT INTO "tasks" ("user_id", "task_type", "routine", "order", "title", "description", "comment", "start_date", "due_date", "completed", "active", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13) RETURNING "id"[0m  [["user_id", 1], ["task_type", nil], ["routine", nil], ["order", nil], ["title", ""], ["description", ""], ["comment", nil], ["start_date", nil], ["due_date", nil], ["completed", nil], ["active", nil], ["created_at", "2024-10-15 19:59:13.414646"], ["updated_at", "2024-10-15 19:59:13.414646"]]
+  ↳ app/controllers/tasks_controller.rb:32:in `create'
+  [1m[36mTRANSACTION (16.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/tasks_controller.rb:32:in `create'
+Redirected to http://localhost:3000/tasks/2
+Completed 302 Found in 43ms (ActiveRecord: 20.7ms | Allocations: 5267)
+
+
+Started GET "/tasks/2" for ::1 at 2024-10-15 20:59:13 +0100
+Processing by TasksController#show as TURBO_STREAM
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mTask Load (0.5ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/tasks_controller.rb:59:in `set_task'
+  Rendering layout layouts/application.html.erb
+  Rendering tasks/show.html.erb within layouts/application
+  Rendered tasks/show.html.erb within layouts/application (Duration: 0.9ms | Allocations: 133)
+  Rendered shared/_navbar.html.erb (Duration: 0.6ms | Allocations: 173)
+  Rendered shared/_flashes.html.erb (Duration: 0.1ms | Allocations: 29)
+  Rendered shared/_footer.html.erb (Duration: 0.0ms | Allocations: 8)
+  Rendered layout layouts/application.html.erb (Duration: 19.1ms | Allocations: 8321)
+Completed 200 OK in 30ms (Views: 19.8ms | ActiveRecord: 0.8ms | Allocations: 11250)
+
+
+Started GET "/tasks/new" for ::1 at 2024-10-15 20:59:32 +0100
+Processing by TasksController#new as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering tasks/new.html.erb within layouts/application
+  Rendered tasks/new.html.erb within layouts/application (Duration: 25.1ms | Allocations: 5926)
+  Rendered shared/_navbar.html.erb (Duration: 0.3ms | Allocations: 160)
+  Rendered shared/_flashes.html.erb (Duration: 0.1ms | Allocations: 22)
+  Rendered shared/_footer.html.erb (Duration: 0.0ms | Allocations: 8)
+  Rendered layout layouts/application.html.erb (Duration: 49.5ms | Allocations: 13854)
+Completed 200 OK in 57ms (Views: 50.3ms | ActiveRecord: 0.3ms | Allocations: 15557)
+
+
+Started GET "/tasks/new" for ::1 at 2024-10-15 21:00:47 +0100
+Processing by TasksController#new as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering tasks/new.html.erb within layouts/application
+  Rendered tasks/new.html.erb within layouts/application (Duration: 7.2ms | Allocations: 6549)
+  Rendered shared/_navbar.html.erb (Duration: 1.1ms | Allocations: 568)
+  Rendered shared/_flashes.html.erb (Duration: 0.5ms | Allocations: 192)
+  Rendered shared/_footer.html.erb (Duration: 0.5ms | Allocations: 115)
+  Rendered layout layouts/application.html.erb (Duration: 38.3ms | Allocations: 34659)
+Completed 200 OK in 79ms (Views: 39.9ms | ActiveRecord: 7.3ms | Allocations: 51728)
+
+
+Started GET "/tasks" for ::1 at 2024-10-15 21:01:00 +0100
+Processing by TasksController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering tasks/index.html.erb within layouts/application
+  [1m[36mTask Load (0.6ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/views/tasks/index.html.erb:7
+  Rendered tasks/index.html.erb within layouts/application (Duration: 6.6ms | Allocations: 727)
+  Rendered shared/_navbar.html.erb (Duration: 0.5ms | Allocations: 173)
+  Rendered shared/_flashes.html.erb (Duration: 0.1ms | Allocations: 22)
+  Rendered shared/_footer.html.erb (Duration: 0.0ms | Allocations: 8)
+  Rendered layout layouts/application.html.erb (Duration: 31.5ms | Allocations: 8868)
+Completed 200 OK in 41ms (Views: 31.9ms | ActiveRecord: 1.0ms | Allocations: 10754)
+
+
+Started GET "/tasks" for ::1 at 2024-10-15 21:01:02 +0100
+Processing by TasksController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering tasks/index.html.erb within layouts/application
+  [1m[36mTask Load (0.6ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/views/tasks/index.html.erb:7
+  Rendered tasks/index.html.erb within layouts/application (Duration: 4.1ms | Allocations: 503)
+  Rendered shared/_navbar.html.erb (Duration: 0.5ms | Allocations: 173)
+  Rendered shared/_flashes.html.erb (Duration: 0.1ms | Allocations: 22)
+  Rendered shared/_footer.html.erb (Duration: 0.0ms | Allocations: 8)
+  Rendered layout layouts/application.html.erb (Duration: 22.2ms | Allocations: 8496)
+Completed 200 OK in 30ms (Views: 22.4ms | ActiveRecord: 1.0ms | Allocations: 10243)
+
+
+Started GET "/tasks/new" for ::1 at 2024-10-15 21:02:11 +0100
+Processing by TasksController#new as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering tasks/new.html.erb within layouts/application
+  Rendered tasks/new.html.erb within layouts/application (Duration: 8.4ms | Allocations: 6550)
+  Rendered shared/_navbar.html.erb (Duration: 1.1ms | Allocations: 568)
+  Rendered shared/_flashes.html.erb (Duration: 0.5ms | Allocations: 192)
+  Rendered shared/_footer.html.erb (Duration: 0.3ms | Allocations: 115)
+  Rendered layout layouts/application.html.erb (Duration: 38.7ms | Allocations: 34660)
+Completed 200 OK in 82ms (Views: 40.4ms | ActiveRecord: 6.8ms | Allocations: 51720)
+
+
+Started GET "/tasks/new" for ::1 at 2024-10-15 21:02:22 +0100
+Processing by TasksController#new as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering tasks/new.html.erb within layouts/application
+  Rendered tasks/new.html.erb within layouts/application (Duration: 7.1ms | Allocations: 6547)
+  Rendered shared/_navbar.html.erb (Duration: 1.1ms | Allocations: 568)
+  Rendered shared/_flashes.html.erb (Duration: 0.5ms | Allocations: 192)
+  Rendered shared/_footer.html.erb (Duration: 0.4ms | Allocations: 115)
+  Rendered layout layouts/application.html.erb (Duration: 37.5ms | Allocations: 34634)
+Completed 200 OK in 88ms (Views: 39.2ms | ActiveRecord: 8.0ms | Allocations: 51697)
+
+
+Started GET "/tasks/new" for ::1 at 2024-10-15 21:02:29 +0100
+Processing by TasksController#new as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering tasks/new.html.erb within layouts/application
+  Rendered tasks/new.html.erb within layouts/application (Duration: 10.8ms | Allocations: 5928)
+  Rendered shared/_navbar.html.erb (Duration: 0.3ms | Allocations: 160)
+  Rendered shared/_flashes.html.erb (Duration: 0.1ms | Allocations: 22)
+  Rendered shared/_footer.html.erb (Duration: 0.0ms | Allocations: 8)
+  Rendered layout layouts/application.html.erb (Duration: 22.9ms | Allocations: 13997)
+Completed 200 OK in 28ms (Views: 23.6ms | ActiveRecord: 0.2ms | Allocations: 15711)
+
+
+Started GET "/tasks/new" for ::1 at 2024-10-15 21:02:29 +0100
+Processing by TasksController#new as HTML
+  [1m[36mUser Load (2.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering tasks/new.html.erb within layouts/application
+  Rendered tasks/new.html.erb within layouts/application (Duration: 16.0ms | Allocations: 5920)
+Started GET "/tasks/new" for ::1 at 2024-10-15 21:02:29 +0100
+  Rendered shared/_navbar.html.erb (Duration: 0.3ms | Allocations: 160)
+  Rendered shared/_flashes.html.erb (Duration: 0.1ms | Allocations: 22)
+  Rendered shared/_footer.html.erb (Duration: 0.0ms | Allocations: 8)
+  Rendered layout layouts/application.html.erb (Duration: 64.0ms | Allocations: 16788)
+Completed 200 OK in 78ms (Views: 65.2ms | ActiveRecord: 2.9ms | Allocations: 20541)
+
+
+Processing by TasksController#new as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering tasks/new.html.erb within layouts/application
+  Rendered tasks/new.html.erb within layouts/application (Duration: 6.0ms | Allocations: 5905)
+  Rendered shared/_navbar.html.erb (Duration: 0.3ms | Allocations: 160)
+  Rendered shared/_flashes.html.erb (Duration: 0.1ms | Allocations: 22)
+  Rendered shared/_footer.html.erb (Duration: 0.0ms | Allocations: 8)
+  Rendered layout layouts/application.html.erb (Duration: 29.7ms | Allocations: 15075)
+Completed 200 OK in 35ms (Views: 31.3ms | ActiveRecord: 0.2ms | Allocations: 17112)
+
+
+Started GET "/tasks/new" for ::1 at 2024-10-15 21:02:29 +0100
+Processing by TasksController#new as HTML
+  [1m[36mUser Load (2.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering tasks/new.html.erb within layouts/application
+  Rendered tasks/new.html.erb within layouts/application (Duration: 8.5ms | Allocations: 5928)
+  Rendered shared/_navbar.html.erb (Duration: 0.3ms | Allocations: 160)
+  Rendered shared/_flashes.html.erb (Duration: 0.1ms | Allocations: 22)
+  Rendered shared/_footer.html.erb (Duration: 0.0ms | Allocations: 8)
+  Rendered layout layouts/application.html.erb (Duration: 50.5ms | Allocations: 17692)
+Completed 200 OK in 61ms (Views: 51.4ms | ActiveRecord: 2.2ms | Allocations: 20227)
+
+
+Started GET "/tasks/new" for ::1 at 2024-10-15 21:08:46 +0100
+Processing by TasksController#new as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering tasks/new.html.erb within layouts/application
+  Rendered tasks/new.html.erb within layouts/application (Duration: 7.6ms | Allocations: 6550)
+  Rendered shared/_navbar.html.erb (Duration: 1.1ms | Allocations: 572)
+  Rendered shared/_flashes.html.erb (Duration: 0.5ms | Allocations: 192)
+  Rendered shared/_footer.html.erb (Duration: 0.4ms | Allocations: 115)
+  Rendered layout layouts/application.html.erb (Duration: 8039.5ms | Allocations: 98427)
+Completed 200 OK in 8084ms (Views: 8041.1ms | ActiveRecord: 6.5ms | Allocations: 117514)
+
+
+Started GET "/tasks/new" for ::1 at 2024-10-15 21:09:22 +0100
+Processing by TasksController#new as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering tasks/new.html.erb within layouts/application
+  Rendered tasks/new.html.erb within layouts/application (Duration: 12.2ms | Allocations: 5929)
+  Rendered shared/_navbar.html.erb (Duration: 0.3ms | Allocations: 160)
+  Rendered shared/_flashes.html.erb (Duration: 0.1ms | Allocations: 22)
+  Rendered shared/_footer.html.erb (Duration: 0.0ms | Allocations: 8)
+  Rendered layout layouts/application.html.erb (Duration: 8121.5ms | Allocations: 80488)
+Completed 200 OK in 8130ms (Views: 8122.6ms | ActiveRecord: 0.4ms | Allocations: 82192)
+
+
+Started GET "/tasks/new" for ::1 at 2024-10-15 21:09:47 +0100
+Processing by TasksController#new as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering tasks/new.html.erb within layouts/application
+  Rendered tasks/new.html.erb within layouts/application (Duration: 12.7ms | Allocations: 5929)
+  Rendered shared/_navbar.html.erb (Duration: 0.9ms | Allocations: 160)
+  Rendered shared/_flashes.html.erb (Duration: 0.1ms | Allocations: 22)
+  Rendered shared/_footer.html.erb (Duration: 0.0ms | Allocations: 8)
+  Rendered layout layouts/application.html.erb (Duration: 26.7ms | Allocations: 14047)
+Completed 200 OK in 31ms (Views: 27.2ms | ActiveRecord: 0.3ms | Allocations: 15747)
+
+
+Started GET "/tasks/new" for ::1 at 2024-10-15 21:09:47 +0100
+Processing by TasksController#new as HTML
+  [1m[36mUser Load (2.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering tasks/new.html.erb within layouts/application
+  Rendered tasks/new.html.erb within layouts/application (Duration: 10.2ms | Allocations: 5929)
+  Rendered shared/_navbar.html.erb (Duration: 0.4ms | Allocations: 160)
+  Rendered shared/_flashes.html.erb (Duration: 0.4ms | Allocations: 22)
+  Rendered shared/_footer.html.erb (Duration: 0.0ms | Allocations: 8)
+  Rendered layout layouts/application.html.erb (Duration: 50.1ms | Allocations: 17125)
+Completed 200 OK in 63ms (Views: 51.2ms | ActiveRecord: 2.4ms | Allocations: 20013)
+
+
+Started GET "/tasks/new" for ::1 at 2024-10-15 21:09:47 +0100
+Processing by TasksController#new as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering tasks/new.html.erb within layouts/application
+  Rendered tasks/new.html.erb within layouts/application (Duration: 6.5ms | Allocations: 5906)
+  Rendered shared/_navbar.html.erb (Duration: 0.3ms | Allocations: 160)
+  Rendered shared/_flashes.html.erb (Duration: 0.1ms | Allocations: 22)
+  Rendered shared/_footer.html.erb (Duration: 0.0ms | Allocations: 8)
+  Rendered layout layouts/application.html.erb (Duration: 18.0ms | Allocations: 13850)
+Completed 200 OK in 22ms (Views: 18.4ms | ActiveRecord: 0.2ms | Allocations: 15555)
+
+
+Started GET "/tasks/new" for ::1 at 2024-10-15 21:11:36 +0100
+Processing by TasksController#new as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering tasks/new.html.erb within layouts/application
+  Rendered tasks/new.html.erb within layouts/application (Duration: 8.1ms | Allocations: 6476)
+  Rendered shared/_navbar.html.erb (Duration: 1.5ms | Allocations: 568)
+  Rendered shared/_flashes.html.erb (Duration: 0.5ms | Allocations: 192)
+  Rendered shared/_footer.html.erb (Duration: 0.3ms | Allocations: 115)
+  Rendered layout layouts/application.html.erb (Duration: 40.2ms | Allocations: 34576)
+Completed 200 OK in 86ms (Views: 41.8ms | ActiveRecord: 10.3ms | Allocations: 51680)
+
+
+Started GET "/tasks/new" for ::1 at 2024-10-15 21:11:57 +0100
+Processing by TasksController#new as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering tasks/new.html.erb within layouts/application
+  Rendered tasks/new.html.erb within layouts/application (Duration: 1.7ms | Allocations: 1395)
+  Rendered layout layouts/application.html.erb (Duration: 1.9ms | Allocations: 1488)
+Completed 500 Internal Server Error in 48ms (ActiveRecord: 7.6ms | Allocations: 18569)
+
+
+  
+ActionView::SyntaxErrorInTemplate (Encountered a syntax error while rendering template: check <div class="d-flex justify-content-center align-items-start min-vh-100">
+
+  <div class="col-md-10">
+
+    <h1 class="my-5 mb-3 fst-bold">Tasks#new</h1>
+
+    <%= simple_form_for(@task, html: { class: "animate-shadow bg-body rounded-3 m-5 p-5 w-50 mx-auto" }) do |f| %>
+
+      <%= f.error_notification %>
+      <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+
+       <%# :title, :description, :task_type, :routine, :order, :comment, :start_date, :due_date, :completed, :active %>
+
+      <div class="form-inputs">
+
+        <%= f.input :order, input_html: { class: "form-control mb-3" } %>
+
+        <%= f.input :routine, collection: Task.routines, input_html: { class: "form-control mb-3" } %>
+
+        <%= f.input :task_type, collection: Task.task_types, input_html: { class: "form-control mb-3" } %>
+
+        <%= f.input :title, input_html: { class: "form-control mb-3" } %>
+
+        <%= f.input :description, as: :text, input_html: { class: "form-control mb-3", 'rows' => 5, 'cols' => 10 } %>
+
+        <%# <%= f.input :comment, as: :text, input_html: { class: "form-control mb-3", 'rows' => 5, 'cols' => 10 } %>
+
+        <%= f.input :start_date, html5: true, input_html: { class: "form-control mb-3" } %>
+
+        <%= f.input :due_date, html5: true, input_html: { class: "form-control mb-3" } %>
+
+        <%# <%= f.input :completed, as: :boolean, input_html: { class: "form-control mb-3" } %>
+
+        <%# <%= f.input :active, as: :boolean, input_html: { class: "form-control mb-3" } %>
+
+      </div>
+
+      <div class="form-actions d-flex justify-content-end ">
+        <%= f.submit, "Add?", input_html: { class: "btn btn-primary" } %>
+      </div>
+
+    <% end %>
+
+    <div>
+      <%= link_to "Back to tasks", tasks_path %>
+    </div>
+
+  </div>
+</div>
+
+):
+1:    <div class="d-flex justify-content-center align-items-start min-vh-100">
+2:    
+3:      <div class="col-md-10">
+4:    
+5:        <h1 class="my-5 mb-3 fst-bold">Tasks#new</h1>
+6:    
+7:        <%= simple_form_for(@task, html: { class: "animate-shadow bg-body rounded-3 m-5 p-5 w-50 mx-auto" }) do |f| %>
+8:    
+9:          <%= f.error_notification %>
+10:          <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+11:    
+12:           <%# :title, :description, :task_type, :routine, :order, :comment, :start_date, :due_date, :completed, :active %>
+13:    
+14:          <div class="form-inputs">
+15:    
+16:            <%= f.input :order, input_html: { class: "form-control mb-3" } %>
+17:    
+18:            <%= f.input :routine, collection: Task.routines, input_html: { class: "form-control mb-3" } %>
+19:    
+20:            <%= f.input :task_type, collection: Task.task_types, input_html: { class: "form-control mb-3" } %>
+21:    
+22:            <%= f.input :title, input_html: { class: "form-control mb-3" } %>
+23:    
+24:            <%= f.input :description, as: :text, input_html: { class: "form-control mb-3", 'rows' => 5, 'cols' => 10 } %>
+25:    
+26:            <%# <%= f.input :comment, as: :text, input_html: { class: "form-control mb-3", 'rows' => 5, 'cols' => 10 } %>
+27:    
+28:            <%= f.input :start_date, html5: true, input_html: { class: "form-control mb-3" } %>
+29:    
+30:            <%= f.input :due_date, html5: true, input_html: { class: "form-control mb-3" } %>
+31:    
+32:            <%# <%= f.input :completed, as: :boolean, input_html: { class: "form-control mb-3" } %>
+33:    
+34:            <%# <%= f.input :active, as: :boolean, input_html: { class: "form-control mb-3" } %>
+35:    
+36:          </div>
+37:    
+38:          <div class="form-actions d-flex justify-content-end ">
+39:            <%= f.submit, "Add?", input_html: { class: "btn btn-primary" } %>
+40:          </div>
+41:    
+42:        <% end %>
+43:    
+44:        <div>
+45:          <%= link_to "Back to tasks", tasks_path %>
+46:        </div>
+47:    
+48:      </div>
+49:    </div>
+  
+app/views/tasks/new.html.erb:39: syntax error, unexpected ',', expecting '.' or &. or :: or '['
+Started GET "/tasks/new" for ::1 at 2024-10-15 21:12:14 +0100
+Processing by TasksController#new as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering tasks/new.html.erb within layouts/application
+  Rendered tasks/new.html.erb within layouts/application (Duration: 6.7ms | Allocations: 6452)
+  Rendered shared/_navbar.html.erb (Duration: 1.1ms | Allocations: 568)
+  Rendered shared/_flashes.html.erb (Duration: 0.5ms | Allocations: 192)
+  Rendered shared/_footer.html.erb (Duration: 0.3ms | Allocations: 115)
+  Rendered layout layouts/application.html.erb (Duration: 35.1ms | Allocations: 34567)
+Completed 200 OK in 81ms (Views: 36.6ms | ActiveRecord: 8.9ms | Allocations: 51615)
+
+
+Started GET "/tasks/new" for ::1 at 2024-10-15 21:13:41 +0100
+Processing by TasksController#new as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering tasks/new.html.erb within layouts/application
+  Rendered tasks/new.html.erb within layouts/application (Duration: 7.5ms | Allocations: 6446)
+  Rendered shared/_navbar.html.erb (Duration: 1.1ms | Allocations: 568)
+  Rendered shared/_flashes.html.erb (Duration: 0.5ms | Allocations: 192)
+  Rendered shared/_footer.html.erb (Duration: 0.3ms | Allocations: 115)
+  Rendered layout layouts/application.html.erb (Duration: 36.9ms | Allocations: 34560)
+Completed 200 OK in 80ms (Views: 38.6ms | ActiveRecord: 7.3ms | Allocations: 51625)
+
+
+Started GET "/tasks/new" for ::1 at 2024-10-15 21:14:27 +0100
+Processing by TasksController#new as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering tasks/new.html.erb within layouts/application
+  Rendered tasks/new.html.erb within layouts/application (Duration: 10.1ms | Allocations: 5820)
+  Rendered shared/_navbar.html.erb (Duration: 0.3ms | Allocations: 160)
+  Rendered shared/_flashes.html.erb (Duration: 0.1ms | Allocations: 22)
+  Rendered shared/_footer.html.erb (Duration: 0.0ms | Allocations: 8)
+  Rendered layout layouts/application.html.erb (Duration: 24.0ms | Allocations: 14004)
+Completed 200 OK in 30ms (Views: 24.6ms | ActiveRecord: 0.3ms | Allocations: 15715)
+
+
+Started GET "/tasks/new" for ::1 at 2024-10-15 21:15:17 +0100
+Processing by TasksController#new as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering tasks/new.html.erb within layouts/application
+  Rendered tasks/new.html.erb within layouts/application (Duration: 7.8ms | Allocations: 6447)
+  Rendered shared/_navbar.html.erb (Duration: 1.5ms | Allocations: 570)
+  Rendered shared/_flashes.html.erb (Duration: 0.6ms | Allocations: 192)
+  Rendered shared/_footer.html.erb (Duration: 0.3ms | Allocations: 115)
+  Rendered layout layouts/application.html.erb (Duration: 46.0ms | Allocations: 34558)
+Completed 200 OK in 86ms (Views: 47.7ms | ActiveRecord: 7.4ms | Allocations: 51635)
+
+
+Started GET "/tasks/new" for ::1 at 2024-10-15 21:15:52 +0100
+Processing by TasksController#new as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering tasks/new.html.erb within layouts/application
+  Rendered tasks/new.html.erb within layouts/application (Duration: 6.9ms | Allocations: 6447)
+  Rendered shared/_navbar.html.erb (Duration: 1.3ms | Allocations: 568)
+  Rendered shared/_flashes.html.erb (Duration: 0.5ms | Allocations: 192)
+  Rendered shared/_footer.html.erb (Duration: 0.3ms | Allocations: 115)
+  Rendered layout layouts/application.html.erb (Duration: 35.7ms | Allocations: 34559)
+Completed 200 OK in 76ms (Views: 37.6ms | ActiveRecord: 6.9ms | Allocations: 51616)
+
+
+Started GET "/tasks/new" for ::1 at 2024-10-15 21:16:58 +0100
+Processing by TasksController#new as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering tasks/new.html.erb within layouts/application
+  Rendered tasks/new.html.erb within layouts/application (Duration: 10.9ms | Allocations: 5830)
+  Rendered shared/_navbar.html.erb (Duration: 0.3ms | Allocations: 160)
+  Rendered shared/_flashes.html.erb (Duration: 0.1ms | Allocations: 22)
+  Rendered shared/_footer.html.erb (Duration: 0.1ms | Allocations: 8)
+  Rendered layout layouts/application.html.erb (Duration: 8508.5ms | Allocations: 77682)
+Completed 200 OK in 8515ms (Views: 8509.1ms | ActiveRecord: 0.2ms | Allocations: 79404)
+
+
+Started POST "/tasks" for ::1 at 2024-10-15 21:17:54 +0100
+Processing by TasksController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "task"=>{"order"=>"", "routine"=>"1", "task_type"=>"1", "title"=>"", "description"=>"", "start_date"=>"", "due_date"=>""}, "commit"=>"Add?"}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 16ms (ActiveRecord: 0.6ms | Allocations: 2155)
+
+
+  
+ArgumentError ('1' is not a valid task_type):
+  
+app/controllers/tasks_controller.rb:28:in `create'
+Started GET "/tasks/new" for ::1 at 2024-10-15 21:18:18 +0100
+Processing by TasksController#new as HTML
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering tasks/new.html.erb within layouts/application
+  Rendered tasks/new.html.erb within layouts/application (Duration: 11.4ms | Allocations: 5830)
+  Rendered shared/_navbar.html.erb (Duration: 0.4ms | Allocations: 160)
+  Rendered shared/_flashes.html.erb (Duration: 0.1ms | Allocations: 22)
+  Rendered shared/_footer.html.erb (Duration: 0.0ms | Allocations: 8)
+  Rendered layout layouts/application.html.erb (Duration: 24.1ms | Allocations: 13961)
+Completed 200 OK in 31ms (Views: 24.5ms | ActiveRecord: 0.6ms | Allocations: 15668)
+
+
+Started GET "/tasks/new" for ::1 at 2024-10-15 21:20:50 +0100
+Processing by TasksController#new as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering tasks/new.html.erb within layouts/application
+  Rendered tasks/new.html.erb within layouts/application (Duration: 3.1ms | Allocations: 3240)
+  Rendered layout layouts/application.html.erb (Duration: 3.4ms | Allocations: 3326)
+Completed 500 Internal Server Error in 45ms (ActiveRecord: 8.0ms | Allocations: 20345)
+
+
+  
+ActionView::Template::Error (undefined method `to_a' for an instance of Task):
+    15: 
+    16:         <%= f.input :order, input_html: { class: "form-control mb-3" } %>
+    17: 
+    18:         <%= f.input :routine, collection: @task, input_html: { class: "form-control mb-3" } %>
+    19: 
+    20:         <%= f.input :task_type, collection: @task, input_html: { class: "form-control mb-3" } %>
+    21: 
+  
+app/views/tasks/new.html.erb:18
+app/views/tasks/new.html.erb:7
+  [1m[36mTask Load (0.7ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" ORDER BY "tasks"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+Started GET "/tasks/new" for ::1 at 2024-10-15 21:43:53 +0100
+Processing by TasksController#new as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering tasks/new.html.erb within layouts/application
+  Rendered tasks/new.html.erb within layouts/application (Duration: 11.6ms | Allocations: 5919)
+  Rendered shared/_navbar.html.erb (Duration: 1.1ms | Allocations: 568)
+  Rendered shared/_flashes.html.erb (Duration: 0.6ms | Allocations: 192)
+  Rendered shared/_footer.html.erb (Duration: 0.5ms | Allocations: 115)
+  Rendered layout layouts/application.html.erb (Duration: 47.5ms | Allocations: 34035)
+Completed 200 OK in 121ms (Views: 48.9ms | ActiveRecord: 18.2ms | Allocations: 53137)
+
+
+Started GET "/tasks/new" for ::1 at 2024-10-15 21:44:45 +0100
+Processing by TasksController#new as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering tasks/new.html.erb within layouts/application
+  Rendered tasks/new.html.erb within layouts/application (Duration: 7.7ms | Allocations: 6446)
+  Rendered shared/_navbar.html.erb (Duration: 1.6ms | Allocations: 570)
+  Rendered shared/_flashes.html.erb (Duration: 0.5ms | Allocations: 192)
+  Rendered shared/_footer.html.erb (Duration: 0.4ms | Allocations: 115)
+  Rendered layout layouts/application.html.erb (Duration: 50.2ms | Allocations: 34562)
+Completed 200 OK in 97ms (Views: 51.9ms | ActiveRecord: 11.2ms | Allocations: 51653)
+
+
+Started POST "/tasks" for ::1 at 2024-10-15 21:45:27 +0100
+Processing by TasksController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "task"=>{"order"=>"", "routine"=>"0", "task_type"=>"4", "title"=>"", "description"=>"", "start_date"=>"", "due_date"=>""}, "commit"=>"Add?"}
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 22ms (ActiveRecord: 1.0ms | Allocations: 2148)
+
+
+  
+ArgumentError ('4' is not a valid task_type):
+  
+app/controllers/tasks_controller.rb:28:in `create'
+Started GET "/tasks/new" for ::1 at 2024-10-15 21:45:44 +0100
+Processing by TasksController#new as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering tasks/new.html.erb within layouts/application
+  Rendered tasks/new.html.erb within layouts/application (Duration: 15.4ms | Allocations: 5830)
+  Rendered shared/_navbar.html.erb (Duration: 0.3ms | Allocations: 160)
+  Rendered shared/_flashes.html.erb (Duration: 0.1ms | Allocations: 22)
+  Rendered shared/_footer.html.erb (Duration: 0.0ms | Allocations: 8)
+  Rendered layout layouts/application.html.erb (Duration: 29.4ms | Allocations: 13961)
+Completed 200 OK in 41ms (Views: 30.2ms | ActiveRecord: 0.4ms | Allocations: 15667)
+
+
+Started POST "/tasks" for ::1 at 2024-10-15 21:46:02 +0100
+Processing by TasksController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "task"=>{"order"=>"", "routine"=>"0", "task_type"=>"5", "title"=>"", "description"=>"", "start_date"=>"", "due_date"=>""}, "commit"=>"Add?"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 15ms (ActiveRecord: 0.6ms | Allocations: 2113)
+
+
+  
+ArgumentError ('5' is not a valid task_type):
+  
+app/controllers/tasks_controller.rb:28:in `create'
+Started GET "/tasks/new" for ::1 at 2024-10-15 21:48:54 +0100
+Processing by TasksController#new as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering tasks/new.html.erb within layouts/application
+  Rendered tasks/new.html.erb within layouts/application (Duration: 16.8ms | Allocations: 5830)
+  Rendered shared/_navbar.html.erb (Duration: 0.5ms | Allocations: 160)
+  Rendered shared/_flashes.html.erb (Duration: 0.3ms | Allocations: 22)
+  Rendered shared/_footer.html.erb (Duration: 0.1ms | Allocations: 8)
+  Rendered layout layouts/application.html.erb (Duration: 42.7ms | Allocations: 13961)
+Completed 200 OK in 50ms (Views: 43.4ms | ActiveRecord: 0.3ms | Allocations: 15662)
+
+
+Started GET "/tasks/new" for ::1 at 2024-10-15 21:53:17 +0100
+Processing by TasksController#new as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering tasks/new.html.erb within layouts/application
+  Rendered tasks/new.html.erb within layouts/application (Duration: 2.9ms | Allocations: 2487)
+  Rendered layout layouts/application.html.erb (Duration: 3.1ms | Allocations: 2573)
+Completed 500 Internal Server Error in 45ms (ActiveRecord: 7.7ms | Allocations: 19653)
+
+
+  
+ActionView::Template::Error (wrong number of arguments (given 1, expected 0)):
+    15: 
+    16:         <%= f.input :order, input_html: { class: "form-control mb-3" } %>
+    17: 
+    18:         <%= f.input :routine, collection: Task.routines.map { |r| { r => r.split('_').map(:titleize).join(' ') } }, input_html: { class: "form-control mb-3" } %>
+    19: 
+    20:         <%= f.input :task_type, collection: Task.task_types, input_html: { class: "form-control mb-3" } %>
+    21: 
+  
+app/views/tasks/new.html.erb:18:in `map'
+app/views/tasks/new.html.erb:18
+app/views/tasks/new.html.erb:18:in `each'
+app/views/tasks/new.html.erb:18:in `map'
+app/views/tasks/new.html.erb:18
+app/views/tasks/new.html.erb:7
+Started GET "/tasks/new" for ::1 at 2024-10-15 21:54:44 +0100
+Processing by TasksController#new as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering tasks/new.html.erb within layouts/application
+  Rendered tasks/new.html.erb within layouts/application (Duration: 2.5ms | Allocations: 2500)
+  Rendered layout layouts/application.html.erb (Duration: 2.7ms | Allocations: 2586)
+Completed 500 Internal Server Error in 44ms (ActiveRecord: 7.6ms | Allocations: 19625)
+
+
+  
+ActionView::Template::Error (undefined method `titleize' for an instance of Array):
+    15: 
+    16:         <%= f.input :order, input_html: { class: "form-control mb-3" } %>
+    17: 
+    18:         <%= f.input :routine, collection: Task.routines.map { |r| { r => r.split('_').map { |w| w.titleize }.join(' ') } }, input_html: { class: "form-control mb-3" } %>
+    19: 
+    20:         <%= f.input :task_type, collection: Task.task_types, input_html: { class: "form-control mb-3" } %>
+    21: 
+  
+app/views/tasks/new.html.erb:18
+app/views/tasks/new.html.erb:18:in `map'
+app/views/tasks/new.html.erb:18
+app/views/tasks/new.html.erb:18:in `each'
+app/views/tasks/new.html.erb:18:in `map'
+app/views/tasks/new.html.erb:18
+app/views/tasks/new.html.erb:7
+Started GET "/tasks/new" for ::1 at 2024-10-15 22:02:50 +0100
+Processing by TasksController#new as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering tasks/new.html.erb within layouts/application
+  Rendered tasks/new.html.erb within layouts/application (Duration: 3.0ms | Allocations: 2501)
+  Rendered layout layouts/application.html.erb (Duration: 3.2ms | Allocations: 2587)
+Completed 500 Internal Server Error in 47ms (ActiveRecord: 5.6ms | Allocations: 21652)
+
+
+  
+ActionView::Template::Error (undefined method `titleize' for an instance of Array):
+    15: 
+    16:         <%= f.input :order, input_html: { class: "form-control mb-3" } %>
+    17: 
+    18:         <%= f.input :routine, collection: Task.routines.map { |r| { r => r.split('_').map { |w| w.titleize }.join(' ') } }, input_html: { class: "form-control mb-3" } %>
+    19: 
+    20:         <%= f.input :task_type, collection: Task.task_types, input_html: { class: "form-control mb-3" } %>
+    21: 
+  
+app/views/tasks/new.html.erb:18
+app/views/tasks/new.html.erb:18:in `map'
+app/views/tasks/new.html.erb:18
+app/views/tasks/new.html.erb:18:in `each'
+app/views/tasks/new.html.erb:18:in `map'
+app/views/tasks/new.html.erb:18
+app/views/tasks/new.html.erb:7
+Started GET "/tasks/new" for ::1 at 2024-10-15 22:08:27 +0100
+Processing by TasksController#new as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering tasks/new.html.erb within layouts/application
+  Rendered tasks/new.html.erb within layouts/application (Duration: 1.0ms | Allocations: 1376)
+  Rendered layout layouts/application.html.erb (Duration: 1.2ms | Allocations: 1469)
+Completed 500 Internal Server Error in 46ms (ActiveRecord: 6.2ms | Allocations: 20552)
+
+
+  
+ActionView::SyntaxErrorInTemplate (Encountered a syntax error while rendering template: check <%
+routines = {}
+Task.routines.each_with_object(routines) { |r, routines| { routines[r] = r.split('_').map { |w| w.capitalize }.join(' ') } } %>
+<div class="d-flex justify-content-center align-items-start min-vh-100">
+
+  <div class="col-md-10">
+
+    <h1 class="my-5 mb-3 fst-bold">Tasks#new</h1>
+
+    <%= simple_form_for(@task, html: { class: "animate-shadow bg-body rounded-3 m-5 p-5 w-50 mx-auto" }) do |f| %>
+
+      <%= f.error_notification %>
+      <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+
+       <%# :title, :description, :task_type, :routine, :order, :comment, :start_date, :due_date, :completed, :active %>
+
+      <div class="form-inputs">
+
+        <%= f.input :order, input_html: { class: "form-control mb-3" } %>
+
+        <%= f.input :routine, collection: routines, input_html: { class: "form-control mb-3" } %>
+
+        <%= f.input :task_type, collection: Task.task_types, input_html: { class: "form-control mb-3" } %>
+
+        <%= f.input :title, input_html: { class: "form-control mb-3" } %>
+
+        <%= f.input :description, as: :text, input_html: { class: "form-control mb-3", 'rows' => 5, 'cols' => 10 } %>
+
+        <%# <%= f.input :comment, as: :text, input_html: { class: "form-control mb-3", 'rows' => 5, 'cols' => 10 } %>
+
+        <%= f.input :start_date, html5: true, input_html: { class: "form-control mb-3" } %>
+
+        <%= f.input :due_date, html5: true, input_html: { class: "form-control mb-3" } %>
+
+        <%# <%= f.input :completed, as: :boolean, input_html: { class: "form-control mb-3" } %>
+
+        <%# <%= f.input :active, as: :boolean, input_html: { class: "form-control mb-3" } %>
+
+      </div>
+
+      <div class="form-actions d-flex justify-content-end ">
+        <%= f.submit "Add?", class: "btn btn-primary btn-lg" %>
+      </div>
+
+    <% end %>
+
+    <div>
+      <%= link_to "Back to tasks", tasks_path %>
+    </div>
+
+  </div>
+</div>
+
+):
+1:    <%
+2:    routines = {}
+3:    Task.routines.each_with_object(routines) { |r, routines| { routines[r] = r.split('_').map { |w| w.capitalize }.join(' ') } } %>
+4:    <div class="d-flex justify-content-center align-items-start min-vh-100">
+5:    
+6:      <div class="col-md-10">
+7:    
+8:        <h1 class="my-5 mb-3 fst-bold">Tasks#new</h1>
+9:    
+10:        <%= simple_form_for(@task, html: { class: "animate-shadow bg-body rounded-3 m-5 p-5 w-50 mx-auto" }) do |f| %>
+11:    
+12:          <%= f.error_notification %>
+13:          <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+14:    
+15:           <%# :title, :description, :task_type, :routine, :order, :comment, :start_date, :due_date, :completed, :active %>
+16:    
+17:          <div class="form-inputs">
+18:    
+19:            <%= f.input :order, input_html: { class: "form-control mb-3" } %>
+20:    
+21:            <%= f.input :routine, collection: routines, input_html: { class: "form-control mb-3" } %>
+22:    
+23:            <%= f.input :task_type, collection: Task.task_types, input_html: { class: "form-control mb-3" } %>
+24:    
+25:            <%= f.input :title, input_html: { class: "form-control mb-3" } %>
+26:    
+27:            <%= f.input :description, as: :text, input_html: { class: "form-control mb-3", 'rows' => 5, 'cols' => 10 } %>
+28:    
+29:            <%# <%= f.input :comment, as: :text, input_html: { class: "form-control mb-3", 'rows' => 5, 'cols' => 10 } %>
+30:    
+31:            <%= f.input :start_date, html5: true, input_html: { class: "form-control mb-3" } %>
+32:    
+33:            <%= f.input :due_date, html5: true, input_html: { class: "form-control mb-3" } %>
+34:    
+35:            <%# <%= f.input :completed, as: :boolean, input_html: { class: "form-control mb-3" } %>
+36:    
+37:            <%# <%= f.input :active, as: :boolean, input_html: { class: "form-control mb-3" } %>
+38:    
+39:          </div>
+40:    
+41:          <div class="form-actions d-flex justify-content-end ">
+42:            <%= f.submit "Add?", class: "btn btn-primary btn-lg" %>
+43:          </div>
+44:    
+45:        <% end %>
+46:    
+47:        <div>
+48:          <%= link_to "Back to tasks", tasks_path %>
+49:        </div>
+50:    
+51:      </div>
+52:    </div>
+  
+app/views/tasks/new.html.erb:3: syntax error, unexpected '}', expecting =>
+Started GET "/tasks/new" for ::1 at 2024-10-15 22:10:33 +0100
+Processing by TasksController#new as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering tasks/new.html.erb within layouts/application
+  Rendered tasks/new.html.erb within layouts/application (Duration: 1.0ms | Allocations: 1377)
+  Rendered layout layouts/application.html.erb (Duration: 1.3ms | Allocations: 1470)
+Completed 500 Internal Server Error in 44ms (ActiveRecord: 10.4ms | Allocations: 18550)
+
+
+  
+ActionView::SyntaxErrorInTemplate (Encountered a syntax error while rendering template: check <%
+routines = {}
+Task.routines.each_with_object(routines) { |r, rtns| { rtns[r] = r.gsub('_', ' ').titleize } } %>
+<div class="d-flex justify-content-center align-items-start min-vh-100">
+
+  <div class="col-md-10">
+
+    <h1 class="my-5 mb-3 fst-bold">Tasks#new</h1>
+
+    <%= simple_form_for(@task, html: { class: "animate-shadow bg-body rounded-3 m-5 p-5 w-50 mx-auto" }) do |f| %>
+
+      <%= f.error_notification %>
+      <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+
+       <%# :title, :description, :task_type, :routine, :order, :comment, :start_date, :due_date, :completed, :active %>
+
+      <div class="form-inputs">
+
+        <%= f.input :order, input_html: { class: "form-control mb-3" } %>
+
+        <%= f.input :routine, collection: routines, input_html: { class: "form-control mb-3" } %>
+
+        <%= f.input :task_type, collection: Task.task_types, input_html: { class: "form-control mb-3" } %>
+
+        <%= f.input :title, input_html: { class: "form-control mb-3" } %>
+
+        <%= f.input :description, as: :text, input_html: { class: "form-control mb-3", 'rows' => 5, 'cols' => 10 } %>
+
+        <%# <%= f.input :comment, as: :text, input_html: { class: "form-control mb-3", 'rows' => 5, 'cols' => 10 } %>
+
+        <%= f.input :start_date, html5: true, input_html: { class: "form-control mb-3" } %>
+
+        <%= f.input :due_date, html5: true, input_html: { class: "form-control mb-3" } %>
+
+        <%# <%= f.input :completed, as: :boolean, input_html: { class: "form-control mb-3" } %>
+
+        <%# <%= f.input :active, as: :boolean, input_html: { class: "form-control mb-3" } %>
+
+      </div>
+
+      <div class="form-actions d-flex justify-content-end ">
+        <%= f.submit "Add?", class: "btn btn-primary btn-lg" %>
+      </div>
+
+    <% end %>
+
+    <div>
+      <%= link_to "Back to tasks", tasks_path %>
+    </div>
+
+  </div>
+</div>
+
+):
+1:    <%
+2:    routines = {}
+3:    Task.routines.each_with_object(routines) { |r, rtns| { rtns[r] = r.gsub('_', ' ').titleize } } %>
+4:    <div class="d-flex justify-content-center align-items-start min-vh-100">
+5:    
+6:      <div class="col-md-10">
+7:    
+8:        <h1 class="my-5 mb-3 fst-bold">Tasks#new</h1>
+9:    
+10:        <%= simple_form_for(@task, html: { class: "animate-shadow bg-body rounded-3 m-5 p-5 w-50 mx-auto" }) do |f| %>
+11:    
+12:          <%= f.error_notification %>
+13:          <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+14:    
+15:           <%# :title, :description, :task_type, :routine, :order, :comment, :start_date, :due_date, :completed, :active %>
+16:    
+17:          <div class="form-inputs">
+18:    
+19:            <%= f.input :order, input_html: { class: "form-control mb-3" } %>
+20:    
+21:            <%= f.input :routine, collection: routines, input_html: { class: "form-control mb-3" } %>
+22:    
+23:            <%= f.input :task_type, collection: Task.task_types, input_html: { class: "form-control mb-3" } %>
+24:    
+25:            <%= f.input :title, input_html: { class: "form-control mb-3" } %>
+26:    
+27:            <%= f.input :description, as: :text, input_html: { class: "form-control mb-3", 'rows' => 5, 'cols' => 10 } %>
+28:    
+29:            <%# <%= f.input :comment, as: :text, input_html: { class: "form-control mb-3", 'rows' => 5, 'cols' => 10 } %>
+30:    
+31:            <%= f.input :start_date, html5: true, input_html: { class: "form-control mb-3" } %>
+32:    
+33:            <%= f.input :due_date, html5: true, input_html: { class: "form-control mb-3" } %>
+34:    
+35:            <%# <%= f.input :completed, as: :boolean, input_html: { class: "form-control mb-3" } %>
+36:    
+37:            <%# <%= f.input :active, as: :boolean, input_html: { class: "form-control mb-3" } %>
+38:    
+39:          </div>
+40:    
+41:          <div class="form-actions d-flex justify-content-end ">
+42:            <%= f.submit "Add?", class: "btn btn-primary btn-lg" %>
+43:          </div>
+44:    
+45:        <% end %>
+46:    
+47:        <div>
+48:          <%= link_to "Back to tasks", tasks_path %>
+49:        </div>
+50:    
+51:      </div>
+52:    </div>
+  
+app/views/tasks/new.html.erb:3: syntax error, unexpected '}', expecting =>
+Started GET "/tasks/new" for ::1 at 2024-10-15 22:11:14 +0100
+Processing by TasksController#new as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering tasks/new.html.erb within layouts/application
+  Rendered tasks/new.html.erb within layouts/application (Duration: 6.7ms | Allocations: 6399)
+  Rendered shared/_navbar.html.erb (Duration: 1.1ms | Allocations: 568)
+  Rendered shared/_flashes.html.erb (Duration: 0.5ms | Allocations: 192)
+  Rendered shared/_footer.html.erb (Duration: 0.3ms | Allocations: 115)
+  Rendered layout layouts/application.html.erb (Duration: 35.8ms | Allocations: 34512)
+Completed 200 OK in 76ms (Views: 37.4ms | ActiveRecord: 7.2ms | Allocations: 51563)
+
+
+Started GET "/tasks/new" for ::1 at 2024-10-15 22:11:53 +0100
+Processing by TasksController#new as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering tasks/new.html.erb within layouts/application
+  Rendered tasks/new.html.erb within layouts/application (Duration: 1.1ms | Allocations: 1386)
+  Rendered layout layouts/application.html.erb (Duration: 1.3ms | Allocations: 1479)
+Completed 500 Internal Server Error in 44ms (ActiveRecord: 9.0ms | Allocations: 18562)
+
+
+  
+ActionView::SyntaxErrorInTemplate (Encountered a syntax error while rendering template: check <% routines = {} %>
+<% Task.routines.each_with_object(routines) { |r, rtns| { rtns[r] = r.gsub('_', ' ').titleize } }  %>
+<div class="d-flex justify-content-center align-items-start min-vh-100">
+
+  <div class="col-md-10">
+
+    <h1 class="my-5 mb-3 fst-bold">Tasks#new</h1>
+
+    <%= simple_form_for(@task, html: { class: "animate-shadow bg-body rounded-3 m-5 p-5 w-50 mx-auto" }) do |f| %>
+
+      <%= f.error_notification %>
+      <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+
+       <%# :title, :description, :task_type, :routine, :order, :comment, :start_date, :due_date, :completed, :active %>
+
+      <div class="form-inputs">
+
+        <%= f.input :order, input_html: { class: "form-control mb-3" } %>
+
+        <%= f.input :routine, collection: routines, input_html: { class: "form-control mb-3" } %>
+
+        <%= f.input :task_type, collection: Task.task_types, input_html: { class: "form-control mb-3" } %>
+
+        <%= f.input :title, input_html: { class: "form-control mb-3" } %>
+
+        <%= f.input :description, as: :text, input_html: { class: "form-control mb-3", 'rows' => 5, 'cols' => 10 } %>
+
+        <%# <%= f.input :comment, as: :text, input_html: { class: "form-control mb-3", 'rows' => 5, 'cols' => 10 } %>
+
+        <%= f.input :start_date, html5: true, input_html: { class: "form-control mb-3" } %>
+
+        <%= f.input :due_date, html5: true, input_html: { class: "form-control mb-3" } %>
+
+        <%# <%= f.input :completed, as: :boolean, input_html: { class: "form-control mb-3" } %>
+
+        <%# <%= f.input :active, as: :boolean, input_html: { class: "form-control mb-3" } %>
+
+      </div>
+
+      <div class="form-actions d-flex justify-content-end ">
+        <%= f.submit "Add?", class: "btn btn-primary btn-lg" %>
+      </div>
+
+    <% end %>
+
+    <div>
+      <%= link_to "Back to tasks", tasks_path %>
+    </div>
+
+  </div>
+</div>
+
+):
+1:    <% routines = {} %>
+2:    <% Task.routines.each_with_object(routines) { |r, rtns| { rtns[r] = r.gsub('_', ' ').titleize } }  %>
+3:    <div class="d-flex justify-content-center align-items-start min-vh-100">
+4:    
+5:      <div class="col-md-10">
+6:    
+7:        <h1 class="my-5 mb-3 fst-bold">Tasks#new</h1>
+8:    
+9:        <%= simple_form_for(@task, html: { class: "animate-shadow bg-body rounded-3 m-5 p-5 w-50 mx-auto" }) do |f| %>
+10:    
+11:          <%= f.error_notification %>
+12:          <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+13:    
+14:           <%# :title, :description, :task_type, :routine, :order, :comment, :start_date, :due_date, :completed, :active %>
+15:    
+16:          <div class="form-inputs">
+17:    
+18:            <%= f.input :order, input_html: { class: "form-control mb-3" } %>
+19:    
+20:            <%= f.input :routine, collection: routines, input_html: { class: "form-control mb-3" } %>
+21:    
+22:            <%= f.input :task_type, collection: Task.task_types, input_html: { class: "form-control mb-3" } %>
+23:    
+24:            <%= f.input :title, input_html: { class: "form-control mb-3" } %>
+25:    
+26:            <%= f.input :description, as: :text, input_html: { class: "form-control mb-3", 'rows' => 5, 'cols' => 10 } %>
+27:    
+28:            <%# <%= f.input :comment, as: :text, input_html: { class: "form-control mb-3", 'rows' => 5, 'cols' => 10 } %>
+29:    
+30:            <%= f.input :start_date, html5: true, input_html: { class: "form-control mb-3" } %>
+31:    
+32:            <%= f.input :due_date, html5: true, input_html: { class: "form-control mb-3" } %>
+33:    
+34:            <%# <%= f.input :completed, as: :boolean, input_html: { class: "form-control mb-3" } %>
+35:    
+36:            <%# <%= f.input :active, as: :boolean, input_html: { class: "form-control mb-3" } %>
+37:    
+38:          </div>
+39:    
+40:          <div class="form-actions d-flex justify-content-end ">
+41:            <%= f.submit "Add?", class: "btn btn-primary btn-lg" %>
+42:          </div>
+43:    
+44:        <% end %>
+45:    
+46:        <div>
+47:          <%= link_to "Back to tasks", tasks_path %>
+48:        </div>
+49:    
+50:      </div>
+51:    </div>
+  
+app/views/tasks/new.html.erb:2: syntax error, unexpected '}', expecting =>
+Started GET "/tasks/new" for ::1 at 2024-10-15 22:13:02 +0100
+Processing by TasksController#new as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering tasks/new.html.erb within layouts/application
+  Rendered tasks/new.html.erb within layouts/application (Duration: 1.2ms | Allocations: 1392)
+  Rendered layout layouts/application.html.erb (Duration: 1.5ms | Allocations: 1478)
+Completed 500 Internal Server Error in 41ms (ActiveRecord: 7.8ms | Allocations: 18540)
+
+
+  
+ActionView::Template::Error (undefined method `gsub' for an instance of Array):
+    1: <% routines = {} %>
+    2: <% Task.routines.each_with_object(routines) { |r, rtns| rtns[r] = r.gsub('_', ' ').titleize }  %>
+    3: <div class="d-flex justify-content-center align-items-start min-vh-100">
+    4: 
+    5:   <div class="col-md-10">
+  
+app/views/tasks/new.html.erb:2
+app/views/tasks/new.html.erb:2:in `each'
+app/views/tasks/new.html.erb:2:in `each_with_object'
+app/views/tasks/new.html.erb:2
+Started GET "/tasks/new" for ::1 at 2024-10-15 22:21:27 +0100
+Processing by TasksController#new as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering tasks/new.html.erb within layouts/application
+  Rendered tasks/new.html.erb within layouts/application (Duration: 7.2ms | Allocations: 6681)
+  Rendered shared/_navbar.html.erb (Duration: 1.3ms | Allocations: 570)
+  Rendered shared/_flashes.html.erb (Duration: 0.5ms | Allocations: 192)
+  Rendered shared/_footer.html.erb (Duration: 0.4ms | Allocations: 115)
+  Rendered layout layouts/application.html.erb (Duration: 44.0ms | Allocations: 34850)
+Completed 200 OK in 89ms (Views: 45.6ms | ActiveRecord: 5.5ms | Allocations: 53953)
+
+
+Started GET "/tasks/new" for ::1 at 2024-10-15 22:22:50 +0100
+Processing by TasksController#new as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering tasks/new.html.erb within layouts/application
+  Rendered tasks/new.html.erb within layouts/application (Duration: 8.0ms | Allocations: 6694)
+  Rendered shared/_navbar.html.erb (Duration: 1.2ms | Allocations: 568)
+  Rendered shared/_flashes.html.erb (Duration: 0.5ms | Allocations: 192)
+  Rendered shared/_footer.html.erb (Duration: 0.4ms | Allocations: 115)
+  Rendered layout layouts/application.html.erb (Duration: 37.5ms | Allocations: 34808)
+Completed 200 OK in 83ms (Views: 39.1ms | ActiveRecord: 11.4ms | Allocations: 51891)
+
+
+Started POST "/tasks" for ::1 at 2024-10-15 22:23:17 +0100
+Processing by TasksController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "task"=>{"order"=>"", "routine"=>"morning", "task_type"=>"admin", "title"=>"", "description"=>"", "start_date"=>"", "due_date"=>""}, "commit"=>"Add?"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (1.0ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/tasks_controller.rb:32:in `create'
+  [1m[36mTask Create (4.6ms)[0m  [1m[32mINSERT INTO "tasks" ("user_id", "task_type", "routine", "order", "title", "description", "comment", "start_date", "due_date", "completed", "active", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13) RETURNING "id"[0m  [["user_id", 1], ["task_type", 3], ["routine", 1], ["order", nil], ["title", ""], ["description", ""], ["comment", nil], ["start_date", nil], ["due_date", nil], ["completed", nil], ["active", nil], ["created_at", "2024-10-15 21:23:17.803469"], ["updated_at", "2024-10-15 21:23:17.803469"]]
+  ↳ app/controllers/tasks_controller.rb:32:in `create'
+  [1m[36mTRANSACTION (15.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/tasks_controller.rb:32:in `create'
+Redirected to http://localhost:3000/tasks/3
+Completed 302 Found in 33ms (ActiveRecord: 21.3ms | Allocations: 3695)
+
+
+Started GET "/tasks/3" for ::1 at 2024-10-15 22:23:17 +0100
+Processing by TasksController#show as TURBO_STREAM
+  Parameters: {"id"=>"3"}
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mTask Load (0.5ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/tasks_controller.rb:59:in `set_task'
+  Rendering layout layouts/application.html.erb
+  Rendering tasks/show.html.erb within layouts/application
+  Rendered tasks/show.html.erb within layouts/application (Duration: 1.0ms | Allocations: 133)
+  Rendered shared/_navbar.html.erb (Duration: 0.9ms | Allocations: 173)
+  Rendered shared/_flashes.html.erb (Duration: 0.1ms | Allocations: 27)
+  Rendered shared/_footer.html.erb (Duration: 0.0ms | Allocations: 8)
+  Rendered layout layouts/application.html.erb (Duration: 26.7ms | Allocations: 8322)
+Completed 200 OK in 44ms (Views: 27.8ms | ActiveRecord: 1.3ms | Allocations: 11229)
+
+
+Started GET "/tasks/new" for ::1 at 2024-10-15 22:23:35 +0100
+Processing by TasksController#new as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering tasks/new.html.erb within layouts/application
+  Rendered tasks/new.html.erb within layouts/application (Duration: 17.5ms | Allocations: 6049)
+  Rendered shared/_navbar.html.erb (Duration: 0.6ms | Allocations: 160)
+  Rendered shared/_flashes.html.erb (Duration: 0.1ms | Allocations: 22)
+  Rendered shared/_footer.html.erb (Duration: 0.1ms | Allocations: 8)
+  Rendered layout layouts/application.html.erb (Duration: 46.5ms | Allocations: 13977)
+Completed 200 OK in 55ms (Views: 47.7ms | ActiveRecord: 0.4ms | Allocations: 15670)
+
+
+  [1m[36mTask Load (0.5ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" /* loading for pp */ LIMIT $1[0m  [["LIMIT", 11]]
+Started GET "/tasks/new" for ::1 at 2024-10-15 22:24:46 +0100
+Processing by TasksController#new as HTML
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering tasks/new.html.erb within layouts/application
+  Rendered tasks/new.html.erb within layouts/application (Duration: 15.4ms | Allocations: 6038)
+  Rendered shared/_navbar.html.erb (Duration: 0.3ms | Allocations: 160)
+  Rendered shared/_flashes.html.erb (Duration: 0.1ms | Allocations: 22)
+  Rendered shared/_footer.html.erb (Duration: 0.0ms | Allocations: 8)
+  Rendered layout layouts/application.html.erb (Duration: 32.0ms | Allocations: 13966)
+Completed 200 OK in 42ms (Views: 33.0ms | ActiveRecord: 0.6ms | Allocations: 15681)
+
+
+Started POST "/tasks" for ::1 at 2024-10-15 22:28:14 +0100
+Processing by TasksController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "task"=>{"order"=>"1", "routine"=>"morning", "task_type"=>"self_development", "title"=>"Meditate", "description"=>"Meditate for 25-30 minutes! \nCount the breath from one to ten. \nBreath in and count \"One\"\nBreath out and count \"Two\" \nand so on and so forth!", "start_date"=>"2024-10-16T06:15", "due_date"=>""}, "commit"=>"Add?"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/tasks_controller.rb:32:in `create'
+  [1m[36mTask Create (4.0ms)[0m  [1m[32mINSERT INTO "tasks" ("user_id", "task_type", "routine", "order", "title", "description", "comment", "start_date", "due_date", "completed", "active", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13) RETURNING "id"[0m  [["user_id", 1], ["task_type", 5], ["routine", 1], ["order", 1], ["title", "Meditate"], ["description", "Meditate for 25-30 minutes! \nCount the breath from one to ten. \nBreath in and count \"One\"\nBreath out and count \"Two\" \nand so on and so forth!"], ["comment", nil], ["start_date", "2024-10-16 06:15:00"], ["due_date", nil], ["completed", nil], ["active", nil], ["created_at", "2024-10-15 21:28:14.394918"], ["updated_at", "2024-10-15 21:28:14.394918"]]
+  ↳ app/controllers/tasks_controller.rb:32:in `create'
+  [1m[36mTRANSACTION (49.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/tasks_controller.rb:32:in `create'
+Redirected to http://localhost:3000/tasks/4
+Completed 302 Found in 77ms (ActiveRecord: 54.3ms | Allocations: 3486)
+
+
+Started GET "/tasks/4" for ::1 at 2024-10-15 22:28:14 +0100
+Processing by TasksController#show as TURBO_STREAM
+  Parameters: {"id"=>"4"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mTask Load (0.6ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/tasks_controller.rb:59:in `set_task'
+  Rendering layout layouts/application.html.erb
+  Rendering tasks/show.html.erb within layouts/application
+  Rendered tasks/show.html.erb within layouts/application (Duration: 0.2ms | Allocations: 12)
+  Rendered shared/_navbar.html.erb (Duration: 0.5ms | Allocations: 173)
+  Rendered shared/_flashes.html.erb (Duration: 0.1ms | Allocations: 27)
+  Rendered shared/_footer.html.erb (Duration: 0.0ms | Allocations: 8)
+  Rendered layout layouts/application.html.erb (Duration: 36.7ms | Allocations: 8158)
+Completed 200 OK in 51ms (Views: 38.1ms | ActiveRecord: 1.0ms | Allocations: 10304)
+
+
+Started GET "/tasks/4" for ::1 at 2024-10-15 22:31:33 +0100
+Processing by TasksController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mTask Load (0.3ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/tasks_controller.rb:59:in `set_task'
+  Rendering layout layouts/application.html.erb
+  Rendering tasks/show.html.erb within layouts/application
+  Rendered tasks/show.html.erb within layouts/application (Duration: 0.7ms | Allocations: 143)
+  Rendered shared/_navbar.html.erb (Duration: 1.1ms | Allocations: 601)
+  Rendered shared/_flashes.html.erb (Duration: 0.5ms | Allocations: 194)
+  Rendered shared/_footer.html.erb (Duration: 0.3ms | Allocations: 115)
+  Rendered layout layouts/application.html.erb (Duration: 31.4ms | Allocations: 28308)
+Completed 200 OK in 75ms (Views: 32.9ms | ActiveRecord: 10.7ms | Allocations: 45976)
+
+
+  [1m[36mTask Load (1.3ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" ORDER BY "tasks"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+Started GET "/tasks/4" for ::1 at 2024-10-15 22:41:53 +0100
+Processing by TasksController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mTask Load (0.4ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/tasks_controller.rb:59:in `set_task'
+  Rendering layout layouts/application.html.erb
+  Rendering tasks/show.html.erb within layouts/application
+  Rendered tasks/show.html.erb within layouts/application (Duration: 0.5ms | Allocations: 143)
+Started GET "/tasks/new" for ::1 at 2024-10-15 22:42:01 +0100
+  Rendered shared/_navbar.html.erb (Duration: 1.3ms | Allocations: 605)
+  Rendered shared/_flashes.html.erb (Duration: 0.6ms | Allocations: 192)
+  Rendered shared/_footer.html.erb (Duration: 0.4ms | Allocations: 115)
+  Rendered layout layouts/application.html.erb (Duration: 9703.1ms | Allocations: 92463)
+Completed 200 OK in 9805ms (Views: 9706.6ms | ActiveRecord: 6.7ms | Allocations: 112252)
+
+
+Processing by TasksController#new as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering tasks/new.html.erb within layouts/application
+  Rendered tasks/new.html.erb within layouts/application (Duration: 13.3ms | Allocations: 6674)
+  Rendered shared/_navbar.html.erb (Duration: 1.4ms | Allocations: 568)
+  Rendered shared/_flashes.html.erb (Duration: 0.9ms | Allocations: 192)
+  Rendered shared/_footer.html.erb (Duration: 1.2ms | Allocations: 115)
+  Rendered layout layouts/application.html.erb (Duration: 81.0ms | Allocations: 34545)
+Completed 200 OK in 172ms (Views: 85.3ms | ActiveRecord: 17.9ms | Allocations: 51635)
+
+
+Started GET "/tasks/new" for ::1 at 2024-10-15 22:42:04 +0100
+Processing by TasksController#new as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering tasks/new.html.erb within layouts/application
+  Rendered tasks/new.html.erb within layouts/application (Duration: 13.9ms | Allocations: 6030)
+  Rendered shared/_navbar.html.erb (Duration: 0.5ms | Allocations: 160)
+  Rendered shared/_flashes.html.erb (Duration: 0.1ms | Allocations: 22)
+  Rendered shared/_footer.html.erb (Duration: 0.0ms | Allocations: 8)
+  Rendered layout layouts/application.html.erb (Duration: 38.9ms | Allocations: 13957)
+Completed 200 OK in 47ms (Views: 40.0ms | ActiveRecord: 0.2ms | Allocations: 15649)
+
+
+Started GET "/tasks/new" for ::1 at 2024-10-15 22:42:05 +0100
+Processing by TasksController#new as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering tasks/new.html.erb within layouts/application
+  Rendered tasks/new.html.erb within layouts/application (Duration: 9.4ms | Allocations: 6030)
+  Rendered shared/_navbar.html.erb (Duration: 0.3ms | Allocations: 160)
+  Rendered shared/_flashes.html.erb (Duration: 0.1ms | Allocations: 22)
+  Rendered shared/_footer.html.erb (Duration: 0.0ms | Allocations: 8)
+  Rendered layout layouts/application.html.erb (Duration: 22.0ms | Allocations: 13957)
+Completed 200 OK in 26ms (Views: 22.4ms | ActiveRecord: 0.3ms | Allocations: 15656)
+
+
+Started GET "/tasks/new" for ::1 at 2024-10-15 22:42:08 +0100
+Processing by TasksController#new as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering tasks/new.html.erb within layouts/application
+  Rendered tasks/new.html.erb within layouts/application (Duration: 10.5ms | Allocations: 6050)
+  Rendered shared/_navbar.html.erb (Duration: 0.3ms | Allocations: 160)
+  Rendered shared/_flashes.html.erb (Duration: 0.1ms | Allocations: 22)
+  Rendered shared/_footer.html.erb (Duration: 0.0ms | Allocations: 8)
+  Rendered layout layouts/application.html.erb (Duration: 25.5ms | Allocations: 14181)
+Completed 200 OK in 31ms (Views: 26.0ms | ActiveRecord: 0.4ms | Allocations: 15875)
+
+
+Started GET "/tasks/new" for ::1 at 2024-10-15 22:42:08 +0100
+Started GET "/tasks/new" for ::1 at 2024-10-15 22:42:08 +0100
+Processing by TasksController#new as HTML
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering tasks/new.html.erb within layouts/application
+  Rendered tasks/new.html.erb within layouts/application (Duration: 9.4ms | Allocations: 6031)
+  Rendered shared/_navbar.html.erb (Duration: 0.5ms | Allocations: 160)
+  Rendered shared/_flashes.html.erb (Duration: 0.1ms | Allocations: 22)
+  Rendered shared/_footer.html.erb (Duration: 0.0ms | Allocations: 8)
+  Rendered layout layouts/application.html.erb (Duration: 64.8ms | Allocations: 17955)
+Completed 200 OK in 74ms (Views: 65.7ms | ActiveRecord: 0.7ms | Allocations: 19820)
+
+
+Started GET "/tasks/new" for ::1 at 2024-10-15 22:42:08 +0100
+Processing by TasksController#new as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering tasks/new.html.erb within layouts/application
+  Rendered tasks/new.html.erb within layouts/application (Duration: 5.7ms | Allocations: 6039)
+  Rendered shared/_navbar.html.erb (Duration: 0.3ms | Allocations: 160)
+  Rendered shared/_flashes.html.erb (Duration: 0.1ms | Allocations: 22)
+  Rendered shared/_footer.html.erb (Duration: 0.0ms | Allocations: 8)
+  Rendered layout layouts/application.html.erb (Duration: 41.6ms | Allocations: 15324)
+Completed 200 OK in 48ms (Views: 42.4ms | ActiveRecord: 0.4ms | Allocations: 17151)
+
+
+Processing by TasksController#new as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering tasks/new.html.erb within layouts/application
+  Rendered tasks/new.html.erb within layouts/application (Duration: 6.0ms | Allocations: 6030)
+  Rendered shared/_navbar.html.erb (Duration: 0.3ms | Allocations: 160)
+  Rendered shared/_flashes.html.erb (Duration: 0.1ms | Allocations: 22)
+  Rendered shared/_footer.html.erb (Duration: 0.0ms | Allocations: 8)
+  Rendered layout layouts/application.html.erb (Duration: 49.3ms | Allocations: 16593)
+Completed 200 OK in 54ms (Views: 50.5ms | ActiveRecord: 0.2ms | Allocations: 18436)
+
+
+Started GET "/tasks/new" for ::1 at 2024-10-15 22:42:30 +0100
+  [1m[36mActiveRecord::SchemaMigration Load (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by TasksController#new as HTML
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering tasks/new.html.erb within layouts/application
+  Rendered tasks/new.html.erb within layouts/application (Duration: 42.7ms | Allocations: 14206)
+  Rendered shared/_navbar.html.erb (Duration: 1.4ms | Allocations: 599)
+  Rendered shared/_flashes.html.erb (Duration: 0.7ms | Allocations: 216)
+  Rendered shared/_footer.html.erb (Duration: 0.5ms | Allocations: 117)
+  Rendered layout layouts/application.html.erb (Duration: 246.0ms | Allocations: 98888)
+Completed 200 OK in 814ms (Views: 264.4ms | ActiveRecord: 15.7ms | Allocations: 430954)
+
+
+Started POST "/tasks" for ::1 at 2024-10-15 22:44:07 +0100
+Processing by TasksController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "task"=>{"order"=>"2", "routine"=>"no_routine", "task_type"=>"general", "title"=>"Walk the Dog", "description"=>"No comment...", "start_date"=>"2024-10-16T09:45", "due_date"=>"2024-10-16T10:30"}, "commit"=>"Add?"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/tasks_controller.rb:32:in `create'
+  [1m[36mTask Create (2.6ms)[0m  [1m[32mINSERT INTO "tasks" ("user_id", "task_type", "routine", "order", "title", "description", "comment", "start_date", "due_date", "completed", "active", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13) RETURNING "id"[0m  [["user_id", 1], ["task_type", 0], ["routine", 0], ["order", 2], ["title", "Walk the Dog"], ["description", "No comment..."], ["comment", nil], ["start_date", "2024-10-16 09:45:00"], ["due_date", "2024-10-16 10:30:00"], ["completed", nil], ["active", nil], ["created_at", "2024-10-15 21:44:07.726127"], ["updated_at", "2024-10-15 21:44:07.726127"]]
+  ↳ app/controllers/tasks_controller.rb:32:in `create'
+  [1m[36mTRANSACTION (43.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/tasks_controller.rb:32:in `create'
+Redirected to http://localhost:3000/tasks/5
+Completed 302 Found in 62ms (ActiveRecord: 46.1ms | Allocations: 5545)
+
+
+Started GET "/tasks/5" for ::1 at 2024-10-15 22:44:07 +0100
+Processing by TasksController#show as TURBO_STREAM
+  Parameters: {"id"=>"5"}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mTask Load (0.7ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/tasks_controller.rb:59:in `set_task'
+  Rendering layout layouts/application.html.erb
+  Rendering tasks/show.html.erb within layouts/application
+  Rendered tasks/show.html.erb within layouts/application (Duration: 1.3ms | Allocations: 140)
+  Rendered shared/_navbar.html.erb (Duration: 0.3ms | Allocations: 173)
+  Rendered shared/_flashes.html.erb (Duration: 0.1ms | Allocations: 29)
+  Rendered shared/_footer.html.erb (Duration: 0.0ms | Allocations: 8)
+  Rendered layout layouts/application.html.erb (Duration: 36.6ms | Allocations: 8335)
+Completed 200 OK in 57ms (Views: 37.3ms | ActiveRecord: 1.4ms | Allocations: 11356)
+
+
+  [1m[36mTask Load (0.5ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" ORDER BY "tasks"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
