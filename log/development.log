@@ -1293,3 +1293,1240 @@ Processing by PagesController#home as HTML
 Completed 200 OK in 1676ms (Views: 1261.8ms | ActiveRecord: 350.1ms | Allocations: 110854)
 
 
+Started GET "/" for 127.0.0.1 at 2024-10-14 16:51:33 +0100
+  [1m[36mActiveRecord::SchemaMigration Load (41.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by PagesController#home as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering pages/home.html.erb within layouts/application
+  Rendered shared/_jumbotron.html.erb (Duration: 1.1ms | Allocations: 150)
+  Rendered pages/home.html.erb within layouts/application (Duration: 24.6ms | Allocations: 561)
+  Rendered shared/_navbar.html.erb (Duration: 3.5ms | Allocations: 775)
+  Rendered shared/_flashes.html.erb (Duration: 0.7ms | Allocations: 216)
+  Rendered shared/_footer.html.erb (Duration: 0.5ms | Allocations: 117)
+  Rendered layout layouts/application.html.erb (Duration: 762.0ms | Allocations: 69710)
+Completed 200 OK in 861ms (Views: 793.7ms | ActiveRecord: 0.0ms | Allocations: 74936)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2024-10-14 16:51:45 +0100
+Processing by Devise::SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (Duration: 1.2ms | Allocations: 541)
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 250.4ms | Allocations: 10737)
+  Rendered shared/_navbar.html.erb (Duration: 0.3ms | Allocations: 116)
+  Rendered shared/_flashes.html.erb (Duration: 0.1ms | Allocations: 27)
+  Rendered shared/_footer.html.erb (Duration: 0.0ms | Allocations: 9)
+  Rendered layout layouts/application.html.erb (Duration: 265.1ms | Allocations: 18885)
+Completed 200 OK in 877ms (Views: 293.3ms | ActiveRecord: 409.2ms | Allocations: 36172)
+
+
+Started POST "/users/sign_in" for 127.0.0.1 at 2024-10-14 16:51:54 +0100
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"email"=>"pauldevanney92@gmail.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  [1m[36mUser Load (31.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "pauldevanney92@gmail.com"], ["LIMIT", 1]]
+Redirected to http://127.0.0.1:3000/
+Completed 303 See Other in 494ms (ActiveRecord: 31.6ms | Allocations: 6897)
+
+
+Started GET "/" for 127.0.0.1 at 2024-10-14 16:51:55 +0100
+Processing by PagesController#home as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering pages/home.html.erb within layouts/application
+  Rendered shared/_jumbotron.html.erb (Duration: 0.1ms | Allocations: 9)
+  Rendered pages/home.html.erb within layouts/application (Duration: 0.3ms | Allocations: 73)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/shared/_navbar.html.erb:16
+  Rendered shared/_navbar.html.erb (Duration: 3.8ms | Allocations: 866)
+  Rendered shared/_flashes.html.erb (Duration: 0.1ms | Allocations: 32)
+  Rendered shared/_footer.html.erb (Duration: 0.0ms | Allocations: 8)
+  Rendered layout layouts/application.html.erb (Duration: 18.7ms | Allocations: 8912)
+Completed 200 OK in 22ms (Views: 19.7ms | ActiveRecord: 0.4ms | Allocations: 9153)
+
+
+Started GET "/" for 127.0.0.1 at 2024-10-14 16:53:34 +0100
+Processing by PagesController#home as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering pages/home.html.erb within layouts/application
+  Rendered shared/_jumbotron.html.erb (Duration: 0.4ms | Allocations: 137)
+  Rendered pages/home.html.erb within layouts/application (Duration: 1.5ms | Allocations: 406)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/shared/_navbar.html.erb:16
+  Rendered shared/_navbar.html.erb (Duration: 26.3ms | Allocations: 5311)
+  Rendered shared/_flashes.html.erb (Duration: 1.9ms | Allocations: 192)
+  Rendered shared/_footer.html.erb (Duration: 0.7ms | Allocations: 115)
+  Rendered layout layouts/application.html.erb (Duration: 88.8ms | Allocations: 33500)
+Completed 200 OK in 102ms (Views: 86.2ms | ActiveRecord: 6.9ms | Allocations: 35220)
+
+
+Started GET "/" for 127.0.0.1 at 2024-10-14 16:54:33 +0100
+Processing by PagesController#home as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering pages/home.html.erb within layouts/application
+  Rendered shared/_jumbotron.html.erb (Duration: 0.6ms | Allocations: 137)
+  Rendered pages/home.html.erb within layouts/application (Duration: 3.5ms | Allocations: 406)
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/shared/_navbar.html.erb:16
+  Rendered shared/_navbar.html.erb (Duration: 22.7ms | Allocations: 5292)
+  Rendered shared/_flashes.html.erb (Duration: 0.7ms | Allocations: 192)
+  Rendered shared/_footer.html.erb (Duration: 0.4ms | Allocations: 115)
+  Rendered layout layouts/application.html.erb (Duration: 97.7ms | Allocations: 33495)
+Completed 200 OK in 109ms (Views: 96.2ms | ActiveRecord: 4.6ms | Allocations: 35212)
+
+
+Started GET "/" for 127.0.0.1 at 2024-10-14 16:55:28 +0100
+Processing by PagesController#home as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering pages/home.html.erb within layouts/application
+  Rendered shared/_jumbotron.html.erb (Duration: 1.0ms | Allocations: 137)
+  Rendered pages/home.html.erb within layouts/application (Duration: 5.7ms | Allocations: 406)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/shared/_navbar.html.erb:16
+  Rendered shared/_navbar.html.erb (Duration: 28.1ms | Allocations: 5308)
+  Rendered shared/_flashes.html.erb (Duration: 1.5ms | Allocations: 194)
+  Rendered shared/_footer.html.erb (Duration: 0.5ms | Allocations: 115)
+  Rendered layout layouts/application.html.erb (Duration: 103.6ms | Allocations: 33511)
+Completed 200 OK in 114ms (Views: 101.0ms | ActiveRecord: 8.4ms | Allocations: 35226)
+
+
+Started GET "/" for 127.0.0.1 at 2024-10-14 16:56:49 +0100
+Processing by PagesController#home as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering pages/home.html.erb within layouts/application
+  Rendered shared/_jumbotron.html.erb (Duration: 1.2ms | Allocations: 9)
+  Rendered pages/home.html.erb within layouts/application (Duration: 2.0ms | Allocations: 73)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/shared/_navbar.html.erb:16
+  Rendered shared/_navbar.html.erb (Duration: 5.0ms | Allocations: 828)
+  Rendered shared/_flashes.html.erb (Duration: 0.1ms | Allocations: 22)
+  Rendered shared/_footer.html.erb (Duration: 0.0ms | Allocations: 8)
+  Rendered layout layouts/application.html.erb (Duration: 16963.4ms | Allocations: 75763)
+Completed 200 OK in 16966ms (Views: 16964.4ms | ActiveRecord: 0.3ms | Allocations: 76003)
+
+
+Started GET "/" for 127.0.0.1 at 2024-10-14 17:01:47 +0100
+Processing by PagesController#home as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering pages/home.html.erb within layouts/application
+  Rendered shared/_jumbotron.html.erb (Duration: 0.0ms | Allocations: 9)
+  Rendered pages/home.html.erb within layouts/application (Duration: 0.4ms | Allocations: 73)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/shared/_navbar.html.erb:16
+  Rendered shared/_navbar.html.erb (Duration: 3.3ms | Allocations: 828)
+  Rendered shared/_flashes.html.erb (Duration: 0.1ms | Allocations: 22)
+  Rendered shared/_footer.html.erb (Duration: 0.0ms | Allocations: 8)
+  Rendered layout layouts/application.html.erb (Duration: 13426.7ms | Allocations: 72815)
+Completed 200 OK in 13428ms (Views: 13427.3ms | ActiveRecord: 0.3ms | Allocations: 73055)
+
+
+Started GET "/" for 127.0.0.1 at 2024-10-14 17:11:34 +0100
+Processing by PagesController#home as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering pages/home.html.erb within layouts/application
+  Rendered shared/_jumbotron.html.erb (Duration: 0.7ms | Allocations: 136)
+  Rendered pages/home.html.erb within layouts/application (Duration: 3.4ms | Allocations: 405)
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/shared/_navbar.html.erb:16
+  Rendered shared/_navbar.html.erb (Duration: 34.0ms | Allocations: 7862)
+  Rendered shared/_flashes.html.erb (Duration: 0.5ms | Allocations: 192)
+  Rendered shared/_footer.html.erb (Duration: 0.4ms | Allocations: 115)
+  Rendered layout layouts/application.html.erb (Duration: 95.0ms | Allocations: 36007)
+Completed 200 OK in 101ms (Views: 90.8ms | ActiveRecord: 7.3ms | Allocations: 37722)
+
+
+Started GET "/todays-log" for 127.0.0.1 at 2024-10-14 17:11:39 +0100
+Processing by LogsController#today as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering logs/today.html.erb within layouts/application
+  Rendered logs/today.html.erb within layouts/application (Duration: 1.2ms | Allocations: 148)
+  Rendered shared/_navbar.html.erb (Duration: 0.5ms | Allocations: 189)
+  Rendered shared/_flashes.html.erb (Duration: 0.1ms | Allocations: 22)
+  Rendered shared/_footer.html.erb (Duration: 0.0ms | Allocations: 8)
+  Rendered layout layouts/application.html.erb (Duration: 25.6ms | Allocations: 8257)
+Completed 500 Internal Server Error in 38ms (Views: 27.8ms | ActiveRecord: 0.4ms | Allocations: 10623)
+
+
+  
+Pundit::AuthorizationNotPerformedError (LogsController):
+  
+pundit (2.4.0) lib/pundit/authorization.rb:46:in `verify_authorized'
+activesupport (7.1.3.4) lib/active_support/callbacks.rb:403:in `block in make_lambda'
+activesupport (7.1.3.4) lib/active_support/callbacks.rb:239:in `block in halting_and_conditional'
+activesupport (7.1.3.4) lib/active_support/callbacks.rb:602:in `block in invoke_after'
+activesupport (7.1.3.4) lib/active_support/callbacks.rb:602:in `each'
+activesupport (7.1.3.4) lib/active_support/callbacks.rb:602:in `invoke_after'
+activesupport (7.1.3.4) lib/active_support/callbacks.rb:135:in `block in run_callbacks'
+turbo-rails (2.0.9) lib/turbo-rails.rb:24:in `with_request_id'
+turbo-rails (2.0.9) app/controllers/concerns/turbo/request_id_tracking.rb:10:in `turbo_tracking_request_id'
+activesupport (7.1.3.4) lib/active_support/callbacks.rb:130:in `block in run_callbacks'
+actiontext (7.1.3.4) lib/action_text/rendering.rb:23:in `with_renderer'
+actiontext (7.1.3.4) lib/action_text/engine.rb:69:in `block (4 levels) in <class:Engine>'
+activesupport (7.1.3.4) lib/active_support/callbacks.rb:130:in `instance_exec'
+activesupport (7.1.3.4) lib/active_support/callbacks.rb:130:in `block in run_callbacks'
+activesupport (7.1.3.4) lib/active_support/callbacks.rb:141:in `run_callbacks'
+actionpack (7.1.3.4) lib/abstract_controller/callbacks.rb:258:in `process_action'
+actionpack (7.1.3.4) lib/action_controller/metal/rescue.rb:25:in `process_action'
+actionpack (7.1.3.4) lib/action_controller/metal/instrumentation.rb:74:in `block in process_action'
+activesupport (7.1.3.4) lib/active_support/notifications.rb:206:in `block in instrument'
+activesupport (7.1.3.4) lib/active_support/notifications/instrumenter.rb:58:in `instrument'
+activesupport (7.1.3.4) lib/active_support/notifications.rb:206:in `instrument'
+actionpack (7.1.3.4) lib/action_controller/metal/instrumentation.rb:73:in `process_action'
+actionpack (7.1.3.4) lib/action_controller/metal/params_wrapper.rb:261:in `process_action'
+activerecord (7.1.3.4) lib/active_record/railties/controller_runtime.rb:32:in `process_action'
+actionpack (7.1.3.4) lib/abstract_controller/base.rb:160:in `process'
+actionview (7.1.3.4) lib/action_view/rendering.rb:40:in `process'
+actionpack (7.1.3.4) lib/action_controller/metal.rb:227:in `dispatch'
+actionpack (7.1.3.4) lib/action_controller/metal.rb:309:in `dispatch'
+actionpack (7.1.3.4) lib/action_dispatch/routing/route_set.rb:49:in `dispatch'
+actionpack (7.1.3.4) lib/action_dispatch/routing/route_set.rb:32:in `serve'
+actionpack (7.1.3.4) lib/action_dispatch/journey/router.rb:51:in `block in serve'
+actionpack (7.1.3.4) lib/action_dispatch/journey/router.rb:131:in `block in find_routes'
+actionpack (7.1.3.4) lib/action_dispatch/journey/router.rb:124:in `each'
+actionpack (7.1.3.4) lib/action_dispatch/journey/router.rb:124:in `find_routes'
+actionpack (7.1.3.4) lib/action_dispatch/journey/router.rb:32:in `serve'
+actionpack (7.1.3.4) lib/action_dispatch/routing/route_set.rb:882:in `call'
+warden (1.2.9) lib/warden/manager.rb:36:in `block in call'
+warden (1.2.9) lib/warden/manager.rb:34:in `catch'
+warden (1.2.9) lib/warden/manager.rb:34:in `call'
+rack (3.1.7) lib/rack/tempfile_reaper.rb:20:in `call'
+rack (3.1.7) lib/rack/etag.rb:29:in `call'
+rack (3.1.7) lib/rack/conditional_get.rb:31:in `call'
+rack (3.1.7) lib/rack/head.rb:15:in `call'
+actionpack (7.1.3.4) lib/action_dispatch/http/permissions_policy.rb:36:in `call'
+actionpack (7.1.3.4) lib/action_dispatch/http/content_security_policy.rb:33:in `call'
+rack-session (2.0.0) lib/rack/session/abstract/id.rb:272:in `context'
+rack-session (2.0.0) lib/rack/session/abstract/id.rb:266:in `call'
+actionpack (7.1.3.4) lib/action_dispatch/middleware/cookies.rb:689:in `call'
+activerecord (7.1.3.4) lib/active_record/migration.rb:655:in `call'
+actionpack (7.1.3.4) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+activesupport (7.1.3.4) lib/active_support/callbacks.rb:101:in `run_callbacks'
+actionpack (7.1.3.4) lib/action_dispatch/middleware/callbacks.rb:28:in `call'
+actionpack (7.1.3.4) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.1.3.4) lib/action_dispatch/middleware/actionable_exceptions.rb:16:in `call'
+actionpack (7.1.3.4) lib/action_dispatch/middleware/debug_exceptions.rb:29:in `call'
+web-console (4.2.1) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.2.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.2.1) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.2.1) lib/web_console/middleware.rb:17:in `call'
+actionpack (7.1.3.4) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (7.1.3.4) lib/rails/rack/logger.rb:37:in `call_app'
+railties (7.1.3.4) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (7.1.3.4) lib/active_support/tagged_logging.rb:135:in `block in tagged'
+activesupport (7.1.3.4) lib/active_support/tagged_logging.rb:39:in `tagged'
+activesupport (7.1.3.4) lib/active_support/tagged_logging.rb:135:in `tagged'
+activesupport (7.1.3.4) lib/active_support/broadcast_logger.rb:240:in `method_missing'
+railties (7.1.3.4) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.5.2) lib/sprockets/rails/quiet_assets.rb:17:in `call'
+actionpack (7.1.3.4) lib/action_dispatch/middleware/remote_ip.rb:92:in `call'
+actionpack (7.1.3.4) lib/action_dispatch/middleware/request_id.rb:28:in `call'
+rack (3.1.7) lib/rack/method_override.rb:28:in `call'
+rack (3.1.7) lib/rack/runtime.rb:24:in `call'
+activesupport (7.1.3.4) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (7.1.3.4) lib/action_dispatch/middleware/server_timing.rb:59:in `block in call'
+actionpack (7.1.3.4) lib/action_dispatch/middleware/server_timing.rb:24:in `collect_events'
+actionpack (7.1.3.4) lib/action_dispatch/middleware/server_timing.rb:58:in `call'
+actionpack (7.1.3.4) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.1.3.4) lib/action_dispatch/middleware/static.rb:25:in `call'
+rack (3.1.7) lib/rack/sendfile.rb:114:in `call'
+actionpack (7.1.3.4) lib/action_dispatch/middleware/host_authorization.rb:141:in `call'
+railties (7.1.3.4) lib/rails/engine.rb:536:in `call'
+puma (6.4.3) lib/puma/configuration.rb:272:in `call'
+puma (6.4.3) lib/puma/request.rb:100:in `block in handle_request'
+puma (6.4.3) lib/puma/thread_pool.rb:378:in `with_force_shutdown'
+puma (6.4.3) lib/puma/request.rb:99:in `handle_request'
+puma (6.4.3) lib/puma/server.rb:464:in `process_client'
+puma (6.4.3) lib/puma/server.rb:245:in `block in run'
+puma (6.4.3) lib/puma/thread_pool.rb:155:in `block in spawn_thread'
+Started GET "/todays-log" for 127.0.0.1 at 2024-10-14 17:13:36 +0100
+Processing by LogsController#today as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering logs/today.html.erb within layouts/application
+  Rendered logs/today.html.erb within layouts/application (Duration: 0.5ms | Allocations: 141)
+  Rendered shared/_navbar.html.erb (Duration: 1.2ms | Allocations: 615)
+  Rendered shared/_flashes.html.erb (Duration: 0.6ms | Allocations: 192)
+  Rendered shared/_footer.html.erb (Duration: 0.6ms | Allocations: 115)
+  Rendered layout layouts/application.html.erb (Duration: 66.9ms | Allocations: 28304)
+Completed 500 Internal Server Error in 105ms (Views: 68.7ms | ActiveRecord: 14.5ms | Allocations: 35845)
+
+
+  
+Pundit::AuthorizationNotPerformedError (LogsController):
+  
+pundit (2.4.0) lib/pundit/authorization.rb:46:in `verify_authorized'
+activesupport (7.1.3.4) lib/active_support/callbacks.rb:403:in `block in make_lambda'
+activesupport (7.1.3.4) lib/active_support/callbacks.rb:239:in `block in halting_and_conditional'
+activesupport (7.1.3.4) lib/active_support/callbacks.rb:602:in `block in invoke_after'
+activesupport (7.1.3.4) lib/active_support/callbacks.rb:602:in `each'
+activesupport (7.1.3.4) lib/active_support/callbacks.rb:602:in `invoke_after'
+activesupport (7.1.3.4) lib/active_support/callbacks.rb:135:in `block in run_callbacks'
+turbo-rails (2.0.9) lib/turbo-rails.rb:24:in `with_request_id'
+turbo-rails (2.0.9) app/controllers/concerns/turbo/request_id_tracking.rb:10:in `turbo_tracking_request_id'
+activesupport (7.1.3.4) lib/active_support/callbacks.rb:130:in `block in run_callbacks'
+actiontext (7.1.3.4) lib/action_text/rendering.rb:23:in `with_renderer'
+actiontext (7.1.3.4) lib/action_text/engine.rb:69:in `block (4 levels) in <class:Engine>'
+activesupport (7.1.3.4) lib/active_support/callbacks.rb:130:in `instance_exec'
+activesupport (7.1.3.4) lib/active_support/callbacks.rb:130:in `block in run_callbacks'
+activesupport (7.1.3.4) lib/active_support/callbacks.rb:141:in `run_callbacks'
+actionpack (7.1.3.4) lib/abstract_controller/callbacks.rb:258:in `process_action'
+actionpack (7.1.3.4) lib/action_controller/metal/rescue.rb:25:in `process_action'
+actionpack (7.1.3.4) lib/action_controller/metal/instrumentation.rb:74:in `block in process_action'
+activesupport (7.1.3.4) lib/active_support/notifications.rb:206:in `block in instrument'
+activesupport (7.1.3.4) lib/active_support/notifications/instrumenter.rb:58:in `instrument'
+activesupport (7.1.3.4) lib/active_support/notifications.rb:206:in `instrument'
+actionpack (7.1.3.4) lib/action_controller/metal/instrumentation.rb:73:in `process_action'
+actionpack (7.1.3.4) lib/action_controller/metal/params_wrapper.rb:261:in `process_action'
+activerecord (7.1.3.4) lib/active_record/railties/controller_runtime.rb:32:in `process_action'
+actionpack (7.1.3.4) lib/abstract_controller/base.rb:160:in `process'
+actionview (7.1.3.4) lib/action_view/rendering.rb:40:in `process'
+actionpack (7.1.3.4) lib/action_controller/metal.rb:227:in `dispatch'
+actionpack (7.1.3.4) lib/action_controller/metal.rb:309:in `dispatch'
+actionpack (7.1.3.4) lib/action_dispatch/routing/route_set.rb:49:in `dispatch'
+actionpack (7.1.3.4) lib/action_dispatch/routing/route_set.rb:32:in `serve'
+actionpack (7.1.3.4) lib/action_dispatch/journey/router.rb:51:in `block in serve'
+actionpack (7.1.3.4) lib/action_dispatch/journey/router.rb:131:in `block in find_routes'
+actionpack (7.1.3.4) lib/action_dispatch/journey/router.rb:124:in `each'
+actionpack (7.1.3.4) lib/action_dispatch/journey/router.rb:124:in `find_routes'
+actionpack (7.1.3.4) lib/action_dispatch/journey/router.rb:32:in `serve'
+actionpack (7.1.3.4) lib/action_dispatch/routing/route_set.rb:882:in `call'
+warden (1.2.9) lib/warden/manager.rb:36:in `block in call'
+warden (1.2.9) lib/warden/manager.rb:34:in `catch'
+warden (1.2.9) lib/warden/manager.rb:34:in `call'
+rack (3.1.7) lib/rack/tempfile_reaper.rb:20:in `call'
+rack (3.1.7) lib/rack/etag.rb:29:in `call'
+rack (3.1.7) lib/rack/conditional_get.rb:31:in `call'
+rack (3.1.7) lib/rack/head.rb:15:in `call'
+actionpack (7.1.3.4) lib/action_dispatch/http/permissions_policy.rb:36:in `call'
+actionpack (7.1.3.4) lib/action_dispatch/http/content_security_policy.rb:33:in `call'
+rack-session (2.0.0) lib/rack/session/abstract/id.rb:272:in `context'
+rack-session (2.0.0) lib/rack/session/abstract/id.rb:266:in `call'
+actionpack (7.1.3.4) lib/action_dispatch/middleware/cookies.rb:689:in `call'
+activerecord (7.1.3.4) lib/active_record/migration.rb:655:in `call'
+actionpack (7.1.3.4) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+activesupport (7.1.3.4) lib/active_support/callbacks.rb:101:in `run_callbacks'
+actionpack (7.1.3.4) lib/action_dispatch/middleware/callbacks.rb:28:in `call'
+actionpack (7.1.3.4) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.1.3.4) lib/action_dispatch/middleware/actionable_exceptions.rb:16:in `call'
+actionpack (7.1.3.4) lib/action_dispatch/middleware/debug_exceptions.rb:29:in `call'
+web-console (4.2.1) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.2.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.2.1) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.2.1) lib/web_console/middleware.rb:17:in `call'
+actionpack (7.1.3.4) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (7.1.3.4) lib/rails/rack/logger.rb:37:in `call_app'
+railties (7.1.3.4) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (7.1.3.4) lib/active_support/tagged_logging.rb:135:in `block in tagged'
+activesupport (7.1.3.4) lib/active_support/tagged_logging.rb:39:in `tagged'
+activesupport (7.1.3.4) lib/active_support/tagged_logging.rb:135:in `tagged'
+activesupport (7.1.3.4) lib/active_support/broadcast_logger.rb:240:in `method_missing'
+railties (7.1.3.4) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.5.2) lib/sprockets/rails/quiet_assets.rb:17:in `call'
+actionpack (7.1.3.4) lib/action_dispatch/middleware/remote_ip.rb:92:in `call'
+actionpack (7.1.3.4) lib/action_dispatch/middleware/request_id.rb:28:in `call'
+rack (3.1.7) lib/rack/method_override.rb:28:in `call'
+rack (3.1.7) lib/rack/runtime.rb:24:in `call'
+activesupport (7.1.3.4) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (7.1.3.4) lib/action_dispatch/middleware/server_timing.rb:59:in `block in call'
+actionpack (7.1.3.4) lib/action_dispatch/middleware/server_timing.rb:24:in `collect_events'
+actionpack (7.1.3.4) lib/action_dispatch/middleware/server_timing.rb:58:in `call'
+actionpack (7.1.3.4) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.1.3.4) lib/action_dispatch/middleware/static.rb:25:in `call'
+rack (3.1.7) lib/rack/sendfile.rb:114:in `call'
+actionpack (7.1.3.4) lib/action_dispatch/middleware/host_authorization.rb:141:in `call'
+railties (7.1.3.4) lib/rails/engine.rb:536:in `call'
+puma (6.4.3) lib/puma/configuration.rb:272:in `call'
+puma (6.4.3) lib/puma/request.rb:100:in `block in handle_request'
+puma (6.4.3) lib/puma/thread_pool.rb:378:in `with_force_shutdown'
+puma (6.4.3) lib/puma/request.rb:99:in `handle_request'
+puma (6.4.3) lib/puma/server.rb:464:in `process_client'
+puma (6.4.3) lib/puma/server.rb:245:in `block in run'
+puma (6.4.3) lib/puma/thread_pool.rb:155:in `block in spawn_thread'
+Started GET "/todays-log" for 127.0.0.1 at 2024-10-14 17:14:17 +0100
+  [1m[36mActiveRecord::SchemaMigration Load (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by LogsController#today as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering logs/today.html.erb within layouts/application
+  Rendered logs/today.html.erb within layouts/application (Duration: 1.1ms | Allocations: 247)
+  Rendered shared/_navbar.html.erb (Duration: 11.3ms | Allocations: 738)
+  Rendered shared/_flashes.html.erb (Duration: 5.2ms | Allocations: 216)
+  Rendered shared/_footer.html.erb (Duration: 12.6ms | Allocations: 117)
+  Rendered layout layouts/application.html.erb (Duration: 462.6ms | Allocations: 84947)
+Completed 500 Internal Server Error in 695ms (Views: 474.8ms | ActiveRecord: 19.1ms | Allocations: 111715)
+
+
+  
+Pundit::AuthorizationNotPerformedError (LogsController):
+  
+pundit (2.4.0) lib/pundit/authorization.rb:46:in `verify_authorized'
+activesupport (7.1.3.4) lib/active_support/callbacks.rb:403:in `block in make_lambda'
+activesupport (7.1.3.4) lib/active_support/callbacks.rb:239:in `block in halting_and_conditional'
+activesupport (7.1.3.4) lib/active_support/callbacks.rb:602:in `block in invoke_after'
+activesupport (7.1.3.4) lib/active_support/callbacks.rb:602:in `each'
+activesupport (7.1.3.4) lib/active_support/callbacks.rb:602:in `invoke_after'
+activesupport (7.1.3.4) lib/active_support/callbacks.rb:135:in `block in run_callbacks'
+turbo-rails (2.0.9) lib/turbo-rails.rb:24:in `with_request_id'
+turbo-rails (2.0.9) app/controllers/concerns/turbo/request_id_tracking.rb:10:in `turbo_tracking_request_id'
+activesupport (7.1.3.4) lib/active_support/callbacks.rb:130:in `block in run_callbacks'
+actiontext (7.1.3.4) lib/action_text/rendering.rb:23:in `with_renderer'
+actiontext (7.1.3.4) lib/action_text/engine.rb:69:in `block (4 levels) in <class:Engine>'
+activesupport (7.1.3.4) lib/active_support/callbacks.rb:130:in `instance_exec'
+activesupport (7.1.3.4) lib/active_support/callbacks.rb:130:in `block in run_callbacks'
+activesupport (7.1.3.4) lib/active_support/callbacks.rb:141:in `run_callbacks'
+actionpack (7.1.3.4) lib/abstract_controller/callbacks.rb:258:in `process_action'
+actionpack (7.1.3.4) lib/action_controller/metal/rescue.rb:25:in `process_action'
+actionpack (7.1.3.4) lib/action_controller/metal/instrumentation.rb:74:in `block in process_action'
+activesupport (7.1.3.4) lib/active_support/notifications.rb:206:in `block in instrument'
+activesupport (7.1.3.4) lib/active_support/notifications/instrumenter.rb:58:in `instrument'
+activesupport (7.1.3.4) lib/active_support/notifications.rb:206:in `instrument'
+actionpack (7.1.3.4) lib/action_controller/metal/instrumentation.rb:73:in `process_action'
+actionpack (7.1.3.4) lib/action_controller/metal/params_wrapper.rb:261:in `process_action'
+activerecord (7.1.3.4) lib/active_record/railties/controller_runtime.rb:32:in `process_action'
+actionpack (7.1.3.4) lib/abstract_controller/base.rb:160:in `process'
+actionview (7.1.3.4) lib/action_view/rendering.rb:40:in `process'
+actionpack (7.1.3.4) lib/action_controller/metal.rb:227:in `dispatch'
+actionpack (7.1.3.4) lib/action_controller/metal.rb:309:in `dispatch'
+actionpack (7.1.3.4) lib/action_dispatch/routing/route_set.rb:49:in `dispatch'
+actionpack (7.1.3.4) lib/action_dispatch/routing/route_set.rb:32:in `serve'
+actionpack (7.1.3.4) lib/action_dispatch/journey/router.rb:51:in `block in serve'
+actionpack (7.1.3.4) lib/action_dispatch/journey/router.rb:131:in `block in find_routes'
+actionpack (7.1.3.4) lib/action_dispatch/journey/router.rb:124:in `each'
+actionpack (7.1.3.4) lib/action_dispatch/journey/router.rb:124:in `find_routes'
+actionpack (7.1.3.4) lib/action_dispatch/journey/router.rb:32:in `serve'
+actionpack (7.1.3.4) lib/action_dispatch/routing/route_set.rb:882:in `call'
+warden (1.2.9) lib/warden/manager.rb:36:in `block in call'
+warden (1.2.9) lib/warden/manager.rb:34:in `catch'
+warden (1.2.9) lib/warden/manager.rb:34:in `call'
+rack (3.1.7) lib/rack/tempfile_reaper.rb:20:in `call'
+rack (3.1.7) lib/rack/etag.rb:29:in `call'
+rack (3.1.7) lib/rack/conditional_get.rb:31:in `call'
+rack (3.1.7) lib/rack/head.rb:15:in `call'
+actionpack (7.1.3.4) lib/action_dispatch/http/permissions_policy.rb:36:in `call'
+actionpack (7.1.3.4) lib/action_dispatch/http/content_security_policy.rb:33:in `call'
+rack-session (2.0.0) lib/rack/session/abstract/id.rb:272:in `context'
+rack-session (2.0.0) lib/rack/session/abstract/id.rb:266:in `call'
+actionpack (7.1.3.4) lib/action_dispatch/middleware/cookies.rb:689:in `call'
+activerecord (7.1.3.4) lib/active_record/migration.rb:655:in `call'
+actionpack (7.1.3.4) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+activesupport (7.1.3.4) lib/active_support/callbacks.rb:101:in `run_callbacks'
+actionpack (7.1.3.4) lib/action_dispatch/middleware/callbacks.rb:28:in `call'
+actionpack (7.1.3.4) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.1.3.4) lib/action_dispatch/middleware/actionable_exceptions.rb:16:in `call'
+actionpack (7.1.3.4) lib/action_dispatch/middleware/debug_exceptions.rb:29:in `call'
+web-console (4.2.1) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.2.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.2.1) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.2.1) lib/web_console/middleware.rb:17:in `call'
+actionpack (7.1.3.4) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (7.1.3.4) lib/rails/rack/logger.rb:37:in `call_app'
+railties (7.1.3.4) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (7.1.3.4) lib/active_support/tagged_logging.rb:135:in `block in tagged'
+activesupport (7.1.3.4) lib/active_support/tagged_logging.rb:39:in `tagged'
+activesupport (7.1.3.4) lib/active_support/tagged_logging.rb:135:in `tagged'
+activesupport (7.1.3.4) lib/active_support/broadcast_logger.rb:240:in `method_missing'
+railties (7.1.3.4) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.5.2) lib/sprockets/rails/quiet_assets.rb:17:in `call'
+actionpack (7.1.3.4) lib/action_dispatch/middleware/remote_ip.rb:92:in `call'
+actionpack (7.1.3.4) lib/action_dispatch/middleware/request_id.rb:28:in `call'
+rack (3.1.7) lib/rack/method_override.rb:28:in `call'
+rack (3.1.7) lib/rack/runtime.rb:24:in `call'
+activesupport (7.1.3.4) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (7.1.3.4) lib/action_dispatch/middleware/server_timing.rb:59:in `block in call'
+actionpack (7.1.3.4) lib/action_dispatch/middleware/server_timing.rb:24:in `collect_events'
+actionpack (7.1.3.4) lib/action_dispatch/middleware/server_timing.rb:58:in `call'
+actionpack (7.1.3.4) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.1.3.4) lib/action_dispatch/middleware/static.rb:25:in `call'
+rack (3.1.7) lib/rack/sendfile.rb:114:in `call'
+actionpack (7.1.3.4) lib/action_dispatch/middleware/host_authorization.rb:141:in `call'
+railties (7.1.3.4) lib/rails/engine.rb:536:in `call'
+puma (6.4.3) lib/puma/configuration.rb:272:in `call'
+puma (6.4.3) lib/puma/request.rb:100:in `block in handle_request'
+puma (6.4.3) lib/puma/thread_pool.rb:378:in `with_force_shutdown'
+puma (6.4.3) lib/puma/request.rb:99:in `handle_request'
+puma (6.4.3) lib/puma/server.rb:464:in `process_client'
+puma (6.4.3) lib/puma/server.rb:245:in `block in run'
+puma (6.4.3) lib/puma/thread_pool.rb:155:in `block in spawn_thread'
+Started GET "/todays-log" for 127.0.0.1 at 2024-10-14 17:16:54 +0100
+Processing by LogsController#today as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering logs/today.html.erb within layouts/application
+  Rendered logs/today.html.erb within layouts/application (Duration: 3.2ms | Allocations: 143)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/shared/_navbar.html.erb:16
+  Rendered shared/_navbar.html.erb (Duration: 18.7ms | Allocations: 5321)
+  Rendered shared/_flashes.html.erb (Duration: 0.5ms | Allocations: 192)
+  Rendered shared/_footer.html.erb (Duration: 0.4ms | Allocations: 115)
+  Rendered layout layouts/application.html.erb (Duration: 141.8ms | Allocations: 33278)
+Completed 200 OK in 150ms (Views: 141.5ms | ActiveRecord: 4.2ms | Allocations: 35002)
+
+
+Started GET "/todays-log" for 127.0.0.1 at 2024-10-14 17:18:50 +0100
+Processing by LogsController#today as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering logs/today.html.erb within layouts/application
+  Rendered logs/today.html.erb within layouts/application (Duration: 1.6ms | Allocations: 1105)
+  Rendered layout layouts/application.html.erb (Duration: 2.1ms | Allocations: 1191)
+Completed 500 Internal Server Error in 5ms (ActiveRecord: 0.0ms | Allocations: 2191)
+
+
+  
+ActionView::Template::Error (undefined method `today' for class DateTime):
+    1: <div class="container">
+    2: 
+    3:     <h1 class="mt-5 mb-2"><%= DateTime.today.strftime("Printed on %m/%d/%Y")  %></h1>
+    4:     <p class="lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur nibh dui, tristique et lorem sed, congue dictum erat. Nullam blandit ante id volutpat porta. Ut fringilla massa at leo vulputate malesuada. In sagittis magna ante, quis accumsan dui consectetur non. Ut pulvinar, sem eget sodales egestas, risus leo facilisis sem, nec egestas massa massa a elit. Donec malesuada consectetur turpis, ut elementum massa maximus vel. Aliquam erat volutpat. Donec vestibulum elit sapien, vel molestie sem placerat ac.</p>
+    5:     <hr>
+    6: 
+  
+app/views/logs/today.html.erb:3
+Started GET "/todays-log" for 127.0.0.1 at 2024-10-14 17:20:14 +0100
+Processing by LogsController#today as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering logs/today.html.erb within layouts/application
+  Rendered logs/today.html.erb within layouts/application (Duration: 1.4ms | Allocations: 147)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/shared/_navbar.html.erb:16
+  Rendered shared/_navbar.html.erb (Duration: 15.3ms | Allocations: 5299)
+  Rendered shared/_flashes.html.erb (Duration: 0.7ms | Allocations: 192)
+  Rendered shared/_footer.html.erb (Duration: 0.4ms | Allocations: 115)
+  Rendered layout layouts/application.html.erb (Duration: 133.7ms | Allocations: 33216)
+Completed 200 OK in 146ms (Views: 136.1ms | ActiveRecord: 4.2ms | Allocations: 34931)
+
+
+Started GET "/todays-log" for 127.0.0.1 at 2024-10-14 17:21:20 +0100
+Processing by LogsController#today as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering logs/today.html.erb within layouts/application
+  Rendered logs/today.html.erb within layouts/application (Duration: 1.6ms | Allocations: 146)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/shared/_navbar.html.erb:16
+  Rendered shared/_navbar.html.erb (Duration: 32.4ms | Allocations: 5301)
+  Rendered shared/_flashes.html.erb (Duration: 0.7ms | Allocations: 192)
+  Rendered shared/_footer.html.erb (Duration: 0.7ms | Allocations: 115)
+  Rendered layout layouts/application.html.erb (Duration: 114.8ms | Allocations: 32951)
+Completed 200 OK in 129ms (Views: 105.9ms | ActiveRecord: 11.2ms | Allocations: 34667)
+
+
+Started GET "/todays-log" for 127.0.0.1 at 2024-10-14 17:21:59 +0100
+Processing by LogsController#today as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering logs/today.html.erb within layouts/application
+  Rendered logs/today.html.erb within layouts/application (Duration: 2.9ms | Allocations: 146)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/shared/_navbar.html.erb:16
+  Rendered shared/_navbar.html.erb (Duration: 16.8ms | Allocations: 5296)
+  Rendered shared/_flashes.html.erb (Duration: 0.6ms | Allocations: 192)
+  Rendered shared/_footer.html.erb (Duration: 0.4ms | Allocations: 115)
+  Rendered layout layouts/application.html.erb (Duration: 62.3ms | Allocations: 33004)
+Completed 200 OK in 68ms (Views: 60.3ms | ActiveRecord: 4.0ms | Allocations: 34718)
+
+
+Started GET "/todays-log" for 127.0.0.1 at 2024-10-14 17:30:03 +0100
+Processing by LogsController#today as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering logs/today.html.erb within layouts/application
+  Rendered logs/today.html.erb within layouts/application (Duration: 0.6ms | Allocations: 136)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/shared/_navbar.html.erb:16
+  Rendered shared/_navbar.html.erb (Duration: 32.7ms | Allocations: 7857)
+  Rendered shared/_flashes.html.erb (Duration: 0.7ms | Allocations: 192)
+  Rendered shared/_footer.html.erb (Duration: 0.5ms | Allocations: 115)
+  Rendered layout layouts/application.html.erb (Duration: 83.0ms | Allocations: 35562)
+Completed 200 OK in 88ms (Views: 76.1ms | ActiveRecord: 8.5ms | Allocations: 37276)
+
+
+Started GET "/todays-log" for 127.0.0.1 at 2024-10-14 17:31:14 +0100
+Processing by LogsController#today as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering logs/today.html.erb within layouts/application
+  Rendered logs/today.html.erb within layouts/application (Duration: 0.7ms | Allocations: 134)
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/shared/_navbar.html.erb:16
+  Rendered shared/_navbar.html.erb (Duration: 31.4ms | Allocations: 5324)
+  Rendered shared/_flashes.html.erb (Duration: 0.6ms | Allocations: 192)
+  Rendered shared/_footer.html.erb (Duration: 0.5ms | Allocations: 117)
+  Rendered layout layouts/application.html.erb (Duration: 94.2ms | Allocations: 32998)
+Completed 200 OK in 99ms (Views: 86.1ms | ActiveRecord: 9.7ms | Allocations: 34712)
+
+
+Started GET "/todays-log" for 127.0.0.1 at 2024-10-14 17:53:26 +0100
+Processing by LogsController#today as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering logs/today.html.erb within layouts/application
+  Rendered logs/today.html.erb within layouts/application (Duration: 1.9ms | Allocations: 148)
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/shared/_navbar.html.erb:16
+  Rendered shared/_navbar.html.erb (Duration: 48.1ms | Allocations: 7862)
+  Rendered shared/_flashes.html.erb (Duration: 0.8ms | Allocations: 192)
+  Rendered shared/_footer.html.erb (Duration: 2.1ms | Allocations: 115)
+  Rendered layout layouts/application.html.erb (Duration: 316.5ms | Allocations: 35399)
+Completed 200 OK in 347ms (Views: 301.6ms | ActiveRecord: 22.1ms | Allocations: 37115)
+
+
+Started GET "/todays-log" for 127.0.0.1 at 2024-10-14 17:55:12 +0100
+Processing by LogsController#today as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering logs/today.html.erb within layouts/application
+  Rendered logs/today.html.erb within layouts/application (Duration: 0.5ms | Allocations: 153)
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/shared/_navbar.html.erb:16
+  Rendered shared/_navbar.html.erb (Duration: 28.5ms | Allocations: 5324)
+  Rendered shared/_flashes.html.erb (Duration: 0.6ms | Allocations: 192)
+  Rendered shared/_footer.html.erb (Duration: 0.5ms | Allocations: 115)
+  Rendered layout layouts/application.html.erb (Duration: 94.8ms | Allocations: 33123)
+Completed 200 OK in 100ms (Views: 87.2ms | ActiveRecord: 9.2ms | Allocations: 34837)
+
+
+Started GET "/" for ::1 at 2024-10-14 18:00:09 +0100
+Processing by PagesController#home as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering pages/home.html.erb within layouts/application
+  Rendered shared/_jumbotron.html.erb (Duration: 0.8ms | Allocations: 139)
+  Rendered pages/home.html.erb within layouts/application (Duration: 17.9ms | Allocations: 412)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/shared/_navbar.html.erb:16
+  Rendered shared/_navbar.html.erb (Duration: 17.5ms | Allocations: 5294)
+  Rendered shared/_flashes.html.erb (Duration: 2.0ms | Allocations: 192)
+  Rendered shared/_footer.html.erb (Duration: 1.1ms | Allocations: 115)
+  Rendered layout layouts/application.html.erb (Duration: 87.1ms | Allocations: 33324)
+Completed 200 OK in 111ms (Views: 87.2ms | ActiveRecord: 4.1ms | Allocations: 35040)
+
+
+Started GET "/todays-log" for ::1 at 2024-10-14 18:00:22 +0100
+Processing by LogsController#today as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering logs/today.html.erb within layouts/application
+  Rendered logs/today.html.erb within layouts/application (Duration: 0.5ms | Allocations: 150)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/shared/_navbar.html.erb:16
+  Rendered shared/_navbar.html.erb (Duration: 2.5ms | Allocations: 845)
+  Rendered shared/_flashes.html.erb (Duration: 0.1ms | Allocations: 22)
+  Rendered shared/_footer.html.erb (Duration: 0.0ms | Allocations: 8)
+  Rendered layout layouts/application.html.erb (Duration: 27.5ms | Allocations: 8953)
+Completed 200 OK in 29ms (Views: 28.0ms | ActiveRecord: 0.3ms | Allocations: 9516)
+
+
+Started GET "/todays-log" for ::1 at 2024-10-14 18:03:13 +0100
+Processing by LogsController#today as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering logs/today.html.erb within layouts/application
+  Rendered logs/today.html.erb within layouts/application (Duration: 1.2ms | Allocations: 158)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/shared/_navbar.html.erb:16
+  Rendered shared/_navbar.html.erb (Duration: 24.5ms | Allocations: 5297)
+  Rendered shared/_flashes.html.erb (Duration: 0.8ms | Allocations: 192)
+  Rendered shared/_footer.html.erb (Duration: 0.9ms | Allocations: 115)
+  Rendered layout layouts/application.html.erb (Duration: 74.5ms | Allocations: 33083)
+Completed 200 OK in 82ms (Views: 69.6ms | ActiveRecord: 8.6ms | Allocations: 34797)
+
+
+Started GET "/todays-log" for ::1 at 2024-10-14 18:04:25 +0100
+Processing by LogsController#today as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering logs/today.html.erb within layouts/application
+  Rendered logs/today.html.erb within layouts/application (Duration: 1.1ms | Allocations: 158)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/shared/_navbar.html.erb:16
+  Rendered shared/_navbar.html.erb (Duration: 27.2ms | Allocations: 5297)
+  Rendered shared/_flashes.html.erb (Duration: 0.8ms | Allocations: 192)
+  Rendered shared/_footer.html.erb (Duration: 0.5ms | Allocations: 115)
+  Rendered layout layouts/application.html.erb (Duration: 82.2ms | Allocations: 32991)
+Completed 200 OK in 93ms (Views: 78.9ms | ActiveRecord: 8.1ms | Allocations: 34705)
+
+
+Started GET "/todays-log" for ::1 at 2024-10-14 19:29:16 +0100
+Processing by LogsController#today as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering logs/today.html.erb within layouts/application
+  Rendered logs/today.html.erb within layouts/application (Duration: 0.4ms | Allocations: 159)
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/shared/_navbar.html.erb:16
+  Rendered shared/_navbar.html.erb (Duration: 61.4ms | Allocations: 7856)
+  Rendered shared/_flashes.html.erb (Duration: 0.5ms | Allocations: 192)
+  Rendered shared/_footer.html.erb (Duration: 0.5ms | Allocations: 115)
+  Rendered layout layouts/application.html.erb (Duration: 102.8ms | Allocations: 35686)
+Completed 200 OK in 108ms (Views: 87.2ms | ActiveRecord: 17.2ms | Allocations: 37400)
+
+
+Started GET "/todays-log" for ::1 at 2024-10-14 19:29:56 +0100
+Processing by LogsController#today as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering logs/today.html.erb within layouts/application
+  Rendered logs/today.html.erb within layouts/application (Duration: 0.5ms | Allocations: 159)
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/shared/_navbar.html.erb:16
+  Rendered shared/_navbar.html.erb (Duration: 15.4ms | Allocations: 5320)
+  Rendered shared/_flashes.html.erb (Duration: 0.7ms | Allocations: 192)
+  Rendered shared/_footer.html.erb (Duration: 0.5ms | Allocations: 115)
+  Rendered layout layouts/application.html.erb (Duration: 48.8ms | Allocations: 33111)
+Completed 200 OK in 56ms (Views: 46.4ms | ActiveRecord: 5.5ms | Allocations: 34825)
+
+
+Started GET "/todays-log" for ::1 at 2024-10-14 19:31:08 +0100
+Processing by LogsController#today as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering logs/today.html.erb within layouts/application
+  Rendered logs/today.html.erb within layouts/application (Duration: 0.5ms | Allocations: 159)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/shared/_navbar.html.erb:16
+  Rendered shared/_navbar.html.erb (Duration: 13.7ms | Allocations: 5296)
+  Rendered shared/_flashes.html.erb (Duration: 0.6ms | Allocations: 192)
+  Rendered shared/_footer.html.erb (Duration: 0.4ms | Allocations: 115)
+  Rendered layout layouts/application.html.erb (Duration: 46.7ms | Allocations: 33093)
+Completed 200 OK in 51ms (Views: 44.2ms | ActiveRecord: 4.0ms | Allocations: 34807)
+
+
+Started GET "/todays-log" for ::1 at 2024-10-14 19:34:07 +0100
+Processing by LogsController#today as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering logs/today.html.erb within layouts/application
+  Rendered logs/today.html.erb within layouts/application (Duration: 0.4ms | Allocations: 159)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/shared/_navbar.html.erb:16
+  Rendered shared/_navbar.html.erb (Duration: 14.8ms | Allocations: 5299)
+  Rendered shared/_flashes.html.erb (Duration: 0.6ms | Allocations: 192)
+  Rendered shared/_footer.html.erb (Duration: 0.5ms | Allocations: 115)
+  Rendered layout layouts/application.html.erb (Duration: 54.1ms | Allocations: 33029)
+Completed 200 OK in 61ms (Views: 50.9ms | ActiveRecord: 4.7ms | Allocations: 34743)
+
+
+Started GET "/todays-log" for ::1 at 2024-10-14 19:36:34 +0100
+Processing by LogsController#today as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering logs/today.html.erb within layouts/application
+  Rendered logs/today.html.erb within layouts/application (Duration: 0.5ms | Allocations: 159)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/shared/_navbar.html.erb:16
+  Rendered shared/_navbar.html.erb (Duration: 13.7ms | Allocations: 5296)
+  Rendered shared/_flashes.html.erb (Duration: 0.6ms | Allocations: 192)
+  Rendered shared/_footer.html.erb (Duration: 0.4ms | Allocations: 115)
+  Rendered layout layouts/application.html.erb (Duration: 47.6ms | Allocations: 33100)
+Completed 200 OK in 53ms (Views: 45.8ms | ActiveRecord: 3.4ms | Allocations: 34817)
+
+
+Started GET "/todays-log" for ::1 at 2024-10-14 19:38:59 +0100
+Processing by LogsController#today as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering logs/today.html.erb within layouts/application
+  Rendered logs/today.html.erb within layouts/application (Duration: 0.7ms | Allocations: 157)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/shared/_navbar.html.erb:16
+  Rendered shared/_navbar.html.erb (Duration: 26.5ms | Allocations: 5300)
+  Rendered shared/_flashes.html.erb (Duration: 0.8ms | Allocations: 192)
+  Rendered shared/_footer.html.erb (Duration: 0.4ms | Allocations: 115)
+  Rendered layout layouts/application.html.erb (Duration: 90.4ms | Allocations: 33065)
+Completed 200 OK in 100ms (Views: 87.0ms | ActiveRecord: 7.4ms | Allocations: 34779)
+
+
+Started GET "/todays-log" for ::1 at 2024-10-14 19:39:56 +0100
+Processing by LogsController#today as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering logs/today.html.erb within layouts/application
+  Rendered logs/today.html.erb within layouts/application (Duration: 0.5ms | Allocations: 157)
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/shared/_navbar.html.erb:16
+  Rendered shared/_navbar.html.erb (Duration: 14.9ms | Allocations: 5296)
+  Rendered shared/_flashes.html.erb (Duration: 0.6ms | Allocations: 192)
+  Rendered shared/_footer.html.erb (Duration: 0.5ms | Allocations: 115)
+  Rendered layout layouts/application.html.erb (Duration: 51.5ms | Allocations: 33076)
+Completed 200 OK in 57ms (Views: 47.0ms | ActiveRecord: 6.0ms | Allocations: 34790)
+
+
+Started GET "/todays-log" for ::1 at 2024-10-14 19:40:51 +0100
+Processing by LogsController#today as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering logs/today.html.erb within layouts/application
+  Rendered logs/today.html.erb within layouts/application (Duration: 0.5ms | Allocations: 157)
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/shared/_navbar.html.erb:16
+  Rendered shared/_navbar.html.erb (Duration: 12.3ms | Allocations: 5299)
+  Rendered shared/_flashes.html.erb (Duration: 1.2ms | Allocations: 192)
+  Rendered shared/_footer.html.erb (Duration: 0.4ms | Allocations: 115)
+  Rendered layout layouts/application.html.erb (Duration: 56.2ms | Allocations: 33090)
+Completed 200 OK in 62ms (Views: 54.6ms | ActiveRecord: 3.1ms | Allocations: 34804)
+
+
+Started GET "/todays-log" for ::1 at 2024-10-14 19:45:19 +0100
+Processing by LogsController#today as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering logs/today.html.erb within layouts/application
+  Rendered logs/today.html.erb within layouts/application (Duration: 0.5ms | Allocations: 162)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/shared/_navbar.html.erb:16
+  Rendered shared/_navbar.html.erb (Duration: 16.0ms | Allocations: 5297)
+  Rendered shared/_flashes.html.erb (Duration: 0.6ms | Allocations: 192)
+  Rendered shared/_footer.html.erb (Duration: 0.5ms | Allocations: 115)
+  Rendered layout layouts/application.html.erb (Duration: 52.4ms | Allocations: 33085)
+Completed 200 OK in 58ms (Views: 49.6ms | ActiveRecord: 4.3ms | Allocations: 34799)
+
+
+Started GET "/todays-log" for ::1 at 2024-10-14 19:50:11 +0100
+Processing by LogsController#today as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering logs/today.html.erb within layouts/application
+  Rendered logs/today.html.erb within layouts/application (Duration: 0.6ms | Allocations: 167)
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/shared/_navbar.html.erb:16
+  Rendered shared/_navbar.html.erb (Duration: 14.2ms | Allocations: 5299)
+  Rendered shared/_flashes.html.erb (Duration: 0.5ms | Allocations: 192)
+  Rendered shared/_footer.html.erb (Duration: 0.4ms | Allocations: 115)
+  Rendered layout layouts/application.html.erb (Duration: 57.3ms | Allocations: 33113)
+Completed 200 OK in 62ms (Views: 55.5ms | ActiveRecord: 3.3ms | Allocations: 34827)
+
+
+Started GET "/todays-log" for ::1 at 2024-10-14 19:56:37 +0100
+Processing by LogsController#today as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering logs/today.html.erb within layouts/application
+  Rendered logs/today.html.erb within layouts/application (Duration: 0.5ms | Allocations: 174)
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/shared/_navbar.html.erb:16
+  Rendered shared/_navbar.html.erb (Duration: 24.4ms | Allocations: 7856)
+  Rendered shared/_flashes.html.erb (Duration: 0.7ms | Allocations: 192)
+  Rendered shared/_footer.html.erb (Duration: 0.6ms | Allocations: 115)
+  Rendered layout layouts/application.html.erb (Duration: 66.5ms | Allocations: 35646)
+Completed 200 OK in 73ms (Views: 60.7ms | ActiveRecord: 8.4ms | Allocations: 37360)
+
+
+Started GET "/todays-log" for ::1 at 2024-10-14 19:58:12 +0100
+Processing by LogsController#today as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering logs/today.html.erb within layouts/application
+  Rendered logs/today.html.erb within layouts/application (Duration: 0.5ms | Allocations: 174)
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/shared/_navbar.html.erb:16
+  Rendered shared/_navbar.html.erb (Duration: 16.8ms | Allocations: 5320)
+  Rendered shared/_flashes.html.erb (Duration: 0.6ms | Allocations: 192)
+  Rendered shared/_footer.html.erb (Duration: 0.3ms | Allocations: 115)
+  Rendered layout layouts/application.html.erb (Duration: 50.4ms | Allocations: 33117)
+Completed 200 OK in 55ms (Views: 45.5ms | ActiveRecord: 6.4ms | Allocations: 34832)
+
+
+Started GET "/todays-log" for ::1 at 2024-10-14 19:58:43 +0100
+Processing by LogsController#today as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering logs/today.html.erb within layouts/application
+  Rendered logs/today.html.erb within layouts/application (Duration: 0.5ms | Allocations: 174)
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/shared/_navbar.html.erb:16
+  Rendered shared/_navbar.html.erb (Duration: 13.8ms | Allocations: 5297)
+  Rendered shared/_flashes.html.erb (Duration: 0.6ms | Allocations: 192)
+  Rendered shared/_footer.html.erb (Duration: 0.4ms | Allocations: 115)
+  Rendered layout layouts/application.html.erb (Duration: 49.6ms | Allocations: 33112)
+Completed 200 OK in 55ms (Views: 47.4ms | ActiveRecord: 3.8ms | Allocations: 34826)
+
+
+Started GET "/todays-log" for ::1 at 2024-10-14 20:04:18 +0100
+Processing by LogsController#today as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering logs/today.html.erb within layouts/application
+  Rendered logs/today.html.erb within layouts/application (Duration: 0.6ms | Allocations: 174)
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/shared/_navbar.html.erb:16
+  Rendered shared/_navbar.html.erb (Duration: 97.1ms | Allocations: 7854)
+  Rendered shared/_flashes.html.erb (Duration: 0.5ms | Allocations: 192)
+  Rendered shared/_footer.html.erb (Duration: 0.4ms | Allocations: 115)
+  Rendered layout layouts/application.html.erb (Duration: 176.0ms | Allocations: 35657)
+Completed 200 OK in 199ms (Views: 145.9ms | ActiveRecord: 31.7ms | Allocations: 37371)
+
+
+Started GET "/todays-log" for ::1 at 2024-10-14 20:08:41 +0100
+Processing by LogsController#today as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering logs/today.html.erb within layouts/application
+  Rendered logs/today.html.erb within layouts/application (Duration: 0.5ms | Allocations: 174)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/shared/_navbar.html.erb:16
+  Rendered shared/_navbar.html.erb (Duration: 16.5ms | Allocations: 5323)
+  Rendered shared/_flashes.html.erb (Duration: 0.6ms | Allocations: 192)
+  Rendered shared/_footer.html.erb (Duration: 0.7ms | Allocations: 115)
+  Rendered layout layouts/application.html.erb (Duration: 58.0ms | Allocations: 33120)
+Completed 200 OK in 66ms (Views: 52.4ms | ActiveRecord: 7.2ms | Allocations: 34834)
+
+
+Started GET "/todays-log" for ::1 at 2024-10-14 21:10:40 +0100
+  [1m[36mActiveRecord::SchemaMigration Load (16.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by LogsController#today as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering logs/today.html.erb within layouts/application
+  Rendered logs/today.html.erb within layouts/application (Duration: 4.0ms | Allocations: 2007)
+  Rendered layout layouts/application.html.erb (Duration: 4.4ms | Allocations: 2127)
+Completed 500 Internal Server Error in 34ms (ActiveRecord: 0.0ms | Allocations: 6479)
+
+
+  
+ActionView::Template::Error (uninitialized constant #<Class:0x00007a6be7943900>::Faker):
+    25: 
+    26:     </div>
+    27: 
+    28:     <input class="m-1" type="text" placeholder="Task Title" value="<%= Faker::Lorem.sentence(word_count: rand(3..5)) %>">
+    29: 
+    30:     <input class="m-1 flex-grow-1" type="text" placeholder="Task Description" value="<%= Faker::Lorem.paragraph(sentence_count: rand(3..7)) %>">
+    31: 
+  
+app/views/logs/today.html.erb:28
+app/views/logs/today.html.erb:8
+Started GET "/todays-log" for ::1 at 2024-10-14 21:33:38 +0100
+Processing by LogsController#today as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering logs/today.html.erb within layouts/application
+  Rendered logs/today.html.erb within layouts/application (Duration: 42.2ms | Allocations: 1504)
+  [1m[36mUser Load (55.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/shared/_navbar.html.erb:16
+  Rendered shared/_navbar.html.erb (Duration: 703.2ms | Allocations: 20393)
+  Rendered shared/_flashes.html.erb (Duration: 1.5ms | Allocations: 216)
+  Rendered shared/_footer.html.erb (Duration: 1.2ms | Allocations: 117)
+  Rendered layout layouts/application.html.erb (Duration: 1590.7ms | Allocations: 89532)
+Completed 200 OK in 1646ms (Views: 1096.2ms | ActiveRecord: 529.4ms | Allocations: 91474)
+
+
+Started GET "/todays-log" for ::1 at 2024-10-14 21:43:35 +0100
+Processing by LogsController#today as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering logs/today.html.erb within layouts/application
+  Rendered logs/today.html.erb within layouts/application (Duration: 1.8ms | Allocations: 1450)
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/shared/_navbar.html.erb:16
+  Rendered shared/_navbar.html.erb (Duration: 23.9ms | Allocations: 7880)
+  Rendered shared/_flashes.html.erb (Duration: 0.6ms | Allocations: 192)
+  Rendered shared/_footer.html.erb (Duration: 0.3ms | Allocations: 115)
+  Rendered layout layouts/application.html.erb (Duration: 71.7ms | Allocations: 37121)
+Completed 200 OK in 80ms (Views: 67.8ms | ActiveRecord: 7.1ms | Allocations: 38904)
+
+
+Started GET "/" for ::1 at 2024-10-14 21:43:40 +0100
+Processing by PagesController#home as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering pages/home.html.erb within layouts/application
+  Rendered shared/_jumbotron.html.erb (Duration: 3.5ms | Allocations: 138)
+  Rendered pages/home.html.erb within layouts/application (Duration: 19.5ms | Allocations: 403)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/shared/_navbar.html.erb:16
+  Rendered shared/_navbar.html.erb (Duration: 10.0ms | Allocations: 845)
+  Rendered shared/_flashes.html.erb (Duration: 0.7ms | Allocations: 22)
+  Rendered shared/_footer.html.erb (Duration: 0.1ms | Allocations: 8)
+  Rendered layout layouts/application.html.erb (Duration: 99.2ms | Allocations: 9262)
+Completed 200 OK in 115ms (Views: 104.5ms | ActiveRecord: 0.3ms | Allocations: 9827)
+
+
+Started GET "/todays-log" for ::1 at 2024-10-14 21:57:16 +0100
+Processing by LogsController#today as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering logs/today.html.erb within layouts/application
+  Rendered logs/today.html.erb within layouts/application (Duration: 2.9ms | Allocations: 1416)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/shared/_navbar.html.erb:16
+  Rendered shared/_navbar.html.erb (Duration: 23.2ms | Allocations: 7871)
+  Rendered shared/_flashes.html.erb (Duration: 0.5ms | Allocations: 192)
+  Rendered shared/_footer.html.erb (Duration: 1.1ms | Allocations: 115)
+  Rendered layout layouts/application.html.erb (Duration: 69.6ms | Allocations: 36864)
+Completed 200 OK in 76ms (Views: 65.1ms | ActiveRecord: 6.6ms | Allocations: 38645)
+
+
+Started GET "/todays-log" for ::1 at 2024-10-14 22:01:17 +0100
+Processing by LogsController#today as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering logs/today.html.erb within layouts/application
+  Rendered logs/today.html.erb within layouts/application (Duration: 4.1ms | Allocations: 2081)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/shared/_navbar.html.erb:16
+  Rendered shared/_navbar.html.erb (Duration: 24.9ms | Allocations: 5353)
+  Rendered shared/_flashes.html.erb (Duration: 0.6ms | Allocations: 194)
+  Rendered shared/_footer.html.erb (Duration: 0.5ms | Allocations: 115)
+  Rendered layout layouts/application.html.erb (Duration: 82.0ms | Allocations: 35030)
+Completed 200 OK in 89ms (Views: 77.9ms | ActiveRecord: 6.5ms | Allocations: 36809)
+
+
+Started GET "/todays-log" for ::1 at 2024-10-14 22:01:54 +0100
+Processing by LogsController#today as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering logs/today.html.erb within layouts/application
+  Rendered logs/today.html.erb within layouts/application (Duration: 2.3ms | Allocations: 2087)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/shared/_navbar.html.erb:16
+  Rendered shared/_navbar.html.erb (Duration: 14.2ms | Allocations: 5303)
+  Rendered shared/_flashes.html.erb (Duration: 1.4ms | Allocations: 192)
+  Rendered shared/_footer.html.erb (Duration: 1.3ms | Allocations: 118)
+  Rendered layout layouts/application.html.erb (Duration: 61.8ms | Allocations: 35186)
+Completed 200 OK in 69ms (Views: 60.5ms | ActiveRecord: 3.7ms | Allocations: 36967)
+
+
+Started GET "/todays-log" for ::1 at 2024-10-14 22:12:37 +0100
+Processing by LogsController#today as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering logs/today.html.erb within layouts/application
+  Rendered logs/today.html.erb within layouts/application (Duration: 6.3ms | Allocations: 2086)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/shared/_navbar.html.erb:16
+  Rendered shared/_navbar.html.erb (Duration: 64.0ms | Allocations: 7854)
+  Rendered shared/_flashes.html.erb (Duration: 0.8ms | Allocations: 192)
+  Rendered shared/_footer.html.erb (Duration: 0.5ms | Allocations: 115)
+  Rendered layout layouts/application.html.erb (Duration: 105.1ms | Allocations: 37512)
+Completed 200 OK in 112ms (Views: 82.5ms | ActiveRecord: 25.0ms | Allocations: 39291)
+
+
+Started GET "/todays-log" for ::1 at 2024-10-14 22:13:15 +0100
+Processing by LogsController#today as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering logs/today.html.erb within layouts/application
+  Rendered logs/today.html.erb within layouts/application (Duration: 4.6ms | Allocations: 1632)
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/shared/_navbar.html.erb:16
+  Rendered shared/_navbar.html.erb (Duration: 3.7ms | Allocations: 837)
+  Rendered shared/_flashes.html.erb (Duration: 0.1ms | Allocations: 22)
+  Rendered shared/_footer.html.erb (Duration: 0.0ms | Allocations: 8)
+  Rendered layout layouts/application.html.erb (Duration: 31.1ms | Allocations: 10597)
+Completed 200 OK in 33ms (Views: 31.8ms | ActiveRecord: 0.6ms | Allocations: 10902)
+
+
+Started GET "/todays-log" for ::1 at 2024-10-14 22:20:55 +0100
+Processing by LogsController#today as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering logs/today.html.erb within layouts/application
+  Rendered logs/today.html.erb within layouts/application (Duration: 3.9ms | Allocations: 2083)
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/shared/_navbar.html.erb:16
+  Rendered shared/_navbar.html.erb (Duration: 29.7ms | Allocations: 7854)
+  Rendered shared/_flashes.html.erb (Duration: 0.5ms | Allocations: 192)
+  Rendered shared/_footer.html.erb (Duration: 0.3ms | Allocations: 115)
+  Rendered layout layouts/application.html.erb (Duration: 68.0ms | Allocations: 37727)
+Completed 200 OK in 74ms (Views: 64.6ms | ActiveRecord: 5.7ms | Allocations: 39506)
+
+
+Started GET "/todays-log" for ::1 at 2024-10-14 22:20:58 +0100
+Processing by LogsController#today as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering logs/today.html.erb within layouts/application
+  Rendered logs/today.html.erb within layouts/application (Duration: 6.1ms | Allocations: 1635)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/shared/_navbar.html.erb:16
+  Rendered shared/_navbar.html.erb (Duration: 4.7ms | Allocations: 837)
+  Rendered shared/_flashes.html.erb (Duration: 0.1ms | Allocations: 22)
+  Rendered shared/_footer.html.erb (Duration: 0.0ms | Allocations: 8)
+  Rendered layout layouts/application.html.erb (Duration: 61.6ms | Allocations: 10672)
+Completed 200 OK in 65ms (Views: 63.1ms | ActiveRecord: 0.4ms | Allocations: 10977)
+
+
+Started GET "/todays-log" for ::1 at 2024-10-14 22:21:36 +0100
+Processing by LogsController#today as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering logs/today.html.erb within layouts/application
+  Rendered logs/today.html.erb within layouts/application (Duration: 5.1ms | Allocations: 1635)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/shared/_navbar.html.erb:16
+  Rendered shared/_navbar.html.erb (Duration: 3.2ms | Allocations: 837)
+  Rendered shared/_flashes.html.erb (Duration: 0.1ms | Allocations: 22)
+  Rendered shared/_footer.html.erb (Duration: 0.0ms | Allocations: 8)
+  Rendered layout layouts/application.html.erb (Duration: 31.7ms | Allocations: 10611)
+Completed 200 OK in 33ms (Views: 32.0ms | ActiveRecord: 0.4ms | Allocations: 10916)
+
+
+Started GET "/todays-log" for ::1 at 2024-10-14 22:21:36 +0100
+Processing by LogsController#today as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering logs/today.html.erb within layouts/application
+  Rendered logs/today.html.erb within layouts/application (Duration: 5.9ms | Allocations: 1632)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/shared/_navbar.html.erb:16
+  Rendered shared/_navbar.html.erb (Duration: 2.7ms | Allocations: 837)
+  Rendered shared/_flashes.html.erb (Duration: 0.1ms | Allocations: 22)
+  Rendered shared/_footer.html.erb (Duration: 0.4ms | Allocations: 8)
+  Rendered layout layouts/application.html.erb (Duration: 44.9ms | Allocations: 10662)
+Completed 200 OK in 46ms (Views: 45.5ms | ActiveRecord: 0.3ms | Allocations: 10967)
+
+
+Started GET "/todays-log" for ::1 at 2024-10-14 22:21:37 +0100
+Processing by LogsController#today as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering logs/today.html.erb within layouts/application
+  Rendered logs/today.html.erb within layouts/application (Duration: 2.4ms | Allocations: 1630)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/shared/_navbar.html.erb:16
+  Rendered shared/_navbar.html.erb (Duration: 4.2ms | Allocations: 837)
+  Rendered shared/_flashes.html.erb (Duration: 0.1ms | Allocations: 22)
+  Rendered shared/_footer.html.erb (Duration: 0.0ms | Allocations: 8)
+  Rendered layout layouts/application.html.erb (Duration: 50.8ms | Allocations: 15487)
+Completed 200 OK in 56ms (Views: 53.1ms | ActiveRecord: 0.4ms | Allocations: 16205)
+
+
+Started GET "/todays-log" for ::1 at 2024-10-14 22:21:37 +0100
+Processing by LogsController#today as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering logs/today.html.erb within layouts/application
+  Rendered logs/today.html.erb within layouts/application (Duration: 2.6ms | Allocations: 1633)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/shared/_navbar.html.erb:16
+  Rendered shared/_navbar.html.erb (Duration: 2.8ms | Allocations: 837)
+  Rendered shared/_flashes.html.erb (Duration: 0.1ms | Allocations: 22)
+  Rendered shared/_footer.html.erb (Duration: 0.0ms | Allocations: 8)
+  Rendered layout layouts/application.html.erb (Duration: 29.9ms | Allocations: 10421)
+Completed 200 OK in 32ms (Views: 31.1ms | ActiveRecord: 0.3ms | Allocations: 10723)
+
+
+Started GET "/todays-log" for ::1 at 2024-10-14 22:21:37 +0100
+Processing by LogsController#today as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering logs/today.html.erb within layouts/application
+  Rendered logs/today.html.erb within layouts/application (Duration: 5.9ms | Allocations: 1634)
+Started GET "/todays-log" for ::1 at 2024-10-14 22:21:37 +0100
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/shared/_navbar.html.erb:16
+  Rendered shared/_navbar.html.erb (Duration: 5.6ms | Allocations: 973)
+  Rendered shared/_flashes.html.erb (Duration: 0.1ms | Allocations: 22)
+  Rendered shared/_footer.html.erb (Duration: 0.0ms | Allocations: 8)
+  Rendered layout layouts/application.html.erb (Duration: 147.1ms | Allocations: 20729)
+Completed 200 OK in 153ms (Views: 147.5ms | ActiveRecord: 1.2ms | Allocations: 21118)
+
+
+Processing by LogsController#today as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering logs/today.html.erb within layouts/application
+  Rendered logs/today.html.erb within layouts/application (Duration: 1.2ms | Allocations: 1623)
+Started GET "/todays-log" for ::1 at 2024-10-14 22:21:37 +0100
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/shared/_navbar.html.erb:16
+  Rendered shared/_navbar.html.erb (Duration: 7.6ms | Allocations: 852)
+  Rendered shared/_flashes.html.erb (Duration: 0.3ms | Allocations: 22)
+  Rendered shared/_footer.html.erb (Duration: 0.0ms | Allocations: 8)
+  Rendered layout layouts/application.html.erb (Duration: 110.3ms | Allocations: 17733)
+Processing by LogsController#today as HTML
+Completed 200 OK in 115ms (Views: 112.5ms | ActiveRecord: 0.3ms | Allocations: 18515)
+
+
+  Rendering layout layouts/application.html.erb
+  Rendering logs/today.html.erb within layouts/application
+  Rendered logs/today.html.erb within layouts/application (Duration: 2.7ms | Allocations: 1635)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/shared/_navbar.html.erb:16
+  Rendered shared/_navbar.html.erb (Duration: 3.2ms | Allocations: 1082)
+  Rendered shared/_flashes.html.erb (Duration: 0.1ms | Allocations: 22)
+  Rendered shared/_footer.html.erb (Duration: 0.0ms | Allocations: 8)
+  Rendered layout layouts/application.html.erb (Duration: 52.2ms | Allocations: 11691)
+Completed 200 OK in 56ms (Views: 52.7ms | ActiveRecord: 0.3ms | Allocations: 12254)
+
+
+Started GET "/todays-log" for ::1 at 2024-10-14 22:23:37 +0100
+Processing by LogsController#today as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering logs/today.html.erb within layouts/application
+  Rendered logs/today.html.erb within layouts/application (Duration: 3.8ms | Allocations: 2085)
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/shared/_navbar.html.erb:16
+  Rendered shared/_navbar.html.erb (Duration: 30.7ms | Allocations: 5320)
+  Rendered shared/_flashes.html.erb (Duration: 0.6ms | Allocations: 192)
+  Rendered shared/_footer.html.erb (Duration: 0.8ms | Allocations: 115)
+  Rendered layout layouts/application.html.erb (Duration: 67.6ms | Allocations: 35059)
+Completed 200 OK in 74ms (Views: 51.6ms | ActiveRecord: 18.0ms | Allocations: 36838)
+
+
+Started GET "/todays-log" for ::1 at 2024-10-14 22:25:29 +0100
+Processing by LogsController#today as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering logs/today.html.erb within layouts/application
+  Rendered logs/today.html.erb within layouts/application (Duration: 3.9ms | Allocations: 2084)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/shared/_navbar.html.erb:16
+  Rendered shared/_navbar.html.erb (Duration: 13.5ms | Allocations: 5297)
+  Rendered shared/_flashes.html.erb (Duration: 1.4ms | Allocations: 192)
+  Rendered shared/_footer.html.erb (Duration: 1.0ms | Allocations: 115)
+  Rendered layout layouts/application.html.erb (Duration: 54.0ms | Allocations: 34954)
+Completed 200 OK in 64ms (Views: 53.2ms | ActiveRecord: 3.7ms | Allocations: 36733)
+
+
+Started GET "/todays-log" for ::1 at 2024-10-14 22:25:43 +0100
+Processing by LogsController#today as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering logs/today.html.erb within layouts/application
+  Rendered logs/today.html.erb within layouts/application (Duration: 4.8ms | Allocations: 1633)
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/shared/_navbar.html.erb:16
+  Rendered shared/_navbar.html.erb (Duration: 4.3ms | Allocations: 837)
+  Rendered shared/_flashes.html.erb (Duration: 0.1ms | Allocations: 22)
+  Rendered shared/_footer.html.erb (Duration: 0.0ms | Allocations: 8)
+  Rendered layout layouts/application.html.erb (Duration: 30.5ms | Allocations: 10666)
+Completed 200 OK in 32ms (Views: 31.1ms | ActiveRecord: 0.2ms | Allocations: 10979)
+
+
+Started GET "/todays-log" for ::1 at 2024-10-14 22:27:39 +0100
+Processing by LogsController#today as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering logs/today.html.erb within layouts/application
+  Rendered logs/today.html.erb within layouts/application (Duration: 3.9ms | Allocations: 2085)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/shared/_navbar.html.erb:16
+  Rendered shared/_navbar.html.erb (Duration: 15.3ms | Allocations: 5299)
+  Rendered shared/_flashes.html.erb (Duration: 1.1ms | Allocations: 192)
+  Rendered shared/_footer.html.erb (Duration: 0.6ms | Allocations: 115)
+  Rendered layout layouts/application.html.erb (Duration: 62.7ms | Allocations: 35162)
+Completed 200 OK in 74ms (Views: 62.5ms | ActiveRecord: 4.6ms | Allocations: 36941)
+
+
+  [1m[35m (6.0ms)[0m  [1m[34mSELECT pg_try_advisory_lock(1184012072199246360)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (52.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (2.0ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+Migrating to AddColumsToUsers (20241015140700)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (182.0ms)[0m  [1m[35mALTER TABLE "users" ADD "username" character varying[0m
+  [1m[35m (0.4ms)[0m  [1m[35mALTER TABLE "users" ADD "first_name" character varying[0m
+  [1m[35m (0.6ms)[0m  [1m[35mALTER TABLE "users" ADD "last_name" character varying[0m
+  [1m[35m (0.5ms)[0m  [1m[35mALTER TABLE "users" ADD "image_url" text[0m
+  [1m[35m (0.6ms)[0m  [1m[35mALTER TABLE "users" ADD "bio" text[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20241015140700') RETURNING "version"[0m
+  [1m[36mTRANSACTION (26.3ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateCategories (20241015143849)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (690.2ms)[0m  [1m[35mCREATE TABLE "categories" ("id" bigserial primary key, "category" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20241015143849') RETURNING "version"[0m
+  [1m[36mTRANSACTION (17.0ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateJournalEntries (20241015144653)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (165.5ms)[0m  [1m[35mCREATE TABLE "journal_entries" ("id" bigserial primary key, "user_id" bigint NOT NULL, "title" character varying, "entry" text, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, CONSTRAINT "fk_rails_4ea185c6f0"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+)[0m
+  [1m[35m (73.6ms)[0m  [1m[35mCREATE INDEX "index_journal_entries_on_user_id" ON "journal_entries" ("user_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20241015144653') RETURNING "version"[0m
+  [1m[36mTRANSACTION (8.2ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateJournalCategories (20241015144819)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (147.0ms)[0m  [1m[35mCREATE TABLE "journal_categories" ("id" bigserial primary key, "journal_entry_id" bigint NOT NULL, "category_id" bigint NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, CONSTRAINT "fk_rails_c2f2d1e657"
+FOREIGN KEY ("journal_entry_id")
+  REFERENCES "journal_entries" ("id")
+, CONSTRAINT "fk_rails_3cd01208a2"
+FOREIGN KEY ("category_id")
+  REFERENCES "categories" ("id")
+)[0m
+  [1m[35m (42.9ms)[0m  [1m[35mCREATE INDEX "index_journal_categories_on_journal_entry_id" ON "journal_categories" ("journal_entry_id")[0m
+  [1m[35m (53.5ms)[0m  [1m[35mCREATE INDEX "index_journal_categories_on_category_id" ON "journal_categories" ("category_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20241015144819') RETURNING "version"[0m
+  [1m[36mTRANSACTION (13.0ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateTasks (20241015145201)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (172.8ms)[0m  [1m[35mCREATE TABLE "tasks" ("id" bigserial primary key, "user_id" bigint NOT NULL, "task_type" integer, "routine" integer, "order" integer, "title" character varying, "description" text, "comment" text, "start_date" timestamp(6), "due_date" timestamp(6), "completed" boolean, "active" boolean, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, CONSTRAINT "fk_rails_4d2a9e4d7e"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+)[0m
+  [1m[35m (60.3ms)[0m  [1m[35mCREATE INDEX "index_tasks_on_user_id" ON "tasks" ("user_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.6ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20241015145201') RETURNING "version"[0m
+  [1m[36mTRANSACTION (22.8ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateSubTasks (20241015145351)
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (130.3ms)[0m  [1m[35mCREATE TABLE "sub_tasks" ("id" bigserial primary key, "task_id" bigint NOT NULL, "order" integer, "title" character varying, "description" text, "comment" text, "start_date" timestamp(6), "due_date" timestamp(6), "completed" boolean, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, CONSTRAINT "fk_rails_8175f560d2"
+FOREIGN KEY ("task_id")
+  REFERENCES "tasks" ("id")
+)[0m
+  [1m[35m (49.1ms)[0m  [1m[35mCREATE INDEX "index_sub_tasks_on_task_id" ON "sub_tasks" ("task_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20241015145351') RETURNING "version"[0m
+  [1m[36mTRANSACTION (22.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT pg_advisory_unlock(1184012072199246360)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_try_advisory_lock(1184012072199246360)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.8ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+Migrating to ChangeDefaultValueforRoutineTo0InTasks (20241015150424)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (23.7ms)[0m  [1m[35mALTER TABLE "tasks" ALTER COLUMN "routine" SET DEFAULT 0[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20241015150424') RETURNING "version"[0m
+  [1m[36mTRANSACTION (17.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT pg_advisory_unlock(1184012072199246360)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
