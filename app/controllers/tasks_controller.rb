@@ -1,8 +1,6 @@
 class TasksController < ApplicationController
   before_action :set_task, only: %i[ show edit update destroy ]
 
-  # Make :active true by default?
-
   def index
     @tasks = policy_scope(Task)
   end

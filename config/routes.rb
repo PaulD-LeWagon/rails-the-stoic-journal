@@ -4,5 +4,8 @@ Rails.application.routes.draw do
   get "/todays-log", to: "logs#today"
   root to: "pages#home"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
-  resources :tasks
+  resources :tasks do
+    resources :sub_tasks, path: "subtasks", only: [ :new, :create, :edit, :update ]
+  end
+  resources :sub_tasks, path: "subtasks", except: [ :new, :create, :edit, :update ]
 end

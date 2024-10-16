@@ -4,6 +4,9 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  has_many :tasks
+  has_many :journal_entries
+
   def full_name
     if !first_name.blank?
       if !last_name.blank?

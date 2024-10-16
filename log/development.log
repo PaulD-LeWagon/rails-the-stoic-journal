@@ -5364,3 +5364,2074 @@ Completed 200 OK in 57ms (Views: 37.3ms | ActiveRecord: 1.4ms | Allocations: 113
 
 
   [1m[36mTask Load (0.5ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" ORDER BY "tasks"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[35m (9.3ms)[0m  [1m[34mSELECT pg_try_advisory_lock(1184012072199246360)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (61.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (3.8ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+Migrating to CreateRoutines (20241016094513)
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (146.9ms)[0m  [1m[35mCREATE TABLE "routines" ("id" bigserial primary key, "type" integer, "recurs_on" hstore, "task_id" bigint NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, CONSTRAINT "fk_rails_d616810219"
+FOREIGN KEY ("task_id")
+  REFERENCES "tasks" ("id")
+)[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT pg_advisory_unlock(1184012072199246360)[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT pg_try_advisory_lock(1184012072199246360)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (1.3ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+Migrating to CreateRoutines (20241016094513)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (1090.6ms)[0m  [1m[35mCREATE TABLE "routines" ("id" bigserial primary key, "type" integer, "recurs_on" json, "task_id" bigint NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, CONSTRAINT "fk_rails_d616810219"
+FOREIGN KEY ("task_id")
+  REFERENCES "tasks" ("id")
+)[0m
+  [1m[35m (82.4ms)[0m  [1m[35mCREATE INDEX "index_routines_on_task_id" ON "routines" ("task_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (21.6ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20241016094513') RETURNING "version"[0m
+  [1m[36mTRANSACTION (11.3ms)[0m  [1m[35mCOMMIT[0m
+Migrating to RemoveColumnRoutineFromTask (20241016094817)
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (83.2ms)[0m  [1m[35mALTER TABLE "tasks" DROP COLUMN "routine"[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.7ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20241016094817') RETURNING "version"[0m
+  [1m[36mTRANSACTION (13.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT pg_advisory_unlock(1184012072199246360)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_try_advisory_lock(1184012072199246360)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (1.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (1.0ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+Migrating to AddRoutineReferencesToTask (20241016100351)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (173.3ms)[0m  [1m[35mALTER TABLE "tasks" ADD "routine_id" bigint NOT NULL[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT pg_advisory_unlock(1184012072199246360)[0m
+  [1m[36mTask Load (71.4ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks"[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTask Destroy (75.9ms)[0m  [1m[31mDELETE FROM "tasks" WHERE "tasks"."id" = $1[0m  [["id", 1]]
+  [1m[36mTRANSACTION (18.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTask Destroy (1.1ms)[0m  [1m[31mDELETE FROM "tasks" WHERE "tasks"."id" = $1[0m  [["id", 2]]
+  [1m[36mTRANSACTION (7.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTask Destroy (2.5ms)[0m  [1m[31mDELETE FROM "tasks" WHERE "tasks"."id" = $1[0m  [["id", 3]]
+  [1m[36mTRANSACTION (6.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTask Destroy (1.4ms)[0m  [1m[31mDELETE FROM "tasks" WHERE "tasks"."id" = $1[0m  [["id", 4]]
+  [1m[36mTRANSACTION (8.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTask Destroy (1.1ms)[0m  [1m[31mDELETE FROM "tasks" WHERE "tasks"."id" = $1[0m  [["id", 5]]
+  [1m[36mTRANSACTION (8.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTask Count (26.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "tasks"[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.8ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (1.0ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+  [1m[35m (520.8ms)[0m  [1m[35mDROP DATABASE IF EXISTS "rails_authorization_development"[0m
+  [1m[35m (334.3ms)[0m  [1m[35mDROP DATABASE IF EXISTS "rails_authorization_test"[0m
+  [1m[35m (2408.1ms)[0m  [1m[35mCREATE DATABASE "rails_authorization_development" ENCODING = 'unicode'[0m
+  [1m[35m (289.4ms)[0m  [1m[35mCREATE DATABASE "rails_authorization_test" ENCODING = 'unicode'[0m
+  [1m[35m (117.9ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (119.2ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT pg_try_advisory_lock(1184012072199246360)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (1.4ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+  [1m[36mActiveRecord::InternalMetadata Create (12.6ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ('environment', 'development', '2024-10-16 10:06:33.223008', '2024-10-16 10:06:33.223014') RETURNING "key"[0m
+Migrating to DeviseCreateUsers (20230321153651)
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (120.8ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "email" character varying DEFAULT '' NOT NULL, "encrypted_password" character varying DEFAULT '' NOT NULL, "reset_password_token" character varying, "reset_password_sent_at" timestamp(6), "remember_created_at" timestamp(6), "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (42.0ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")[0m
+  [1m[35m (52.5ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_reset_password_token" ON "users" ("reset_password_token")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (1.0ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20230321153651') RETURNING "version"[0m
+  [1m[36mTRANSACTION (19.6ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateRestaurants (20230321154828)
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (138.1ms)[0m  [1m[35mCREATE TABLE "restaurants" ("id" bigserial primary key, "name" character varying, "user_id" bigint NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, CONSTRAINT "fk_rails_aef57e41ec"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+)[0m
+  [1m[35m (51.0ms)[0m  [1m[35mCREATE INDEX "index_restaurants_on_user_id" ON "restaurants" ("user_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (2.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20230321154828') RETURNING "version"[0m
+  [1m[36mTRANSACTION (21.2ms)[0m  [1m[35mCOMMIT[0m
+Migrating to AddAdminToUsers (20230321172223)
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (4.9ms)[0m  [1m[35mALTER TABLE "users" ADD "admin" boolean[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20230321172223') RETURNING "version"[0m
+  [1m[36mTRANSACTION (9.9ms)[0m  [1m[35mCOMMIT[0m
+Migrating to AddColumsToUsers (20241015140700)
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (2.8ms)[0m  [1m[35mALTER TABLE "users" ADD "username" character varying[0m
+  [1m[35m (0.6ms)[0m  [1m[35mALTER TABLE "users" ADD "first_name" character varying[0m
+  [1m[35m (0.5ms)[0m  [1m[35mALTER TABLE "users" ADD "last_name" character varying[0m
+  [1m[35m (1.6ms)[0m  [1m[35mALTER TABLE "users" ADD "image_url" text[0m
+  [1m[35m (0.7ms)[0m  [1m[35mALTER TABLE "users" ADD "bio" text[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.6ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20241015140700') RETURNING "version"[0m
+  [1m[36mTRANSACTION (21.6ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateCategories (20241015143849)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (448.3ms)[0m  [1m[35mCREATE TABLE "categories" ("id" bigserial primary key, "category" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.9ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20241015143849') RETURNING "version"[0m
+  [1m[36mTRANSACTION (17.2ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateJournalEntries (20241015144653)
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (137.5ms)[0m  [1m[35mCREATE TABLE "journal_entries" ("id" bigserial primary key, "user_id" bigint NOT NULL, "title" character varying, "entry" text, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, CONSTRAINT "fk_rails_4ea185c6f0"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+)[0m
+  [1m[35m (50.3ms)[0m  [1m[35mCREATE INDEX "index_journal_entries_on_user_id" ON "journal_entries" ("user_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.6ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20241015144653') RETURNING "version"[0m
+  [1m[36mTRANSACTION (16.4ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateJournalCategories (20241015144819)
+  [1m[36mTRANSACTION (1.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (105.2ms)[0m  [1m[35mCREATE TABLE "journal_categories" ("id" bigserial primary key, "journal_entry_id" bigint NOT NULL, "category_id" bigint NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, CONSTRAINT "fk_rails_c2f2d1e657"
+FOREIGN KEY ("journal_entry_id")
+  REFERENCES "journal_entries" ("id")
+, CONSTRAINT "fk_rails_3cd01208a2"
+FOREIGN KEY ("category_id")
+  REFERENCES "categories" ("id")
+)[0m
+  [1m[35m (61.0ms)[0m  [1m[35mCREATE INDEX "index_journal_categories_on_journal_entry_id" ON "journal_categories" ("journal_entry_id")[0m
+  [1m[35m (41.3ms)[0m  [1m[35mCREATE INDEX "index_journal_categories_on_category_id" ON "journal_categories" ("category_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (1.8ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20241015144819') RETURNING "version"[0m
+  [1m[36mTRANSACTION (23.4ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateTasks (20241015145201)
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (128.6ms)[0m  [1m[35mCREATE TABLE "tasks" ("id" bigserial primary key, "user_id" bigint NOT NULL, "task_type" integer, "routine" integer, "order" integer, "title" character varying, "description" text, "comment" text, "start_date" timestamp(6), "due_date" timestamp(6), "completed" boolean, "active" boolean, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, CONSTRAINT "fk_rails_4d2a9e4d7e"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+)[0m
+  [1m[35m (63.7ms)[0m  [1m[35mCREATE INDEX "index_tasks_on_user_id" ON "tasks" ("user_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.8ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20241015145201') RETURNING "version"[0m
+  [1m[36mTRANSACTION (22.8ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateSubTasks (20241015145351)
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (103.9ms)[0m  [1m[35mCREATE TABLE "sub_tasks" ("id" bigserial primary key, "task_id" bigint NOT NULL, "order" integer, "title" character varying, "description" text, "comment" text, "start_date" timestamp(6), "due_date" timestamp(6), "completed" boolean, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, CONSTRAINT "fk_rails_8175f560d2"
+FOREIGN KEY ("task_id")
+  REFERENCES "tasks" ("id")
+)[0m
+  [1m[35m (61.7ms)[0m  [1m[35mCREATE INDEX "index_sub_tasks_on_task_id" ON "sub_tasks" ("task_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.7ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20241015145351') RETURNING "version"[0m
+  [1m[36mTRANSACTION (22.8ms)[0m  [1m[35mCOMMIT[0m
+Migrating to ChangeDefaultValueforRoutineTo0InTasks (20241015150424)
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.9ms)[0m  [1m[35mALTER TABLE "tasks" ALTER COLUMN "routine" SET DEFAULT 0[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.6ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20241015150424') RETURNING "version"[0m
+  [1m[36mTRANSACTION (13.8ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateRoutines (20241016094513)
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (97.9ms)[0m  [1m[35mCREATE TABLE "routines" ("id" bigserial primary key, "type" integer, "recurs_on" json, "task_id" bigint NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, CONSTRAINT "fk_rails_d616810219"
+FOREIGN KEY ("task_id")
+  REFERENCES "tasks" ("id")
+)[0m
+  [1m[35m (60.7ms)[0m  [1m[35mCREATE INDEX "index_routines_on_task_id" ON "routines" ("task_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20241016094513') RETURNING "version"[0m
+  [1m[36mTRANSACTION (15.8ms)[0m  [1m[35mCOMMIT[0m
+Migrating to RemoveColumnRoutineFromTask (20241016094817)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (2.9ms)[0m  [1m[35mALTER TABLE "tasks" DROP COLUMN "routine"[0m
+  [1m[36mActiveRecord::SchemaMigration Create (1.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20241016094817') RETURNING "version"[0m
+  [1m[36mTRANSACTION (7.5ms)[0m  [1m[35mCOMMIT[0m
+Migrating to AddRoutineReferencesToTask (20241016100351)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (2.3ms)[0m  [1m[35mALTER TABLE "tasks" ADD "routine_id" bigint NOT NULL[0m
+  [1m[35m (44.1ms)[0m  [1m[35mCREATE INDEX "index_tasks_on_routine_id" ON "tasks" ("routine_id")[0m
+  [1m[35m (1.7ms)[0m  [1m[35mALTER TABLE "tasks" ADD CONSTRAINT "fk_rails_286ad7dcce"
+FOREIGN KEY ("routine_id")
+  REFERENCES "routines" ("id")
+[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20241016100351') RETURNING "version"[0m
+  [1m[36mTRANSACTION (22.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (1.8ms)[0m  [1m[34mSELECT pg_advisory_unlock(1184012072199246360)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/tasks" for ::1 at 2024-10-16 11:14:40 +0100
+  [1m[36mActiveRecord::SchemaMigration Load (1.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by TasksController#index as HTML
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Completed 401 Unauthorized in 108ms (ActiveRecord: 23.7ms | Allocations: 11327)
+
+
+Started GET "/users/sign_in" for ::1 at 2024-10-16 11:14:41 +0100
+Processing by Devise::SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (Duration: 4.3ms | Allocations: 557)
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 105.3ms | Allocations: 10533)
+  Rendered shared/_navbar.html.erb (Duration: 1.8ms | Allocations: 542)
+  Rendered shared/_flashes.html.erb (Duration: 2.0ms | Allocations: 207)
+  Rendered shared/_footer.html.erb (Duration: 0.6ms | Allocations: 117)
+  Rendered layout layouts/application.html.erb (Duration: 792.9ms | Allocations: 78416)
+Completed 200 OK in 940ms (Views: 846.4ms | ActiveRecord: 0.0ms | Allocations: 99424)
+
+
+Started POST "/users/sign_in" for ::1 at 2024-10-16 11:15:01 +0100
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"email"=>"pauldevanney92@gmail.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "pauldevanney92@gmail.com"], ["LIMIT", 1]]
+Completed 401 Unauthorized in 38ms (ActiveRecord: 0.4ms | Allocations: 1799)
+
+
+Processing by Devise::SessionsController#new as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"email"=>"pauldevanney92@gmail.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  Rendering layout layouts/application.html.erb
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (Duration: 0.4ms | Allocations: 111)
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 11.8ms | Allocations: 3343)
+  Rendered shared/_navbar.html.erb (Duration: 0.7ms | Allocations: 69)
+  Rendered shared/_flashes.html.erb (Duration: 0.1ms | Allocations: 18)
+  Rendered shared/_footer.html.erb (Duration: 0.0ms | Allocations: 8)
+  Rendered layout layouts/application.html.erb (Duration: 36.8ms | Allocations: 11181)
+Completed 200 OK in 702ms (Views: 38.0ms | ActiveRecord: 0.0ms | Allocations: 12227)
+
+
+  [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (3.6ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "pauldevanney92@gmail.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.9ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at", "created_at", "updated_at", "admin", "username", "first_name", "last_name", "image_url", "bio") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13) RETURNING "id"[0m  [["email", "pauldevanney92@gmail.com"], ["encrypted_password", "[FILTERED]"], ["reset_password_token", "[FILTERED]"], ["reset_password_sent_at", "[FILTERED]"], ["remember_created_at", nil], ["created_at", "2024-10-16 10:20:27.685828"], ["updated_at", "2024-10-16 10:20:27.685828"], ["admin", nil], ["username", "HarryD"], ["first_name", "Paul"], ["last_name", "Devanney"], ["image_url", "https://d26jy9fbi4q9wx.cloudfront.net/rails/active_storage/representations/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBd0ErQXc9PSIsImV4cCI6bnVsbCwicHVyIjoiYmxvYl9pZCJ9fQ==--2d5e88acd264501b52d1a84625c82aeba643b99e/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJYW5CbkJqb0dSVlE2RTNKbGMybDZaVjkwYjE5bWFXeHNXd2hwQWNocEFjaDdCam9KWTNKdmNEb09ZWFIwWlc1MGFXOXUiLCJleHAiOm51bGwsInB1ciI6InZhcmlhdGlvbiJ9fQ==--b67d9ded4d28d0969fbb98b4c21b79257705a99a/20240805_234634.jpg"], ["bio", "In my last job I was a QA at an industrial bakery which supplied baked goods to most of the big supermarkets in the UK. It wasn't a bad job but its not what I wanted to do. I, obviously, want to get into Web Development or similar role. I have been in to coding, on and off, for quite a few years now. However, I didn't go to Uni nor do I have any industry recognised certification which meant I couldn't get passed the 'Recruitment Agencies'! So, I'm hoping this bootcamp can remedy that although, If I succeed on this bootcamp the freelance route could be a better option. I was a little apprehensive about applying for this course, initially, as I've practically no experience with the Ruby Programming language but quickly realised it would be a worth while challenge and learning experience."]]
+  [1m[36mTRANSACTION (22.6ms)[0m  [1m[35mCOMMIT[0m
+Started GET "/users/sign_in" for ::1 at 2024-10-16 11:28:50 +0100
+Processing by Devise::SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (Duration: 0.5ms | Allocations: 111)
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 13.6ms | Allocations: 3279)
+  Rendered shared/_navbar.html.erb (Duration: 0.3ms | Allocations: 96)
+  Rendered shared/_flashes.html.erb (Duration: 0.1ms | Allocations: 22)
+  Rendered shared/_footer.html.erb (Duration: 0.0ms | Allocations: 8)
+  Rendered layout layouts/application.html.erb (Duration: 59.1ms | Allocations: 11138)
+Completed 200 OK in 62ms (Views: 60.0ms | ActiveRecord: 0.0ms | Allocations: 11734)
+
+
+Started POST "/users/sign_in" for ::1 at 2024-10-16 11:28:53 +0100
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"email"=>"pauldevanney92@gmail.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "pauldevanney92@gmail.com"], ["LIMIT", 1]]
+Redirected to http://localhost:3000/tasks
+Completed 303 See Other in 539ms (ActiveRecord: 15.3ms | Allocations: 9125)
+
+
+Started GET "/tasks" for ::1 at 2024-10-16 11:28:54 +0100
+Processing by TasksController#index as HTML
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering tasks/index.html.erb within layouts/application
+  [1m[36mTask Load (3.0ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/views/tasks/index.html.erb:7
+  Rendered tasks/index.html.erb within layouts/application (Duration: 8.8ms | Allocations: 698)
+  Rendered shared/_navbar.html.erb (Duration: 0.8ms | Allocations: 206)
+  Rendered shared/_flashes.html.erb (Duration: 0.1ms | Allocations: 32)
+  Rendered shared/_footer.html.erb (Duration: 0.0ms | Allocations: 9)
+  Rendered layout layouts/application.html.erb (Duration: 39.5ms | Allocations: 9015)
+Completed 200 OK in 148ms (Views: 39.9ms | ActiveRecord: 10.4ms | Allocations: 15505)
+
+
+Started GET "/tasks/new" for ::1 at 2024-10-16 11:29:05 +0100
+Processing by TasksController#new as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering tasks/new.html.erb within layouts/application
+  Rendered tasks/new.html.erb within layouts/application (Duration: 42.6ms | Allocations: 4037)
+  Rendered layout layouts/application.html.erb (Duration: 43.2ms | Allocations: 4122)
+Completed 500 Internal Server Error in 152ms (ActiveRecord: 3.0ms | Allocations: 20272)
+
+
+  
+ActionView::Template::Error (undefined method `transform_types_for_html_select' for class Routine):
+    15: 
+    16:         <%= f.input :order, input_html: { class: "form-control mb-3" } %>
+    17: 
+    18:         <%= f.input :routine, collection: Routine::transform_types_for_html_select, input_html: { class: "form-control mb-3" } %>
+    19: 
+    20:         <%= f.input :task_type, collection: Task::transform_task_types_for_html_select, input_html: { class: "form-control mb-3" } %>
+    21: 
+  
+app/views/tasks/new.html.erb:18
+app/views/tasks/new.html.erb:7
+Started GET "/tasks/new" for ::1 at 2024-10-16 11:30:42 +0100
+Processing by TasksController#new as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering tasks/new.html.erb within layouts/application
+  Rendered tasks/new.html.erb within layouts/application (Duration: 58.5ms | Allocations: 9585)
+  Rendered shared/_navbar.html.erb (Duration: 1.2ms | Allocations: 568)
+  Rendered shared/_flashes.html.erb (Duration: 0.5ms | Allocations: 192)
+  Rendered shared/_footer.html.erb (Duration: 0.4ms | Allocations: 115)
+  Rendered layout layouts/application.html.erb (Duration: 94.8ms | Allocations: 37725)
+Completed 200 OK in 182ms (Views: 95.0ms | ActiveRecord: 9.2ms | Allocations: 54612)
+
+
+Started POST "/tasks" for ::1 at 2024-10-16 11:31:46 +0100
+Processing by TasksController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "task"=>{"order"=>"1", "routine"=>"morning", "task_type"=>"self_development", "title"=>"Meditate", "description"=>"Just meditate.", "start_date"=>"2024-10-17T06:30", "due_date"=>""}, "commit"=>"Add?"}
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 19ms (ActiveRecord: 1.1ms | Allocations: 2194)
+
+
+  
+ActiveRecord::AssociationTypeMismatch (Routine(#40560) expected, got "morning" which is an instance of String(#2920)):
+  
+app/controllers/tasks_controller.rb:28:in `create'
+Started GET "/tasks/new" for ::1 at 2024-10-16 11:33:47 +0100
+Processing by TasksController#new as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering tasks/new.html.erb within layouts/application
+  Rendered tasks/new.html.erb within layouts/application (Duration: 23.5ms | Allocations: 8361)
+  Rendered shared/_navbar.html.erb (Duration: 3.5ms | Allocations: 568)
+  Rendered shared/_flashes.html.erb (Duration: 0.5ms | Allocations: 194)
+  Rendered shared/_footer.html.erb (Duration: 0.3ms | Allocations: 115)
+  Rendered layout layouts/application.html.erb (Duration: 148.8ms | Allocations: 36499)
+Completed 200 OK in 199ms (Views: 148.8ms | ActiveRecord: 11.4ms | Allocations: 53361)
+
+
+Started POST "/tasks" for ::1 at 2024-10-16 11:34:41 +0100
+Processing by TasksController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "task"=>{"order"=>"1", "routine"=>"1", "task_type"=>"self_development", "title"=>"Meditate", "description"=>"jsut meditate", "start_date"=>"2024-10-17T06:34", "due_date"=>""}, "commit"=>"Add?"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 14ms (ActiveRecord: 0.6ms | Allocations: 2176)
+
+
+  
+ActiveRecord::AssociationTypeMismatch (Routine(#51240) expected, got "1" which is an instance of String(#2920)):
+  
+app/controllers/tasks_controller.rb:28:in `create'
+  [1m[36mActiveRecord::SchemaMigration Load (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.8ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.4ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+  [1m[35m (5006.9ms)[0m  [1m[35mDROP DATABASE IF EXISTS "rails_authorization_development"[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (1.1ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.5ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+  [1m[35m (5008.5ms)[0m  [1m[35mDROP DATABASE IF EXISTS "rails_authorization_development"[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (1.1ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.5ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+  [1m[35m (344.9ms)[0m  [1m[34mSELECT column_name FROM information_schema.columns WHERE table_name = 'pg_stat_activity' AND column_name = 'pid';[0m
+  [1m[35m (54.8ms)[0m  [1m[34mSELECT pg_terminate_backend(pg_stat_activity.pid) FROM pg_stat_activity WHERE datname='rails_authorization_development' AND pid <> pg_backend_pid();[0m
+  [1m[35m (319.0ms)[0m  [1m[35mDROP DATABASE IF EXISTS "rails_authorization_development"[0m
+  [1m[35m (16.2ms)[0m  [1m[34mSELECT column_name FROM information_schema.columns WHERE table_name = 'pg_stat_activity' AND column_name = 'pid';[0m
+  [1m[35m (3.7ms)[0m  [1m[34mSELECT pg_terminate_backend(pg_stat_activity.pid) FROM pg_stat_activity WHERE datname='rails_authorization_test' AND pid <> pg_backend_pid();[0m
+  [1m[35m (510.6ms)[0m  [1m[35mDROP DATABASE IF EXISTS "rails_authorization_test"[0m
+  [1m[35m (368.3ms)[0m  [1m[35mCREATE DATABASE "rails_authorization_development" ENCODING = 'unicode'[0m
+  [1m[35m (297.0ms)[0m  [1m[35mCREATE DATABASE "rails_authorization_test" ENCODING = 'unicode'[0m
+  [1m[35m (148.5ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (107.1ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(1184012072199246360)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (3.6ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+  [1m[36mActiveRecord::InternalMetadata Create (9.0ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ('environment', 'development', '2024-10-16 10:58:44.997021', '2024-10-16 10:58:44.997026') RETURNING "key"[0m
+Migrating to DeviseCreateUsers (20230321153651)
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (112.1ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "email" character varying DEFAULT '' NOT NULL, "encrypted_password" character varying DEFAULT '' NOT NULL, "reset_password_token" character varying, "reset_password_sent_at" timestamp(6), "remember_created_at" timestamp(6), "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (54.4ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")[0m
+  [1m[35m (56.2ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_reset_password_token" ON "users" ("reset_password_token")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (1.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20230321153651') RETURNING "version"[0m
+  [1m[36mTRANSACTION (19.7ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateRestaurants (20230321154828)
+  [1m[36mTRANSACTION (1.8ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (125.8ms)[0m  [1m[35mCREATE TABLE "restaurants" ("id" bigserial primary key, "name" character varying, "user_id" bigint NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, CONSTRAINT "fk_rails_aef57e41ec"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+)[0m
+  [1m[35m (42.7ms)[0m  [1m[35mCREATE INDEX "index_restaurants_on_user_id" ON "restaurants" ("user_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.7ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20230321154828') RETURNING "version"[0m
+  [1m[36mTRANSACTION (21.5ms)[0m  [1m[35mCOMMIT[0m
+Migrating to AddAdminToUsers (20230321172223)
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (2.6ms)[0m  [1m[35mALTER TABLE "users" ADD "admin" boolean DEFAULT FALSE[0m
+  [1m[36mActiveRecord::SchemaMigration Create (2.0ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20230321172223') RETURNING "version"[0m
+  [1m[36mTRANSACTION (16.7ms)[0m  [1m[35mCOMMIT[0m
+Migrating to AddColumsToUsers (20241015140700)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (1.8ms)[0m  [1m[35mALTER TABLE "users" ADD "username" character varying[0m
+  [1m[35m (0.4ms)[0m  [1m[35mALTER TABLE "users" ADD "first_name" character varying[0m
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "users" ADD "last_name" character varying[0m
+  [1m[35m (0.4ms)[0m  [1m[35mALTER TABLE "users" ADD "image_url" text[0m
+  [1m[35m (0.5ms)[0m  [1m[35mALTER TABLE "users" ADD "bio" text[0m
+  [1m[36mActiveRecord::SchemaMigration Create (1.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20241015140700') RETURNING "version"[0m
+  [1m[36mTRANSACTION (5.4ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateCategories (20241015143849)
+  [1m[36mTRANSACTION (1.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (127.0ms)[0m  [1m[35mCREATE TABLE "categories" ("id" bigserial primary key, "category" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20241015143849') RETURNING "version"[0m
+  [1m[36mTRANSACTION (22.6ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateJournalEntries (20241015144653)
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (123.3ms)[0m  [1m[35mCREATE TABLE "journal_entries" ("id" bigserial primary key, "user_id" bigint NOT NULL, "title" character varying, "entry" text, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, CONSTRAINT "fk_rails_4ea185c6f0"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+)[0m
+  [1m[35m (87.0ms)[0m  [1m[35mCREATE INDEX "index_journal_entries_on_user_id" ON "journal_entries" ("user_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (1.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20241015144653') RETURNING "version"[0m
+  [1m[36mTRANSACTION (19.5ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateJournalCategories (20241015144819)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (50.6ms)[0m  [1m[35mCREATE TABLE "journal_categories" ("id" bigserial primary key, "journal_entry_id" bigint NOT NULL, "category_id" bigint NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, CONSTRAINT "fk_rails_c2f2d1e657"
+FOREIGN KEY ("journal_entry_id")
+  REFERENCES "journal_entries" ("id")
+, CONSTRAINT "fk_rails_3cd01208a2"
+FOREIGN KEY ("category_id")
+  REFERENCES "categories" ("id")
+)[0m
+  [1m[35m (40.1ms)[0m  [1m[35mCREATE INDEX "index_journal_categories_on_journal_entry_id" ON "journal_categories" ("journal_entry_id")[0m
+  [1m[35m (65.7ms)[0m  [1m[35mCREATE INDEX "index_journal_categories_on_category_id" ON "journal_categories" ("category_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20241015144819') RETURNING "version"[0m
+  [1m[36mTRANSACTION (22.6ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateTasks (20241015145201)
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (100.1ms)[0m  [1m[35mCREATE TABLE "tasks" ("id" bigserial primary key, "user_id" bigint NOT NULL, "routine_id" bigint NOT NULL, "task_type" integer DEFAULT 0, "order" integer, "title" character varying, "description" text, "comment" text, "start_date" timestamp(6), "due_date" timestamp(6), "completed" boolean, "active" boolean, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, CONSTRAINT "fk_rails_4d2a9e4d7e"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+, CONSTRAINT "fk_rails_286ad7dcce"
+FOREIGN KEY ("routine_id")
+  REFERENCES "routines" ("id")
+)[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT pg_advisory_unlock(1184012072199246360)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.8ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.4ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.4ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+  [1m[35m (9.7ms)[0m  [1m[34mSELECT column_name FROM information_schema.columns WHERE table_name = 'pg_stat_activity' AND column_name = 'pid';[0m
+  [1m[35m (1.9ms)[0m  [1m[34mSELECT pg_terminate_backend(pg_stat_activity.pid) FROM pg_stat_activity WHERE datname='rails_authorization_development' AND pid <> pg_backend_pid();[0m
+  [1m[35m (860.0ms)[0m  [1m[35mDROP DATABASE IF EXISTS "rails_authorization_development"[0m
+  [1m[35m (11.0ms)[0m  [1m[34mSELECT column_name FROM information_schema.columns WHERE table_name = 'pg_stat_activity' AND column_name = 'pid';[0m
+  [1m[35m (1.8ms)[0m  [1m[34mSELECT pg_terminate_backend(pg_stat_activity.pid) FROM pg_stat_activity WHERE datname='rails_authorization_test' AND pid <> pg_backend_pid();[0m
+  [1m[35m (328.5ms)[0m  [1m[35mDROP DATABASE IF EXISTS "rails_authorization_test"[0m
+  [1m[35m (265.3ms)[0m  [1m[35mCREATE DATABASE "rails_authorization_development" ENCODING = 'unicode'[0m
+  [1m[35m (278.0ms)[0m  [1m[35mCREATE DATABASE "rails_authorization_test" ENCODING = 'unicode'[0m
+  [1m[35m (130.5ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (127.0ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT pg_try_advisory_lock(1184012072199246360)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (1.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (2.2ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+  [1m[36mActiveRecord::InternalMetadata Create (14.4ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ('environment', 'development', '2024-10-16 11:01:16.069314', '2024-10-16 11:01:16.069329') RETURNING "key"[0m
+Migrating to DeviseCreateUsers (20230321153651)
+  [1m[36mTRANSACTION (1.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (102.5ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "email" character varying DEFAULT '' NOT NULL, "encrypted_password" character varying DEFAULT '' NOT NULL, "reset_password_token" character varying, "reset_password_sent_at" timestamp(6), "remember_created_at" timestamp(6), "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (63.1ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")[0m
+  [1m[35m (41.3ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_reset_password_token" ON "users" ("reset_password_token")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (1.0ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20230321153651') RETURNING "version"[0m
+  [1m[36mTRANSACTION (22.6ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateRestaurants (20230321154828)
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (129.2ms)[0m  [1m[35mCREATE TABLE "restaurants" ("id" bigserial primary key, "name" character varying, "user_id" bigint NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, CONSTRAINT "fk_rails_aef57e41ec"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+)[0m
+  [1m[35m (50.0ms)[0m  [1m[35mCREATE INDEX "index_restaurants_on_user_id" ON "restaurants" ("user_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.7ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20230321154828') RETURNING "version"[0m
+  [1m[36mTRANSACTION (21.6ms)[0m  [1m[35mCOMMIT[0m
+Migrating to AddAdminToUsers (20230321172223)
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (1.4ms)[0m  [1m[35mALTER TABLE "users" ADD "admin" boolean DEFAULT FALSE[0m
+  [1m[36mActiveRecord::SchemaMigration Create (2.0ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20230321172223') RETURNING "version"[0m
+  [1m[36mTRANSACTION (15.0ms)[0m  [1m[35mCOMMIT[0m
+Migrating to AddColumsToUsers (20241015140700)
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (6.5ms)[0m  [1m[35mALTER TABLE "users" ADD "username" character varying[0m
+  [1m[35m (0.5ms)[0m  [1m[35mALTER TABLE "users" ADD "first_name" character varying[0m
+  [1m[35m (0.7ms)[0m  [1m[35mALTER TABLE "users" ADD "last_name" character varying[0m
+  [1m[35m (0.9ms)[0m  [1m[35mALTER TABLE "users" ADD "image_url" text[0m
+  [1m[35m (0.7ms)[0m  [1m[35mALTER TABLE "users" ADD "bio" text[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20241015140700') RETURNING "version"[0m
+  [1m[36mTRANSACTION (11.3ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateCategories (20241015143849)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (113.4ms)[0m  [1m[35mCREATE TABLE "categories" ("id" bigserial primary key, "category" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.8ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20241015143849') RETURNING "version"[0m
+  [1m[36mTRANSACTION (26.1ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateJournalEntries (20241015144653)
+  [1m[36mTRANSACTION (1.8ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (109.3ms)[0m  [1m[35mCREATE TABLE "journal_entries" ("id" bigserial primary key, "user_id" bigint NOT NULL, "title" character varying, "entry" text, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, CONSTRAINT "fk_rails_4ea185c6f0"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+)[0m
+  [1m[35m (65.1ms)[0m  [1m[35mCREATE INDEX "index_journal_entries_on_user_id" ON "journal_entries" ("user_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.7ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20241015144653') RETURNING "version"[0m
+  [1m[36mTRANSACTION (22.8ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateJournalCategories (20241015144819)
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (59.8ms)[0m  [1m[35mCREATE TABLE "journal_categories" ("id" bigserial primary key, "journal_entry_id" bigint NOT NULL, "category_id" bigint NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, CONSTRAINT "fk_rails_c2f2d1e657"
+FOREIGN KEY ("journal_entry_id")
+  REFERENCES "journal_entries" ("id")
+, CONSTRAINT "fk_rails_3cd01208a2"
+FOREIGN KEY ("category_id")
+  REFERENCES "categories" ("id")
+)[0m
+  [1m[35m (50.3ms)[0m  [1m[35mCREATE INDEX "index_journal_categories_on_journal_entry_id" ON "journal_categories" ("journal_entry_id")[0m
+  [1m[35m (53.8ms)[0m  [1m[35mCREATE INDEX "index_journal_categories_on_category_id" ON "journal_categories" ("category_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20241015144819') RETURNING "version"[0m
+  [1m[36mTRANSACTION (22.4ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateTasks (20241015145201)
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (91.6ms)[0m  [1m[35mCREATE TABLE "tasks" ("id" bigserial primary key, "user_id" bigint NOT NULL, "routine_id" bigint NOT NULL, "task_type" integer DEFAULT 0, "order" integer, "title" character varying, "description" text, "comment" text, "start_date" timestamp(6), "due_date" timestamp(6), "completed" boolean, "active" boolean, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, CONSTRAINT "fk_rails_4d2a9e4d7e"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+, CONSTRAINT "fk_rails_286ad7dcce"
+FOREIGN KEY ("routine_id")
+  REFERENCES "routines" ("id")
+)[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT pg_advisory_unlock(1184012072199246360)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (1.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (1.7ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.7ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.9ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+  [1m[35m (7.2ms)[0m  [1m[34mSELECT column_name FROM information_schema.columns WHERE table_name = 'pg_stat_activity' AND column_name = 'pid';[0m
+  [1m[35m (1.6ms)[0m  [1m[34mSELECT pg_terminate_backend(pg_stat_activity.pid) FROM pg_stat_activity WHERE datname='rails_authorization_development' AND pid <> pg_backend_pid();[0m
+  [1m[35m (376.0ms)[0m  [1m[35mDROP DATABASE IF EXISTS "rails_authorization_development"[0m
+  [1m[35m (7.3ms)[0m  [1m[34mSELECT column_name FROM information_schema.columns WHERE table_name = 'pg_stat_activity' AND column_name = 'pid';[0m
+  [1m[35m (1.6ms)[0m  [1m[34mSELECT pg_terminate_backend(pg_stat_activity.pid) FROM pg_stat_activity WHERE datname='rails_authorization_test' AND pid <> pg_backend_pid();[0m
+  [1m[35m (328.5ms)[0m  [1m[35mDROP DATABASE IF EXISTS "rails_authorization_test"[0m
+  [1m[35m (279.2ms)[0m  [1m[35mCREATE DATABASE "rails_authorization_development" ENCODING = 'unicode'[0m
+  [1m[35m (239.3ms)[0m  [1m[35mCREATE DATABASE "rails_authorization_test" ENCODING = 'unicode'[0m
+  [1m[35m (110.3ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (128.2ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT pg_try_advisory_lock(1184012072199246360)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (1.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (2.4ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+  [1m[36mActiveRecord::InternalMetadata Create (19.1ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ('environment', 'development', '2024-10-16 12:07:38.645133', '2024-10-16 12:07:38.645145') RETURNING "key"[0m
+Migrating to DeviseCreateUsers (20230321153651)
+  [1m[36mTRANSACTION (1.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (105.5ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "email" character varying DEFAULT '' NOT NULL, "encrypted_password" character varying DEFAULT '' NOT NULL, "reset_password_token" character varying, "reset_password_sent_at" timestamp(6), "remember_created_at" timestamp(6), "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (62.0ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")[0m
+  [1m[35m (51.4ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_reset_password_token" ON "users" ("reset_password_token")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (1.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20230321153651') RETURNING "version"[0m
+  [1m[36mTRANSACTION (20.0ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateRestaurants (20230321154828)
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (101.6ms)[0m  [1m[35mCREATE TABLE "restaurants" ("id" bigserial primary key, "name" character varying, "user_id" bigint NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, CONSTRAINT "fk_rails_aef57e41ec"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+)[0m
+  [1m[35m (49.8ms)[0m  [1m[35mCREATE INDEX "index_restaurants_on_user_id" ON "restaurants" ("user_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (1.0ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20230321154828') RETURNING "version"[0m
+  [1m[36mTRANSACTION (17.1ms)[0m  [1m[35mCOMMIT[0m
+Migrating to AddAdminToUsers (20230321172223)
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (1.2ms)[0m  [1m[35mALTER TABLE "users" ADD "admin" boolean DEFAULT FALSE[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.9ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20230321172223') RETURNING "version"[0m
+  [1m[36mTRANSACTION (10.0ms)[0m  [1m[35mCOMMIT[0m
+Migrating to AddColumsToUsers (20241015140700)
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (3.5ms)[0m  [1m[35mALTER TABLE "users" ADD "username" character varying[0m
+  [1m[35m (0.6ms)[0m  [1m[35mALTER TABLE "users" ADD "first_name" character varying[0m
+  [1m[35m (0.6ms)[0m  [1m[35mALTER TABLE "users" ADD "last_name" character varying[0m
+  [1m[35m (0.7ms)[0m  [1m[35mALTER TABLE "users" ADD "image_url" text[0m
+  [1m[35m (0.6ms)[0m  [1m[35mALTER TABLE "users" ADD "bio" text[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20241015140700') RETURNING "version"[0m
+  [1m[36mTRANSACTION (12.8ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateCategories (20241015143849)
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (88.1ms)[0m  [1m[35mCREATE TABLE "categories" ("id" bigserial primary key, "category" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.8ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20241015143849') RETURNING "version"[0m
+  [1m[36mTRANSACTION (20.0ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateJournalEntries (20241015144653)
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (110.9ms)[0m  [1m[35mCREATE TABLE "journal_entries" ("id" bigserial primary key, "user_id" bigint NOT NULL, "title" character varying, "entry" text, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, CONSTRAINT "fk_rails_4ea185c6f0"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+)[0m
+  [1m[35m (39.8ms)[0m  [1m[35mCREATE INDEX "index_journal_entries_on_user_id" ON "journal_entries" ("user_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.8ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20241015144653') RETURNING "version"[0m
+  [1m[36mTRANSACTION (17.5ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateJournalCategories (20241015144819)
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (57.0ms)[0m  [1m[35mCREATE TABLE "journal_categories" ("id" bigserial primary key, "journal_entry_id" bigint NOT NULL, "category_id" bigint NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, CONSTRAINT "fk_rails_c2f2d1e657"
+FOREIGN KEY ("journal_entry_id")
+  REFERENCES "journal_entries" ("id")
+, CONSTRAINT "fk_rails_3cd01208a2"
+FOREIGN KEY ("category_id")
+  REFERENCES "categories" ("id")
+)[0m
+  [1m[35m (68.9ms)[0m  [1m[35mCREATE INDEX "index_journal_categories_on_journal_entry_id" ON "journal_categories" ("journal_entry_id")[0m
+  [1m[35m (53.4ms)[0m  [1m[35mCREATE INDEX "index_journal_categories_on_category_id" ON "journal_categories" ("category_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.9ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20241015144819') RETURNING "version"[0m
+  [1m[36mTRANSACTION (15.3ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateTasks (20241015145201)
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (92.8ms)[0m  [1m[35mCREATE TABLE "tasks" ("id" bigserial primary key, "user_id" bigint NOT NULL, "routine_id" bigint NOT NULL, "task_type" integer DEFAULT 0, "order" integer, "title" character varying, "description" text, "comment" text, "start_date" timestamp(6), "due_date" timestamp(6), "completed" boolean, "active" boolean, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, CONSTRAINT "fk_rails_4d2a9e4d7e"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+, CONSTRAINT "fk_rails_286ad7dcce"
+FOREIGN KEY ("routine_id")
+  REFERENCES "routines" ("id")
+)[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT pg_advisory_unlock(1184012072199246360)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.7ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.4ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.4ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+  [1m[35m (7.4ms)[0m  [1m[34mSELECT column_name FROM information_schema.columns WHERE table_name = 'pg_stat_activity' AND column_name = 'pid';[0m
+  [1m[35m (1.6ms)[0m  [1m[34mSELECT pg_terminate_backend(pg_stat_activity.pid) FROM pg_stat_activity WHERE datname='rails_authorization_development' AND pid <> pg_backend_pid();[0m
+  [1m[35m (307.4ms)[0m  [1m[35mDROP DATABASE IF EXISTS "rails_authorization_development"[0m
+  [1m[35m (8.8ms)[0m  [1m[34mSELECT column_name FROM information_schema.columns WHERE table_name = 'pg_stat_activity' AND column_name = 'pid';[0m
+  [1m[35m (1.5ms)[0m  [1m[34mSELECT pg_terminate_backend(pg_stat_activity.pid) FROM pg_stat_activity WHERE datname='rails_authorization_test' AND pid <> pg_backend_pid();[0m
+  [1m[35m (499.3ms)[0m  [1m[35mDROP DATABASE IF EXISTS "rails_authorization_test"[0m
+  [1m[35m (226.4ms)[0m  [1m[35mCREATE DATABASE "rails_authorization_development" ENCODING = 'unicode'[0m
+  [1m[35m (219.1ms)[0m  [1m[35mCREATE DATABASE "rails_authorization_test" ENCODING = 'unicode'[0m
+  [1m[35m (97.4ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (107.4ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT pg_try_advisory_lock(1184012072199246360)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (1.4ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+  [1m[36mActiveRecord::InternalMetadata Create (11.4ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ('environment', 'development', '2024-10-16 12:21:40.479635', '2024-10-16 12:21:40.479642') RETURNING "key"[0m
+Migrating to DeviseCreateUsers (20230321153651)
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (116.6ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "email" character varying DEFAULT '' NOT NULL, "encrypted_password" character varying DEFAULT '' NOT NULL, "reset_password_token" character varying, "reset_password_sent_at" timestamp(6), "remember_created_at" timestamp(6), "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (52.2ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")[0m
+  [1m[35m (52.9ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_reset_password_token" ON "users" ("reset_password_token")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (1.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20230321153651') RETURNING "version"[0m
+  [1m[36mTRANSACTION (29.7ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateRestaurants (20230321154828)
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (102.4ms)[0m  [1m[35mCREATE TABLE "restaurants" ("id" bigserial primary key, "name" character varying, "user_id" bigint NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, CONSTRAINT "fk_rails_aef57e41ec"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+)[0m
+  [1m[35m (40.5ms)[0m  [1m[35mCREATE INDEX "index_restaurants_on_user_id" ON "restaurants" ("user_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.7ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20230321154828') RETURNING "version"[0m
+  [1m[36mTRANSACTION (16.0ms)[0m  [1m[35mCOMMIT[0m
+Migrating to AddAdminToUsers (20230321172223)
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (1.3ms)[0m  [1m[35mALTER TABLE "users" ADD "admin" boolean DEFAULT FALSE[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.6ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20230321172223') RETURNING "version"[0m
+  [1m[36mTRANSACTION (29.0ms)[0m  [1m[35mCOMMIT[0m
+Migrating to AddColumsToUsers (20241015140700)
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (4.6ms)[0m  [1m[35mALTER TABLE "users" ADD "username" character varying[0m
+  [1m[35m (0.7ms)[0m  [1m[35mALTER TABLE "users" ADD "first_name" character varying[0m
+  [1m[35m (0.9ms)[0m  [1m[35mALTER TABLE "users" ADD "last_name" character varying[0m
+  [1m[35m (0.7ms)[0m  [1m[35mALTER TABLE "users" ADD "image_url" text[0m
+  [1m[35m (0.5ms)[0m  [1m[35mALTER TABLE "users" ADD "bio" text[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.6ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20241015140700') RETURNING "version"[0m
+  [1m[36mTRANSACTION (15.0ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateCategories (20241015143849)
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (110.2ms)[0m  [1m[35mCREATE TABLE "categories" ("id" bigserial primary key, "category" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.7ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20241015143849') RETURNING "version"[0m
+  [1m[36mTRANSACTION (15.2ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateJournalEntries (20241015144653)
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (86.5ms)[0m  [1m[35mCREATE TABLE "journal_entries" ("id" bigserial primary key, "user_id" bigint NOT NULL, "title" character varying, "entry" text, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, CONSTRAINT "fk_rails_4ea185c6f0"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+)[0m
+  [1m[35m (41.9ms)[0m  [1m[35mCREATE INDEX "index_journal_entries_on_user_id" ON "journal_entries" ("user_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.8ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20241015144653') RETURNING "version"[0m
+  [1m[36mTRANSACTION (23.7ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateJournalCategories (20241015144819)
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (43.6ms)[0m  [1m[35mCREATE TABLE "journal_categories" ("id" bigserial primary key, "journal_entry_id" bigint NOT NULL, "category_id" bigint NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, CONSTRAINT "fk_rails_c2f2d1e657"
+FOREIGN KEY ("journal_entry_id")
+  REFERENCES "journal_entries" ("id")
+, CONSTRAINT "fk_rails_3cd01208a2"
+FOREIGN KEY ("category_id")
+  REFERENCES "categories" ("id")
+)[0m
+  [1m[35m (45.8ms)[0m  [1m[35mCREATE INDEX "index_journal_categories_on_journal_entry_id" ON "journal_categories" ("journal_entry_id")[0m
+  [1m[35m (41.7ms)[0m  [1m[35mCREATE INDEX "index_journal_categories_on_category_id" ON "journal_categories" ("category_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.7ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20241015144819') RETURNING "version"[0m
+  [1m[36mTRANSACTION (23.6ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateTasks (20241015145201)
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (97.2ms)[0m  [1m[35mCREATE TABLE "tasks" ("id" bigserial primary key, "user_id" bigint NOT NULL, "routine" integer DEFAULT 0 NOT NULL, "recurs_on" json DEFAULT '{"monday":false,"tuesday":false,"wednesday":false,"thursday":false,"friday":false,"saturday":false,"sunday":false}' NOT NULL, "active" boolean DEFAULT TRUE NOT NULL, "task_type" integer DEFAULT 0 NOT NULL, "order" integer DEFAULT 0 NOT NULL, "title" character varying DEFAULT '' NOT NULL, "description" text DEFAULT '' NOT NULL, "comment" text DEFAULT '' NOT NULL, "start_date" timestamp(6), "due_date" timestamp(6), "completed" boolean DEFAULT FALSE NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, CONSTRAINT "fk_rails_4d2a9e4d7e"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+)[0m
+  [1m[35m (40.7ms)[0m  [1m[35mCREATE INDEX "index_tasks_on_user_id" ON "tasks" ("user_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (1.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20241015145201') RETURNING "version"[0m
+  [1m[36mTRANSACTION (18.8ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateSubTasks (20241015145351)
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (104.2ms)[0m  [1m[35mCREATE TABLE "sub_tasks" ("id" bigserial primary key, "task_id" bigint NOT NULL, "order" integer, "title" character varying, "description" text, "comment" text, "start_date" timestamp(6), "due_date" timestamp(6), "completed" boolean, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, CONSTRAINT "fk_rails_8175f560d2"
+FOREIGN KEY ("task_id")
+  REFERENCES "tasks" ("id")
+)[0m
+  [1m[35m (40.7ms)[0m  [1m[35mCREATE INDEX "index_sub_tasks_on_task_id" ON "sub_tasks" ("task_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.8ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20241015145351') RETURNING "version"[0m
+  [1m[36mTRANSACTION (20.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT pg_advisory_unlock(1184012072199246360)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (1.7ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "pauldevanney92@gmail.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.6ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at", "created_at", "updated_at", "admin", "username", "first_name", "last_name", "image_url", "bio") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13) RETURNING "id"[0m  [["email", "pauldevanney92@gmail.com"], ["encrypted_password", "[FILTERED]"], ["reset_password_token", "[FILTERED]"], ["reset_password_sent_at", "[FILTERED]"], ["remember_created_at", nil], ["created_at", "2024-10-16 12:21:42.617018"], ["updated_at", "2024-10-16 12:21:42.617018"], ["admin", false], ["username", "HarryD"], ["first_name", "Paul"], ["last_name", "Devanney"], ["image_url", "https://d26jy9fbi4q9wx.cloudfront.net/rails/active_storage/representations/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBd0ErQXc9PSIsImV4cCI6bnVsbCwicHVyIjoiYmxvYl9pZCJ9fQ==--2d5e88acd264501b52d1a84625c82aeba643b99e/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJYW5CbkJqb0dSVlE2RTNKbGMybDZaVjkwYjE5bWFXeHNXd2hwQWNocEFjaDdCam9KWTNKdmNEb09ZWFIwWlc1MGFXOXUiLCJleHAiOm51bGwsInB1ciI6InZhcmlhdGlvbiJ9fQ==--b67d9ded4d28d0969fbb98b4c21b79257705a99a/20240805_234634.jpg"], ["bio", "In my last job I was a QA at an industrial bakery which supplied baked goods to most of the big supermarkets in the UK. It wasn't a bad job but its not what I wanted to do. I, obviously, want to get into Web Development or similar role. I have been in to coding, on and off, for quite a few years now. However, I didn't go to Uni nor do I have any industry recognised certification which meant I couldn't get passed the 'Recruitment Agencies'! So, I'm hoping this bootcamp can remedy that although, If I succeed on this bootcamp the freelance route could be a better option. I was a little apprehensive about applying for this course, initially, as I've practically no experience with the Ruby Programming language but quickly realised it would be a worth while challenge and learning experience."]]
+  [1m[36mTRANSACTION (10.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+Started GET "/tasks/new" for ::1 at 2024-10-16 13:29:00 +0100
+  [1m[36mActiveRecord::SchemaMigration Load (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by TasksController#new as HTML
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Completed 401 Unauthorized in 255ms (ActiveRecord: 25.0ms | Allocations: 28817)
+
+
+Started GET "/users/sign_in" for ::1 at 2024-10-16 13:29:01 +0100
+Processing by Devise::SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (Duration: 1.1ms | Allocations: 552)
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 35.3ms | Allocations: 10521)
+  Rendered shared/_navbar.html.erb (Duration: 1.8ms | Allocations: 542)
+  Rendered shared/_flashes.html.erb (Duration: 1.0ms | Allocations: 207)
+  Rendered shared/_footer.html.erb (Duration: 1.1ms | Allocations: 117)
+  Rendered layout layouts/application.html.erb (Duration: 310.1ms | Allocations: 78407)
+Completed 200 OK in 364ms (Views: 359.7ms | ActiveRecord: 0.0ms | Allocations: 82024)
+
+
+Started GET "/" for ::1 at 2024-10-16 13:49:44 +0100
+Processing by PagesController#home as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering pages/home.html.erb within layouts/application
+  Rendered shared/_jumbotron.html.erb (Duration: 1.2ms | Allocations: 139)
+  Rendered pages/home.html.erb within layouts/application (Duration: 17.7ms | Allocations: 413)
+  Rendered shared/_navbar.html.erb (Duration: 0.8ms | Allocations: 162)
+  Rendered shared/_flashes.html.erb (Duration: 0.2ms | Allocations: 27)
+  Rendered shared/_footer.html.erb (Duration: 0.1ms | Allocations: 9)
+  Rendered layout layouts/application.html.erb (Duration: 48.0ms | Allocations: 8789)
+Completed 200 OK in 61ms (Views: 52.5ms | ActiveRecord: 0.0ms | Allocations: 9553)
+
+
+Started POST "/users/sign_in" for ::1 at 2024-10-16 13:49:48 +0100
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"email"=>"pauldevanney92@gmail.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  [1m[36mUser Load (1.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "pauldevanney92@gmail.com"], ["LIMIT", 1]]
+Redirected to http://localhost:3000/tasks/new
+Completed 303 See Other in 537ms (ActiveRecord: 14.0ms | Allocations: 6855)
+
+
+Started GET "/tasks/new" for ::1 at 2024-10-16 13:49:49 +0100
+Processing by TasksController#new as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering tasks/new.html.erb within layouts/application
+  Rendered tasks/new.html.erb within layouts/application (Duration: 10.0ms | Allocations: 2815)
+  Rendered layout layouts/application.html.erb (Duration: 10.2ms | Allocations: 2900)
+Completed 500 Internal Server Error in 154ms (ActiveRecord: 12.0ms | Allocations: 24820)
+
+
+  
+ActionView::Template::Error (undefined method `transform_task_routines_for_html_select' for class Task):
+    15: 
+    16:         <%= f.input :order, input_html: { class: "form-control mb-3" } %>
+    17: 
+    18:         <%= f.input :routine, collection: Task::transform_task_routines_for_html_select, input_html: { class: "form-control mb-3" } %>
+    19: 
+    20:         <%= f.input :task_type, collection: Task::transform_task_types_for_html_select, input_html: { class: "form-control mb-3" } %>
+    21: 
+  
+app/views/tasks/new.html.erb:18
+app/views/tasks/new.html.erb:7
+Started GET "/tasks/new" for ::1 at 2024-10-16 13:50:38 +0100
+Processing by TasksController#new as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering tasks/new.html.erb within layouts/application
+  Rendered tasks/new.html.erb within layouts/application (Duration: 96.1ms | Allocations: 7707)
+  Rendered shared/_navbar.html.erb (Duration: 1.2ms | Allocations: 572)
+  Rendered shared/_flashes.html.erb (Duration: 0.6ms | Allocations: 197)
+  Rendered shared/_footer.html.erb (Duration: 0.5ms | Allocations: 115)
+  Rendered layout layouts/application.html.erb (Duration: 148.2ms | Allocations: 35875)
+Completed 200 OK in 190ms (Views: 150.0ms | ActiveRecord: 8.3ms | Allocations: 53326)
+
+
+Started GET "/tasks/new" for ::1 at 2024-10-16 13:53:40 +0100
+Processing by TasksController#new as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering tasks/new.html.erb within layouts/application
+  Rendered tasks/new.html.erb within layouts/application (Duration: 8.7ms | Allocations: 6689)
+  Rendered shared/_navbar.html.erb (Duration: 1.1ms | Allocations: 568)
+  Rendered shared/_flashes.html.erb (Duration: 0.7ms | Allocations: 192)
+  Rendered shared/_footer.html.erb (Duration: 0.4ms | Allocations: 115)
+  Rendered layout layouts/application.html.erb (Duration: 48.5ms | Allocations: 34824)
+Completed 200 OK in 98ms (Views: 50.3ms | ActiveRecord: 8.6ms | Allocations: 52359)
+
+
+Started POST "/tasks" for ::1 at 2024-10-16 13:54:59 +0100
+Processing by TasksController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "task"=>{"order"=>"0", "routine"=>"morning", "task_type"=>"self_development", "title"=>"Meditate", "description"=>"Just count the breath...", "start_date"=>"2024-10-17T16:57", "due_date"=>""}, "commit"=>"Add?"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/tasks_controller.rb:32:in `create'
+  [1m[36mTask Create (62.5ms)[0m  [1m[32mINSERT INTO "tasks" ("user_id", "routine", "recurs_on", "active", "task_type", "order", "title", "description", "comment", "start_date", "due_date", "completed", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14) RETURNING "id"[0m  [["user_id", 1], ["routine", 1], ["recurs_on", "{\"monday\":false,\"tuesday\":false,\"wednesday\":false,\"thursday\":false,\"friday\":false,\"saturday\":false,\"sunday\":false}"], ["active", true], ["task_type", 5], ["order", 0], ["title", "Meditate"], ["description", "Just count the breath..."], ["comment", ""], ["start_date", "2024-10-17 16:57:00"], ["due_date", nil], ["completed", false], ["created_at", "2024-10-16 12:54:59.563689"], ["updated_at", "2024-10-16 12:54:59.563689"]]
+  ↳ app/controllers/tasks_controller.rb:32:in `create'
+  [1m[36mTRANSACTION (63.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/tasks_controller.rb:32:in `create'
+Redirected to http://localhost:3000/tasks/1
+Completed 302 Found in 153ms (ActiveRecord: 126.5ms | Allocations: 5425)
+
+
+Started GET "/tasks/1" for ::1 at 2024-10-16 13:54:59 +0100
+Processing by TasksController#show as TURBO_STREAM
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mTask Load (0.6ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/tasks_controller.rb:59:in `set_task'
+  Rendering layout layouts/application.html.erb
+  Rendering tasks/show.html.erb within layouts/application
+  Rendered tasks/show.html.erb within layouts/application (Duration: 1.0ms | Allocations: 140)
+  Rendered shared/_navbar.html.erb (Duration: 0.4ms | Allocations: 173)
+  Rendered shared/_flashes.html.erb (Duration: 0.1ms | Allocations: 27)
+  Rendered shared/_footer.html.erb (Duration: 0.0ms | Allocations: 8)
+  Rendered layout layouts/application.html.erb (Duration: 31.2ms | Allocations: 8357)
+Completed 200 OK in 61ms (Views: 32.1ms | ActiveRecord: 1.2ms | Allocations: 11389)
+
+
+Started GET "/tasks/new" for ::1 at 2024-10-16 14:34:02 +0100
+Processing by TasksController#new as HTML
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering tasks/new.html.erb within layouts/application
+  Rendered tasks/new.html.erb within layouts/application (Duration: 2.7ms | Allocations: 1478)
+  Rendered layout layouts/application.html.erb (Duration: 3.1ms | Allocations: 1564)
+Completed 500 Internal Server Error in 163ms (ActiveRecord: 18.0ms | Allocations: 21046)
+
+
+  
+ActionView::Template::Error (No route matches {:action=>"new", :controller=>"sub_tasks", :task_id=>nil}, missing required keys: [:task_id]):
+     5:     <h1 class="my-5 mb-3 fst-bold">Tasks#new</h1>
+     6: 
+     7:     <div>
+     8:       <%= link_to "Add a Sub Task", new_task_sub_task_path(@task) %>
+     9:     </div>
+    10: 
+    11:     <%= simple_form_for(@task, html: { class: "animate-shadow bg-body rounded-3 m-5 p-5 w-50 mx-auto" }) do |f| %>
+  
+app/views/tasks/new.html.erb:8
+Started GET "/tasks/1" for ::1 at 2024-10-16 14:34:27 +0100
+Processing by TasksController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mTask Load (3.6ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/tasks_controller.rb:57:in `set_task'
+  Rendering layout layouts/application.html.erb
+  Rendering tasks/show.html.erb within layouts/application
+  Rendered tasks/show.html.erb within layouts/application (Duration: 2.3ms | Allocations: 135)
+  Rendered shared/_navbar.html.erb (Duration: 5.5ms | Allocations: 590)
+  Rendered shared/_flashes.html.erb (Duration: 7.5ms | Allocations: 192)
+  Rendered shared/_footer.html.erb (Duration: 0.7ms | Allocations: 115)
+  Rendered layout layouts/application.html.erb (Duration: 153.3ms | Allocations: 28299)
+Completed 200 OK in 177ms (Views: 157.0ms | ActiveRecord: 3.6ms | Allocations: 31204)
+
+
+Started GET "/tasks/1" for ::1 at 2024-10-16 14:35:28 +0100
+Processing by TasksController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mTask Load (0.6ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/tasks_controller.rb:57:in `set_task'
+  Rendering layout layouts/application.html.erb
+  Rendering tasks/show.html.erb within layouts/application
+  Rendered tasks/show.html.erb within layouts/application (Duration: 1.1ms | Allocations: 230)
+  Rendered shared/_navbar.html.erb (Duration: 1.6ms | Allocations: 570)
+  Rendered shared/_flashes.html.erb (Duration: 0.7ms | Allocations: 192)
+  Rendered shared/_footer.html.erb (Duration: 0.6ms | Allocations: 115)
+  Rendered layout layouts/application.html.erb (Duration: 48.5ms | Allocations: 28090)
+Completed 200 OK in 122ms (Views: 50.7ms | ActiveRecord: 32.7ms | Allocations: 46156)
+
+
+Started GET "/tasks/1/subtask/new" for ::1 at 2024-10-16 14:35:32 +0100
+Processing by SubTasksController#new as HTML
+  Parameters: {"task_id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering sub_tasks/new.html.erb within layouts/application
+  Rendered sub_tasks/new.html.erb within layouts/application (Duration: 1.2ms | Allocations: 91)
+  Rendered shared/_navbar.html.erb (Duration: 0.7ms | Allocations: 189)
+  Rendered shared/_flashes.html.erb (Duration: 0.1ms | Allocations: 22)
+  Rendered shared/_footer.html.erb (Duration: 0.0ms | Allocations: 8)
+  Rendered layout layouts/application.html.erb (Duration: 22.4ms | Allocations: 8236)
+Completed 500 Internal Server Error in 32ms (Views: 23.9ms | ActiveRecord: 0.3ms | Allocations: 10617)
+
+
+  
+Pundit::AuthorizationNotPerformedError (SubTasksController):
+  
+pundit (2.4.0) lib/pundit/authorization.rb:46:in `verify_authorized'
+activesupport (7.1.3.4) lib/active_support/callbacks.rb:403:in `block in make_lambda'
+activesupport (7.1.3.4) lib/active_support/callbacks.rb:239:in `block in halting_and_conditional'
+activesupport (7.1.3.4) lib/active_support/callbacks.rb:602:in `block in invoke_after'
+activesupport (7.1.3.4) lib/active_support/callbacks.rb:602:in `each'
+activesupport (7.1.3.4) lib/active_support/callbacks.rb:602:in `invoke_after'
+activesupport (7.1.3.4) lib/active_support/callbacks.rb:135:in `block in run_callbacks'
+turbo-rails (2.0.9) lib/turbo-rails.rb:24:in `with_request_id'
+turbo-rails (2.0.9) app/controllers/concerns/turbo/request_id_tracking.rb:10:in `turbo_tracking_request_id'
+activesupport (7.1.3.4) lib/active_support/callbacks.rb:130:in `block in run_callbacks'
+actiontext (7.1.3.4) lib/action_text/rendering.rb:23:in `with_renderer'
+actiontext (7.1.3.4) lib/action_text/engine.rb:69:in `block (4 levels) in <class:Engine>'
+activesupport (7.1.3.4) lib/active_support/callbacks.rb:130:in `instance_exec'
+activesupport (7.1.3.4) lib/active_support/callbacks.rb:130:in `block in run_callbacks'
+activesupport (7.1.3.4) lib/active_support/callbacks.rb:141:in `run_callbacks'
+actionpack (7.1.3.4) lib/abstract_controller/callbacks.rb:258:in `process_action'
+actionpack (7.1.3.4) lib/action_controller/metal/rescue.rb:25:in `process_action'
+actionpack (7.1.3.4) lib/action_controller/metal/instrumentation.rb:74:in `block in process_action'
+activesupport (7.1.3.4) lib/active_support/notifications.rb:206:in `block in instrument'
+activesupport (7.1.3.4) lib/active_support/notifications/instrumenter.rb:58:in `instrument'
+activesupport (7.1.3.4) lib/active_support/notifications.rb:206:in `instrument'
+actionpack (7.1.3.4) lib/action_controller/metal/instrumentation.rb:73:in `process_action'
+actionpack (7.1.3.4) lib/action_controller/metal/params_wrapper.rb:261:in `process_action'
+activerecord (7.1.3.4) lib/active_record/railties/controller_runtime.rb:32:in `process_action'
+actionpack (7.1.3.4) lib/abstract_controller/base.rb:160:in `process'
+actionview (7.1.3.4) lib/action_view/rendering.rb:40:in `process'
+actionpack (7.1.3.4) lib/action_controller/metal.rb:227:in `dispatch'
+actionpack (7.1.3.4) lib/action_controller/metal.rb:309:in `dispatch'
+actionpack (7.1.3.4) lib/action_dispatch/routing/route_set.rb:49:in `dispatch'
+actionpack (7.1.3.4) lib/action_dispatch/routing/route_set.rb:32:in `serve'
+actionpack (7.1.3.4) lib/action_dispatch/journey/router.rb:51:in `block in serve'
+actionpack (7.1.3.4) lib/action_dispatch/journey/router.rb:131:in `block in find_routes'
+actionpack (7.1.3.4) lib/action_dispatch/journey/router.rb:124:in `each'
+actionpack (7.1.3.4) lib/action_dispatch/journey/router.rb:124:in `find_routes'
+actionpack (7.1.3.4) lib/action_dispatch/journey/router.rb:32:in `serve'
+actionpack (7.1.3.4) lib/action_dispatch/routing/route_set.rb:882:in `call'
+warden (1.2.9) lib/warden/manager.rb:36:in `block in call'
+warden (1.2.9) lib/warden/manager.rb:34:in `catch'
+warden (1.2.9) lib/warden/manager.rb:34:in `call'
+rack (3.1.7) lib/rack/tempfile_reaper.rb:20:in `call'
+rack (3.1.7) lib/rack/etag.rb:29:in `call'
+rack (3.1.7) lib/rack/conditional_get.rb:31:in `call'
+rack (3.1.7) lib/rack/head.rb:15:in `call'
+actionpack (7.1.3.4) lib/action_dispatch/http/permissions_policy.rb:36:in `call'
+actionpack (7.1.3.4) lib/action_dispatch/http/content_security_policy.rb:33:in `call'
+rack-session (2.0.0) lib/rack/session/abstract/id.rb:272:in `context'
+rack-session (2.0.0) lib/rack/session/abstract/id.rb:266:in `call'
+actionpack (7.1.3.4) lib/action_dispatch/middleware/cookies.rb:689:in `call'
+activerecord (7.1.3.4) lib/active_record/migration.rb:655:in `call'
+actionpack (7.1.3.4) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+activesupport (7.1.3.4) lib/active_support/callbacks.rb:101:in `run_callbacks'
+actionpack (7.1.3.4) lib/action_dispatch/middleware/callbacks.rb:28:in `call'
+actionpack (7.1.3.4) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.1.3.4) lib/action_dispatch/middleware/actionable_exceptions.rb:16:in `call'
+actionpack (7.1.3.4) lib/action_dispatch/middleware/debug_exceptions.rb:29:in `call'
+web-console (4.2.1) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.2.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.2.1) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.2.1) lib/web_console/middleware.rb:17:in `call'
+actionpack (7.1.3.4) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (7.1.3.4) lib/rails/rack/logger.rb:37:in `call_app'
+railties (7.1.3.4) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (7.1.3.4) lib/active_support/tagged_logging.rb:135:in `block in tagged'
+activesupport (7.1.3.4) lib/active_support/tagged_logging.rb:39:in `tagged'
+activesupport (7.1.3.4) lib/active_support/tagged_logging.rb:135:in `tagged'
+activesupport (7.1.3.4) lib/active_support/broadcast_logger.rb:240:in `method_missing'
+railties (7.1.3.4) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.5.2) lib/sprockets/rails/quiet_assets.rb:17:in `call'
+actionpack (7.1.3.4) lib/action_dispatch/middleware/remote_ip.rb:92:in `call'
+actionpack (7.1.3.4) lib/action_dispatch/middleware/request_id.rb:28:in `call'
+rack (3.1.7) lib/rack/method_override.rb:28:in `call'
+rack (3.1.7) lib/rack/runtime.rb:24:in `call'
+activesupport (7.1.3.4) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (7.1.3.4) lib/action_dispatch/middleware/server_timing.rb:59:in `block in call'
+actionpack (7.1.3.4) lib/action_dispatch/middleware/server_timing.rb:24:in `collect_events'
+actionpack (7.1.3.4) lib/action_dispatch/middleware/server_timing.rb:58:in `call'
+actionpack (7.1.3.4) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.1.3.4) lib/action_dispatch/middleware/static.rb:25:in `call'
+rack (3.1.7) lib/rack/sendfile.rb:114:in `call'
+actionpack (7.1.3.4) lib/action_dispatch/middleware/host_authorization.rb:141:in `call'
+railties (7.1.3.4) lib/rails/engine.rb:536:in `call'
+puma (6.4.3) lib/puma/configuration.rb:272:in `call'
+puma (6.4.3) lib/puma/request.rb:100:in `block in handle_request'
+puma (6.4.3) lib/puma/thread_pool.rb:378:in `with_force_shutdown'
+puma (6.4.3) lib/puma/request.rb:99:in `handle_request'
+puma (6.4.3) lib/puma/server.rb:464:in `process_client'
+puma (6.4.3) lib/puma/server.rb:245:in `block in run'
+puma (6.4.3) lib/puma/thread_pool.rb:155:in `block in spawn_thread'
+  [1m[36mTask Load (0.5ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" ORDER BY "tasks"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (2.8ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "pauldevanney92@gmail.com"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mSubTask Load (10.9ms)[0m  [1m[34mSELECT "sub_tasks".* FROM "sub_tasks"[0m
+  [1m[36mTask Load (0.7ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks"[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTask Destroy (3.1ms)[0m  [1m[31mDELETE FROM "tasks" WHERE "tasks"."id" = $1[0m  [["id", 1]]
+  [1m[36mTRANSACTION (29.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (1.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Destroy (22.5ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = $1[0m  [["id", 1]]
+  [1m[36mTRANSACTION (13.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (1.9ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "pauldevanney92@gmail.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.7ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at", "created_at", "updated_at", "admin", "username", "first_name", "last_name", "image_url", "bio") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13) RETURNING "id"[0m  [["email", "pauldevanney92@gmail.com"], ["encrypted_password", "[FILTERED]"], ["reset_password_token", "[FILTERED]"], ["reset_password_sent_at", "[FILTERED]"], ["remember_created_at", nil], ["created_at", "2024-10-16 13:46:47.259920"], ["updated_at", "2024-10-16 13:46:47.259920"], ["admin", false], ["username", "HarryD"], ["first_name", "Paul"], ["last_name", "Devanney"], ["image_url", "https://d26jy9fbi4q9wx.cloudfront.net/rails/active_storage/representations/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBd0ErQXc9PSIsImV4cCI6bnVsbCwicHVyIjoiYmxvYl9pZCJ9fQ==--2d5e88acd264501b52d1a84625c82aeba643b99e/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJYW5CbkJqb0dSVlE2RTNKbGMybDZaVjkwYjE5bWFXeHNXd2hwQWNocEFjaDdCam9KWTNKdmNEb09ZWFIwWlc1MGFXOXUiLCJleHAiOm51bGwsInB1ciI6InZhcmlhdGlvbiJ9fQ==--b67d9ded4d28d0969fbb98b4c21b79257705a99a/20240805_234634.jpg"], ["bio", "In my last job I was a QA at an industrial bakery which supplied baked goods to most of the big supermarkets in the UK. It wasn't a bad job but its not what I wanted to do. I, obviously, want to get into Web Development or similar role. I have been in to coding, on and off, for quite a few years now. However, I didn't go to Uni nor do I have any industry recognised certification which meant I couldn't get passed the 'Recruitment Agencies'! So, I'm hoping this bootcamp can remedy that although, If I succeed on this bootcamp the freelance route could be a better option. I was a little apprehensive about applying for this course, initially, as I've practically no experience with the Ruby Programming language but quickly realised it would be a worth while challenge and learning experience."]]
+  [1m[36mTRANSACTION (15.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::SchemaMigration Load (2.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mSubTask Load (0.7ms)[0m  [1m[34mSELECT "sub_tasks".* FROM "sub_tasks"[0m
+  [1m[36mTask Load (1.0ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks"[0m
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Destroy (3.2ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = $1[0m  [["id", 2]]
+  [1m[36mTRANSACTION (100.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (1.8ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "pauldevanney92@gmail.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.9ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at", "created_at", "updated_at", "admin", "username", "first_name", "last_name", "image_url", "bio") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13) RETURNING "id"[0m  [["email", "pauldevanney92@gmail.com"], ["encrypted_password", "[FILTERED]"], ["reset_password_token", "[FILTERED]"], ["reset_password_sent_at", "[FILTERED]"], ["remember_created_at", nil], ["created_at", "2024-10-16 13:47:19.679514"], ["updated_at", "2024-10-16 13:47:19.679514"], ["admin", false], ["username", "HarryD"], ["first_name", "Paul"], ["last_name", "Devanney"], ["image_url", "https://d26jy9fbi4q9wx.cloudfront.net/rails/active_storage/representations/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBd0ErQXc9PSIsImV4cCI6bnVsbCwicHVyIjoiYmxvYl9pZCJ9fQ==--2d5e88acd264501b52d1a84625c82aeba643b99e/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJYW5CbkJqb0dSVlE2RTNKbGMybDZaVjkwYjE5bWFXeHNXd2hwQWNocEFjaDdCam9KWTNKdmNEb09ZWFIwWlc1MGFXOXUiLCJleHAiOm51bGwsInB1ciI6InZhcmlhdGlvbiJ9fQ==--b67d9ded4d28d0969fbb98b4c21b79257705a99a/20240805_234634.jpg"], ["bio", "In my last job I was a QA at an industrial bakery which supplied baked goods to most of the big supermarkets in the UK. It wasn't a bad job but its not what I wanted to do. I, obviously, want to get into Web Development or similar role. I have been in to coding, on and off, for quite a few years now. However, I didn't go to Uni nor do I have any industry recognised certification which meant I couldn't get passed the 'Recruitment Agencies'! So, I'm hoping this bootcamp can remedy that although, If I succeed on this bootcamp the freelance route could be a better option. I was a little apprehensive about applying for this course, initially, as I've practically no experience with the Ruby Programming language but quickly realised it would be a worth while challenge and learning experience."]]
+  [1m[36mTRANSACTION (96.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mSubTask Count (0.8ms)[0m  [1m[34mSELECT COUNT(*) FROM "sub_tasks"[0m
+  [1m[36mTask Count (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "tasks"[0m
+  [1m[36mUser Count (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "users"[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Destroy (4.7ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = $1[0m  [["id", 3]]
+  [1m[36mTRANSACTION (65.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (1.8ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "pauldevanney92@gmail.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.6ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at", "created_at", "updated_at", "admin", "username", "first_name", "last_name", "image_url", "bio") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13) RETURNING "id"[0m  [["email", "pauldevanney92@gmail.com"], ["encrypted_password", "[FILTERED]"], ["reset_password_token", "[FILTERED]"], ["reset_password_sent_at", "[FILTERED]"], ["remember_created_at", nil], ["created_at", "2024-10-16 13:49:58.844838"], ["updated_at", "2024-10-16 13:49:58.844838"], ["admin", false], ["username", "HarryD"], ["first_name", "Paul"], ["last_name", "Devanney"], ["image_url", "https://d26jy9fbi4q9wx.cloudfront.net/rails/active_storage/representations/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBd0ErQXc9PSIsImV4cCI6bnVsbCwicHVyIjoiYmxvYl9pZCJ9fQ==--2d5e88acd264501b52d1a84625c82aeba643b99e/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJYW5CbkJqb0dSVlE2RTNKbGMybDZaVjkwYjE5bWFXeHNXd2hwQWNocEFjaDdCam9KWTNKdmNEb09ZWFIwWlc1MGFXOXUiLCJleHAiOm51bGwsInB1ciI6InZhcmlhdGlvbiJ9fQ==--b67d9ded4d28d0969fbb98b4c21b79257705a99a/20240805_234634.jpg"], ["bio", "In my last job I was a QA at an industrial bakery which supplied baked goods to most of the big supermarkets in the UK. It wasn't a bad job but its not what I wanted to do. I, obviously, want to get into Web Development or similar role. I have been in to coding, on and off, for quite a few years now. However, I didn't go to Uni nor do I have any industry recognised certification which meant I couldn't get passed the 'Recruitment Agencies'! So, I'm hoping this bootcamp can remedy that although, If I succeed on this bootcamp the freelance route could be a better option. I was a little apprehensive about applying for this course, initially, as I've practically no experience with the Ruby Programming language but quickly realised it would be a worth while challenge and learning experience."]]
+  [1m[36mTRANSACTION (102.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTask Create (2.5ms)[0m  [1m[32mINSERT INTO "tasks" ("user_id", "routine", "recurs_on", "active", "task_type", "order", "title", "description", "comment", "start_date", "due_date", "completed", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14) RETURNING "id"[0m  [["user_id", 4], ["routine", 0], ["recurs_on", "{\"monday\":false,\"tuesday\":false,\"wednesday\":false,\"thursday\":false,\"friday\":false,\"saturday\":false,\"sunday\":false}"], ["active", true], ["task_type", 5], ["order", 1], ["title", "Meditate"], ["description", "Just count the breath..."], ["comment", "No comment"], ["start_date", "2024-10-16 00:00:00"], ["due_date", nil], ["completed", false], ["created_at", "2024-10-16 13:49:59.033558"], ["updated_at", "2024-10-16 13:49:59.033558"]]
+  [1m[36mTRANSACTION (10.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mSubTask Create (2.4ms)[0m  [1m[32mINSERT INTO "sub_tasks" ("task_id", "order", "title", "description", "comment", "start_date", "due_date", "completed", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING "id"[0m  [["task_id", 2], ["order", 1], ["title", "Step 1"], ["description", "First, find a quiet place..."], ["comment", "No comment"], ["start_date", nil], ["due_date", nil], ["completed", nil], ["created_at", "2024-10-16 13:49:59.068366"], ["updated_at", "2024-10-16 13:49:59.068366"]]
+  [1m[36mTRANSACTION (20.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mTask Load (0.5ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."user_id" = $1 /* loading for pp */ LIMIT $2[0m  [["user_id", 4], ["LIMIT", 11]]
+  [1m[36mTask Load (2.0ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."user_id" = $1 ORDER BY "tasks"."id" ASC LIMIT $2[0m  [["user_id", 4], ["LIMIT", 1]]
+  [1m[36mSubTask Load (0.5ms)[0m  [1m[34mSELECT "sub_tasks".* FROM "sub_tasks" WHERE "sub_tasks"."task_id" = $1 /* loading for pp */ LIMIT $2[0m  [["task_id", 2], ["LIMIT", 11]]
+Started GET "/tasks/1/subtask/new" for ::1 at 2024-10-16 15:08:55 +0100
+  [1m[36mActiveRecord::SchemaMigration Load (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+Zeitwerk::NameError (expected file /home/paul/code/PaulD-LeWagon/rails-the-stoic-journal/app/controllers/sub_tasks_controller.rb to define constant SubTasksController, but didn't):
+  
+zeitwerk (2.6.18) lib/zeitwerk/loader/callbacks.rb:32:in `on_file_autoloaded'
+zeitwerk (2.6.18) lib/zeitwerk/kernel.rb:27:in `require'
+activesupport (7.1.3.4) lib/active_support/inflector/methods.rb:290:in `const_get'
+activesupport (7.1.3.4) lib/active_support/inflector/methods.rb:290:in `constantize'
+activesupport (7.1.3.4) lib/active_support/core_ext/string/inflections.rb:74:in `constantize'
+actionpack (7.1.3.4) lib/action_dispatch/http/request.rb:90:in `controller_class_for'
+actionpack (7.1.3.4) lib/action_dispatch/request/utils.rb:100:in `action_encoding_template'
+actionpack (7.1.3.4) lib/action_dispatch/request/utils.rb:85:in `encode'
+actionpack (7.1.3.4) lib/action_dispatch/request/utils.rb:45:in `set_binary_encoding'
+actionpack (7.1.3.4) lib/action_dispatch/http/parameters.rb:68:in `path_parameters='
+actionpack (7.1.3.4) lib/action_dispatch/journey/router.rb:48:in `block in serve'
+actionpack (7.1.3.4) lib/action_dispatch/journey/router.rb:131:in `block in find_routes'
+actionpack (7.1.3.4) lib/action_dispatch/journey/router.rb:124:in `each'
+actionpack (7.1.3.4) lib/action_dispatch/journey/router.rb:124:in `find_routes'
+actionpack (7.1.3.4) lib/action_dispatch/journey/router.rb:32:in `serve'
+actionpack (7.1.3.4) lib/action_dispatch/routing/route_set.rb:882:in `call'
+warden (1.2.9) lib/warden/manager.rb:36:in `block in call'
+warden (1.2.9) lib/warden/manager.rb:34:in `catch'
+warden (1.2.9) lib/warden/manager.rb:34:in `call'
+rack (3.1.7) lib/rack/tempfile_reaper.rb:20:in `call'
+rack (3.1.7) lib/rack/etag.rb:29:in `call'
+rack (3.1.7) lib/rack/conditional_get.rb:31:in `call'
+rack (3.1.7) lib/rack/head.rb:15:in `call'
+actionpack (7.1.3.4) lib/action_dispatch/http/permissions_policy.rb:36:in `call'
+actionpack (7.1.3.4) lib/action_dispatch/http/content_security_policy.rb:33:in `call'
+rack-session (2.0.0) lib/rack/session/abstract/id.rb:272:in `context'
+rack-session (2.0.0) lib/rack/session/abstract/id.rb:266:in `call'
+actionpack (7.1.3.4) lib/action_dispatch/middleware/cookies.rb:689:in `call'
+activerecord (7.1.3.4) lib/active_record/migration.rb:655:in `call'
+actionpack (7.1.3.4) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+activesupport (7.1.3.4) lib/active_support/callbacks.rb:101:in `run_callbacks'
+actionpack (7.1.3.4) lib/action_dispatch/middleware/callbacks.rb:28:in `call'
+actionpack (7.1.3.4) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.1.3.4) lib/action_dispatch/middleware/actionable_exceptions.rb:16:in `call'
+actionpack (7.1.3.4) lib/action_dispatch/middleware/debug_exceptions.rb:29:in `call'
+web-console (4.2.1) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.2.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.2.1) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.2.1) lib/web_console/middleware.rb:17:in `call'
+actionpack (7.1.3.4) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (7.1.3.4) lib/rails/rack/logger.rb:37:in `call_app'
+railties (7.1.3.4) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (7.1.3.4) lib/active_support/tagged_logging.rb:135:in `block in tagged'
+activesupport (7.1.3.4) lib/active_support/tagged_logging.rb:39:in `tagged'
+activesupport (7.1.3.4) lib/active_support/tagged_logging.rb:135:in `tagged'
+activesupport (7.1.3.4) lib/active_support/broadcast_logger.rb:240:in `method_missing'
+railties (7.1.3.4) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.5.2) lib/sprockets/rails/quiet_assets.rb:17:in `call'
+actionpack (7.1.3.4) lib/action_dispatch/middleware/remote_ip.rb:92:in `call'
+actionpack (7.1.3.4) lib/action_dispatch/middleware/request_id.rb:28:in `call'
+rack (3.1.7) lib/rack/method_override.rb:28:in `call'
+rack (3.1.7) lib/rack/runtime.rb:24:in `call'
+activesupport (7.1.3.4) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (7.1.3.4) lib/action_dispatch/middleware/server_timing.rb:59:in `block in call'
+actionpack (7.1.3.4) lib/action_dispatch/middleware/server_timing.rb:24:in `collect_events'
+actionpack (7.1.3.4) lib/action_dispatch/middleware/server_timing.rb:58:in `call'
+actionpack (7.1.3.4) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.1.3.4) lib/action_dispatch/middleware/static.rb:25:in `call'
+rack (3.1.7) lib/rack/sendfile.rb:114:in `call'
+actionpack (7.1.3.4) lib/action_dispatch/middleware/host_authorization.rb:141:in `call'
+railties (7.1.3.4) lib/rails/engine.rb:536:in `call'
+puma (6.4.3) lib/puma/configuration.rb:272:in `call'
+puma (6.4.3) lib/puma/request.rb:100:in `block in handle_request'
+puma (6.4.3) lib/puma/thread_pool.rb:378:in `with_force_shutdown'
+puma (6.4.3) lib/puma/request.rb:99:in `handle_request'
+puma (6.4.3) lib/puma/server.rb:464:in `process_client'
+puma (6.4.3) lib/puma/server.rb:245:in `block in run'
+puma (6.4.3) lib/puma/thread_pool.rb:155:in `block in spawn_thread'
+Started GET "/tasks/1/subtask/new" for ::1 at 2024-10-16 15:09:47 +0100
+Processing by SubTasksController#new as HTML
+  Parameters: {"task_id"=>"1"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Completed 401 Unauthorized in 169ms (ActiveRecord: 15.7ms | Allocations: 10206)
+
+
+Started GET "/users/sign_in" for ::1 at 2024-10-16 15:09:47 +0100
+Processing by Devise::SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (Duration: 2.4ms | Allocations: 541)
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 60.5ms | Allocations: 10355)
+  Rendered shared/_navbar.html.erb (Duration: 1.7ms | Allocations: 546)
+  Rendered shared/_flashes.html.erb (Duration: 0.7ms | Allocations: 204)
+  Rendered shared/_footer.html.erb (Duration: 0.5ms | Allocations: 117)
+  Rendered layout layouts/application.html.erb (Duration: 275.2ms | Allocations: 78211)
+Completed 200 OK in 335ms (Views: 279.0ms | ActiveRecord: 0.0ms | Allocations: 97255)
+
+
+Started GET "/users/sign_in" for ::1 at 2024-10-16 15:13:20 +0100
+Processing by Devise::SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (Duration: 2.8ms | Allocations: 519)
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 10.2ms | Allocations: 4059)
+  Rendered shared/_navbar.html.erb (Duration: 1.3ms | Allocations: 521)
+  Rendered shared/_flashes.html.erb (Duration: 0.6ms | Allocations: 192)
+  Rendered shared/_footer.html.erb (Duration: 0.6ms | Allocations: 115)
+  Rendered layout layouts/application.html.erb (Duration: 55.1ms | Allocations: 32139)
+Completed 200 OK in 77ms (Views: 59.1ms | ActiveRecord: 4.8ms | Allocations: 39324)
+
+
+Started GET "/users/password/new" for ::1 at 2024-10-16 15:13:24 +0100
+Processing by Devise::PasswordsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering devise/passwords/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (Duration: 0.3ms | Allocations: 122)
+  Rendered devise/passwords/new.html.erb within layouts/application (Duration: 19.5ms | Allocations: 1929)
+  Rendered shared/_navbar.html.erb (Duration: 0.3ms | Allocations: 99)
+  Rendered shared/_flashes.html.erb (Duration: 0.1ms | Allocations: 22)
+  Rendered shared/_footer.html.erb (Duration: 0.0ms | Allocations: 8)
+  Rendered layout layouts/application.html.erb (Duration: 36.2ms | Allocations: 10033)
+Completed 200 OK in 55ms (Views: 38.0ms | ActiveRecord: 0.0ms | Allocations: 10932)
+
+
+Started GET "/users/password/new" for ::1 at 2024-10-16 15:13:25 +0100
+Processing by Devise::PasswordsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering devise/passwords/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (Duration: 0.6ms | Allocations: 109)
+  Rendered devise/passwords/new.html.erb within layouts/application (Duration: 5.4ms | Allocations: 1507)
+  Rendered shared/_navbar.html.erb (Duration: 0.5ms | Allocations: 96)
+  Rendered shared/_flashes.html.erb (Duration: 0.1ms | Allocations: 22)
+  Rendered shared/_footer.html.erb (Duration: 0.1ms | Allocations: 8)
+  Rendered layout layouts/application.html.erb (Duration: 39.2ms | Allocations: 9408)
+Completed 200 OK in 41ms (Views: 40.0ms | ActiveRecord: 0.0ms | Allocations: 9955)
+
+
+Started GET "/users/sign_in" for ::1 at 2024-10-16 15:14:45 +0100
+Processing by Devise::SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (Duration: 2.1ms | Allocations: 523)
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 16.9ms | Allocations: 4053)
+  Rendered shared/_navbar.html.erb (Duration: 1.4ms | Allocations: 521)
+  Rendered shared/_flashes.html.erb (Duration: 0.5ms | Allocations: 192)
+  Rendered shared/_footer.html.erb (Duration: 0.4ms | Allocations: 115)
+  Rendered layout layouts/application.html.erb (Duration: 60.6ms | Allocations: 32135)
+Completed 200 OK in 84ms (Views: 64.0ms | ActiveRecord: 6.0ms | Allocations: 39281)
+
+
+Started GET "/users/sign_in" for ::1 at 2024-10-16 15:16:40 +0100
+Processing by Devise::SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (Duration: 1.4ms | Allocations: 519)
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 9.8ms | Allocations: 4057)
+  Rendered shared/_navbar.html.erb (Duration: 1.1ms | Allocations: 521)
+  Rendered shared/_flashes.html.erb (Duration: 0.5ms | Allocations: 192)
+  Rendered shared/_footer.html.erb (Duration: 0.3ms | Allocations: 115)
+  Rendered layout layouts/application.html.erb (Duration: 51.7ms | Allocations: 32138)
+Completed 200 OK in 73ms (Views: 54.7ms | ActiveRecord: 4.1ms | Allocations: 39299)
+
+
+Started POST "/users/sign_in" for ::1 at 2024-10-16 15:16:54 +0100
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"email"=>"pauldevanney92@gmail.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "pauldevanney92@gmail.com"], ["LIMIT", 1]]
+Redirected to http://localhost:3000/tasks/1/subtask/new
+Completed 303 See Other in 380ms (ActiveRecord: 1.0ms | Allocations: 3943)
+
+
+Started GET "/tasks/1/subtask/new" for ::1 at 2024-10-16 15:16:54 +0100
+Processing by SubTasksController#new as HTML
+  Parameters: {"task_id"=>"1"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 51ms (ActiveRecord: 3.7ms | Allocations: 13876)
+
+
+  
+NoMethodError (undefined method `user=' for an instance of SubTask):
+  
+app/controllers/sub_tasks_controller.rb:15:in `new'
+Started GET "/tasks/1/subtask/new" for ::1 at 2024-10-16 15:22:12 +0100
+Processing by SubTasksController#new as HTML
+  Parameters: {"task_id"=>"1"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 58ms (ActiveRecord: 12.8ms | Allocations: 17154)
+
+
+  
+NoMethodError (undefined method `user' for an instance of SubTask):
+  
+app/policies/sub_task_policy.rb:34:in `if_user_or_admin?'
+app/policies/sub_task_policy.rb:20:in `create?'
+app/policies/application_policy.rb:24:in `new?'
+app/controllers/sub_tasks_controller.rb:17:in `new'
+Started GET "/tasks/1/subtask/new" for ::1 at 2024-10-16 15:23:12 +0100
+Processing by SubTasksController#new as HTML
+  Parameters: {"task_id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 61ms (ActiveRecord: 11.2ms | Allocations: 16276)
+
+
+  
+NoMethodError (undefined method `user' for nil):
+  
+app/policies/sub_task_policy.rb:34:in `if_user_or_admin?'
+app/policies/sub_task_policy.rb:20:in `create?'
+app/policies/application_policy.rb:24:in `new?'
+app/controllers/sub_tasks_controller.rb:17:in `new'
+Started GET "/tasks/1/subtask/new" for ::1 at 2024-10-16 15:23:38 +0100
+Processing by SubTasksController#new as HTML
+  Parameters: {"task_id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 60ms (ActiveRecord: 14.5ms | Allocations: 16271)
+
+
+  
+RuntimeError ():
+  
+app/policies/sub_task_policy.rb:34:in `if_user_or_admin?'
+app/policies/sub_task_policy.rb:20:in `create?'
+app/policies/application_policy.rb:24:in `new?'
+app/controllers/sub_tasks_controller.rb:17:in `new'
+Started PUT "/__web_console/repl_sessions/ca653d998c8ee5a483695e16319a7985" for ::1 at 2024-10-16 15:23:46 +0100
+Started PUT "/__web_console/repl_sessions/ca653d998c8ee5a483695e16319a7985" for ::1 at 2024-10-16 15:23:48 +0100
+Started GET "/tasks/1/subtask/new" for ::1 at 2024-10-16 15:27:23 +0100
+Processing by SubTasksController#new as HTML
+  Parameters: {"task_id"=>"1"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 62ms (ActiveRecord: 10.9ms | Allocations: 15883)
+
+
+  
+RuntimeError ():
+  
+app/controllers/sub_tasks_controller.rb:17:in `new'
+Started PUT "/__web_console/repl_sessions/2a0272f39651342633bd85a6a2208a78" for ::1 at 2024-10-16 15:27:33 +0100
+Started PUT "/__web_console/repl_sessions/2a0272f39651342633bd85a6a2208a78" for ::1 at 2024-10-16 15:27:34 +0100
+Started GET "/tasks/1/subtask/new" for ::1 at 2024-10-16 15:28:45 +0100
+Processing by SubTasksController#new as HTML
+  Parameters: {"task_id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 93ms (ActiveRecord: 16.3ms | Allocations: 15902)
+
+
+  
+RuntimeError ():
+  
+app/controllers/sub_tasks_controller.rb:17:in `new'
+Started GET "/tasks/1/subtask/new" for ::1 at 2024-10-16 15:28:48 +0100
+Processing by SubTasksController#new as HTML
+  Parameters: {"task_id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 9ms (ActiveRecord: 0.3ms | Allocations: 1934)
+
+
+  
+RuntimeError ():
+  
+app/controllers/sub_tasks_controller.rb:17:in `new'
+Started GET "/tasks/1/subtask/new" for ::1 at 2024-10-16 15:28:48 +0100
+Processing by SubTasksController#new as HTML
+  Parameters: {"task_id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 6ms (ActiveRecord: 0.2ms | Allocations: 1931)
+
+
+  
+RuntimeError ():
+  
+app/controllers/sub_tasks_controller.rb:17:in `new'
+Started GET "/tasks/1/subtask/new" for ::1 at 2024-10-16 15:29:30 +0100
+Processing by SubTasksController#new as HTML
+  Parameters: {"task_id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mTask Load (0.5ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/sub_tasks_controller.rb:14:in `new'
+Completed 404 Not Found in 51ms (ActiveRecord: 12.7ms | Allocations: 12486)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Task with 'id'=1):
+  
+app/controllers/sub_tasks_controller.rb:14:in `new'
+  [1m[36mTask Load (0.6ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" /* loading for pp */ LIMIT $1[0m  [["LIMIT", 11]]
+Started GET "/tasks/2/subtask/new" for ::1 at 2024-10-16 15:30:39 +0100
+Processing by SubTasksController#new as HTML
+  Parameters: {"task_id"=>"2"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mTask Load (1.4ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/sub_tasks_controller.rb:14:in `new'
+Completed 500 Internal Server Error in 91ms (ActiveRecord: 5.6ms | Allocations: 19189)
+
+
+  
+RuntimeError ():
+  
+app/controllers/sub_tasks_controller.rb:17:in `new'
+Started PUT "/__web_console/repl_sessions/715037af1c0c39a753fb01e7c5574a9f" for ::1 at 2024-10-16 15:30:48 +0100
+Started PUT "/__web_console/repl_sessions/715037af1c0c39a753fb01e7c5574a9f" for ::1 at 2024-10-16 15:30:48 +0100
+Started PUT "/__web_console/repl_sessions/715037af1c0c39a753fb01e7c5574a9f" for ::1 at 2024-10-16 15:31:16 +0100
+Started PUT "/__web_console/repl_sessions/715037af1c0c39a753fb01e7c5574a9f" for ::1 at 2024-10-16 15:31:19 +0100
+Started PUT "/__web_console/repl_sessions/715037af1c0c39a753fb01e7c5574a9f" for ::1 at 2024-10-16 15:31:27 +0100
+Started PUT "/__web_console/repl_sessions/715037af1c0c39a753fb01e7c5574a9f" for ::1 at 2024-10-16 15:31:28 +0100
+Started PUT "/__web_console/repl_sessions/715037af1c0c39a753fb01e7c5574a9f" for ::1 at 2024-10-16 15:31:41 +0100
+Started PUT "/__web_console/repl_sessions/715037af1c0c39a753fb01e7c5574a9f" for ::1 at 2024-10-16 15:31:43 +0100
+Started PUT "/__web_console/repl_sessions/715037af1c0c39a753fb01e7c5574a9f" for ::1 at 2024-10-16 15:31:47 +0100
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+Started PUT "/__web_console/repl_sessions/715037af1c0c39a753fb01e7c5574a9f" for ::1 at 2024-10-16 15:31:50 +0100
+Started GET "/tasks/2/subtask/new" for ::1 at 2024-10-16 15:32:12 +0100
+Processing by SubTasksController#new as HTML
+  Parameters: {"task_id"=>"2"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mTask Load (0.3ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/sub_tasks_controller.rb:14:in `new'
+Completed 500 Internal Server Error in 93ms (ActiveRecord: 19.0ms | Allocations: 22707)
+
+
+  
+RuntimeError ():
+  
+app/policies/sub_task_policy.rb:34:in `if_user_or_admin?'
+app/policies/sub_task_policy.rb:20:in `create?'
+app/policies/application_policy.rb:24:in `new?'
+app/controllers/sub_tasks_controller.rb:17:in `new'
+Started PUT "/__web_console/repl_sessions/8748aaaaa11c1d8507aa30939932baa3" for ::1 at 2024-10-16 15:32:19 +0100
+Started PUT "/__web_console/repl_sessions/8748aaaaa11c1d8507aa30939932baa3" for ::1 at 2024-10-16 15:32:22 +0100
+Started PUT "/__web_console/repl_sessions/8748aaaaa11c1d8507aa30939932baa3" for ::1 at 2024-10-16 15:32:29 +0100
+Started PUT "/__web_console/repl_sessions/8748aaaaa11c1d8507aa30939932baa3" for ::1 at 2024-10-16 15:32:30 +0100
+Started PUT "/__web_console/repl_sessions/8748aaaaa11c1d8507aa30939932baa3" for ::1 at 2024-10-16 15:32:32 +0100
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/policies/sub_task_policy.rb:34:in `if_user_or_admin?'
+Started PUT "/__web_console/repl_sessions/8748aaaaa11c1d8507aa30939932baa3" for ::1 at 2024-10-16 15:32:39 +0100
+Started PUT "/__web_console/repl_sessions/8748aaaaa11c1d8507aa30939932baa3" for ::1 at 2024-10-16 15:32:50 +0100
+Started PUT "/__web_console/repl_sessions/8748aaaaa11c1d8507aa30939932baa3" for ::1 at 2024-10-16 15:32:58 +0100
+Started PUT "/__web_console/repl_sessions/8748aaaaa11c1d8507aa30939932baa3" for ::1 at 2024-10-16 15:33:03 +0100
+Started PUT "/__web_console/repl_sessions/8748aaaaa11c1d8507aa30939932baa3" for ::1 at 2024-10-16 15:33:06 +0100
+Started PUT "/__web_console/repl_sessions/8748aaaaa11c1d8507aa30939932baa3" for ::1 at 2024-10-16 15:33:10 +0100
+Started PUT "/__web_console/repl_sessions/8748aaaaa11c1d8507aa30939932baa3" for ::1 at 2024-10-16 15:33:21 +0100
+Started PUT "/__web_console/repl_sessions/8748aaaaa11c1d8507aa30939932baa3" for ::1 at 2024-10-16 15:33:22 +0100
+Started PUT "/__web_console/repl_sessions/8748aaaaa11c1d8507aa30939932baa3" for ::1 at 2024-10-16 15:33:27 +0100
+Started PUT "/__web_console/repl_sessions/8748aaaaa11c1d8507aa30939932baa3" for ::1 at 2024-10-16 15:33:30 +0100
+  [1m[36mUser Load (1.7ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Update (1.4ms)[0m  [1m[33mUPDATE "users" SET "updated_at" = $1, "admin" = $2 WHERE "users"."id" = $3[0m  [["updated_at", "2024-10-16 14:35:28.803466"], ["admin", true], ["id", 4]]
+  [1m[36mTRANSACTION (101.7ms)[0m  [1m[35mCOMMIT[0m
+Started PUT "/__web_console/repl_sessions/8748aaaaa11c1d8507aa30939932baa3" for ::1 at 2024-10-16 15:35:40 +0100
+Started GET "/tasks/2/subtask/new" for ::1 at 2024-10-16 15:36:45 +0100
+Processing by SubTasksController#new as HTML
+  Parameters: {"task_id"=>"2"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mTask Load (0.4ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/sub_tasks_controller.rb:14:in `new'
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/policies/sub_task_policy.rb:34:in `if_user_or_admin?'
+  Rendering layout layouts/application.html.erb
+  Rendering sub_tasks/new.html.erb within layouts/application
+  Rendered sub_tasks/new.html.erb within layouts/application (Duration: 0.4ms | Allocations: 95)
+  Rendered shared/_navbar.html.erb (Duration: 1.2ms | Allocations: 601)
+  Rendered shared/_flashes.html.erb (Duration: 0.9ms | Allocations: 197)
+  Rendered shared/_footer.html.erb (Duration: 1.1ms | Allocations: 115)
+  Rendered layout layouts/application.html.erb (Duration: 44.3ms | Allocations: 28299)
+Completed 200 OK in 123ms (Views: 46.7ms | ActiveRecord: 13.9ms | Allocations: 53372)
+
+
+Started GET "/tasks/2/subtask/new" for ::1 at 2024-10-16 15:41:20 +0100
+Processing by SubTasksController#new as HTML
+  Parameters: {"task_id"=>"2"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mTask Load (0.9ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/sub_tasks_controller.rb:14:in `new'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/policies/sub_task_policy.rb:34:in `if_user_or_admin?'
+  Rendering layout layouts/application.html.erb
+  Rendering sub_tasks/new.html.erb within layouts/application
+  Rendered sub_tasks/new.html.erb within layouts/application (Duration: 0.5ms | Allocations: 93)
+  Rendered shared/_navbar.html.erb (Duration: 1.7ms | Allocations: 603)
+  Rendered shared/_flashes.html.erb (Duration: 0.6ms | Allocations: 192)
+  Rendered shared/_footer.html.erb (Duration: 0.7ms | Allocations: 115)
+  Rendered layout layouts/application.html.erb (Duration: 49.7ms | Allocations: 28338)
+Completed 200 OK in 121ms (Views: 51.4ms | ActiveRecord: 12.8ms | Allocations: 53308)
+
+
+Started GET "/tasks/2/subtask/new" for ::1 at 2024-10-16 15:41:28 +0100
+Processing by SubTasksController#new as HTML
+  Parameters: {"task_id"=>"2"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mTask Load (2.4ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/sub_tasks_controller.rb:14:in `new'
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/policies/sub_task_policy.rb:34:in `if_user_or_admin?'
+  Rendering layout layouts/application.html.erb
+  Rendering sub_tasks/new.html.erb within layouts/application
+  Rendered sub_tasks/new.html.erb within layouts/application (Duration: 0.1ms | Allocations: 7)
+  Rendered shared/_navbar.html.erb (Duration: 0.6ms | Allocations: 173)
+  Rendered shared/_flashes.html.erb (Duration: 0.1ms | Allocations: 22)
+  Rendered shared/_footer.html.erb (Duration: 0.1ms | Allocations: 8)
+  Rendered layout layouts/application.html.erb (Duration: 18.2ms | Allocations: 8166)
+Completed 200 OK in 35ms (Views: 18.7ms | ActiveRecord: 3.0ms | Allocations: 10881)
+
+
+Started GET "/tasks/2/subtask/new" for ::1 at 2024-10-16 15:41:29 +0100
+Processing by SubTasksController#new as HTML
+  Parameters: {"task_id"=>"2"}
+  [1m[36mUser Load (6.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mTask Load (1.7ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/sub_tasks_controller.rb:14:in `new'
+  [1m[36mUser Load (1.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/policies/sub_task_policy.rb:34:in `if_user_or_admin?'
+  Rendering layout layouts/application.html.erb
+  Rendering sub_tasks/new.html.erb within layouts/application
+  Rendered sub_tasks/new.html.erb within layouts/application (Duration: 0.0ms | Allocations: 7)
+  Rendered shared/_navbar.html.erb (Duration: 0.9ms | Allocations: 173)
+  Rendered shared/_flashes.html.erb (Duration: 0.2ms | Allocations: 22)
+  Rendered shared/_footer.html.erb (Duration: 0.0ms | Allocations: 8)
+  Rendered layout layouts/application.html.erb (Duration: 38.1ms | Allocations: 9842)
+Completed 200 OK in 74ms (Views: 38.9ms | ActiveRecord: 9.5ms | Allocations: 15094)
+
+
+Started GET "/tasks/2/subtask/new" for ::1 at 2024-10-16 15:41:29 +0100
+Processing by SubTasksController#new as HTML
+  Parameters: {"task_id"=>"2"}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mTask Load (0.4ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/sub_tasks_controller.rb:14:in `new'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/policies/sub_task_policy.rb:34:in `if_user_or_admin?'
+  Rendering layout layouts/application.html.erb
+  Rendering sub_tasks/new.html.erb within layouts/application
+  Rendered sub_tasks/new.html.erb within layouts/application (Duration: 0.1ms | Allocations: 7)
+  Rendered shared/_navbar.html.erb (Duration: 0.9ms | Allocations: 173)
+  Rendered shared/_flashes.html.erb (Duration: 0.1ms | Allocations: 22)
+  Rendered shared/_footer.html.erb (Duration: 0.0ms | Allocations: 8)
+  Rendered layout layouts/application.html.erb (Duration: 34.0ms | Allocations: 8178)
+Completed 200 OK in 46ms (Views: 34.8ms | ActiveRecord: 1.2ms | Allocations: 10889)
+
+
+Started GET "/tasks/2/subtask/new" for ::1 at 2024-10-16 15:42:38 +0100
+Processing by SubTasksController#new as HTML
+  Parameters: {"task_id"=>"2"}
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mTask Load (3.3ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/sub_tasks_controller.rb:14:in `new'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/policies/sub_task_policy.rb:34:in `if_user_or_admin?'
+  Rendering layout layouts/application.html.erb
+  Rendering sub_tasks/new.html.erb within layouts/application
+  Rendered sub_tasks/new.html.erb within layouts/application (Duration: 4.6ms | Allocations: 1469)
+  Rendered layout layouts/application.html.erb (Duration: 4.9ms | Allocations: 1555)
+Completed 500 Internal Server Error in 202ms (ActiveRecord: 26.9ms | Allocations: 26520)
+
+
+  
+ActionView::Template::Error (undefined method `sub_task_task_path' for an instance of #<Class:0x000072f45e602280>):
+    4: 
+    5:     <h1 class="my-5 mb-3 fst-bold">SubTasks#new</h1>
+    6: 
+    7:     <%= simple_form_for([@sub_task, @task], html: { class: "animate-shadow bg-body rounded-3 m-5 p-5 w-50 mx-auto" }) do |f| %>
+    8: 
+    9:       <%= f.error_notification %>
+   10:       <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+  
+app/views/sub_tasks/new.html.erb:7
+Started GET "/tasks/2/subtask/new" for ::1 at 2024-10-16 15:43:25 +0100
+Processing by SubTasksController#new as HTML
+  Parameters: {"task_id"=>"2"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mTask Load (0.2ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/sub_tasks_controller.rb:14:in `new'
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/policies/sub_task_policy.rb:34:in `if_user_or_admin?'
+  Rendering layout layouts/application.html.erb
+  Rendering sub_tasks/new.html.erb within layouts/application
+  Rendered sub_tasks/new.html.erb within layouts/application (Duration: 28.3ms | Allocations: 5713)
+  Rendered shared/_navbar.html.erb (Duration: 1.3ms | Allocations: 568)
+  Rendered shared/_flashes.html.erb (Duration: 0.6ms | Allocations: 192)
+  Rendered shared/_footer.html.erb (Duration: 0.4ms | Allocations: 115)
+  Rendered layout layouts/application.html.erb (Duration: 71.4ms | Allocations: 33847)
+Completed 200 OK in 161ms (Views: 74.0ms | ActiveRecord: 13.2ms | Allocations: 58845)
+
+
+Started POST "/tasks/2/subtask" for ::1 at 2024-10-16 15:44:32 +0100
+Processing by SubTasksController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "sub_task"=>{"order"=>"1", "title"=>"Step 2 ", "description"=>"Sit down, close your eyes and take a deep breath!", "start_date"=>"", "due_date"=>""}, "commit"=>"Add?", "task_id"=>"2"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 10ms (ActiveRecord: 0.6ms | Allocations: 2181)
+
+
+  
+NoMethodError (undefined method `user=' for an instance of SubTask):
+  
+app/controllers/sub_tasks_controller.rb:28:in `create'
+Started GET "/tasks/2/subtask/new" for ::1 at 2024-10-16 15:46:53 +0100
+Processing by SubTasksController#new as HTML
+  Parameters: {"task_id"=>"2"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mTask Load (0.3ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/sub_tasks_controller.rb:14:in `new'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/policies/sub_task_policy.rb:34:in `if_user_or_admin?'
+  Rendering layout layouts/application.html.erb
+  Rendering sub_tasks/new.html.erb within layouts/application
+  Rendered sub_tasks/new.html.erb within layouts/application (Duration: 9.5ms | Allocations: 4982)
+  Rendered shared/_navbar.html.erb (Duration: 2.3ms | Allocations: 568)
+  Rendered shared/_flashes.html.erb (Duration: 0.9ms | Allocations: 192)
+  Rendered shared/_footer.html.erb (Duration: 0.6ms | Allocations: 115)
+  Rendered layout layouts/application.html.erb (Duration: 56.7ms | Allocations: 33112)
+Completed 200 OK in 142ms (Views: 58.7ms | ActiveRecord: 11.0ms | Allocations: 58089)
+
+
+Started POST "/tasks/2/subtask" for ::1 at 2024-10-16 15:47:22 +0100
+Processing by SubTasksController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "sub_task"=>{"order"=>"2", "title"=>"Step 2 ", "description"=>"Blah, blah, blah...", "start_date"=>"", "due_date"=>""}, "commit"=>"Add?", "task_id"=>"2"}
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mTask Load (1.4ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/sub_tasks_controller.rb:27:in `create'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/policies/sub_task_policy.rb:34:in `if_user_or_admin?'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/sub_tasks_controller.rb:32:in `create'
+  [1m[36mSubTask Create (5.3ms)[0m  [1m[32mINSERT INTO "sub_tasks" ("task_id", "order", "title", "description", "comment", "start_date", "due_date", "completed", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING "id"[0m  [["task_id", 2], ["order", 2], ["title", "Step 2 "], ["description", "Blah, blah, blah..."], ["comment", nil], ["start_date", nil], ["due_date", nil], ["completed", nil], ["created_at", "2024-10-16 14:47:22.350667"], ["updated_at", "2024-10-16 14:47:22.350667"]]
+  ↳ app/controllers/sub_tasks_controller.rb:32:in `create'
+  [1m[36mTRANSACTION (72.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/sub_tasks_controller.rb:32:in `create'
+Redirected to http://localhost:3000/subtask/2
+Completed 302 Found in 109ms (ActiveRecord: 79.8ms | Allocations: 5939)
+
+
+Started GET "/subtask/2" for ::1 at 2024-10-16 15:47:22 +0100
+Processing by SubTasksController#show as TURBO_STREAM
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mSubTask Load (2.0ms)[0m  [1m[34mSELECT "sub_tasks".* FROM "sub_tasks" WHERE "sub_tasks"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/sub_tasks_controller.rb:59:in `set_sub_task'
+  Rendering layout layouts/application.html.erb
+  Rendering sub_tasks/show.html.erb within layouts/application
+  Rendered sub_tasks/show.html.erb within layouts/application (Duration: 0.7ms | Allocations: 91)
+  Rendered shared/_navbar.html.erb (Duration: 0.3ms | Allocations: 173)
+  Rendered shared/_flashes.html.erb (Duration: 0.1ms | Allocations: 27)
+  Rendered shared/_footer.html.erb (Duration: 0.0ms | Allocations: 8)
+  Rendered layout layouts/application.html.erb (Duration: 32.5ms | Allocations: 8311)
+Completed 200 OK in 51ms (Views: 33.3ms | ActiveRecord: 2.0ms | Allocations: 11216)
+
+
+Started GET "/subtask/2" for ::1 at 2024-10-16 15:51:06 +0100
+Processing by SubTasksController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mSubTask Load (0.3ms)[0m  [1m[34mSELECT "sub_tasks".* FROM "sub_tasks" WHERE "sub_tasks"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/sub_tasks_controller.rb:59:in `set_sub_task'
+  Rendering layout layouts/application.html.erb
+  Rendering sub_tasks/show.html.erb within layouts/application
+  Rendered sub_tasks/show.html.erb within layouts/application (Duration: 1.0ms | Allocations: 233)
+  Rendered shared/_navbar.html.erb (Duration: 1.6ms | Allocations: 568)
+  Rendered shared/_flashes.html.erb (Duration: 1.8ms | Allocations: 192)
+  Rendered shared/_footer.html.erb (Duration: 0.6ms | Allocations: 115)
+  Rendered layout layouts/application.html.erb (Duration: 46.9ms | Allocations: 28379)
+Completed 200 OK in 100ms (Views: 49.6ms | ActiveRecord: 9.7ms | Allocations: 43532)
+
+
+Started GET "/tasks/2/subtask/new" for ::1 at 2024-10-16 15:51:10 +0100
+Processing by SubTasksController#new as HTML
+  Parameters: {"task_id"=>"2"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mTask Load (0.3ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/sub_tasks_controller.rb:14:in `new'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/policies/sub_task_policy.rb:34:in `if_user_or_admin?'
+  Rendering layout layouts/application.html.erb
+  Rendering sub_tasks/new.html.erb within layouts/application
+  Rendered sub_tasks/new.html.erb within layouts/application (Duration: 18.6ms | Allocations: 4938)
+  Rendered shared/_navbar.html.erb (Duration: 1.1ms | Allocations: 160)
+  Rendered shared/_flashes.html.erb (Duration: 0.1ms | Allocations: 22)
+  Rendered shared/_footer.html.erb (Duration: 0.0ms | Allocations: 8)
+  Rendered layout layouts/application.html.erb (Duration: 38.0ms | Allocations: 13096)
+Completed 200 OK in 83ms (Views: 38.7ms | ActiveRecord: 5.2ms | Allocations: 25813)
+
+
+Started GET "/tasks/2/subtask/new" for ::1 at 2024-10-16 15:55:04 +0100
+Processing by SubTasksController#new as HTML
+  Parameters: {"task_id"=>"2"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mTask Load (0.2ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/sub_tasks_controller.rb:14:in `new'
+  [1m[36mSubTask Count (0.7ms)[0m  [1m[34mSELECT COUNT(*) FROM "sub_tasks" WHERE "sub_tasks"."task_id" = $1[0m  [["task_id", 2]]
+  ↳ app/models/task.rb:15:in `default_subtask_order'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/policies/sub_task_policy.rb:34:in `if_user_or_admin?'
+  Rendering layout layouts/application.html.erb
+  Rendering sub_tasks/new.html.erb within layouts/application
+  Rendered sub_tasks/new.html.erb within layouts/application (Duration: 10.0ms | Allocations: 4996)
+  Rendered shared/_navbar.html.erb (Duration: 1.2ms | Allocations: 568)
+  Rendered shared/_flashes.html.erb (Duration: 0.5ms | Allocations: 192)
+  Rendered shared/_footer.html.erb (Duration: 0.3ms | Allocations: 115)
+  Rendered layout layouts/application.html.erb (Duration: 54.4ms | Allocations: 33126)
+Completed 200 OK in 143ms (Views: 56.1ms | ActiveRecord: 18.2ms | Allocations: 59968)
+
+
+Started POST "/tasks/2/subtask" for ::1 at 2024-10-16 15:55:48 +0100
+Processing by SubTasksController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "sub_task"=>{"order"=>"3", "title"=>"Step 3", "description"=>"Now think of nothing! :-D", "start_date"=>"", "due_date"=>""}, "commit"=>"Add?", "task_id"=>"2"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mTask Load (0.3ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/sub_tasks_controller.rb:28:in `create'
+  [1m[36mUser Load (1.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/policies/sub_task_policy.rb:34:in `if_user_or_admin?'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/sub_tasks_controller.rb:33:in `create'
+  [1m[36mSubTask Create (6.0ms)[0m  [1m[32mINSERT INTO "sub_tasks" ("task_id", "order", "title", "description", "comment", "start_date", "due_date", "completed", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING "id"[0m  [["task_id", 2], ["order", 3], ["title", "Step 3"], ["description", "Now think of nothing! :-D"], ["comment", nil], ["start_date", nil], ["due_date", nil], ["completed", nil], ["created_at", "2024-10-16 14:55:48.971932"], ["updated_at", "2024-10-16 14:55:48.971932"]]
+  ↳ app/controllers/sub_tasks_controller.rb:33:in `create'
+  [1m[36mTRANSACTION (63.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/sub_tasks_controller.rb:33:in `create'
+Redirected to http://localhost:3000/subtask/3
+Completed 302 Found in 102ms (ActiveRecord: 71.2ms | Allocations: 4502)
+
+
+Started GET "/subtask/3" for ::1 at 2024-10-16 15:55:49 +0100
+Processing by SubTasksController#show as TURBO_STREAM
+  Parameters: {"id"=>"3"}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mSubTask Load (0.3ms)[0m  [1m[34mSELECT "sub_tasks".* FROM "sub_tasks" WHERE "sub_tasks"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/sub_tasks_controller.rb:60:in `set_sub_task'
+  Rendering layout layouts/application.html.erb
+  Rendering sub_tasks/show.html.erb within layouts/application
+  Rendered sub_tasks/show.html.erb within layouts/application (Duration: 1.6ms | Allocations: 192)
+  Rendered shared/_navbar.html.erb (Duration: 0.6ms | Allocations: 160)
+  Rendered shared/_flashes.html.erb (Duration: 0.2ms | Allocations: 27)
+  Rendered shared/_footer.html.erb (Duration: 0.1ms | Allocations: 8)
+  Rendered layout layouts/application.html.erb (Duration: 28.6ms | Allocations: 8399)
+Completed 200 OK in 53ms (Views: 30.7ms | ActiveRecord: 0.9ms | Allocations: 11276)
+
+
+Started GET "/tasks/3/subtask/new" for ::1 at 2024-10-16 15:56:27 +0100
+Processing by SubTasksController#new as HTML
+  Parameters: {"task_id"=>"3"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mTask Load (0.2ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/sub_tasks_controller.rb:14:in `new'
+Completed 404 Not Found in 9ms (ActiveRecord: 0.4ms | Allocations: 2315)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Task with 'id'=3):
+  
+app/controllers/sub_tasks_controller.rb:14:in `new'
+Started GET "/subtask/3" for ::1 at 2024-10-16 15:57:08 +0100
+Processing by SubTasksController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mSubTask Load (4.3ms)[0m  [1m[34mSELECT "sub_tasks".* FROM "sub_tasks" WHERE "sub_tasks"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/sub_tasks_controller.rb:60:in `set_sub_task'
+  Rendering layout layouts/application.html.erb
+  Rendering sub_tasks/show.html.erb within layouts/application
+  Rendered sub_tasks/show.html.erb within layouts/application (Duration: 0.4ms | Allocations: 47)
+  Rendered shared/_navbar.html.erb (Duration: 0.7ms | Allocations: 160)
+  Rendered shared/_flashes.html.erb (Duration: 0.1ms | Allocations: 22)
+  Rendered shared/_footer.html.erb (Duration: 0.1ms | Allocations: 8)
+  Rendered layout layouts/application.html.erb (Duration: 33.2ms | Allocations: 8206)
+Completed 200 OK in 55ms (Views: 34.1ms | ActiveRecord: 4.6ms | Allocations: 10293)
+
+
+Started GET "/tasks/3/subtask/new" for ::1 at 2024-10-16 15:57:10 +0100
+Processing by SubTasksController#new as HTML
+  Parameters: {"task_id"=>"3"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mTask Load (2.1ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/sub_tasks_controller.rb:14:in `new'
+Completed 404 Not Found in 16ms (ActiveRecord: 2.5ms | Allocations: 2312)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Task with 'id'=3):
+  
+app/controllers/sub_tasks_controller.rb:14:in `new'
+Started GET "/tasks/3/subtask/new" for ::1 at 2024-10-16 15:57:11 +0100
+Processing by SubTasksController#new as HTML
+  Parameters: {"task_id"=>"3"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mTask Load (0.2ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/sub_tasks_controller.rb:14:in `new'
+Completed 404 Not Found in 21ms (ActiveRecord: 0.5ms | Allocations: 2310)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Task with 'id'=3):
+  
+app/controllers/sub_tasks_controller.rb:14:in `new'
+Started GET "/subtask/3" for ::1 at 2024-10-16 15:58:24 +0100
+Processing by SubTasksController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mSubTask Load (0.4ms)[0m  [1m[34mSELECT "sub_tasks".* FROM "sub_tasks" WHERE "sub_tasks"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/sub_tasks_controller.rb:60:in `set_sub_task'
+  Rendering layout layouts/application.html.erb
+  Rendering sub_tasks/show.html.erb within layouts/application
+  [1m[36mTask Load (0.2ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/sub_tasks/show.html.erb:9
+  Rendered sub_tasks/show.html.erb within layouts/application (Duration: 51.8ms | Allocations: 9934)
+  Rendered shared/_navbar.html.erb (Duration: 1.2ms | Allocations: 570)
+  Rendered shared/_flashes.html.erb (Duration: 0.8ms | Allocations: 192)
+  Rendered shared/_footer.html.erb (Duration: 1.9ms | Allocations: 115)
+  Rendered layout layouts/application.html.erb (Duration: 180.4ms | Allocations: 38121)
+Completed 200 OK in 229ms (Views: 179.8ms | ActiveRecord: 12.1ms | Allocations: 53265)
+
+
+Started GET "/tasks/2/subtask/new" for ::1 at 2024-10-16 15:58:37 +0100
+Processing by SubTasksController#new as HTML
+  Parameters: {"task_id"=>"2"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mTask Load (0.3ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/sub_tasks_controller.rb:14:in `new'
+  [1m[36mSubTask Count (0.7ms)[0m  [1m[34mSELECT COUNT(*) FROM "sub_tasks" WHERE "sub_tasks"."task_id" = $1[0m  [["task_id", 2]]
+  ↳ app/models/task.rb:15:in `default_subtask_order'
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/policies/sub_task_policy.rb:34:in `if_user_or_admin?'
+  Rendering layout layouts/application.html.erb
+  Rendering sub_tasks/new.html.erb within layouts/application
+  Rendered sub_tasks/new.html.erb within layouts/application (Duration: 10.1ms | Allocations: 4929)
+  Rendered shared/_navbar.html.erb (Duration: 0.4ms | Allocations: 160)
+  Rendered shared/_flashes.html.erb (Duration: 0.1ms | Allocations: 22)
+  Rendered shared/_footer.html.erb (Duration: 0.0ms | Allocations: 8)
+  Rendered layout layouts/application.html.erb (Duration: 29.4ms | Allocations: 12883)
+Completed 200 OK in 53ms (Views: 30.1ms | ActiveRecord: 2.0ms | Allocations: 18399)
+
+
+Started GET "/subtasks" for ::1 at 2024-10-16 16:03:30 +0100
+  
+ActionController::RoutingError (No route matches [GET] "/subtasks"):
+  
+Started GET "/subtasks" for ::1 at 2024-10-16 16:04:06 +0100
+Processing by SubTasksController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering sub_tasks/index.html.erb within layouts/application
+  [1m[36mSubTask Load (0.4ms)[0m  [1m[34mSELECT "sub_tasks".* FROM "sub_tasks"[0m
+  ↳ app/views/sub_tasks/index.html.erb:7
+  Rendered sub_tasks/index.html.erb within layouts/application (Duration: 17.2ms | Allocations: 4916)
+  Rendered shared/_navbar.html.erb (Duration: 1.3ms | Allocations: 601)
+  Rendered shared/_flashes.html.erb (Duration: 0.5ms | Allocations: 192)
+  Rendered shared/_footer.html.erb (Duration: 0.4ms | Allocations: 115)
+  Rendered layout layouts/application.html.erb (Duration: 58.7ms | Allocations: 33109)
+Completed 200 OK in 97ms (Views: 56.1ms | ActiveRecord: 13.2ms | Allocations: 43016)
+
+
+Started GET "/" for ::1 at 2024-10-16 16:05:44 +0100
+Processing by PagesController#home as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering pages/home.html.erb within layouts/application
+  Rendered shared/_jumbotron.html.erb (Duration: 0.5ms | Allocations: 139)
+  Rendered pages/home.html.erb within layouts/application (Duration: 19.4ms | Allocations: 414)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/views/shared/_navbar.html.erb:16
+  Rendered shared/_navbar.html.erb (Duration: 16.1ms | Allocations: 6929)
+  Rendered shared/_flashes.html.erb (Duration: 0.7ms | Allocations: 192)
+  Rendered shared/_footer.html.erb (Duration: 0.5ms | Allocations: 115)
+  Rendered layout layouts/application.html.erb (Duration: 75.8ms | Allocations: 35042)
+Completed 200 OK in 110ms (Views: 73.7ms | ActiveRecord: 4.0ms | Allocations: 36932)
+
+
+Started GET "/todays-log" for ::1 at 2024-10-16 16:05:51 +0100
+Processing by LogsController#today as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering logs/today.html.erb within layouts/application
+  Rendered logs/today.html.erb within layouts/application (Duration: 2.6ms | Allocations: 2144)
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/views/shared/_navbar.html.erb:16
+  Rendered shared/_navbar.html.erb (Duration: 3.2ms | Allocations: 860)
+  Rendered shared/_flashes.html.erb (Duration: 0.1ms | Allocations: 22)
+  Rendered shared/_footer.html.erb (Duration: 0.0ms | Allocations: 8)
+  Rendered layout layouts/application.html.erb (Duration: 23.3ms | Allocations: 10980)
+Completed 200 OK in 59ms (Views: 24.0ms | ActiveRecord: 0.2ms | Allocations: 11609)
+
+
+Started GET "/" for ::1 at 2024-10-16 16:08:09 +0100
+Processing by PagesController#home as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering pages/home.html.erb within layouts/application
+  Rendered shared/_jumbotron.html.erb (Duration: 0.8ms | Allocations: 189)
+  Rendered pages/home.html.erb within layouts/application (Duration: 2.3ms | Allocations: 457)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/views/shared/_navbar.html.erb:16
+  Rendered shared/_navbar.html.erb (Duration: 17.2ms | Allocations: 6886)
+  Rendered shared/_flashes.html.erb (Duration: 0.7ms | Allocations: 192)
+  Rendered shared/_footer.html.erb (Duration: 0.6ms | Allocations: 115)
+  Rendered layout layouts/application.html.erb (Duration: 70.9ms | Allocations: 35123)
+Completed 200 OK in 83ms (Views: 71.5ms | ActiveRecord: 4.0ms | Allocations: 37012)
+
+
+Started GET "/tasks/new" for ::1 at 2024-10-16 16:08:12 +0100
+Processing by TasksController#new as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering tasks/new.html.erb within layouts/application
+  Rendered tasks/new.html.erb within layouts/application (Duration: 174.0ms | Allocations: 7173)
+  Rendered shared/_navbar.html.erb (Duration: 0.5ms | Allocations: 160)
+  Rendered shared/_flashes.html.erb (Duration: 0.1ms | Allocations: 22)
+  Rendered shared/_footer.html.erb (Duration: 0.0ms | Allocations: 8)
+  Rendered layout layouts/application.html.erb (Duration: 195.2ms | Allocations: 15136)
+Completed 200 OK in 242ms (Views: 196.7ms | ActiveRecord: 4.7ms | Allocations: 25630)
+
+
+Started POST "/tasks" for ::1 at 2024-10-16 16:08:56 +0100
+Processing by TasksController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "task"=>{"order"=>"0", "routine"=>"not_recuring", "task_type"=>"general", "title"=>"Walk the Dog", "description"=>"fjda;ojg;ia", "start_date"=>"2024-10-18T16:08", "due_date"=>""}, "commit"=>"Add?"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/tasks_controller.rb:30:in `create'
+  [1m[36mTask Create (4.3ms)[0m  [1m[32mINSERT INTO "tasks" ("user_id", "routine", "recurs_on", "active", "task_type", "order", "title", "description", "comment", "start_date", "due_date", "completed", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14) RETURNING "id"[0m  [["user_id", 4], ["routine", 0], ["recurs_on", "{\"monday\":false,\"tuesday\":false,\"wednesday\":false,\"thursday\":false,\"friday\":false,\"saturday\":false,\"sunday\":false}"], ["active", true], ["task_type", 0], ["order", 0], ["title", "Walk the Dog"], ["description", "fjda;ojg;ia"], ["comment", ""], ["start_date", "2024-10-18 16:08:00"], ["due_date", nil], ["completed", false], ["created_at", "2024-10-16 15:08:56.101657"], ["updated_at", "2024-10-16 15:08:56.101657"]]
+  ↳ app/controllers/tasks_controller.rb:30:in `create'
+  [1m[36mTRANSACTION (98.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/tasks_controller.rb:30:in `create'
+Redirected to http://localhost:3000/tasks/3
+Completed 302 Found in 123ms (ActiveRecord: 102.9ms | Allocations: 3834)
+
+
+Started GET "/tasks/3" for ::1 at 2024-10-16 16:08:56 +0100
+Processing by TasksController#show as TURBO_STREAM
+  Parameters: {"id"=>"3"}
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mTask Load (0.2ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/tasks_controller.rb:57:in `set_task'
+  Rendering layout layouts/application.html.erb
+  Rendering tasks/show.html.erb within layouts/application
+  Rendered tasks/show.html.erb within layouts/application (Duration: 0.7ms | Allocations: 189)
+  Rendered shared/_navbar.html.erb (Duration: 0.4ms | Allocations: 160)
+  Rendered shared/_flashes.html.erb (Duration: 0.1ms | Allocations: 27)
+  Rendered shared/_footer.html.erb (Duration: 0.0ms | Allocations: 8)
+  Rendered layout layouts/application.html.erb (Duration: 33.5ms | Allocations: 8381)
+Completed 200 OK in 43ms (Views: 34.2ms | ActiveRecord: 1.1ms | Allocations: 11328)
+
+
+Started GET "/tasks/3/subtasks/new" for ::1 at 2024-10-16 16:08:59 +0100
+Processing by SubTasksController#new as HTML
+  Parameters: {"task_id"=>"3"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mTask Load (3.4ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/sub_tasks_controller.rb:14:in `new'
+  [1m[36mSubTask Count (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "sub_tasks" WHERE "sub_tasks"."task_id" = $1[0m  [["task_id", 3]]
+  ↳ app/models/task.rb:15:in `default_subtask_order'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/policies/sub_task_policy.rb:34:in `if_user_or_admin?'
+  Rendering layout layouts/application.html.erb
+  Rendering sub_tasks/new.html.erb within layouts/application
+  Rendered sub_tasks/new.html.erb within layouts/application (Duration: 14.3ms | Allocations: 4893)
+  Rendered shared/_navbar.html.erb (Duration: 0.6ms | Allocations: 160)
+  Rendered shared/_flashes.html.erb (Duration: 0.1ms | Allocations: 22)
+  Rendered shared/_footer.html.erb (Duration: 0.0ms | Allocations: 8)
+  Rendered layout layouts/application.html.erb (Duration: 29.0ms | Allocations: 13054)
+Completed 200 OK in 81ms (Views: 30.6ms | ActiveRecord: 11.4ms | Allocations: 23326)
+
+
+Started POST "/tasks/3/subtasks" for ::1 at 2024-10-16 16:09:45 +0100
+Processing by SubTasksController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "sub_task"=>{"order"=>"1", "title"=>"Find the lead", "description"=>"", "start_date"=>"", "due_date"=>""}, "commit"=>"Add?", "task_id"=>"3"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mTask Load (1.0ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/sub_tasks_controller.rb:28:in `create'
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/policies/sub_task_policy.rb:34:in `if_user_or_admin?'
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/sub_tasks_controller.rb:33:in `create'
+  [1m[36mSubTask Create (4.8ms)[0m  [1m[32mINSERT INTO "sub_tasks" ("task_id", "order", "title", "description", "comment", "start_date", "due_date", "completed", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING "id"[0m  [["task_id", 3], ["order", 1], ["title", "Find the lead"], ["description", ""], ["comment", nil], ["start_date", nil], ["due_date", nil], ["completed", nil], ["created_at", "2024-10-16 15:09:45.693353"], ["updated_at", "2024-10-16 15:09:45.693353"]]
+  ↳ app/controllers/sub_tasks_controller.rb:33:in `create'
+  [1m[36mTRANSACTION (81.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/sub_tasks_controller.rb:33:in `create'
+Redirected to http://localhost:3000/subtasks/4
+Completed 302 Found in 112ms (ActiveRecord: 88.9ms | Allocations: 4499)
+
+
+Started GET "/subtasks/4" for ::1 at 2024-10-16 16:09:45 +0100
+Processing by SubTasksController#show as TURBO_STREAM
+  Parameters: {"id"=>"4"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mSubTask Load (1.0ms)[0m  [1m[34mSELECT "sub_tasks".* FROM "sub_tasks" WHERE "sub_tasks"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/sub_tasks_controller.rb:60:in `set_sub_task'
+  Rendering layout layouts/application.html.erb
+  Rendering sub_tasks/show.html.erb within layouts/application
+  [1m[36mTask Load (0.2ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/sub_tasks/show.html.erb:9
+  Rendered sub_tasks/show.html.erb within layouts/application (Duration: 4.0ms | Allocations: 1565)
+  Rendered shared/_navbar.html.erb (Duration: 0.5ms | Allocations: 160)
+  Rendered shared/_flashes.html.erb (Duration: 0.1ms | Allocations: 27)
+  Rendered shared/_footer.html.erb (Duration: 0.0ms | Allocations: 8)
+  Rendered layout layouts/application.html.erb (Duration: 19.5ms | Allocations: 9494)
+Completed 200 OK in 34ms (Views: 20.0ms | ActiveRecord: 1.3ms | Allocations: 12330)
+
+
+Started GET "/tasks/3/subtasks/new" for ::1 at 2024-10-16 16:09:52 +0100
+Processing by SubTasksController#new as HTML
+  Parameters: {"task_id"=>"3"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mTask Load (0.3ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/sub_tasks_controller.rb:14:in `new'
+  [1m[36mSubTask Count (1.8ms)[0m  [1m[34mSELECT COUNT(*) FROM "sub_tasks" WHERE "sub_tasks"."task_id" = $1[0m  [["task_id", 3]]
+  ↳ app/models/task.rb:15:in `default_subtask_order'
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/policies/sub_task_policy.rb:34:in `if_user_or_admin?'
+  Rendering layout layouts/application.html.erb
+  Rendering sub_tasks/new.html.erb within layouts/application
+  Rendered sub_tasks/new.html.erb within layouts/application (Duration: 10.1ms | Allocations: 4390)
+  Rendered shared/_navbar.html.erb (Duration: 0.3ms | Allocations: 160)
+  Rendered shared/_flashes.html.erb (Duration: 0.1ms | Allocations: 22)
+  Rendered shared/_footer.html.erb (Duration: 0.0ms | Allocations: 8)
+  Rendered layout layouts/application.html.erb (Duration: 30.5ms | Allocations: 12313)
+Completed 200 OK in 58ms (Views: 31.4ms | ActiveRecord: 2.9ms | Allocations: 15549)
+
+
+Started POST "/tasks/3/subtasks" for ::1 at 2024-10-16 16:10:05 +0100
+Processing by SubTasksController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "sub_task"=>{"order"=>"2", "title"=>"Find the dog", "description"=>"", "start_date"=>"", "due_date"=>""}, "commit"=>"Add?", "task_id"=>"3"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mTask Load (0.6ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/sub_tasks_controller.rb:28:in `create'
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/policies/sub_task_policy.rb:34:in `if_user_or_admin?'
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/sub_tasks_controller.rb:33:in `create'
+  [1m[36mSubTask Create (4.4ms)[0m  [1m[32mINSERT INTO "sub_tasks" ("task_id", "order", "title", "description", "comment", "start_date", "due_date", "completed", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING "id"[0m  [["task_id", 3], ["order", 2], ["title", "Find the dog"], ["description", ""], ["comment", nil], ["start_date", nil], ["due_date", nil], ["completed", nil], ["created_at", "2024-10-16 15:10:05.565559"], ["updated_at", "2024-10-16 15:10:05.565559"]]
+  ↳ app/controllers/sub_tasks_controller.rb:33:in `create'
+  [1m[36mTRANSACTION (80.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/sub_tasks_controller.rb:33:in `create'
+Redirected to http://localhost:3000/subtasks/5
+Completed 302 Found in 117ms (ActiveRecord: 87.2ms | Allocations: 4295)
+
+
+Started GET "/subtasks/5" for ::1 at 2024-10-16 16:10:05 +0100
+Processing by SubTasksController#show as TURBO_STREAM
+  Parameters: {"id"=>"5"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mSubTask Load (2.9ms)[0m  [1m[34mSELECT "sub_tasks".* FROM "sub_tasks" WHERE "sub_tasks"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/sub_tasks_controller.rb:60:in `set_sub_task'
+  Rendering layout layouts/application.html.erb
+  Rendering sub_tasks/show.html.erb within layouts/application
+  [1m[36mTask Load (0.6ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/sub_tasks/show.html.erb:9
+  Rendered sub_tasks/show.html.erb within layouts/application (Duration: 5.3ms | Allocations: 611)
+  Rendered shared/_navbar.html.erb (Duration: 0.3ms | Allocations: 160)
+  Rendered shared/_flashes.html.erb (Duration: 0.1ms | Allocations: 27)
+  Rendered shared/_footer.html.erb (Duration: 0.0ms | Allocations: 8)
+  Rendered layout layouts/application.html.erb (Duration: 25.2ms | Allocations: 8541)
+Completed 200 OK in 44ms (Views: 26.4ms | ActiveRecord: 3.6ms | Allocations: 10665)
+
+
+Started GET "/tasks/3/subtasks/new" for ::1 at 2024-10-16 16:10:10 +0100
+Processing by SubTasksController#new as HTML
+  Parameters: {"task_id"=>"3"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mTask Load (0.4ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/sub_tasks_controller.rb:14:in `new'
+  [1m[36mSubTask Count (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "sub_tasks" WHERE "sub_tasks"."task_id" = $1[0m  [["task_id", 3]]
+  ↳ app/models/task.rb:15:in `default_subtask_order'
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/policies/sub_task_policy.rb:34:in `if_user_or_admin?'
+  Rendering layout layouts/application.html.erb
+  Rendering sub_tasks/new.html.erb within layouts/application
+  Rendered sub_tasks/new.html.erb within layouts/application (Duration: 14.1ms | Allocations: 4391)
+  Rendered shared/_navbar.html.erb (Duration: 0.3ms | Allocations: 160)
+  Rendered shared/_flashes.html.erb (Duration: 0.1ms | Allocations: 22)
+  Rendered shared/_footer.html.erb (Duration: 0.0ms | Allocations: 8)
+  Rendered layout layouts/application.html.erb (Duration: 42.2ms | Allocations: 12315)
+Completed 200 OK in 62ms (Views: 44.8ms | ActiveRecord: 1.7ms | Allocations: 15539)
+
+
+Started POST "/tasks/3/subtasks" for ::1 at 2024-10-16 16:10:24 +0100
+Processing by SubTasksController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "sub_task"=>{"order"=>"3", "title"=>"Walk the dog...", "description"=>"", "start_date"=>"", "due_date"=>""}, "commit"=>"Add?", "task_id"=>"3"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mTask Load (0.3ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/sub_tasks_controller.rb:28:in `create'
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/policies/sub_task_policy.rb:34:in `if_user_or_admin?'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/sub_tasks_controller.rb:33:in `create'
+  [1m[36mSubTask Create (2.6ms)[0m  [1m[32mINSERT INTO "sub_tasks" ("task_id", "order", "title", "description", "comment", "start_date", "due_date", "completed", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING "id"[0m  [["task_id", 3], ["order", 3], ["title", "Walk the dog..."], ["description", ""], ["comment", nil], ["start_date", nil], ["due_date", nil], ["completed", nil], ["created_at", "2024-10-16 15:10:24.833220"], ["updated_at", "2024-10-16 15:10:24.833220"]]
+  ↳ app/controllers/sub_tasks_controller.rb:33:in `create'
+  [1m[36mTRANSACTION (58.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/sub_tasks_controller.rb:33:in `create'
+Redirected to http://localhost:3000/subtasks/6
+Completed 302 Found in 85ms (ActiveRecord: 62.9ms | Allocations: 4273)
+
+
+Started GET "/subtasks/6" for ::1 at 2024-10-16 16:10:24 +0100
+Processing by SubTasksController#show as TURBO_STREAM
+  Parameters: {"id"=>"6"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mSubTask Load (3.3ms)[0m  [1m[34mSELECT "sub_tasks".* FROM "sub_tasks" WHERE "sub_tasks"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/sub_tasks_controller.rb:60:in `set_sub_task'
+  Rendering layout layouts/application.html.erb
+  Rendering sub_tasks/show.html.erb within layouts/application
+  [1m[36mTask Load (0.3ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/sub_tasks/show.html.erb:9
+  Rendered sub_tasks/show.html.erb within layouts/application (Duration: 3.4ms | Allocations: 611)
+  Rendered shared/_navbar.html.erb (Duration: 1.7ms | Allocations: 160)
+  Rendered shared/_flashes.html.erb (Duration: 0.3ms | Allocations: 27)
+  Rendered shared/_footer.html.erb (Duration: 0.1ms | Allocations: 8)
+  Rendered layout layouts/application.html.erb (Duration: 30.8ms | Allocations: 8763)
+Completed 200 OK in 48ms (Views: 31.4ms | ActiveRecord: 3.9ms | Allocations: 10881)
+
+
+Started GET "/tasks/3/subtasks/new" for ::1 at 2024-10-16 16:10:44 +0100
+Processing by SubTasksController#new as HTML
+  Parameters: {"task_id"=>"3"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mTask Load (0.3ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/sub_tasks_controller.rb:14:in `new'
+  [1m[36mSubTask Count (1.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "sub_tasks" WHERE "sub_tasks"."task_id" = $1[0m  [["task_id", 3]]
+  ↳ app/models/task.rb:15:in `default_subtask_order'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/policies/sub_task_policy.rb:34:in `if_user_or_admin?'
+  Rendering layout layouts/application.html.erb
+  Rendering sub_tasks/new.html.erb within layouts/application
+  Rendered sub_tasks/new.html.erb within layouts/application (Duration: 9.1ms | Allocations: 4410)
+  Rendered shared/_navbar.html.erb (Duration: 0.4ms | Allocations: 160)
+  Rendered shared/_flashes.html.erb (Duration: 0.1ms | Allocations: 22)
+  Rendered shared/_footer.html.erb (Duration: 0.0ms | Allocations: 8)
+  Rendered layout layouts/application.html.erb (Duration: 33.8ms | Allocations: 12344)
+Completed 200 OK in 54ms (Views: 34.4ms | ActiveRecord: 1.8ms | Allocations: 15567)
+
+
+Started GET "/" for ::1 at 2024-10-16 16:10:45 +0100
+Processing by PagesController#home as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering pages/home.html.erb within layouts/application
+  Rendered shared/_jumbotron.html.erb (Duration: 0.2ms | Allocations: 32)
+  Rendered pages/home.html.erb within layouts/application (Duration: 0.5ms | Allocations: 98)
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/views/shared/_navbar.html.erb:16
+  Rendered shared/_navbar.html.erb (Duration: 2.3ms | Allocations: 838)
+  Rendered shared/_flashes.html.erb (Duration: 0.1ms | Allocations: 22)
+  Rendered shared/_footer.html.erb (Duration: 0.0ms | Allocations: 8)
+  Rendered layout layouts/application.html.erb (Duration: 23.1ms | Allocations: 8890)
+Completed 200 OK in 24ms (Views: 23.5ms | ActiveRecord: 0.2ms | Allocations: 9129)
+
+

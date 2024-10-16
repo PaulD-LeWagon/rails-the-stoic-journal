@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_10_15_150424) do
+ActiveRecord::Schema[7.1].define(version: 2024_10_15_145351) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -62,16 +62,17 @@ ActiveRecord::Schema[7.1].define(version: 2024_10_15_150424) do
 
   create_table "tasks", force: :cascade do |t|
     t.bigint "user_id", null: false
-    t.integer "task_type"
-    t.integer "routine", default: 0
-    t.integer "order"
-    t.string "title"
-    t.text "description"
-    t.text "comment"
+    t.integer "routine", default: 0, null: false
+    t.json "recurs_on", default: {"monday"=>false, "tuesday"=>false, "wednesday"=>false, "thursday"=>false, "friday"=>false, "saturday"=>false, "sunday"=>false}, null: false
+    t.boolean "active", default: true, null: false
+    t.integer "task_type", default: 0, null: false
+    t.integer "order", default: 0, null: false
+    t.string "title", default: "", null: false
+    t.text "description", default: "", null: false
+    t.text "comment", default: "", null: false
     t.datetime "start_date"
     t.datetime "due_date"
-    t.boolean "completed"
-    t.boolean "active"
+    t.boolean "completed", default: false, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_tasks_on_user_id"
@@ -85,7 +86,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_10_15_150424) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.boolean "admin"
+    t.boolean "admin", default: false
     t.string "username"
     t.string "first_name"
     t.string "last_name"

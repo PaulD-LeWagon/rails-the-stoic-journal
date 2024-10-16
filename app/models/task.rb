@@ -1,11 +1,18 @@
 class Task < ApplicationRecord
   belongs_to :user
   has_many :sub_tasks
-  enum routine: [ :no_routine, :morning, :day, :evening ]
+
+  none_routine_name = :not_recuring
+
+  enum routine: [ none_routine_name, :morning, :day, :evening ]
   enum task_type: [ :general, :event, :fitness, :admin, :work, :self_development ]
 
   def routine?
-    self.routine != "no_routine"
+    self.routine != none_routine_name.to_s
+  end
+
+  def default_subtask_order
+    sub_tasks.count + 1
   end
 
   def self.transform_routines_for_html_select
