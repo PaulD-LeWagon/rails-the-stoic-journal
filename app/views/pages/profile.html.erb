@@ -1,0 +1,13 @@
+<div class="d-flex justify-content-center align-items-start min-vh-100">
+
+  <div class="col-md-10">
+
+    <h1 class="my-5 mb-3 fst-bold"><%= current_user.full_name %></h1>
+    <h3 class=""><%= current_user.email %></h3>
+    <img class="rounded-circle my-3" src="<%= current_user.image_url %>">
+    <p class="lead"><%= current_user.bio %></p>
+    <hr>
+
+  </div>
+
+</div>

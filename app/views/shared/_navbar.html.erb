@@ -35,7 +35,7 @@
               <i class="fa-solid fa-circle-user"></i>
             </a>
             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-              <%= link_to "Your profile?", "#", class: "dropdown-item" %>
+              <%= link_to "Your profile?", users_profile_path, class: "dropdown-item" %>
               <%= link_to "Sign out?", destroy_user_session_path, data: {turbo_method: :delete}, class: "dropdown-item" %>
             </div>
           </li>
