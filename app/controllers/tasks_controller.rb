@@ -9,46 +9,43 @@ class TasksController < ApplicationController
     authorize @task
   end
 
-  # GET /tasks/new
   def new
     @task = Task.new
     @task.user = current_user
     authorize @task
   end
 
-  # GET /tasks/1/edit
   def edit
     authorize @task
   end
 
-  # POST /tasks
   def create
     @task = Task.new(task_params)
     @task.user = current_user
     authorize @task
 
     if @task.save
-      redirect_to @task, notice: "task was successfully created."
+      redirect_to tasks_path, notice: "Task #{@task.title} was successfully created."
     else
       render :new, status: :unprocessable_entity
     end
   end
 
-  # PATCH/PUT /tasks/1
   def update
     authorize @task
     if @task.update(task_params)
-      redirect_to @task, notice: "task was successfully updated."
+      redirect_to tasks_path, notice: "Task #{@task.title} was successfully updated."
     else
       render :edit, status: :unprocessable_entity
     end
   end
 
-  # DELETE /tasks/1
   def destroy
     authorize @task
+    title = @task.title
+    @task.sub_tasks.destroy_all
     @task.destroy
-    redirect_to tasks_url, notice: "task was successfully destroyed."
+    redirect_to tasks_url, notice: "Task #{title} was successfully destroyed."
   end
 
   private

@@ -11,10 +11,10 @@ class SubTasksController < ApplicationController
 
   # GET /tasks/:task_id/subtask/new
   def new
-    @task = Task.find(params[:task_id])
-    @sub_task = SubTask.new
-    @sub_task.order = @task.default_subtask_order
-    @sub_task.task = @task
+    # @task = Task.find(params[:task_id])
+    @sub_task = SubTask.new(task: Task.find(params[:task_id]))
+    # @sub_task.order = @task.default_subtask_order
+    # @sub_task.task = @task
     authorize @sub_task
   end
 
@@ -41,7 +41,7 @@ class SubTasksController < ApplicationController
   def update
     authorize @sub_task
     if @sub_task.update(sub_task_params)
-      redirect_to @sub_task, notice: "Sub task successfully updated."
+      redirect_to @sub_task, notice: "Sub task #{@sub_task.title} successfully updated."
     else
       render :edit, status: :unprocessable_entity
     end
@@ -51,7 +51,7 @@ class SubTasksController < ApplicationController
   def destroy
     authorize @sub_task
     @sub_task.destroy
-    redirect_to sub_tasks_url, notice: "SubTask was successfully destroyed."
+    redirect_to sub_tasks_url, notice: "Sub task #{@sub_task.title} was successfully destroyed."
   end
 
   private
