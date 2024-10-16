@@ -1,0 +1,15 @@
+<div class="d-flex justify-content-center align-items-start min-vh-100">
+
+  <div class="col-md-10">
+
+    <h1 class="my-5 mb-3 fst-bold">Sub Tasks #index</h1>
+    <p class="lead">This is a temporary page</p>
+    <hr>
+    <% @sub_tasks.each do |sub_tasks| %>
+      <h3><%= sub_tasks.title %><h3>
+      <p><%= sub_tasks.description %></p>
+    <% end %>
+
+  </div>
+
+</div>

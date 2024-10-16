@@ -4,11 +4,14 @@
 
     <div class="banner d-flex justify-content-between align-items-center">
       <%# <%= image_tag('aircnc-logo.svg', :class => "rounded-5") %>
-      <h1 class="mx-5">
+      <h1>
         <span class="display-1">The Stoic Journal</span>
-        <br>
-        <span class="bd-font display-5 fst-italic">Accept what you cannot control, <span class="fst-normal">focus</span> on what you can!</span>
-        <a href="#" class="fs-3 fw-bolder btn btn-secondary btn-lg text-uppercase">Get Started on <span class="fst-italic">Your</span> Journey Now!</a>
+        <hr>
+        <span class="bd-font display-5 fst-italic">
+          Accept what you cannot control.&nbsp;
+          <span class="fst-normal">Focus</span> on what you can!
+        </span>
+        <a href="<%= new_task_path %>" class="animate-inset-shadow fs-3 fw-bolder btn btn-secondary btn-lg text-uppercase">Get Started on <span class="fst-italic">Your</span> Journey Now!</a>
       </h1>
 
     </div>

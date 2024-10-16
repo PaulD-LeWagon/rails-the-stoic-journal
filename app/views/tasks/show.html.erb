@@ -1,0 +1,14 @@
+
+<div class="d-flex justify-content-center align-items-start min-vh-100">
+
+  <div class="col-md-10 bg-quinary">
+
+    <h1><%= @task.title %></h1>
+    <p><%= @task.description %></p>
+    <p>
+      <%= link_to "Add a Sub Task", new_task_sub_task_path(@task) %>
+    </p>
+
+  </div>
+
+</div>
