@@ -38,23 +38,15 @@ ActiveRecord::Schema[7.1].define(version: 2024_10_15_145351) do
     t.index ["user_id"], name: "index_journal_entries_on_user_id"
   end
 
-  create_table "restaurants", force: :cascade do |t|
-    t.string "name"
-    t.bigint "user_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_restaurants_on_user_id"
-  end
-
   create_table "sub_tasks", force: :cascade do |t|
     t.bigint "task_id", null: false
-    t.integer "order"
-    t.string "title"
-    t.text "description"
-    t.text "comment"
+    t.integer "order", default: 0, null: false
+    t.string "title", default: "", null: false
+    t.text "description", default: "", null: false
+    t.text "comment", default: "", null: false
     t.datetime "start_date"
     t.datetime "due_date"
-    t.boolean "completed"
+    t.boolean "completed", default: false, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["task_id"], name: "index_sub_tasks_on_task_id"
@@ -99,7 +91,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_10_15_145351) do
   add_foreign_key "journal_categories", "categories"
   add_foreign_key "journal_categories", "journal_entries"
   add_foreign_key "journal_entries", "users"
-  add_foreign_key "restaurants", "users"
   add_foreign_key "sub_tasks", "tasks"
   add_foreign_key "tasks", "users"
 end
