@@ -1,13 +1,13 @@
 
 <div class="d-flex justify-content-center align-items-start min-vh-100">
 
-  <div class="col-md-10 bg-quinary">
+  <div class="col-md-10 p-3">
 
+    <h3>Sub Task <strong>#<%= @sub_task.order %></strong></h3>
     <h1><%= @sub_task.title %></h1>
     <p><%= @sub_task.description %></p>
-    <p>
-      <%= link_to "Add another Sub Task", new_task_sub_task_path(@sub_task.task) %>
-    </p>
+
+    <%= render 'links', sub_task: @sub_task %>
 
   </div>
 

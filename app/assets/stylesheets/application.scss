@@ -8,10 +8,10 @@
 @import "font-awesome";
 
 
-
 // Your CSS partials
 @import "components/index";
 @import "pages/index";
+
 
 // Rehyan, Jon check out the scss files in the config folder you can experiment
 // with stuff like this below; then you just add the classes to your html
@@ -137,12 +137,12 @@ div.navbar.sticky-top {
 .btn {
   color: white;
   font-weight: 900;
-  text-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
-  box-shadow: inset 0 10px 15px rgba(0, 0, 0, 0.2);
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 8px 10px rgba(0, 0, 0, 0.2);
 }
 
 .card {
-  background-color: $primary;
+  background-color: $tertiary;
   box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2);
 }
 .card .card-title .lead {

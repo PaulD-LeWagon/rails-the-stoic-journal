@@ -1,10 +1,13 @@
 <div class="d-flex justify-content-center align-items-start min-vh-100">
 
-  <div class="col-md-10">
+  <div class="col-md-10 p-3">
 
-    <h1 class="my-5 mb-3 fst-bold">Tasks#index</h1>
+    <h1 class="my-5 mb-3 fst-bold">All Tasks</h1>
+
     <hr>
+
     <% @tasks.each do |task| %>
+<<<<<<< HEAD
   <div class="d-flex justify-content-between align-items-center mb-3">
       <h3><%= task.title %><h3>
 
@@ -16,6 +19,40 @@
 <p><%= task.completed ? 'Completed' : 'Not Completed' %></p>
  </div>
       <hr>
+=======
+
+      <h3>Task #<%= task.order %> <%= task.title %><h3>
+
+      <p class="bd-font"><%= task.description %></p>
+
+      <div class="d-flex justify-content-end">
+        <button class="btn btn-warning btn-sm text-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapse<%= task.id %>" aria-expanded="false" aria-controls="collapse<%= task.id %>">
+          View all sub-tasks?
+        </button>
+      </div>
+      <div class="collapse" id="collapse<%= task.id %>">
+
+        <hr>
+
+        <% task.sub_tasks.each do |subtask| %>
+
+          <h4>SubTask #<%= subtask.order %> <%= subtask.title %><h4>
+
+          <p><%= subtask.description %></p>
+
+          <%= render 'sub_tasks/links', sub_task: subtask %>
+
+          <hr>
+
+        <% end %>
+
+      </div>
+
+      <%= render 'links', task: task %>
+
+      <hr>
+
+>>>>>>> cf864d5f5876ae09d6f81955a2ee187f59139a7c
     <% end %>
 
   </div>
