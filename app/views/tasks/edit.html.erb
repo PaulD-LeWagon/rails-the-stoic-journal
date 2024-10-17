@@ -1,0 +1,15 @@
+<div class="d-flex justify-content-center align-items-start min-vh-100">
+
+  <div class="col-md-10 p-3">
+
+    <h1 class="my-5 mb-3 fst-bold text-center">Edit Task #<%= @task.order %></h1>
+
+    <%= render 'form', task: @task %>
+
+    <div class="text-center">
+      <%= render 'links', task: @task %>
+    </div>
+
+  </div>
+
+</div>

@@ -1,0 +1,27 @@
+<div class="d-flex justify-content-center align-items-start min-vh-100">
+
+  <div class="col-md-10">
+
+    <h1 class="my-5 mb-3 fst-bold">Sub Tasks #index</h1>
+    <p class="lead">This is a temporary page...</p>
+
+    <hr>
+
+    <% @sub_tasks.each do |sub_task| %>
+
+      <h4 class="fst-bold">Task ID: <%= sub_task.task.id %></h4>
+      <h4 class="fst-bold">STsk ID: <%= sub_task.id %></h4>
+
+      <h3><%= sub_task.title %><h3>
+
+      <p><%= sub_task.description %></p>
+
+      <%= render 'links', sub_task: sub_task %>
+
+      <hr>
+
+    <% end %>
+
+  </div>
+
+</div>
