@@ -7,19 +7,6 @@
     <hr>
 
     <% @tasks.each do |task| %>
-<<<<<<< HEAD
-  <div class="d-flex justify-content-between align-items-center mb-3">
-      <h3><%= task.title %><h3>
-
-      <p><%= task.task_type %></p>
-
-      <p><%= task.due_date %></p>
-
-      <p><%= task.completed %></p>
-<p><%= task.completed ? 'Completed' : 'Not Completed' %></p>
- </div>
-      <hr>
-=======
 
       <h3>Task #<%= task.order %> <%= task.title %><h3>
 
@@ -52,7 +39,6 @@
 
       <hr>
 
->>>>>>> cf864d5f5876ae09d6f81955a2ee187f59139a7c
     <% end %>
 
   </div>

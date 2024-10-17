@@ -7,6 +7,6 @@ class SubTask < ApplicationRecord
   end
 
   def set_initial_order
-    self.task.sub_tasks.count + 1
-  end
-end
+    if !self.task.nil?
+      self.task.sub_tasks.count + 1
+    end
