@@ -1,11 +1,15 @@
 # Seed the database...
 #
+JournalCategory.destroy_all if JournalCategory.count > 0
 Category.destroy_all if Category.count > 0
 JournalEntry.destroy_all if JournalEntry.count > 0
 SubTask.destroy_all if SubTask.count > 0
 Task.destroy_all if Task.count > 0
 User.destroy_all if User.count > 0
 
+Faker::Config.random = Random.new(42)
+
+cats = []
 users = []
 one_in_three = [ true, false, false ]
 days = [ 'monday', 'tuseday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday' ]
@@ -85,6 +89,37 @@ users << User.create!(
     sub_task.task = task
     sub_task.save!
 
+  end
+
+end
+
+# Ctegories...
+10.times do |i|
+
+  cats << Category.new(category: Faker::Lorem.words(number: rand(1..2)).join('-'))
+
+end
+
+# Journal Entries...
+15.times do |i|
+
+  user = users.sample
+
+  je = JournalEntry.new(
+    title: Faker::Lorem.sentence(word_count: rand(3..5)).titleize,
+    entry: Faker::Lorem.paragraph(sentence_count: rand(5..10))
+  )
+
+  je.user = user
+
+  cat = cats.sample
+
+  jc = JournalCategory.new(journal_entry: je, category: cat)
+
+  if !jc.valid?
+    p jc.errors, js, je, jc, cat
+  else
+    jc.save!
   end
 
 end
