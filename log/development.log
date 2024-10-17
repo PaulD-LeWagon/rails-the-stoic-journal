@@ -14058,3 +14058,779 @@ Completed 200 OK in 106ms (Views: 67.3ms | ActiveRecord: 11.9ms | Allocations: 6
 
 
 >>>>>>> cf864d5f5876ae09d6f81955a2ee187f59139a7c
+Started GET "/" for 127.0.0.1 at 2024-10-17 15:07:14 +0100
+  [1m[36mActiveRecord::SchemaMigration Load (2.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by PagesController#home as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering pages/home.html.erb within layouts/application
+  Rendered shared/_jumbotron.html.erb (Duration: 0.2ms | Allocations: 271)
+  Rendered pages/home.html.erb within layouts/application (Duration: 0.7ms | Allocations: 682)
+  Rendered shared/_navbar.html.erb (Duration: 1.4ms | Allocations: 710)
+  Rendered shared/_flashes.html.erb (Duration: 0.2ms | Allocations: 218)
+  Rendered shared/_footer.html.erb (Duration: 0.1ms | Allocations: 117)
+  Rendered layout layouts/application.html.erb (Duration: 3750.5ms | Allocations: 212733)
+Completed 200 OK in 4538ms (Views: 3754.6ms | ActiveRecord: 0.0ms | Allocations: 1196508)
+
+
+Started GET "/tasks/new" for 127.0.0.1 at 2024-10-17 15:07:44 +0100
+Processing by TasksController#new as HTML
+Completed 401 Unauthorized in 23ms (ActiveRecord: 0.0ms | Allocations: 2889)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2024-10-17 15:07:44 +0100
+Processing by Devise::SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (Duration: 0.5ms | Allocations: 541)
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 41.0ms | Allocations: 16615)
+  Rendered shared/_navbar.html.erb (Duration: 0.1ms | Allocations: 116)
+  Rendered shared/_flashes.html.erb (Duration: 0.0ms | Allocations: 34)
+  Rendered shared/_footer.html.erb (Duration: 0.0ms | Allocations: 9)
+  Rendered layout layouts/application.html.erb (Duration: 46.1ms | Allocations: 24576)
+Completed 200 OK in 100ms (Views: 47.7ms | ActiveRecord: 31.8ms | Allocations: 47625)
+
+
+Started POST "/users/sign_in" for 127.0.0.1 at 2024-10-17 15:08:02 +0100
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"email"=>"rehyan92@gmail.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  [1m[36mUser Load (3.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "rehyan92@gmail.com"], ["LIMIT", 1]]
+Completed 401 Unauthorized in 314ms (ActiveRecord: 3.4ms | Allocations: 7841)
+
+
+Processing by Devise::SessionsController#new as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"email"=>"rehyan92@gmail.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  Rendering layout layouts/application.html.erb
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (Duration: 0.1ms | Allocations: 111)
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 2.0ms | Allocations: 3297)
+  Rendered shared/_navbar.html.erb (Duration: 0.1ms | Allocations: 66)
+  Rendered shared/_flashes.html.erb (Duration: 0.0ms | Allocations: 18)
+  Rendered shared/_footer.html.erb (Duration: 0.0ms | Allocations: 8)
+  Rendered layout layouts/application.html.erb (Duration: 9.0ms | Allocations: 11122)
+Completed 200 OK in 274ms (Views: 9.6ms | ActiveRecord: 0.0ms | Allocations: 11664)
+
+
+Started POST "/users/sign_in" for 127.0.0.1 at 2024-10-17 15:08:08 +0100
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"email"=>"rehyan92@gmail.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "rehyan92@gmail.com"], ["LIMIT", 1]]
+Redirected to http://127.0.0.1:3000/tasks/new
+Completed 303 See Other in 295ms (ActiveRecord: 1.0ms | Allocations: 4020)
+
+
+Started GET "/tasks/new" for 127.0.0.1 at 2024-10-17 15:08:08 +0100
+Processing by TasksController#new as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mTask Count (3.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "tasks"[0m
+  ↳ app/models/task.rb:34:in `set_initial_order'
+  Rendering layout layouts/application.html.erb
+  Rendering tasks/new.html.erb within layouts/application
+  Rendered tasks/_form.html.erb (Duration: 29.2ms | Allocations: 8869)
+  Rendered tasks/_links.html.erb (Duration: 0.3ms | Allocations: 278)
+  Rendered tasks/new.html.erb within layouts/application (Duration: 30.5ms | Allocations: 9531)
+  Rendered shared/_navbar.html.erb (Duration: 0.1ms | Allocations: 192)
+  Rendered shared/_flashes.html.erb (Duration: 0.0ms | Allocations: 27)
+  Rendered shared/_footer.html.erb (Duration: 0.0ms | Allocations: 8)
+  Rendered layout layouts/application.html.erb (Duration: 38.0ms | Allocations: 17615)
+Completed 200 OK in 66ms (Views: 38.5ms | ActiveRecord: 7.4ms | Allocations: 41853)
+
+
+Started GET "/users/profile" for 127.0.0.1 at 2024-10-17 15:08:12 +0100
+Processing by PagesController#profile as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering pages/profile.html.erb within layouts/application
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/pages/profile.html.erb:5
+  Rendered pages/profile.html.erb within layouts/application (Duration: 4.7ms | Allocations: 1152)
+  Rendered shared/_navbar.html.erb (Duration: 0.2ms | Allocations: 201)
+  Rendered shared/_flashes.html.erb (Duration: 0.0ms | Allocations: 22)
+  Rendered shared/_footer.html.erb (Duration: 0.0ms | Allocations: 8)
+  Rendered layout layouts/application.html.erb (Duration: 14.2ms | Allocations: 9193)
+Completed 200 OK in 16ms (Views: 14.1ms | ActiveRecord: 0.5ms | Allocations: 9498)
+
+
+Started GET "/users/profile" for 127.0.0.1 at 2024-10-17 15:18:59 +0100
+Processing by PagesController#profile as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering pages/profile.html.erb within layouts/application
+  [1m[36mUser Load (2.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/pages/profile.html.erb:4
+  Rendered pages/profile.html.erb within layouts/application (Duration: 124.4ms | Allocations: 10475)
+  Rendered layout layouts/application.html.erb (Duration: 124.5ms | Allocations: 10561)
+Completed 500 Internal Server Error in 127ms (ActiveRecord: 89.5ms | Allocations: 11748)
+
+
+  
+ActionView::Template::Error (undefined method `am_routine' for an instance of User):
+    13:       <div class="am-routine my-4">
+    14:         <h4>AM Routine</h4>
+    15:         <ul>
+    16:           <% current_user.am_routine.each do |task| %>
+    17:             <li><%= task %></li>
+    18:           <% end %>
+    19:         </ul>
+  
+app/views/pages/profile.html.erb:16
+Started GET "/users/profile" for 127.0.0.1 at 2024-10-17 15:19:16 +0100
+Processing by PagesController#profile as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering pages/profile.html.erb within layouts/application
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/pages/profile.html.erb:4
+  Rendered pages/profile.html.erb within layouts/application (Duration: 7.7ms | Allocations: 1988)
+  Rendered layout layouts/application.html.erb (Duration: 7.9ms | Allocations: 2073)
+Completed 500 Internal Server Error in 11ms (ActiveRecord: 0.7ms | Allocations: 2300)
+
+
+  
+ActionView::Template::Error (undefined method `am_routine' for an instance of User):
+    13:       <div class="am-routine my-4">
+    14:         <h4>AM Routine</h4>
+    15:         <ul>
+    16:           <% current_user.am_routine.each do |task| %>
+    17:             <li><%= task %></li>
+    18:           <% end %>
+    19:         </ul>
+  
+app/views/pages/profile.html.erb:16
+Started GET "/tasks/new" for 127.0.0.1 at 2024-10-17 15:28:59 +0100
+  [1m[36mActiveRecord::SchemaMigration Load (2.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by TasksController#new as HTML
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mTask Count (0.9ms)[0m  [1m[34mSELECT COUNT(*) FROM "tasks"[0m
+  ↳ app/models/task.rb:34:in `set_initial_order'
+  Rendering layout layouts/application.html.erb
+  Rendering tasks/new.html.erb within layouts/application
+  Rendered tasks/_form.html.erb (Duration: 14.5ms | Allocations: 14277)
+  Rendered tasks/_links.html.erb (Duration: 0.2ms | Allocations: 289)
+  Rendered tasks/new.html.erb within layouts/application (Duration: 15.7ms | Allocations: 15092)
+  Rendered shared/_navbar.html.erb (Duration: 0.5ms | Allocations: 646)
+  Rendered shared/_flashes.html.erb (Duration: 0.2ms | Allocations: 218)
+  Rendered shared/_footer.html.erb (Duration: 0.1ms | Allocations: 117)
+  Rendered layout layouts/application.html.erb (Duration: 73.1ms | Allocations: 83748)
+Completed 200 OK in 272ms (Views: 90.5ms | ActiveRecord: 17.6ms | Allocations: 416765)
+
+
+Started DELETE "/users/sign_out?_method=delete" for 127.0.0.1 at 2024-10-17 15:29:04 +0100
+Processing by Devise::SessionsController#destroy as TURBO_STREAM
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+Redirected to http://127.0.0.1:3000/
+Completed 303 See Other in 13ms (ActiveRecord: 0.6ms | Allocations: 3256)
+
+
+Started GET "/" for 127.0.0.1 at 2024-10-17 15:29:04 +0100
+Processing by PagesController#home as TURBO_STREAM
+  Rendering layout layouts/application.html.erb
+  Rendering pages/home.html.erb within layouts/application
+  Rendered shared/_jumbotron.html.erb (Duration: 0.3ms | Allocations: 181)
+  Rendered pages/home.html.erb within layouts/application (Duration: 1.2ms | Allocations: 489)
+  Rendered shared/_navbar.html.erb (Duration: 1.1ms | Allocations: 202)
+  Rendered shared/_flashes.html.erb (Duration: 0.0ms | Allocations: 29)
+  Rendered shared/_footer.html.erb (Duration: 0.0ms | Allocations: 8)
+  Rendered layout layouts/application.html.erb (Duration: 10.2ms | Allocations: 8737)
+Completed 200 OK in 12ms (Views: 11.1ms | ActiveRecord: 0.0ms | Allocations: 9348)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2024-10-17 15:29:06 +0100
+Processing by Devise::SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (Duration: 0.7ms | Allocations: 540)
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 6.6ms | Allocations: 4969)
+  Rendered shared/_navbar.html.erb (Duration: 0.2ms | Allocations: 115)
+  Rendered shared/_flashes.html.erb (Duration: 0.0ms | Allocations: 27)
+  Rendered shared/_footer.html.erb (Duration: 0.0ms | Allocations: 9)
+  Rendered layout layouts/application.html.erb (Duration: 13.7ms | Allocations: 12919)
+Completed 200 OK in 18ms (Views: 15.7ms | ActiveRecord: 0.0ms | Allocations: 14258)
+
+
+Started POST "/users/sign_in" for 127.0.0.1 at 2024-10-17 15:29:15 +0100
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"email"=>"rehyan92@gmail.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "rehyan92@gmail.com"], ["LIMIT", 1]]
+Completed 401 Unauthorized in 305ms (ActiveRecord: 0.5ms | Allocations: 2393)
+
+
+Processing by Devise::SessionsController#new as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"email"=>"rehyan92@gmail.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  Rendering layout layouts/application.html.erb
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (Duration: 0.1ms | Allocations: 111)
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 1.4ms | Allocations: 3342)
+  Rendered shared/_navbar.html.erb (Duration: 0.1ms | Allocations: 66)
+  Rendered shared/_flashes.html.erb (Duration: 0.0ms | Allocations: 18)
+  Rendered shared/_footer.html.erb (Duration: 0.0ms | Allocations: 8)
+  Rendered layout layouts/application.html.erb (Duration: 5.3ms | Allocations: 11167)
+Completed 200 OK in 270ms (Views: 5.6ms | ActiveRecord: 0.0ms | Allocations: 11690)
+
+
+Started POST "/users/sign_in" for 127.0.0.1 at 2024-10-17 15:29:21 +0100
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"email"=>"rehyan92@gmail.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "rehyan92@gmail.com"], ["LIMIT", 1]]
+Redirected to http://127.0.0.1:3000/
+Completed 303 See Other in 326ms (ActiveRecord: 0.6ms | Allocations: 3208)
+
+
+Started GET "/" for 127.0.0.1 at 2024-10-17 15:29:22 +0100
+Processing by PagesController#home as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering pages/home.html.erb within layouts/application
+  Rendered shared/_jumbotron.html.erb (Duration: 0.2ms | Allocations: 32)
+  Rendered pages/home.html.erb within layouts/application (Duration: 0.3ms | Allocations: 98)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/shared/_navbar.html.erb:16
+  Rendered shared/_navbar.html.erb (Duration: 2.3ms | Allocations: 880)
+  Rendered shared/_flashes.html.erb (Duration: 0.0ms | Allocations: 27)
+  Rendered shared/_footer.html.erb (Duration: 0.0ms | Allocations: 8)
+  Rendered layout layouts/application.html.erb (Duration: 7.7ms | Allocations: 9237)
+Completed 200 OK in 8ms (Views: 7.8ms | ActiveRecord: 0.3ms | Allocations: 9478)
+
+
+Started GET "/users/profile" for 127.0.0.1 at 2024-10-17 15:29:24 +0100
+Processing by PagesController#profile as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering pages/profile.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/pages/profile.html.erb:5
+  Rendered pages/profile.html.erb within layouts/application (Duration: 2.5ms | Allocations: 1124)
+  Rendered shared/_navbar.html.erb (Duration: 0.2ms | Allocations: 201)
+  Rendered shared/_flashes.html.erb (Duration: 0.0ms | Allocations: 22)
+  Rendered shared/_footer.html.erb (Duration: 0.0ms | Allocations: 8)
+  Rendered layout layouts/application.html.erb (Duration: 8.5ms | Allocations: 9096)
+Completed 200 OK in 9ms (Views: 8.5ms | ActiveRecord: 0.2ms | Allocations: 9399)
+
+
+Started GET "/users/profile" for 127.0.0.1 at 2024-10-17 15:36:58 +0100
+Processing by PagesController#profile as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering pages/profile.html.erb within layouts/application
+  [1m[36mUser Load (1.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/pages/profile.html.erb:4
+  Rendered pages/profile.html.erb within layouts/application (Duration: 42.6ms | Allocations: 9288)
+  Rendered shared/_navbar.html.erb (Duration: 1.9ms | Allocations: 659)
+  Rendered shared/_flashes.html.erb (Duration: 0.2ms | Allocations: 194)
+  Rendered shared/_footer.html.erb (Duration: 0.1ms | Allocations: 115)
+  Rendered layout layouts/application.html.erb (Duration: 75.9ms | Allocations: 37361)
+Completed 200 OK in 80ms (Views: 57.1ms | ActiveRecord: 20.2ms | Allocations: 39250)
+
+
+Started GET "/tasks/new" for 127.0.0.1 at 2024-10-17 15:37:43 +0100
+Processing by TasksController#new as HTML
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mTask Count (2.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "tasks"[0m
+  ↳ app/models/task.rb:34:in `set_initial_order'
+  Rendering layout layouts/application.html.erb
+  Rendering tasks/new.html.erb within layouts/application
+  Rendered tasks/_form.html.erb (Duration: 4.4ms | Allocations: 6857)
+  Rendered tasks/_links.html.erb (Duration: 0.4ms | Allocations: 263)
+  Rendered tasks/new.html.erb within layouts/application (Duration: 6.2ms | Allocations: 7501)
+  Rendered shared/_navbar.html.erb (Duration: 0.2ms | Allocations: 187)
+  Rendered shared/_flashes.html.erb (Duration: 0.0ms | Allocations: 22)
+  Rendered shared/_footer.html.erb (Duration: 0.0ms | Allocations: 8)
+  Rendered layout layouts/application.html.erb (Duration: 12.7ms | Allocations: 15694)
+Completed 200 OK in 33ms (Views: 13.5ms | ActiveRecord: 3.0ms | Allocations: 26394)
+
+
+Started GET "/" for 127.0.0.1 at 2024-10-17 15:37:44 +0100
+Processing by PagesController#home as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering pages/home.html.erb within layouts/application
+  Rendered shared/_jumbotron.html.erb (Duration: 0.3ms | Allocations: 170)
+  Rendered pages/home.html.erb within layouts/application (Duration: 1.1ms | Allocations: 431)
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/shared/_navbar.html.erb:16
+  Rendered shared/_navbar.html.erb (Duration: 1.6ms | Allocations: 879)
+  Rendered shared/_flashes.html.erb (Duration: 0.0ms | Allocations: 22)
+  Rendered shared/_footer.html.erb (Duration: 0.0ms | Allocations: 8)
+  Rendered layout layouts/application.html.erb (Duration: 9.7ms | Allocations: 9314)
+Completed 200 OK in 11ms (Views: 9.8ms | ActiveRecord: 0.2ms | Allocations: 9616)
+
+
+Started GET "/users/profile" for 127.0.0.1 at 2024-10-17 15:37:51 +0100
+Processing by PagesController#profile as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering pages/profile.html.erb within layouts/application
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/pages/profile.html.erb:4
+  Rendered pages/profile.html.erb within layouts/application (Duration: 2.9ms | Allocations: 942)
+  Rendered shared/_navbar.html.erb (Duration: 0.3ms | Allocations: 201)
+  Rendered shared/_flashes.html.erb (Duration: 0.0ms | Allocations: 22)
+  Rendered shared/_footer.html.erb (Duration: 0.0ms | Allocations: 8)
+  Rendered layout layouts/application.html.erb (Duration: 10.3ms | Allocations: 8912)
+Completed 200 OK in 11ms (Views: 10.3ms | ActiveRecord: 0.4ms | Allocations: 9151)
+
+
+Started GET "/users/profile" for 127.0.0.1 at 2024-10-17 15:47:08 +0100
+Processing by PagesController#profile as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering pages/profile.html.erb within layouts/application
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/pages/profile.html.erb:4
+  Rendered pages/profile.html.erb within layouts/application (Duration: 30.6ms | Allocations: 10474)
+  Rendered layout layouts/application.html.erb (Duration: 30.7ms | Allocations: 10560)
+Completed 500 Internal Server Error in 33ms (ActiveRecord: 11.5ms | Allocations: 11744)
+
+
+  
+ActionView::Template::Error (undefined method `logs' for an instance of User):
+    13:       <div class="am-routine my-4">
+    14:         <h4>AM Routine</h4>
+    15:         <ul>
+    16:           <% current_user.logs.each do |task| %>
+    17:             <li><%= task %></li>
+    18:           <% end %>
+    19:         </ul>
+  
+app/views/pages/profile.html.erb:16
+Started GET "/users/profile" for 127.0.0.1 at 2024-10-17 15:50:17 +0100
+Processing by PagesController#profile as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering pages/profile.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/pages/profile.html.erb:4
+  Rendered pages/profile.html.erb within layouts/application (Duration: 27.1ms | Allocations: 7991)
+  Rendered layout layouts/application.html.erb (Duration: 27.2ms | Allocations: 8077)
+Completed 500 Internal Server Error in 32ms (ActiveRecord: 18.9ms | Allocations: 9241)
+
+
+  
+ActionView::Template::Error (undefined method `today' for an instance of User):
+    13:       <div class="am-routine my-4">
+    14:         <h4>AM Routine</h4>
+    15:         <ul>
+    16:           <% current_user.today.each do |task| %>
+    17:             <li><%= task %></li>
+    18:           <% end %>
+    19:         </ul>
+  
+app/views/pages/profile.html.erb:16
+Started GET "/users/profile" for 127.0.0.1 at 2024-10-17 16:06:23 +0100
+Processing by PagesController#profile as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering pages/profile.html.erb within layouts/application
+  [1m[36mUser Load (1.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/pages/profile.html.erb:4
+  Rendered pages/profile.html.erb within layouts/application (Duration: 48.9ms | Allocations: 10380)
+  Rendered layout layouts/application.html.erb (Duration: 49.0ms | Allocations: 10466)
+Completed 500 Internal Server Error in 51ms (ActiveRecord: 22.2ms | Allocations: 11633)
+
+
+  
+ActionView::Template::Error (undefined method `posts' for an instance of User):
+    10:     <!-- User's Posts -->
+    11:     <h2 class="my-5 mb-3 fst-bold">Posts</h2>
+    12:     <div class="row">
+    13:       <% current_user.posts.each do |post| %>
+    14:         <div class="col-md-4">
+    15:           <div class="card mb-4">
+    16:             <img src="<%= post.image_url %>" class="card-img-top" alt="<%= post.title %>">
+  
+app/views/pages/profile.html.erb:13
+Started GET "/users/profile" for 127.0.0.1 at 2024-10-17 16:08:07 +0100
+Processing by PagesController#profile as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering pages/profile.html.erb within layouts/application
+  [1m[36mUser Load (1.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/pages/profile.html.erb:4
+  Rendered pages/profile.html.erb within layouts/application (Duration: 157.0ms | Allocations: 6827)
+  Rendered shared/_navbar.html.erb (Duration: 0.9ms | Allocations: 655)
+  Rendered shared/_flashes.html.erb (Duration: 0.3ms | Allocations: 194)
+  Rendered shared/_footer.html.erb (Duration: 0.1ms | Allocations: 115)
+  Rendered layout layouts/application.html.erb (Duration: 204.4ms | Allocations: 35077)
+Completed 200 OK in 210ms (Views: 59.1ms | ActiveRecord: 146.4ms | Allocations: 36967)
+
+
+Started GET "/users/profile" for 127.0.0.1 at 2024-10-17 16:23:42 +0100
+Processing by PagesController#profile as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering pages/profile.html.erb within layouts/application
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/pages/profile.html.erb:5
+  Rendered pages/profile.html.erb within layouts/application (Duration: 49.9ms | Allocations: 10456)
+  Rendered layout layouts/application.html.erb (Duration: 50.0ms | Allocations: 10542)
+Completed 500 Internal Server Error in 52ms (ActiveRecord: 21.7ms | Allocations: 11709)
+
+
+  
+ActionView::Template::Error (undefined method `am_routine' for an instance of User):
+    21:     <div class="am-routine my-4">
+    22:       <h4>AM Routine</h4>
+    23:       <ul>
+    24:         <% current_user.am_routine.each do |task| %>
+    25:           <li><%= task %></li>
+    26:         <% end %>
+    27:       </ul>
+  
+app/views/pages/profile.html.erb:24
+Started GET "/users/profile" for 127.0.0.1 at 2024-10-17 16:24:33 +0100
+Processing by PagesController#profile as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering pages/profile.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/pages/profile.html.erb:5
+  Rendered pages/profile.html.erb within layouts/application (Duration: 17.5ms | Allocations: 6830)
+  Rendered shared/_navbar.html.erb (Duration: 0.6ms | Allocations: 655)
+  Rendered shared/_flashes.html.erb (Duration: 0.1ms | Allocations: 194)
+  Rendered shared/_footer.html.erb (Duration: 0.1ms | Allocations: 115)
+  Rendered layout layouts/application.html.erb (Duration: 43.5ms | Allocations: 35079)
+Completed 200 OK in 46ms (Views: 32.6ms | ActiveRecord: 11.9ms | Allocations: 36968)
+
+
+Started GET "/users/profile" for 127.0.0.1 at 2024-10-17 16:24:48 +0100
+Processing by PagesController#profile as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering pages/profile.html.erb within layouts/application
+  [1m[36mUser Load (11.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/pages/profile.html.erb:5
+  Rendered pages/profile.html.erb within layouts/application (Duration: 16.8ms | Allocations: 975)
+  Rendered shared/_navbar.html.erb (Duration: 0.4ms | Allocations: 201)
+  Rendered shared/_flashes.html.erb (Duration: 0.0ms | Allocations: 22)
+  Rendered shared/_footer.html.erb (Duration: 0.0ms | Allocations: 8)
+  Rendered layout layouts/application.html.erb (Duration: 30.9ms | Allocations: 9124)
+Completed 200 OK in 34ms (Views: 20.5ms | ActiveRecord: 11.6ms | Allocations: 9364)
+
+
+Started GET "/users/profile" for 127.0.0.1 at 2024-10-17 16:25:40 +0100
+Processing by PagesController#profile as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering pages/profile.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/pages/profile.html.erb:5
+  Rendered pages/profile.html.erb within layouts/application (Duration: 9.4ms | Allocations: 6792)
+  Rendered shared/_navbar.html.erb (Duration: 1.2ms | Allocations: 657)
+  Rendered shared/_flashes.html.erb (Duration: 0.2ms | Allocations: 194)
+  Rendered shared/_footer.html.erb (Duration: 0.1ms | Allocations: 115)
+  Rendered layout layouts/application.html.erb (Duration: 34.7ms | Allocations: 35082)
+Completed 200 OK in 38ms (Views: 31.2ms | ActiveRecord: 4.5ms | Allocations: 36970)
+
+
+Started GET "/users/profile" for 127.0.0.1 at 2024-10-17 16:27:23 +0100
+Processing by PagesController#profile as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering pages/profile.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/pages/profile.html.erb:5
+  Rendered pages/profile.html.erb within layouts/application (Duration: 21.4ms | Allocations: 6774)
+  Rendered shared/_navbar.html.erb (Duration: 0.6ms | Allocations: 655)
+  Rendered shared/_flashes.html.erb (Duration: 0.2ms | Allocations: 194)
+  Rendered shared/_footer.html.erb (Duration: 0.1ms | Allocations: 115)
+  Rendered layout layouts/application.html.erb (Duration: 40.8ms | Allocations: 35020)
+Completed 200 OK in 44ms (Views: 25.1ms | ActiveRecord: 16.7ms | Allocations: 36908)
+
+
+Started GET "/users/profile" for 127.0.0.1 at 2024-10-17 16:27:27 +0100
+Processing by PagesController#profile as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering pages/profile.html.erb within layouts/application
+  [1m[36mUser Load (5.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/pages/profile.html.erb:5
+  Rendered pages/profile.html.erb within layouts/application (Duration: 9.3ms | Allocations: 965)
+  Rendered shared/_navbar.html.erb (Duration: 0.3ms | Allocations: 201)
+  Rendered shared/_flashes.html.erb (Duration: 0.1ms | Allocations: 22)
+  Rendered shared/_footer.html.erb (Duration: 0.0ms | Allocations: 8)
+  Rendered layout layouts/application.html.erb (Duration: 19.3ms | Allocations: 9111)
+Completed 200 OK in 20ms (Views: 14.5ms | ActiveRecord: 5.2ms | Allocations: 9351)
+
+
+Started GET "/users/profile" for 127.0.0.1 at 2024-10-17 16:30:25 +0100
+Processing by PagesController#profile as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering pages/profile.html.erb within layouts/application
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/pages/profile.html.erb:5
+  Rendered pages/profile.html.erb within layouts/application (Duration: 10.1ms | Allocations: 6802)
+  Rendered shared/_navbar.html.erb (Duration: 2.1ms | Allocations: 655)
+  Rendered shared/_flashes.html.erb (Duration: 1.0ms | Allocations: 194)
+  Rendered shared/_footer.html.erb (Duration: 0.3ms | Allocations: 115)
+  Rendered layout layouts/application.html.erb (Duration: 50.5ms | Allocations: 35047)
+Completed 200 OK in 56ms (Views: 46.0ms | ActiveRecord: 5.5ms | Allocations: 36935)
+
+
+Started GET "/users/profile" for 127.0.0.1 at 2024-10-17 16:30:55 +0100
+Processing by PagesController#profile as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering pages/profile.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/pages/profile.html.erb:5
+  Rendered pages/profile.html.erb within layouts/application (Duration: 18.1ms | Allocations: 6763)
+  Rendered shared/_navbar.html.erb (Duration: 0.6ms | Allocations: 655)
+  Rendered shared/_flashes.html.erb (Duration: 0.2ms | Allocations: 194)
+  Rendered shared/_footer.html.erb (Duration: 0.1ms | Allocations: 115)
+  Rendered layout layouts/application.html.erb (Duration: 33.3ms | Allocations: 35010)
+Completed 200 OK in 36ms (Views: 26.5ms | ActiveRecord: 7.9ms | Allocations: 36898)
+
+
+Started GET "/users/profile" for 127.0.0.1 at 2024-10-17 16:33:08 +0100
+Processing by PagesController#profile as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering pages/profile.html.erb within layouts/application
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/pages/profile.html.erb:5
+  Rendered pages/profile.html.erb within layouts/application (Duration: 14.8ms | Allocations: 6910)
+  Rendered shared/_navbar.html.erb (Duration: 2.1ms | Allocations: 655)
+  Rendered shared/_flashes.html.erb (Duration: 0.2ms | Allocations: 194)
+  Rendered shared/_footer.html.erb (Duration: 0.5ms | Allocations: 115)
+  Rendered layout layouts/application.html.erb (Duration: 39.1ms | Allocations: 35157)
+Completed 200 OK in 43ms (Views: 34.6ms | ActiveRecord: 5.4ms | Allocations: 37045)
+
+
+Started GET "/users/profile" for 127.0.0.1 at 2024-10-17 16:33:51 +0100
+Processing by PagesController#profile as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering pages/profile.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/pages/profile.html.erb:5
+  Rendered pages/profile.html.erb within layouts/application (Duration: 14.5ms | Allocations: 6813)
+  Rendered shared/_navbar.html.erb (Duration: 0.6ms | Allocations: 655)
+  Rendered shared/_flashes.html.erb (Duration: 0.2ms | Allocations: 194)
+  Rendered shared/_footer.html.erb (Duration: 0.1ms | Allocations: 115)
+  Rendered layout layouts/application.html.erb (Duration: 29.7ms | Allocations: 35060)
+Completed 200 OK in 33ms (Views: 25.4ms | ActiveRecord: 5.4ms | Allocations: 36948)
+
+
+Started GET "/users/profile" for 127.0.0.1 at 2024-10-17 16:34:28 +0100
+Processing by PagesController#profile as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering pages/profile.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/pages/profile.html.erb:5
+  Rendered pages/profile.html.erb within layouts/application (Duration: 12.6ms | Allocations: 6899)
+  Rendered shared/_navbar.html.erb (Duration: 0.5ms | Allocations: 655)
+  Rendered shared/_flashes.html.erb (Duration: 0.1ms | Allocations: 194)
+  Rendered shared/_footer.html.erb (Duration: 0.3ms | Allocations: 115)
+  Rendered layout layouts/application.html.erb (Duration: 27.4ms | Allocations: 35144)
+Completed 200 OK in 30ms (Views: 20.4ms | ActiveRecord: 8.0ms | Allocations: 37032)
+
+
+Started GET "/users/profile" for 127.0.0.1 at 2024-10-17 16:35:05 +0100
+Processing by PagesController#profile as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering pages/profile.html.erb within layouts/application
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/pages/profile.html.erb:5
+  Rendered pages/profile.html.erb within layouts/application (Duration: 10.4ms | Allocations: 6793)
+  Rendered shared/_navbar.html.erb (Duration: 0.5ms | Allocations: 655)
+  Rendered shared/_flashes.html.erb (Duration: 0.1ms | Allocations: 194)
+  Rendered shared/_footer.html.erb (Duration: 0.1ms | Allocations: 115)
+  Rendered layout layouts/application.html.erb (Duration: 28.0ms | Allocations: 35037)
+Completed 200 OK in 31ms (Views: 22.7ms | ActiveRecord: 6.2ms | Allocations: 36925)
+
+
+Started GET "/tasks" for 127.0.0.1 at 2024-10-17 16:35:17 +0100
+Processing by TasksController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering tasks/index.html.erb within layouts/application
+  [1m[36mTask Load (1.5ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."user_id" = $1[0m  [["user_id", 2]]
+  ↳ app/views/tasks/index.html.erb:9
+  [1m[36mSubTask Load (3.6ms)[0m  [1m[34mSELECT "sub_tasks".* FROM "sub_tasks" WHERE "sub_tasks"."task_id" = $1[0m  [["task_id", 1]]
+  ↳ app/views/tasks/index.html.erb:24
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/policies/sub_task_policy.rb:34:in `if_user_or_admin?'
+  Rendered sub_tasks/_links.html.erb (Duration: 3.5ms | Allocations: 2115)
+  Rendered tasks/_links.html.erb (Duration: 0.4ms | Allocations: 415)
+  Rendered tasks/index.html.erb within layouts/application (Duration: 56.7ms | Allocations: 20302)
+  Rendered shared/_navbar.html.erb (Duration: 0.1ms | Allocations: 187)
+  Rendered shared/_flashes.html.erb (Duration: 0.0ms | Allocations: 22)
+  Rendered shared/_footer.html.erb (Duration: 0.0ms | Allocations: 8)
+  Rendered layout layouts/application.html.erb (Duration: 62.4ms | Allocations: 28496)
+Completed 200 OK in 73ms (Views: 37.9ms | ActiveRecord: 27.5ms | Allocations: 34418)
+
+
+Started GET "/tasks/new" for 127.0.0.1 at 2024-10-17 16:35:18 +0100
+Processing by TasksController#new as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mTask Count (0.8ms)[0m  [1m[34mSELECT COUNT(*) FROM "tasks"[0m
+  ↳ app/models/task.rb:34:in `set_initial_order'
+  Rendering layout layouts/application.html.erb
+  Rendering tasks/new.html.erb within layouts/application
+  Rendered tasks/_form.html.erb (Duration: 6.2ms | Allocations: 6920)
+  Rendered tasks/_links.html.erb (Duration: 0.1ms | Allocations: 28)
+  Rendered tasks/new.html.erb within layouts/application (Duration: 7.6ms | Allocations: 7259)
+  Rendered shared/_navbar.html.erb (Duration: 0.2ms | Allocations: 187)
+  Rendered shared/_flashes.html.erb (Duration: 0.0ms | Allocations: 22)
+  Rendered shared/_footer.html.erb (Duration: 0.0ms | Allocations: 8)
+  Rendered layout layouts/application.html.erb (Duration: 15.5ms | Allocations: 15214)
+Completed 200 OK in 21ms (Views: 15.8ms | ActiveRecord: 1.0ms | Allocations: 17533)
+
+
+Started GET "/tasks" for 127.0.0.1 at 2024-10-17 16:35:21 +0100
+Processing by TasksController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering tasks/index.html.erb within layouts/application
+  [1m[36mTask Load (0.2ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."user_id" = $1[0m  [["user_id", 2]]
+  ↳ app/views/tasks/index.html.erb:9
+  [1m[36mSubTask Load (0.1ms)[0m  [1m[34mSELECT "sub_tasks".* FROM "sub_tasks" WHERE "sub_tasks"."task_id" = $1[0m  [["task_id", 1]]
+  ↳ app/views/tasks/index.html.erb:24
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/policies/sub_task_policy.rb:34:in `if_user_or_admin?'
+  Rendered sub_tasks/_links.html.erb (Duration: 1.4ms | Allocations: 717)
+  Rendered tasks/_links.html.erb (Duration: 0.2ms | Allocations: 130)
+  Rendered tasks/index.html.erb within layouts/application (Duration: 4.0ms | Allocations: 2055)
+  Rendered shared/_navbar.html.erb (Duration: 0.2ms | Allocations: 187)
+  Rendered shared/_flashes.html.erb (Duration: 0.1ms | Allocations: 22)
+  Rendered shared/_footer.html.erb (Duration: 0.0ms | Allocations: 8)
+  Rendered layout layouts/application.html.erb (Duration: 12.9ms | Allocations: 10010)
+Completed 200 OK in 17ms (Views: 12.8ms | ActiveRecord: 1.0ms | Allocations: 11834)
+
+
+Started GET "/users/profile" for 127.0.0.1 at 2024-10-17 16:35:28 +0100
+Processing by PagesController#profile as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering pages/profile.html.erb within layouts/application
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/pages/profile.html.erb:5
+  Rendered pages/profile.html.erb within layouts/application (Duration: 1.4ms | Allocations: 963)
+  Rendered shared/_navbar.html.erb (Duration: 0.2ms | Allocations: 201)
+  Rendered shared/_flashes.html.erb (Duration: 0.0ms | Allocations: 22)
+  Rendered shared/_footer.html.erb (Duration: 0.0ms | Allocations: 8)
+  Rendered layout layouts/application.html.erb (Duration: 9.0ms | Allocations: 8933)
+Completed 200 OK in 10ms (Views: 9.1ms | ActiveRecord: 0.1ms | Allocations: 9172)
+
+
+Started GET "/users/profile" for 127.0.0.1 at 2024-10-17 16:48:47 +0100
+Processing by PagesController#profile as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering pages/profile.html.erb within layouts/application
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/pages/profile.html.erb:5
+  Rendered pages/profile.html.erb within layouts/application (Duration: 68.3ms | Allocations: 3882)
+  Rendered shared/_navbar.html.erb (Duration: 0.7ms | Allocations: 201)
+  Rendered shared/_flashes.html.erb (Duration: 0.0ms | Allocations: 22)
+  Rendered shared/_footer.html.erb (Duration: 0.0ms | Allocations: 8)
+  Rendered layout layouts/application.html.erb (Duration: 85.8ms | Allocations: 11852)
+Completed 200 OK in 88ms (Views: 48.4ms | ActiveRecord: 38.5ms | Allocations: 12091)
+
+
+Started GET "/users/profile" for 127.0.0.1 at 2024-10-17 16:49:40 +0100
+Processing by PagesController#profile as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering pages/profile.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/pages/profile.html.erb:5
+  Rendered pages/profile.html.erb within layouts/application (Duration: 25.2ms | Allocations: 6903)
+  Rendered shared/_navbar.html.erb (Duration: 0.8ms | Allocations: 657)
+  Rendered shared/_flashes.html.erb (Duration: 0.1ms | Allocations: 194)
+  Rendered shared/_footer.html.erb (Duration: 0.3ms | Allocations: 115)
+  Rendered layout layouts/application.html.erb (Duration: 54.5ms | Allocations: 35138)
+Completed 200 OK in 61ms (Views: 37.3ms | ActiveRecord: 18.6ms | Allocations: 37026)
+
+
+Started GET "/users/profile" for 127.0.0.1 at 2024-10-17 16:53:22 +0100
+Processing by PagesController#profile as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering pages/profile.html.erb within layouts/application
+  Rendered pages/profile.html.erb within layouts/application (Duration: 1.0ms | Allocations: 1215)
+  Rendered layout layouts/application.html.erb (Duration: 1.1ms | Allocations: 1320)
+Completed 500 Internal Server Error in 4ms (ActiveRecord: 0.0ms | Allocations: 2550)
+
+
+  
+ActionView::SyntaxErrorInTemplate (Encountered a syntax error while rendering template: check 
+  <div class="row align-items-center my-5">
+    <!-- Profile Picture -->
+    <div class="col-md-3 text-center">
+      <%= image_tag(current_user.image_url, class:"rounded-circle img-fluid", alt="<%= current_user.full_name %>'s profile picture")%>
+    </div>
+
+    <!-- User Info: Name, Email, Bio -->
+    <div class="col-md-9">
+      <h1><%= current_user.full_name %></h1>
+      <h4><%= current_user.email %></h4>
+      <p class="mt-3"><%= current_user.bio %></p>
+    </div>
+  </div>
+
+  <hr>
+
+):
+1:    
+2:      <div class="row align-items-center my-5">
+3:        <!-- Profile Picture -->
+4:        <div class="col-md-3 text-center">
+5:          <%= image_tag(current_user.image_url, class:"rounded-circle img-fluid", alt="<%= current_user.full_name %>'s profile picture")%>
+6:        </div>
+7:    
+8:        <!-- User Info: Name, Email, Bio -->
+9:        <div class="col-md-9">
+10:          <h1><%= current_user.full_name %></h1>
+11:          <h4><%= current_user.email %></h4>
+12:          <p class="mt-3"><%= current_user.bio %></p>
+13:        </div>
+14:      </div>
+15:    
+16:      <hr>
+  
+app/views/pages/profile.html.erb:5: syntax error, unexpected ')', expecting =>
+app/views/pages/profile.html.erb:10: unknown regexp option - h
+app/views/pages/profile.html.erb:12: unknown regexp option - p
+app/views/pages/profile.html.erb:14: unknown regexp options - dv
+app/views/pages/profile.html.erb:19: unterminated string meets end of file
+Started GET "/users/profile" for 127.0.0.1 at 2024-10-17 16:54:17 +0100
+Processing by PagesController#profile as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering pages/profile.html.erb within layouts/application
+  Rendered pages/profile.html.erb within layouts/application (Duration: 0.6ms | Allocations: 1184)
+  Rendered layout layouts/application.html.erb (Duration: 0.6ms | Allocations: 1289)
+Completed 500 Internal Server Error in 3ms (ActiveRecord: 0.0ms | Allocations: 2511)
+
+
+  
+ActionView::SyntaxErrorInTemplate (Encountered a syntax error while rendering template: check 
+  <div class="row align-items-center my-5">
+    <!-- Profile Picture -->
+    <div class="col-md-3 text-center">
+      <%= image_tag(current_user.image_url, class:"rounded-circle img-fluid", alt:"<%= current_user.full_name %>'s profile picture")%>
+    </div>
+
+    <!-- User Info: Name, Email, Bio -->
+    <div class="col-md-9">
+      <h1><%= current_user.full_name %></h1>
+      <h4><%= current_user.email %></h4>
+      <p class="mt-3"><%= current_user.bio %></p>
+    </div>
+  </div>
+
+  <hr>
+
+):
+1:    
+2:      <div class="row align-items-center my-5">
+3:        <!-- Profile Picture -->
+4:        <div class="col-md-3 text-center">
+5:          <%= image_tag(current_user.image_url, class:"rounded-circle img-fluid", alt:"<%= current_user.full_name %>'s profile picture")%>
+6:        </div>
+7:    
+8:        <!-- User Info: Name, Email, Bio -->
+9:        <div class="col-md-9">
+10:          <h1><%= current_user.full_name %></h1>
+11:          <h4><%= current_user.email %></h4>
+12:          <p class="mt-3"><%= current_user.bio %></p>
+13:        </div>
+14:      </div>
+15:    
+16:      <hr>
+  
+app/views/pages/profile.html.erb:5: syntax error, unexpected '>'
+app/views/pages/profile.html.erb:10: unknown regexp option - h
+app/views/pages/profile.html.erb:12: unknown regexp option - p
+app/views/pages/profile.html.erb:14: unknown regexp options - dv
+app/views/pages/profile.html.erb:19: unterminated string meets end of file
+Started PUT "/__web_console/repl_sessions/747f31b1c8abd3b05080e18bd6f87122" for 127.0.0.1 at 2024-10-17 16:54:51 +0100
+Started PUT "/__web_console/repl_sessions/747f31b1c8abd3b05080e18bd6f87122" for 127.0.0.1 at 2024-10-17 16:54:55 +0100
+Started GET "/users/profile" for 127.0.0.1 at 2024-10-17 16:55:52 +0100
+Processing by PagesController#profile as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering pages/profile.html.erb within layouts/application
+  [1m[36mUser Load (2.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/pages/profile.html.erb:5
+  Rendered pages/profile.html.erb within layouts/application (Duration: 34.2ms | Allocations: 6805)
+  Rendered shared/_navbar.html.erb (Duration: 0.6ms | Allocations: 655)
+  Rendered shared/_flashes.html.erb (Duration: 0.1ms | Allocations: 194)
+  Rendered shared/_footer.html.erb (Duration: 0.1ms | Allocations: 115)
+  Rendered layout layouts/application.html.erb (Duration: 62.2ms | Allocations: 35053)
+Completed 200 OK in 65ms (Views: 35.0ms | ActiveRecord: 28.3ms | Allocations: 36937)
+
+
