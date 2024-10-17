@@ -7,9 +7,9 @@ class Task < ApplicationRecord
     end
   end
 
-  none_routine_name = :not_recuring
+  NONE_ROUTINE_NAME = :not_recuring
 
-  enum routine: [ none_routine_name, :morning, :day, :evening ]
+  enum routine: [ NONE_ROUTINE_NAME, :morning, :day, :evening ]
   enum task_type: [ :general, :event, :fitness, :admin, :work, :self_development ]
 
   def routine?
