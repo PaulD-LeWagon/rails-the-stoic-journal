@@ -1,0 +1,17 @@
+<div class="">
+
+  <%= link_to "Back to journal_entries", journal_entries_path, class: "btn btn-secondary m-1" %>
+
+  <% if journal_entry.persisted? %>
+
+    <%# <%= link_to "Create a category", new_category_path(journal_entry), class: "btn btn-primary m-1" %>
+
+    <% if policy(journal_entry).edit? %>
+      <%= link_to "Edit", edit_journal_entry_path(journal_entry), class: "btn btn-warning m-1" %>
+    <% end %>
+
+    <%= link_to "Delete", journal_entry_path(journal_entry), class: "btn btn-danger m-1", data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} if policy(journal_entry).destroy? %>
+
+  <% end %>
+
+</div>

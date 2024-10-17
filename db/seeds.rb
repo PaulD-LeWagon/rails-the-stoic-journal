@@ -112,14 +112,27 @@ end
 
   je.user = user
 
-  cat = cats.sample
+  # Add some categories...
+  rand(1..7).times do |i|
 
-  jc = JournalCategory.new(journal_entry: je, category: cat)
+    cat = cats.sample
 
-  if !jc.valid?
-    p jc.errors, js, je, jc, cat
-  else
-    jc.save!
+    jc = JournalCategory.new(journal_entry: je, category: cat)
+
+    if !jc.valid?
+      # p jc.errors, je, jc, cat
+    else
+      jc.save!
+    end
+
+  end
+
+  if !je.persisted?
+    if je.valid?
+      je.save!
+    else
+      p je.errors
+    end
   end
 
 end
