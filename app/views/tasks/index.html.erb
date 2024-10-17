@@ -5,8 +5,17 @@
     <h1 class="my-5 mb-3 fst-bold">Tasks#index</h1>
     <hr>
     <% @tasks.each do |task| %>
+  <div class="d-flex justify-content-between align-items-center mb-3">
       <h3><%= task.title %><h3>
-      <p><%= task.description %></p>
+
+      <p><%= task.task_type %></p>
+
+      <p><%= task.due_date %></p>
+
+      <p><%= task.completed %></p>
+<p><%= task.completed ? 'Completed' : 'Not Completed' %></p>
+ </div>
+      <hr>
     <% end %>
 
   </div>
