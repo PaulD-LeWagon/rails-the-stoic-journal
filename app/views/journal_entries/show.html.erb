@@ -1,0 +1,16 @@
+
+<div class="d-flex justify-content-center align-items-start min-vh-100">
+
+  <div class="col-md-10 p-3">
+
+    <h1><%= @journal_entry.title %></h1>
+
+    <h3>- <%= @journal_entry.user.full_name %></h3>
+
+    <p><%= @journal_entry.entry %></p>
+
+    <%= render 'links', journal_entry: @journal_entry %>
+
+  </div>
+
+</div>
