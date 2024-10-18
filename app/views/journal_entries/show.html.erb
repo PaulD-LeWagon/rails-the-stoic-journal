@@ -9,7 +9,11 @@
 
     <p><%= @journal_entry.entry %></p>
 
-    <%= render 'links', journal_entry: @journal_entry %>
+    <div class="links">
+
+      <%= render 'links', journal_entry: @journal_entry %>
+
+    </div>
 
   </div>
 

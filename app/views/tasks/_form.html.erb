@@ -29,8 +29,14 @@
 
   </div>
 
-  <div class="form-actions d-flex justify-content-end ">
-    <%= f.submit "Submit", class: "btn btn-primary btn-lg" %>
+  <div class="form-actions links d-flex justify-content-end align-items-center">
+
+    <%= render 'links', task: task %>
+
+    <%= button_tag type: 'submit', class: "btn btn-primary" do %>
+      <i class="fa-solid fa-thumbs-up"></i>
+    <% end %>
+
   </div>
 
 <% end %>

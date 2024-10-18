@@ -7,7 +7,13 @@
     <%= image_tag img_url, class: "rounded-circle my-2" %>
 
     <div class="header d-flex justify-content-between align-items-center">
-      <h1 class="my-5 mb-3 fst-bold">All Journal Entries</h1> <%= link_to 'Add new entry?', new_journal_entry_path, class: "btn bg-quinary btn-lg" %>
+
+      <h1 class="my-5 mb-3 fst-bold">All Journal Entries</h1>
+
+      <%= link_to new_journal_entry_path, class: "btn bg-quinary btn-lg", title: "Add a new journal entry?" do %>
+        <i class="fa-solid fa-square-plus"></i>
+      <% end %>
+
     </div>
 
     <hr>
@@ -20,27 +26,31 @@
 
       <p class="bd-font"><%= journal_entry.entry %></p>
 
-        <hr>
+      <div class="links d-flex justify-content-end align-items-center">
 
-        <div class="categories">
+        <%= render 'links', journal_entry: journal_entry %>
 
-          <% if journal_entry.categories.count > 0 %>
+      </div>
 
-            <% journal_entry.categories.each do |category| %>
+      <hr>
 
-              <h4>#<%= category.category %><h4>
+      <div class="categories">
 
-              <%# <%= render 'categories/links', category: category %>
+        <% if journal_entry.categories.count > 0 %>
 
-              <hr>
+          <% journal_entry.categories.each do |category| %>
 
-            <% end %>
+            <h4>#<%= category.category %><h4>
+
+            <%# <%= render 'categories/links', category: category %>
+
+            <hr>
 
           <% end %>
 
-        </div>
+        <% end %>
 
-      <%= render 'links', journal_entry: journal_entry %>
+      </div>
 
       <hr>
 

@@ -1,17 +1,33 @@
-<div class="">
+<%= link_to :back, class: "btn btn-success m-1", title: "Back button" do %>
+  <i class="fa-solid fa-angle-left"></i>
+<% end %>
 
-  <%= link_to "Back to tasks", tasks_path, class: "btn btn-secondary m-1" %>
+<% if action_name != "index" %>
 
-  <% if sub_task.persisted? %>
+  <%= link_to tasks_path, class: "btn btn-secondary m-1", title: "Back to all tasks" do %>
+    <i class="fa-solid fa-list-check"></i>
+  <% end %>
 
-    <%= link_to "Add a Sub Task", new_task_sub_task_path(sub_task.task), class: "btn btn-primary m-1" %>
+<% end %>
 
-    <% if policy(sub_task).edit? %>
-      <%= link_to "Edit", edit_sub_task_path(sub_task), class: "btn btn-warning m-1" %>
+<% if sub_task.persisted? %>
+
+  <%= link_to new_task_sub_task_path(sub_task.task), class: "btn btn-primary m-1", title: "Add a subtask?" do %>
+    <i class="fa-solid fa-square-plus"></i>
+  <% end %>
+
+  <% if policy(sub_task).edit? %>
+
+    <%= link_to edit_sub_task_path(sub_task), class: "btn btn-warning m-1", title: "Edit this task" do %>
+      <i class="fa-solid fa-pen-to-square"></i>
     <% end %>
-
-    <%= link_to "Delete", sub_task_path(sub_task), class: "btn btn-danger m-1", data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} if policy(sub_task).destroy? %>
 
   <% end %>
 
-</div>
+  <% if policy(sub_task).destroy? %>
+    <%= link_to sub_task_path(sub_task), class: "btn btn-danger m-1", title: "Delete this task?", data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} do %>
+      <i class="fa-solid fa-trash"></i>
+    <% end %>
+  <% end %>
+
+<% end %>

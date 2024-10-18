@@ -11,10 +11,8 @@ class SubTasksController < ApplicationController
 
   # GET /tasks/:task_id/subtask/new
   def new
-    # @task = Task.find(params[:task_id])
-    @sub_task = SubTask.new(task: Task.find(params[:task_id]))
-    # @sub_task.order = @task.default_subtask_order
-    # @sub_task.task = @task
+    @task = Task.find(params[:task_id])
+    @sub_task = SubTask.new(task: @task)
     authorize @sub_task
   end
 

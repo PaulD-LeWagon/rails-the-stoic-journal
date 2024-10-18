@@ -7,7 +7,9 @@
 
     <p><%= @task.description %></p>
 
-    <%= render 'links', task: @task %>
+    <div class="links">
+      <%= render 'links', task: @task %>
+    </div>
 
   </div>
 

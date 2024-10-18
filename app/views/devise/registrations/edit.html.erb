@@ -10,6 +10,11 @@
       <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
     <% end %>
 
+
+    <%= f.input :current_password,
+                hint: "we need your current password to confirm your changes",
+                required: true,
+                input_html: { autocomplete: "current-password" } %>
     <%= f.input :password,
                 hint: "leave it blank if you don't want to change it",
                 required: false,
@@ -17,10 +22,14 @@
     <%= f.input :password_confirmation,
                 required: false,
                 input_html: { autocomplete: "new-password" } %>
-    <%= f.input :current_password,
-                hint: "we need your current password to confirm your changes",
-                required: true,
-                input_html: { autocomplete: "current-password" } %>
+    <%= f.input :profile_picture,
+                hint: "Update your profile picture",
+                as: :file,
+                required: false %>
+    <%= f.input :bio,
+                hint: "Update your bio here",
+                required: false,
+                input_html: { rows: 5 } %>
   </div>
 
   <div class="form-actions">
