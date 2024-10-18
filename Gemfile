@@ -85,5 +85,6 @@ gem "base64", "~> 0.2.0"
 gem "bigdecimal", "~> 3.1"
 gem "mutex_m", "~> 0.2.0"
 gem 'faker'
+gem 'dragula-rails'
 
 gem "pgreset" # VERY IMPORTANT IF USING postgresql DB
