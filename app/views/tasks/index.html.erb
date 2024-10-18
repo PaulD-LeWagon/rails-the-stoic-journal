@@ -13,9 +13,19 @@
       <p class="bd-font"><%= task.description %></p>
 
       <div class="d-flex justify-content-end">
-        <button class="btn btn-warning btn-sm text-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapse<%= task.id %>" aria-expanded="false" aria-controls="collapse<%= task.id %>">
-          View all sub-tasks?
-        </button>
+
+        <%= render 'links', task: task %>
+
+        <a href="#" type="button"
+          class="btn btn-warning m-1"
+          data-bs-toggle="collapse"
+          data-bs-target="#collapse<%= task.id %>"
+          aria-expanded="false"
+          aria-controls="collapse<%= task.id %>">
+
+          <i class="fa-solid fa-chevron-down"></i>
+        </a>
+
       </div>
       <div class="collapse" id="collapse<%= task.id %>">
 
@@ -27,15 +37,13 @@
 
           <p><%= subtask.description %></p>
 
-          <%= render 'sub_tasks/links', sub_task: subtask %>
+          <%= render 'links', task: task %>
 
           <hr>
 
         <% end %>
 
       </div>
-
-      <%= render 'links', task: task %>
 
       <hr>
 
