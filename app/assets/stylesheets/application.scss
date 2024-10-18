@@ -86,15 +86,23 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: 300;
   font-style: normal;
 }
+
 .navbar {
   font-family: $body-font;
   font-weight: 300;
+}
+div.navbar.sticky-top {
+  border-bottom: 7px solid $success;
 }
 .navbar .nav-item .avatar {
   font-size: 1.5rem;
   color: var(--bs-nav-link-color);
   margin-left: 5px;
 }
+.navbar .nav-item a.avatar img.avatar {
+  border: solid 3px $success;
+}
+
 
 
 .animate-shadow {
@@ -119,9 +127,6 @@ h1, h2, h3, h4, h5, h6 {
   text-shadow: 0 5px 15px rgba(0,0,0,0.3);
 }
 
-div.navbar.sticky-top {
-  border-bottom: 7px solid $success;
-}
 
 .text-nowrap {
   white-space: nowrap;

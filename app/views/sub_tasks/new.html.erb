@@ -4,11 +4,7 @@
 
     <h1 class="my-5 mb-3 fst-bold text-center">Add a New Sub Task</h1>
 
-    <%= render 'form' %>
-
-    <div class="text-center">
-      <%= render 'links', sub_task: @sub_task %>
-    </div>
+    <%= render 'form', task: @task, sub_task: @sub_task %>
 
   </div>
 </div>
