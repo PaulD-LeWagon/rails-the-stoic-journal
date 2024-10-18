@@ -8,4 +8,5 @@ Rails.application.routes.draw do
     resources :sub_tasks, path: "subtasks", only: [ :new, :create ]
   end
   resources :sub_tasks, path: "subtasks", only: [ :index, :show, :edit, :update, :destroy ]
+  resources :journal_entries, path: "journal-entries"
 end
