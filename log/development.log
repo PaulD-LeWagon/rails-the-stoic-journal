@@ -20692,3 +20692,186 @@ Processing by PagesController#home as TURBO_STREAM
 Completed 200 OK in 15ms (Views: 14.9ms | ActiveRecord: 0.0ms | Allocations: 8519)
 
 
+Started GET "/todays-log" for ::1 at 2024-10-18 15:34:38 +0100
+Processing by LogsController#today as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering logs/today.html.erb within layouts/application
+  Rendered logs/today.html.erb within layouts/application (Duration: 11.3ms | Allocations: 2164)
+  Rendered shared/_navbar.html.erb (Duration: 0.7ms | Allocations: 140)
+  Rendered shared/_flashes.html.erb (Duration: 0.1ms | Allocations: 22)
+  Rendered shared/_footer.html.erb (Duration: 0.0ms | Allocations: 8)
+  Rendered layout layouts/application.html.erb (Duration: 117.4ms | Allocations: 10473)
+Completed 200 OK in 139ms (Views: 119.5ms | ActiveRecord: 0.0ms | Allocations: 11114)
+
+
+Started GET "/" for ::1 at 2024-10-18 16:47:26 +0100
+  [1m[36mActiveRecord::SchemaMigration Load (35.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by PagesController#home as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering pages/home.html.erb within layouts/application
+  Rendered shared/_jumbotron.html.erb (Duration: 0.7ms | Allocations: 271)
+  Rendered pages/home.html.erb within layouts/application (Duration: 15.9ms | Allocations: 681)
+  Rendered shared/_navbar.html.erb (Duration: 16.1ms | Allocations: 860)
+  Rendered shared/_flashes.html.erb (Duration: 2.3ms | Allocations: 216)
+  Rendered shared/_footer.html.erb (Duration: 1.1ms | Allocations: 117)
+  Rendered layout layouts/application.html.erb (Duration: 1148.8ms | Allocations: 69628)
+Completed 200 OK in 2192ms (Views: 1198.0ms | ActiveRecord: 0.0ms | Allocations: 356129)
+
+
+Started GET "/users/sign_in" for ::1 at 2024-10-18 16:47:35 +0100
+Processing by Devise::SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (Duration: 3.5ms | Allocations: 541)
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 528.4ms | Allocations: 10871)
+  Rendered shared/_navbar.html.erb (Duration: 0.8ms | Allocations: 116)
+  Rendered shared/_flashes.html.erb (Duration: 0.7ms | Allocations: 27)
+  Rendered shared/_footer.html.erb (Duration: 0.1ms | Allocations: 9)
+  Rendered layout layouts/application.html.erb (Duration: 564.5ms | Allocations: 19057)
+Completed 200 OK in 953ms (Views: 582.7ms | ActiveRecord: 145.8ms | Allocations: 41628)
+
+
+Started POST "/users/sign_in" for ::1 at 2024-10-18 16:47:38 +0100
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"email"=>"pauldevanney92@gmail.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  [1m[36mUser Load (11.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "pauldevanney92@gmail.com"], ["LIMIT", 1]]
+Redirected to http://localhost:3000/
+Completed 303 See Other in 599ms (ActiveRecord: 11.8ms | Allocations: 6925)
+
+
+Started GET "/" for ::1 at 2024-10-18 16:47:39 +0100
+Processing by PagesController#home as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering pages/home.html.erb within layouts/application
+  Rendered shared/_jumbotron.html.erb (Duration: 0.1ms | Allocations: 32)
+  Rendered pages/home.html.erb within layouts/application (Duration: 0.3ms | Allocations: 98)
+  [1m[36mUser Load (11.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/shared/_navbar.html.erb:16
+  Rendered shared/_navbar.html.erb (Duration: 15.0ms | Allocations: 967)
+  Rendered shared/_flashes.html.erb (Duration: 0.1ms | Allocations: 29)
+  Rendered shared/_footer.html.erb (Duration: 0.0ms | Allocations: 8)
+  Rendered layout layouts/application.html.erb (Duration: 30.9ms | Allocations: 9042)
+Completed 200 OK in 32ms (Views: 20.6ms | ActiveRecord: 11.0ms | Allocations: 9284)
+
+
+Started GET "/tasks" for ::1 at 2024-10-18 16:47:42 +0100
+Processing by TasksController#index as HTML
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering tasks/index.html.erb within layouts/application
+  [1m[36mTask Load (1.4ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks"[0m
+  ↳ app/views/tasks/index.html.erb:17
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/policies/task_policy.rb:33:in `if_user_or_admin?'
+  Rendered tasks/_links.html.erb (Duration: 39.5ms | Allocations: 3859)
+  [1m[36mSubTask Load (0.8ms)[0m  [1m[34mSELECT "sub_tasks".* FROM "sub_tasks" WHERE "sub_tasks"."task_id" = $1[0m  [["task_id", 1]]
+  ↳ app/views/tasks/index.html.erb:42
+  Rendered tasks/_links.html.erb (Duration: 1.2ms | Allocations: 167)
+  Rendered tasks/_links.html.erb (Duration: 0.6ms | Allocations: 167)
+  Rendered tasks/_links.html.erb (Duration: 0.6ms | Allocations: 167)
+  Rendered tasks/_links.html.erb (Duration: 1.4ms | Allocations: 167)
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/policies/task_policy.rb:33:in `if_user_or_admin?'
+  Rendered tasks/_links.html.erb (Duration: 8.5ms | Allocations: 740)
+  [1m[36mSubTask Load (1.0ms)[0m  [1m[34mSELECT "sub_tasks".* FROM "sub_tasks" WHERE "sub_tasks"."task_id" = $1[0m  [["task_id", 2]]
+  ↳ app/views/tasks/index.html.erb:42
+  Rendered tasks/_links.html.erb (Duration: 1.6ms | Allocations: 167)
+  Rendered tasks/_links.html.erb (Duration: 0.9ms | Allocations: 167)
+  Rendered tasks/_links.html.erb (Duration: 0.8ms | Allocations: 167)
+  Rendered tasks/_links.html.erb (Duration: 0.7ms | Allocations: 167)
+  Rendered tasks/_links.html.erb (Duration: 1.9ms | Allocations: 167)
+  Rendered tasks/_links.html.erb (Duration: 1.0ms | Allocations: 167)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/policies/task_policy.rb:33:in `if_user_or_admin?'
+  Rendered tasks/_links.html.erb (Duration: 3.3ms | Allocations: 613)
+  [1m[36mSubTask Load (0.6ms)[0m  [1m[34mSELECT "sub_tasks".* FROM "sub_tasks" WHERE "sub_tasks"."task_id" = $1[0m  [["task_id", 3]]
+  ↳ app/views/tasks/index.html.erb:42
+  Rendered tasks/_links.html.erb (Duration: 1.1ms | Allocations: 167)
+  Rendered tasks/_links.html.erb (Duration: 0.8ms | Allocations: 167)
+  Rendered tasks/_links.html.erb (Duration: 0.7ms | Allocations: 167)
+  Rendered tasks/_links.html.erb (Duration: 0.7ms | Allocations: 167)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/policies/task_policy.rb:33:in `if_user_or_admin?'
+  Rendered tasks/_links.html.erb (Duration: 3.0ms | Allocations: 604)
+  [1m[36mSubTask Load (0.7ms)[0m  [1m[34mSELECT "sub_tasks".* FROM "sub_tasks" WHERE "sub_tasks"."task_id" = $1[0m  [["task_id", 4]]
+  ↳ app/views/tasks/index.html.erb:42
+  Rendered tasks/_links.html.erb (Duration: 0.6ms | Allocations: 167)
+  Rendered tasks/_links.html.erb (Duration: 0.5ms | Allocations: 167)
+  [1m[36mCACHE User Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/policies/task_policy.rb:33:in `if_user_or_admin?'
+  Rendered tasks/_links.html.erb (Duration: 3.8ms | Allocations: 604)
+  [1m[36mSubTask Load (0.5ms)[0m  [1m[34mSELECT "sub_tasks".* FROM "sub_tasks" WHERE "sub_tasks"."task_id" = $1[0m  [["task_id", 5]]
+  ↳ app/views/tasks/index.html.erb:42
+  Rendered tasks/_links.html.erb (Duration: 0.5ms | Allocations: 167)
+  Rendered tasks/_links.html.erb (Duration: 0.6ms | Allocations: 167)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/policies/task_policy.rb:33:in `if_user_or_admin?'
+  Rendered tasks/_links.html.erb (Duration: 2.3ms | Allocations: 604)
+  [1m[36mSubTask Load (0.4ms)[0m  [1m[34mSELECT "sub_tasks".* FROM "sub_tasks" WHERE "sub_tasks"."task_id" = $1[0m  [["task_id", 6]]
+  ↳ app/views/tasks/index.html.erb:42
+  Rendered tasks/_links.html.erb (Duration: 0.5ms | Allocations: 167)
+  Rendered tasks/_links.html.erb (Duration: 0.4ms | Allocations: 167)
+  Rendered tasks/_links.html.erb (Duration: 0.6ms | Allocations: 167)
+  Rendered tasks/_links.html.erb (Duration: 0.8ms | Allocations: 167)
+  Rendered tasks/_links.html.erb (Duration: 0.9ms | Allocations: 167)
+  Rendered tasks/_links.html.erb (Duration: 0.6ms | Allocations: 167)
+  Rendered tasks/_links.html.erb (Duration: 0.5ms | Allocations: 167)
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/policies/task_policy.rb:33:in `if_user_or_admin?'
+  Rendered tasks/_links.html.erb (Duration: 4.7ms | Allocations: 737)
+  [1m[36mSubTask Load (0.3ms)[0m  [1m[34mSELECT "sub_tasks".* FROM "sub_tasks" WHERE "sub_tasks"."task_id" = $1[0m  [["task_id", 7]]
+  ↳ app/views/tasks/index.html.erb:42
+  Rendered tasks/_links.html.erb (Duration: 1.0ms | Allocations: 167)
+  Rendered tasks/_links.html.erb (Duration: 0.4ms | Allocations: 167)
+  Rendered tasks/_links.html.erb (Duration: 0.4ms | Allocations: 167)
+  Rendered tasks/_links.html.erb (Duration: 0.3ms | Allocations: 167)
+  Rendered tasks/_links.html.erb (Duration: 0.5ms | Allocations: 167)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/policies/task_policy.rb:33:in `if_user_or_admin?'
+  Rendered tasks/_links.html.erb (Duration: 2.6ms | Allocations: 604)
+  [1m[36mSubTask Load (0.4ms)[0m  [1m[34mSELECT "sub_tasks".* FROM "sub_tasks" WHERE "sub_tasks"."task_id" = $1[0m  [["task_id", 8]]
+  ↳ app/views/tasks/index.html.erb:42
+  Rendered tasks/_links.html.erb (Duration: 1.0ms | Allocations: 167)
+  Rendered tasks/_links.html.erb (Duration: 2.8ms | Allocations: 167)
+  Rendered tasks/_links.html.erb (Duration: 0.9ms | Allocations: 167)
+  Rendered tasks/_links.html.erb (Duration: 0.8ms | Allocations: 167)
+  Rendered tasks/_links.html.erb (Duration: 0.5ms | Allocations: 167)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/policies/task_policy.rb:33:in `if_user_or_admin?'
+  Rendered tasks/_links.html.erb (Duration: 2.8ms | Allocations: 604)
+  [1m[36mSubTask Load (1.2ms)[0m  [1m[34mSELECT "sub_tasks".* FROM "sub_tasks" WHERE "sub_tasks"."task_id" = $1[0m  [["task_id", 9]]
+  ↳ app/views/tasks/index.html.erb:42
+  Rendered tasks/_links.html.erb (Duration: 0.6ms | Allocations: 167)
+  Rendered tasks/_links.html.erb (Duration: 0.5ms | Allocations: 167)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/policies/task_policy.rb:33:in `if_user_or_admin?'
+  Rendered tasks/_links.html.erb (Duration: 1.7ms | Allocations: 604)
+  [1m[36mSubTask Load (0.4ms)[0m  [1m[34mSELECT "sub_tasks".* FROM "sub_tasks" WHERE "sub_tasks"."task_id" = $1[0m  [["task_id", 10]]
+  ↳ app/views/tasks/index.html.erb:42
+  Rendered tasks/_links.html.erb (Duration: 0.5ms | Allocations: 167)
+  Rendered tasks/_links.html.erb (Duration: 0.4ms | Allocations: 167)
+  Rendered tasks/index.html.erb within layouts/application (Duration: 364.7ms | Allocations: 50933)
+  Rendered shared/_navbar.html.erb (Duration: 0.4ms | Allocations: 235)
+  Rendered shared/_flashes.html.erb (Duration: 0.1ms | Allocations: 22)
+  Rendered shared/_footer.html.erb (Duration: 0.0ms | Allocations: 8)
+  Rendered layout layouts/application.html.erb (Duration: 381.4ms | Allocations: 59186)
+Completed 200 OK in 531ms (Views: 371.8ms | ActiveRecord: 23.4ms | Allocations: 64176)
+
+
+Started GET "/tasks/new" for ::1 at 2024-10-18 16:47:45 +0100
+Processing by TasksController#new as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mTask Count (1.7ms)[0m  [1m[34mSELECT COUNT(*) FROM "tasks"[0m
+  ↳ app/models/task.rb:34:in `set_initial_order'
+  Rendering layout layouts/application.html.erb
+  Rendering tasks/new.html.erb within layouts/application
+  Rendered tasks/_links.html.erb (Duration: 0.3ms | Allocations: 79)
+  Rendered tasks/_form.html.erb (Duration: 40.2ms | Allocations: 8446)
+  Rendered tasks/new.html.erb within layouts/application (Duration: 49.8ms | Allocations: 8687)
+  Rendered shared/_navbar.html.erb (Duration: 0.7ms | Allocations: 235)
+  Rendered shared/_flashes.html.erb (Duration: 0.1ms | Allocations: 22)
+  Rendered shared/_footer.html.erb (Duration: 0.0ms | Allocations: 8)
+  Rendered layout layouts/application.html.erb (Duration: 67.3ms | Allocations: 16689)
+Completed 200 OK in 88ms (Views: 68.7ms | ActiveRecord: 1.9ms | Allocations: 19017)
+
+
