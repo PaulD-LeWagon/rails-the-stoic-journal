@@ -7,8 +7,4 @@ class PagesController < ApplicationController
   def profile
 
   end
-
-  def team
-  end
-
 end
