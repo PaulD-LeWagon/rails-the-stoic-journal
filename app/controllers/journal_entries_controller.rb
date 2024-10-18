@@ -2,7 +2,11 @@ class JournalEntriesController < ApplicationController
   before_action :set_journal_entry, only: %i[ show edit update destroy ]
 
   def index
-    @journal_entries = policy_scope(JournalEntry)
+    if current_user.admin?
+      @journal_entries = policy_scope(JournalEntry).order(user_id: :asc)
+    else
+      @journal_entries = policy_scope(JournalEntry).where(user_id: current_user)
+    end
   end
 
   def show

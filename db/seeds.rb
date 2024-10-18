@@ -66,7 +66,7 @@ users << User.create!(
     active: true,
     task_type: Task.task_types.keys[rand(0..(Task.task_types.length - 1))],
     title: Faker::Lorem.sentence(word_count: rand(3..5)).titleize,
-    description: Faker::Lorem.paragraph(sentence_count: rand(5..15)),
+    description: Faker::Lorem.paragraph(sentence_count: rand(15..30)),
     comment: Faker::Lorem.paragraph(sentence_count: rand(5..15)),
     start_date: start_date,
     due_date: due_date,
@@ -80,7 +80,7 @@ users << User.create!(
     sub_task = SubTask.new(
       order: j + 1,
       title: Faker::Lorem.sentence(word_count: rand(3..5)).titleize,
-      description: Faker::Lorem.paragraph(sentence_count: rand(5..10)),
+      description: Faker::Lorem.paragraph(sentence_count: rand(10..15)),
       comment: Faker::Lorem.paragraph(sentence_count: rand(5..10)),
       start_date: start_date,
       due_date: due_date,
@@ -94,7 +94,7 @@ users << User.create!(
 end
 
 # Ctegories...
-10.times do |i|
+15.times do |i|
 
   cats << Category.new(category: Faker::Lorem.words(number: rand(1..2)).join('-'))
 

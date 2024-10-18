@@ -2,13 +2,21 @@
 
   <div class="col-md-10 p-3">
 
-    <h1 class="my-5 mb-3 fst-bold">All Journal Entries</h1>
+    <% img_url = current_user.admin? ? current_user.image_url : @journal_entries.first.user.image_url %>
+
+    <%= image_tag img_url, class: "rounded-circle my-2" %>
+
+    <div class="header d-flex justify-content-between align-items-center">
+      <h1 class="my-5 mb-3 fst-bold">All Journal Entries</h1> <%= link_to 'Add new entry?', new_journal_entry_path, class: "btn bg-quinary btn-lg" %>
+    </div>
 
     <hr>
 
     <% @journal_entries.each do |journal_entry| %>
 
-      <h3>T<%= journal_entry.title %><h3>
+      <h2><%= journal_entry.title %><h2>
+
+      <h3>- <%= journal_entry.user.full_name %></h3>
 
       <p class="bd-font"><%= journal_entry.entry %></p>
 

@@ -1,2 +1,13 @@
-<h1>JournalEntries#new</h1>
-<p>Find me in app/views/journal_entries/new.html.erb</p>
+<div class="d-flex justify-content-center align-items-start min-vh-100">
+
+  <div class="col-md-10 p-3">
+
+    <h1 class="my-5 mb-3 fst-bold text-center">Add New Entry</h1>
+
+    <%= render 'form', journal_entry: @journal_entry %>
+
+    <%= render 'links', journal_entry: @journal_entry %>
+
+  </div>
+
+</div>

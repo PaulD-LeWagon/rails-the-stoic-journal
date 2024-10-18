@@ -1,6 +1,8 @@
 <div class="">
 
-  <%= link_to "Back to journal_entries", journal_entries_path, class: "btn btn-secondary m-1" %>
+  <% if action_name != "index" %>
+    <%= link_to "Back to journal_entries", journal_entries_path, class: "btn btn-secondary m-1" %>
+  <% end %>
 
   <% if journal_entry.persisted? %>
 
