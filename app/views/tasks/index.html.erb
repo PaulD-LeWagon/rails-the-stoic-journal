@@ -27,35 +27,49 @@
         <a href="#" type="button"
           class="btn btn-warning m-1"
           data-bs-toggle="collapse"
-          data-bs-target="#collapse<%= task.id %>"
+          data-bs-target="#<%= dom_id task %>"
           aria-expanded="false"
-          aria-controls="collapse<%= task.id %>">
+          aria-controls="<%= dom_id task %>">
 
           <i class="fa-solid fa-chevron-down"></i>
         </a>
 
       </div>
-      <div class="collapse" id="collapse<%= task.id %>">
-
-        <hr>
+      <div class="collapse" id="<%= dom_id task %>" data-controller="dragula">
 
         <% task.sub_tasks.each do |subtask| %>
 
-          <h4>SubTask #<%= subtask.order %> <%= subtask.title %><h4>
-
-          <p><%= subtask.description %></p>
-
-          <%= render 'links', task: task %>
-
-          <hr>
+          <div class="card subtask m-1">
+            <div class="card-header d-flex justify-content-between align-items-center">
+              <h3><i class="fa-solid fa-grip handle"></i> #<span><%= subtask.order %></span>  <%= subtask.title %></h3>
+              <div class="d-flex justify-content-end">
+                <%= render 'sub_tasks/links', sub_task: subtask %>
+                <!--
+                <i class="fa-solid fa-square-check"></i>
+                <i class="fa-regular fa-square-check"></i>
+                -->
+                <a href="#" type="button"
+                  class="btn btn-warning m-1"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#<%= dom_id subtask %>"
+                  aria-expanded="false"
+                  aria-controls="<%= dom_id subtask %>">
+                  <i class="fa-solid fa-chevron-down"></i>
+                </a>
+              </div>
+            </div>
+            <div class="card-body collapse" id="<%= dom_id subtask %>">
+              <p class="card-text bd-font"><%= subtask.description %></p>
+            </div>
+          </div>
 
         <% end %>
 
       </div>
 
-      <hr>
-
     <% end %>
+
+    <hr>
 
   </div>
 
