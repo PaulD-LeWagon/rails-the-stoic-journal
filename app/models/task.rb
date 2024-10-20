@@ -1,8 +1,9 @@
 class Task < ApplicationRecord
   belongs_to :user
   has_many :sub_tasks
+
   after_initialize do |task|
-    if !task.persisted?
+    if !persisted?
       set_initial_order
     end
   end
@@ -13,7 +14,7 @@ class Task < ApplicationRecord
   enum task_type: [ :general, :event, :fitness, :admin, :work, :self_development ]
 
   def routine?
-    self.routine != none_routine_name.to_s
+    self.routine != NONE_ROUTINE_NAME.to_s
   end
 
   def default_subtask_order

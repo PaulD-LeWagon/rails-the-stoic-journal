@@ -1,0 +1,32 @@
+html, body {
+  height: 100%;
+}
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-flow: row wrap;
+}
+.bloc {
+  width: 400px;
+  height: 200px;
+  margin-bottom: 20px;
+  padding: 20px;
+  font-size: 0;
+}
+.bloc--first {
+    background: red;
+  }
+.bloc--second {
+    background: green;
+  }
+.bloc--inner {
+  display: inline-block;
+  width: calc((100% - 20px) / 2);
+  height: 100%;
+  background: blue;
+  margin-right: 20px;
+  &:last-of-type {
+    margin: 0;
+  }
+}

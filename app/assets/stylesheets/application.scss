@@ -1,3 +1,4 @@
+@import "plugins/dragula.min.css";
 // Graphical variables
 @import "config/fonts";
 @import "config/colors";
@@ -13,10 +14,33 @@
 @import "pages/index";
 
 
-// Rehyan, Jon check out the scss files in the config folder you can experiment
-// with stuff like this below; then you just add the classes to your html
-// markup then rather than changing all the css in this file, you just change
-// the variables in the config files!
+
+.card {
+  max-width: 100%;
+  text-shadow: 0 0 0 rgba(0, 0, 0, 0);
+  box-shadow: 0 0 0 rgba(0, 0, 0, 0);
+  transition: text-shadow 0.3s ease-in-out 0.3s;
+  transition: box-shadow 0.3s ease-in-out 0.3s;
+  transition: border 0.3s ease-in-out 0.3s;
+}
+.card:hover {
+  text-shadow: 0 6px 8px rgba(0, 0, 0, 0.25);
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.25);
+  border: solid 1px $success;
+}
+.card .card-title .lead {
+  font-size: small;
+  font-weight: 200;
+  font-style: italic;
+}
+.card .card.subtask {
+  margin-left: 3rem !important;
+}
+
+.handle:hover {
+  cursor: pointer;
+}
+
 .bg-red {
   background-color: $red;
 }
@@ -142,19 +166,10 @@ div.navbar.sticky-top {
 .btn {
   color: white;
   font-weight: 900;
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-  box-shadow: 0 8px 10px rgba(0, 0, 0, 0.2);
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 5px 8px rgba(0, 0, 0, 0.2);
 }
 
-.card {
-  background-color: $tertiary;
-  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2);
-}
-.card .card-title .lead {
-  font-size: small;
-  font-weight: 200;
-  font-style: italic;
-}
 
 .form {
   font-size: 0.75rem !important;

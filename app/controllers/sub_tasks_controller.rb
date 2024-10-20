@@ -49,7 +49,7 @@ class SubTasksController < ApplicationController
   def destroy
     authorize @sub_task
     @sub_task.destroy
-    redirect_to sub_tasks_url, notice: "Sub task #{@sub_task.title} was successfully destroyed."
+    redirect_to tasks_url, notice: "Sub task #{@sub_task.title} was successfully destroyed."
   end
 
   private

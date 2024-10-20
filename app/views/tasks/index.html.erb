@@ -14,49 +14,16 @@
 
     <hr>
 
-    <% @tasks.each do |task| %>
+    <div class="cards tasks-container collapse-container"  data-controller="dragula">
 
-      <h3>Task #<%= task.order %> <%= task.title %><h3>
+      <% @tasks.each do |task| %>
 
-      <p class="bd-font"><%= task.description %></p>
+        <%= render 'task_card', task: task %>
 
-      <div class="d-flex justify-content-end">
+      <% end %>
 
-        <%= render 'links', task: task %>
-
-        <a href="#" type="button"
-          class="btn btn-warning m-1"
-          data-bs-toggle="collapse"
-          data-bs-target="#collapse<%= task.id %>"
-          aria-expanded="false"
-          aria-controls="collapse<%= task.id %>">
-
-          <i class="fa-solid fa-chevron-down"></i>
-        </a>
-
-      </div>
-      <div class="collapse" id="collapse<%= task.id %>">
-
-        <hr>
-
-        <% task.sub_tasks.each do |subtask| %>
-
-          <h4>SubTask #<%= subtask.order %> <%= subtask.title %><h4>
-
-          <p><%= subtask.description %></p>
-
-          <%= render 'links', task: task %>
-
-          <hr>
-
-        <% end %>
-
-      </div>
-
-      <hr>
-
-    <% end %>
+    </div>
 
   </div>
-
 </div>
+<%# <script src="https://gist.github.com/lucideuclid/953921ea16cd1fa60502fafb3b3da999.js"></script> %>
