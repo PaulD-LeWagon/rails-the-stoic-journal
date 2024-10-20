@@ -47,11 +47,11 @@ export default class extends Controller {
     }
 
     const drake = dragula([this.element], {
-      // moves: (el, container, handle) => handle.classList.contains('handle'),
+      moves: (el, container, handle) => handle.classList.contains('handle'),
       revertOnSpill: true,
       accepts: (el, target, source, sibling) => {
-        log(sibling)
-        return false;
+        // log(sibling)
+        return true;
       }
     });
     drake.on('drop', (el, target) => {

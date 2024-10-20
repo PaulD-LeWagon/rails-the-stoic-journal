@@ -1,6 +1,6 @@
 <div id="<%= dom_id subtask %>" class="card subtask m-1">
   <div class="card-header d-flex justify-content-between align-items-center">
-    <h3><i class="fa-solid fa-grip handle"></i> Subtask #<span><%= subtask.order %></span>  <%= subtask.title %></h3>
+    <h3><i class="d-none fa-solid fa-grip handle"></i> Subtask #<span><%= subtask.order %></span>  <%= subtask.title %></h3>
     <div class="d-flex justify-content-end">
       <%= render 'sub_tasks/links', sub_task: subtask %>
       <!--
@@ -9,6 +9,7 @@
       -->
       <a href="#" type="button"
         class="collapser btn btn-warning m-1"
+        title="View subtask description"
         data-bs-toggle="collapse"
         data-bs-target="#<%= dom_id subtask %>_description"
         aria-expanded="false"

@@ -3,15 +3,7 @@
     <h3><i class="fa-solid fa-grip handle"></i> Task #<span><%= task.order %></span> <%= task.title %></h3>
     <div class="card-controls d-flex justify-content-end">
       <%= render 'links', task: task %>
-      <a href="#" type="button"
-        class="collapser btn btn-warning m-1"
-        title="View all subtasks"
-        data-bs-toggle="collapse"
-        data-bs-target="#<%= dom_id task %>_sub_tasks"
-        aria-expanded="false"
-        aria-controls="<%= dom_id task %>_sub_tasks">
-        <i class="fa-solid fa-chevron-down"></i>
-      </a>
+
       <a href="#" type="button"
         class="collapser btn btn-warning m-1"
         title="View description"
@@ -19,14 +11,26 @@
         data-bs-target="#<%= dom_id task %>_description"
         aria-expanded="false"
         aria-controls="<%= dom_id task %>_description">
-        <i class="fa-solid fa-angles-down"></i>
+        <i class="fa-solid fa-chevron-down"></i>
       </a>
+
+      <button type="button"
+        class="collapser btn btn-warning m-1"
+        title="View all subtasks"
+        data-bs-toggle="collapse"
+        data-bs-target="#<%= dom_id task %>_sub_tasks"
+        aria-expanded="false"
+        aria-controls="<%= dom_id task %>_sub_tasks"<%= task.sub_tasks.empty? ? " disabled" : "" %>>
+        <i class="fa-solid fa-angles-down"></i>
+      </button>
     </div>
   </div>
   <div id="<%= dom_id task %>_description" class="card-body collapse">
     <p class="bd-font"><%= task.description %></p>
   </div>
-  <div id="<%= dom_id task %>_sub_tasks" class="cards subtasks-container collapse-container collapse" data-controller="dragula">
+
+  <% if task.sub_tasks.length.positive? %>
+  <div id="<%= dom_id task %>_sub_tasks" class="cards subtasks-container collapse-container collapse"<%# data-controller="dragula" %>>
 
     <% task.sub_tasks.each do |subtask| %>
 
@@ -35,4 +39,5 @@
     <% end %>
 
   </div>
+  <% end %>
 </div>

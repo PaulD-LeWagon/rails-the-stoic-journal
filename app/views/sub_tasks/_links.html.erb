@@ -10,7 +10,7 @@
 
 <% end %>
 
-<% if sub_task.persisted? %>
+<% if !sub_task.nil? && sub_task.persisted? %>
 
   <% if controller_name == 'sub_tasks' %>
     <%= link_to new_task_sub_task_path(sub_task.task), class: "btn btn-primary m-1", title: "Add a subtask?" do %>
