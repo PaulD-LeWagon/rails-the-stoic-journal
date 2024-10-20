@@ -14,63 +14,16 @@
 
     <hr>
 
-    <% @tasks.each do |task| %>
+    <div class="cards tasks-container collapse-container"  data-controller="dragula">
 
-      <h3>Task #<%= task.order %> <%= task.title %><h3>
+      <% @tasks.each do |task| %>
 
-      <p class="bd-font"><%= task.description %></p>
+        <%= render 'task_card', task: task %>
 
-      <div class="d-flex justify-content-end">
+      <% end %>
 
-        <%= render 'links', task: task %>
-
-        <a href="#" type="button"
-          class="btn btn-warning m-1"
-          data-bs-toggle="collapse"
-          data-bs-target="#<%= dom_id task %>"
-          aria-expanded="false"
-          aria-controls="<%= dom_id task %>">
-
-          <i class="fa-solid fa-chevron-down"></i>
-        </a>
-
-      </div>
-      <div class="collapse" id="<%= dom_id task %>" data-controller="dragula">
-
-        <% task.sub_tasks.each do |subtask| %>
-
-          <div class="card subtask m-1">
-            <div class="card-header d-flex justify-content-between align-items-center">
-              <h3><i class="fa-solid fa-grip handle"></i> #<span><%= subtask.order %></span>  <%= subtask.title %></h3>
-              <div class="d-flex justify-content-end">
-                <%= render 'sub_tasks/links', sub_task: subtask %>
-                <!--
-                <i class="fa-solid fa-square-check"></i>
-                <i class="fa-regular fa-square-check"></i>
-                -->
-                <a href="#" type="button"
-                  class="btn btn-warning m-1"
-                  data-bs-toggle="collapse"
-                  data-bs-target="#<%= dom_id subtask %>"
-                  aria-expanded="false"
-                  aria-controls="<%= dom_id subtask %>">
-                  <i class="fa-solid fa-chevron-down"></i>
-                </a>
-              </div>
-            </div>
-            <div class="card-body collapse" id="<%= dom_id subtask %>">
-              <p class="card-text bd-font"><%= subtask.description %></p>
-            </div>
-          </div>
-
-        <% end %>
-
-      </div>
-
-    <% end %>
-
-    <hr>
+    </div>
 
   </div>
-
 </div>
+<%# <script src="https://gist.github.com/lucideuclid/953921ea16cd1fa60502fafb3b3da999.js"></script> %>

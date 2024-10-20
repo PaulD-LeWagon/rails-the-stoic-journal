@@ -1,6 +1,6 @@
-<%= link_to :back, class: "btn btn-success m-1", title: "Back button" do %>
-  <i class="fa-solid fa-angle-left"></i>
-<% end %>
+<%# <%= link_to :back, class: "btn btn-success m-1", title: "Back button" do %>
+  <%# <i class="fa-solid fa-angle-left"></i> %>
+<%# <% end %>
 
 <% if action_name != "index" %>
 
@@ -12,7 +12,7 @@
 
 <% if task.persisted? %>
 
-  <%= link_to new_task_sub_task_path(task), class: "btn btn-primary m-1", title: "Add a task?" do %>
+  <%= link_to new_task_sub_task_path(task), class: "btn btn-primary m-1", title: "Add a subtask?" do %>
     <i class="fa-solid fa-square-plus"></i>
   <% end %>
 
