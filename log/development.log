@@ -44540,3 +44540,1014 @@ Processing by TasksController#edit as HTML
 Completed 200 OK in 45ms (Views: 36.0ms | ActiveRecord: 1.0ms | Allocations: 17589)
 
 
+  [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (41.5ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+  [1m[35m (214.8ms)[0m  [1m[34mSELECT column_name FROM information_schema.columns WHERE table_name = 'pg_stat_activity' AND column_name = 'pid';[0m
+  [1m[35m (24.8ms)[0m  [1m[34mSELECT pg_terminate_backend(pg_stat_activity.pid) FROM pg_stat_activity WHERE datname='rails_authorization_development' AND pid <> pg_backend_pid();[0m
+  [1m[35m (388.3ms)[0m  [1m[35mDROP DATABASE IF EXISTS "rails_authorization_development"[0m
+  [1m[35m (6.9ms)[0m  [1m[34mSELECT column_name FROM information_schema.columns WHERE table_name = 'pg_stat_activity' AND column_name = 'pid';[0m
+  [1m[35m (1.5ms)[0m  [1m[34mSELECT pg_terminate_backend(pg_stat_activity.pid) FROM pg_stat_activity WHERE datname='rails_authorization_test' AND pid <> pg_backend_pid();[0m
+  [1m[35m (316.6ms)[0m  [1m[35mDROP DATABASE IF EXISTS "rails_authorization_test"[0m
+  [1m[35m (1791.1ms)[0m  [1m[35mCREATE DATABASE "rails_authorization_development" ENCODING = 'unicode'[0m
+  [1m[35m (275.0ms)[0m  [1m[35mCREATE DATABASE "rails_authorization_test" ENCODING = 'unicode'[0m
+  [1m[35m (178.0ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (131.3ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (10.3ms)[0m  [1m[34mSELECT pg_try_advisory_lock(1184012072199246360)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.9ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+  [1m[36mActiveRecord::InternalMetadata Create (14.7ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ('environment', 'development', '2024-10-20 11:59:13.952554', '2024-10-20 11:59:13.952557') RETURNING "key"[0m
+Migrating to DeviseCreateUsers (20230321153651)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (98.2ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "email" character varying DEFAULT '' NOT NULL, "encrypted_password" character varying DEFAULT '' NOT NULL, "reset_password_token" character varying, "reset_password_sent_at" timestamp(6), "remember_created_at" timestamp(6), "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (43.4ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")[0m
+  [1m[35m (76.3ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_reset_password_token" ON "users" ("reset_password_token")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20230321153651') RETURNING "version"[0m
+  [1m[36mTRANSACTION (19.0ms)[0m  [1m[35mCOMMIT[0m
+Migrating to AddAdminToUsers (20230321172223)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.7ms)[0m  [1m[35mALTER TABLE "users" ADD "admin" boolean DEFAULT FALSE[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20230321172223') RETURNING "version"[0m
+  [1m[36mTRANSACTION (12.1ms)[0m  [1m[35mCOMMIT[0m
+Migrating to AddColumsToUsers (20241015140700)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (3.3ms)[0m  [1m[35mALTER TABLE "users" ADD "username" character varying[0m
+  [1m[35m (0.6ms)[0m  [1m[35mALTER TABLE "users" ADD "first_name" character varying[0m
+  [1m[35m (0.4ms)[0m  [1m[35mALTER TABLE "users" ADD "last_name" character varying[0m
+  [1m[35m (0.4ms)[0m  [1m[35mALTER TABLE "users" ADD "image_url" text[0m
+  [1m[35m (0.4ms)[0m  [1m[35mALTER TABLE "users" ADD "bio" text[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20241015140700') RETURNING "version"[0m
+  [1m[36mTRANSACTION (19.1ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateCategories (20241015143849)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (105.3ms)[0m  [1m[35mCREATE TABLE "categories" ("id" bigserial primary key, "category" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20241015143849') RETURNING "version"[0m
+  [1m[36mTRANSACTION (17.6ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateJournalEntries (20241015144653)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (99.9ms)[0m  [1m[35mCREATE TABLE "journal_entries" ("id" bigserial primary key, "user_id" bigint NOT NULL, "title" character varying, "entry" text, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, CONSTRAINT "fk_rails_4ea185c6f0"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+)[0m
+  [1m[35m (41.6ms)[0m  [1m[35mCREATE INDEX "index_journal_entries_on_user_id" ON "journal_entries" ("user_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20241015144653') RETURNING "version"[0m
+  [1m[36mTRANSACTION (29.1ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateJournalCategories (20241015144819)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (42.4ms)[0m  [1m[35mCREATE TABLE "journal_categories" ("id" bigserial primary key, "journal_entry_id" bigint NOT NULL, "category_id" bigint NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, CONSTRAINT "fk_rails_c2f2d1e657"
+FOREIGN KEY ("journal_entry_id")
+  REFERENCES "journal_entries" ("id")
+, CONSTRAINT "fk_rails_3cd01208a2"
+FOREIGN KEY ("category_id")
+  REFERENCES "categories" ("id")
+)[0m
+  [1m[35m (42.5ms)[0m  [1m[35mCREATE INDEX "index_journal_categories_on_journal_entry_id" ON "journal_categories" ("journal_entry_id")[0m
+  [1m[35m (54.2ms)[0m  [1m[35mCREATE INDEX "index_journal_categories_on_category_id" ON "journal_categories" ("category_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20241015144819') RETURNING "version"[0m
+  [1m[36mTRANSACTION (17.3ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateTasks (20241015145201)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (105.9ms)[0m  [1m[35mCREATE TABLE "tasks" ("id" bigserial primary key, "user_id" bigint NOT NULL, "routine" integer DEFAULT 0 NOT NULL, "recurs_on" json DEFAULT '{"monday":false,"tuesday":false,"wednesday":false,"thursday":false,"friday":false,"saturday":false,"sunday":false}' NOT NULL, "active" boolean DEFAULT TRUE NOT NULL, "task_type" integer DEFAULT 0 NOT NULL, "order" integer DEFAULT 0 NOT NULL, "title" character varying DEFAULT '' NOT NULL, "description" text DEFAULT '' NOT NULL, "comment" text DEFAULT '' NOT NULL, "start_date" timestamp(6), "due_date" timestamp(6), "completed" boolean DEFAULT FALSE NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, CONSTRAINT "fk_rails_4d2a9e4d7e"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+)[0m
+  [1m[35m (42.9ms)[0m  [1m[35mCREATE INDEX "index_tasks_on_user_id" ON "tasks" ("user_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20241015145201') RETURNING "version"[0m
+  [1m[36mTRANSACTION (17.0ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateSubTasks (20241015145351)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (130.1ms)[0m  [1m[35mCREATE TABLE "sub_tasks" ("id" bigserial primary key, "task_id" bigint NOT NULL, "order" integer DEFAULT 0 NOT NULL, "title" character varying DEFAULT '' NOT NULL, "description" text DEFAULT '' NOT NULL, "comment" text DEFAULT '' NOT NULL, "start_date" timestamp(6), "due_date" timestamp(6), "completed" boolean DEFAULT FALSE NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, CONSTRAINT "fk_rails_8175f560d2"
+FOREIGN KEY ("task_id")
+  REFERENCES "tasks" ("id")
+)[0m
+  [1m[35m (55.0ms)[0m  [1m[35mCREATE INDEX "index_sub_tasks_on_task_id" ON "sub_tasks" ("task_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20241015145351') RETURNING "version"[0m
+  [1m[36mTRANSACTION (14.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_advisory_unlock(1184012072199246360)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mJournalCategory Count (0.8ms)[0m  [1m[34mSELECT COUNT(*) FROM "journal_categories"[0m
+  [1m[36mCategory Count (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "categories"[0m
+  [1m[36mJournalEntry Count (0.7ms)[0m  [1m[34mSELECT COUNT(*) FROM "journal_entries"[0m
+  [1m[36mSubTask Count (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "sub_tasks"[0m
+  [1m[36mTask Count (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "tasks"[0m
+  [1m[36mUser Count (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "users"[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (2.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "pauldevanney92@gmail.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.8ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at", "created_at", "updated_at", "admin", "username", "first_name", "last_name", "image_url", "bio") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13) RETURNING "id"[0m  [["email", "pauldevanney92@gmail.com"], ["encrypted_password", "[FILTERED]"], ["reset_password_token", "[FILTERED]"], ["reset_password_sent_at", "[FILTERED]"], ["remember_created_at", nil], ["created_at", "2024-10-20 11:59:28.178364"], ["updated_at", "2024-10-20 11:59:28.178364"], ["admin", true], ["username", "HarryD"], ["first_name", "Paul"], ["last_name", "Devanney"], ["image_url", "https://d26jy9fbi4q9wx.cloudfront.net/rails/active_storage/representations/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBd0ErQXc9PSIsImV4cCI6bnVsbCwicHVyIjoiYmxvYl9pZCJ9fQ==--2d5e88acd264501b52d1a84625c82aeba643b99e/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJYW5CbkJqb0dSVlE2RTNKbGMybDZaVjkwYjE5bWFXeHNXd2hwQWNocEFjaDdCam9KWTNKdmNEb09ZWFIwWlc1MGFXOXUiLCJleHAiOm51bGwsInB1ciI6InZhcmlhdGlvbiJ9fQ==--b67d9ded4d28d0969fbb98b4c21b79257705a99a/20240805_234634.jpg"], ["bio", "In my last job I was a QA at an industrial bakery which supplied baked goods to most of the big supermarkets in the UK. It wasn't a bad job but its not what I wanted to do. I, obviously, want to get into Web Development or similar role. I have been in to coding, on and off, for quite a few years now. However, I didn't go to Uni nor do I have any industry recognised certification which meant I couldn't get passed the 'Recruitment Agencies'! So, I'm hoping this bootcamp can remedy that although, If I succeed on this bootcamp the freelance route could be a better option. I was a little apprehensive about applying for this course, initially, as I've practically no experience with the Ruby Programming language but quickly realised it would be a worth while challenge and learning experience."]]
+  [1m[36mTRANSACTION (13.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (1.7ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "jondriveuk@gmail.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.4ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at", "created_at", "updated_at", "admin", "username", "first_name", "last_name", "image_url", "bio") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13) RETURNING "id"[0m  [["email", "jondriveuk@gmail.com"], ["encrypted_password", "[FILTERED]"], ["reset_password_token", "[FILTERED]"], ["reset_password_sent_at", "[FILTERED]"], ["remember_created_at", nil], ["created_at", "2024-10-20 11:59:28.549743"], ["updated_at", "2024-10-20 11:59:28.549743"], ["admin", true], ["username", "jon"], ["first_name", "jon"], ["last_name", "hollingsworth"], ["image_url", "https://d26jy9fbi4q9wx.cloudfront.net/rails/active_storage/representations/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBLzFKQXc9PSIsImV4cCI6bnVsbCwicHVyIjoiYmxvYl9pZCJ9fQ==--f8872b71011e210ae17fc973906c1e365fa78db0/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJY0c1bkJqb0dSVlE2RTNKbGMybDZaVjkwYjE5bWFXeHNXd2hwQWNocEFjaDdCam9KWTNKdmNEb09ZWFIwWlc1MGFXOXUiLCJleHAiOm51bGwsInB1ciI6InZhcmlhdGlvbiJ9fQ==--df4f7d63fe19fb30952f52eed6dffc392a97578c/MEZOOM.png"], ["bio", "Spent the last 5 years selling on Etsy, Amazon & ebay "]]
+  [1m[36mTRANSACTION (19.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (1.7ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "rehyan92@gmail.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.4ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at", "created_at", "updated_at", "admin", "username", "first_name", "last_name", "image_url", "bio") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13) RETURNING "id"[0m  [["email", "rehyan92@gmail.com"], ["encrypted_password", "[FILTERED]"], ["reset_password_token", "[FILTERED]"], ["reset_password_sent_at", "[FILTERED]"], ["remember_created_at", nil], ["created_at", "2024-10-20 11:59:28.927551"], ["updated_at", "2024-10-20 11:59:28.927551"], ["admin", true], ["username", "Rehyan"], ["first_name", "Rehyan"], ["last_name", "Rhoden"], ["image_url", "https://d26jy9fbi4q9wx.cloudfront.net/rails/active_storage/representations/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBNG8vQXc9PSIsImV4cCI6bnVsbCwicHVyIjoiYmxvYl9pZCJ9fQ==--a1530a9964ce16af17cb666ed21808f9b7ce9baa/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJY0c1bkJqb0dSVlE2RTNKbGMybDZaVjkwYjE5bWFXeHNXd2hwQWNocEFjaDdCam9KWTNKdmNEb09ZWFIwWlc1MGFXOXUiLCJleHAiOm51bGwsInB1ciI6InZhcmlhdGlvbiJ9fQ==--df4f7d63fe19fb30952f52eed6dffc392a97578c/IMG_3268.png"], ["bio", "I want to further develop my knowledge of front-end and immerse myself in to back end web development. I would love to be a freelance developer working on projects for clients in a diverse creative way."]]
+  [1m[36mTRANSACTION (10.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTask Count (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "tasks"[0m
+  ↳ app/models/task.rb:35:in `set_initial_order'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTask Create (3.9ms)[0m  [1m[32mINSERT INTO "tasks" ("user_id", "routine", "recurs_on", "active", "task_type", "order", "title", "description", "comment", "start_date", "due_date", "completed", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14) RETURNING "id"[0m  [["user_id", 3], ["routine", 3], ["recurs_on", "{\"monday\":false,\"tuseday\":true,\"wednesday\":false,\"thursday\":false,\"friday\":false,\"saturday\":false,\"sunday\":false}"], ["active", true], ["task_type", 1], ["order", 1], ["title", "Velit Est Quis Inventore Odio."], ["description", "Quis omnis vitae. Velit quos at. Eos ullam illum. Aliquid rem ea. Esse laborum non. Animi non consequatur. Aliquid hic quidem. Voluptatem cupiditate omnis. Facere vitae est. Illum incidunt dicta. Rerum ex adipisci. Debitis ut nobis. Aut facere quo. Inventore voluptas assumenda. Cumque voluptas sed. Et eius maiores. Aliquam non molestiae. Sed perspiciatis vitae. Nostrum tempore quasi. Non ex labore. Illo aut aperiam. Ea non non. Suscipit quis qui. Facere et est."], ["comment", "Doloremque nihil qui. Dolorem quia distinctio. Velit quam sed. Consequatur ut eius. Nihil perferendis eius. Rerum voluptas qui."], ["start_date", "2024-10-27 00:00:00"], ["due_date", "2024-10-29 00:00:00"], ["completed", false], ["created_at", "2024-10-20 11:59:30.183854"], ["updated_at", "2024-10-20 11:59:30.183854"]]
+  [1m[36mTRANSACTION (17.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mSubTask Create (2.0ms)[0m  [1m[32mINSERT INTO "sub_tasks" ("task_id", "order", "title", "description", "comment", "start_date", "due_date", "completed", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING "id"[0m  [["task_id", 1], ["order", 1], ["title", "Officiis Quia Et."], ["description", "Consequatur omnis et. Illo eum adipisci. Inventore aut fugiat. Eos omnis nesciunt. At fugiat a. Voluptas ducimus non. Explicabo dolorum debitis. Facere dolores a. Neque harum inventore. Dolor voluptatem commodi. Veniam aperiam ea. Sint hic unde. Et magnam natus. Aut quia unde."], ["comment", "Et expedita magni. Quos sit rerum. Molestiae neque aut. Ut consequatur quis. Quae et dolores."], ["start_date", "2024-10-27 00:00:00"], ["due_date", "2024-10-29 00:00:00"], ["completed", false], ["created_at", "2024-10-20 11:59:30.226862"], ["updated_at", "2024-10-20 11:59:30.226862"]]
+  [1m[36mTRANSACTION (11.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mSubTask Create (1.5ms)[0m  [1m[32mINSERT INTO "sub_tasks" ("task_id", "order", "title", "description", "comment", "start_date", "due_date", "completed", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING "id"[0m  [["task_id", 1], ["order", 2], ["title", "Consectetur Asperiores Est Magnam Debitis."], ["description", "Ratione in optio. Esse eos rerum. Eos omnis sint. Ea nihil fugiat. Cupiditate alias voluptatem. Officiis asperiores similique. Velit odit iste. Eum inventore commodi. Dolorem et eum. Porro magnam iure. Molestiae ut quia. Eum provident eveniet. Sint id recusandae."], ["comment", "Hic sunt est. Fugit ratione ab. Rerum veniam possimus. Aut nisi aut. Voluptatem nobis dolor. Dolore maxime doloribus. Sed aut fugit. Et quia laboriosam. Sed voluptas corporis. Excepturi asperiores consequatur."], ["start_date", "2024-10-27 00:00:00"], ["due_date", "2024-10-29 00:00:00"], ["completed", false], ["created_at", "2024-10-20 11:59:30.246973"], ["updated_at", "2024-10-20 11:59:30.246973"]]
+  [1m[36mTRANSACTION (4.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mSubTask Create (1.6ms)[0m  [1m[32mINSERT INTO "sub_tasks" ("task_id", "order", "title", "description", "comment", "start_date", "due_date", "completed", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING "id"[0m  [["task_id", 1], ["order", 3], ["title", "Accusamus Non Omnis Voluptates Sint."], ["description", "Atque odit assumenda. Atque laudantium eum. Recusandae aut esse. Autem aut dolorum. Unde dolore libero. Ut sed rerum. Est est quo. Ut voluptatum est. Eum accusamus earum. Quisquam qui dolore. Delectus maxime quia. Quae nesciunt non. Cupiditate qui ea. Qui quod quia."], ["comment", "Placeat qui consequatur. Occaecati rerum numquam. Ut et ut. Ut sint deserunt. Quas cupiditate non. Est debitis rerum. Autem rerum repellat. Enim id qui. Id quos qui."], ["start_date", "2024-10-27 00:00:00"], ["due_date", "2024-10-29 00:00:00"], ["completed", false], ["created_at", "2024-10-20 11:59:30.258469"], ["updated_at", "2024-10-20 11:59:30.258469"]]
+  [1m[36mTRANSACTION (36.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mSubTask Create (6.3ms)[0m  [1m[32mINSERT INTO "sub_tasks" ("task_id", "order", "title", "description", "comment", "start_date", "due_date", "completed", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING "id"[0m  [["task_id", 1], ["order", 4], ["title", "Voluptatem Explicabo Veniam Voluptatum."], ["description", "Reprehenderit quibusdam et. Iste delectus culpa. Iure consequatur et. Placeat minima voluptas. Quis aut animi. Placeat expedita officia. Ea repellendus deserunt. Deserunt eum aut. Quia itaque est. Tempore excepturi sequi. Voluptas quam cupiditate. Ipsa rerum maxime."], ["comment", "Accusamus quo id. Quidem saepe dolorem. Qui accusantium qui. Ea qui maiores. Labore blanditiis consequatur."], ["start_date", "2024-10-27 00:00:00"], ["due_date", "2024-10-29 00:00:00"], ["completed", false], ["created_at", "2024-10-20 11:59:30.332707"], ["updated_at", "2024-10-20 11:59:30.332707"]]
+  [1m[36mTRANSACTION (10.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mSubTask Create (3.1ms)[0m  [1m[32mINSERT INTO "sub_tasks" ("task_id", "order", "title", "description", "comment", "start_date", "due_date", "completed", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING "id"[0m  [["task_id", 1], ["order", 5], ["title", "Sint Consectetur Similique."], ["description", "Temporibus ratione facilis. Doloribus aperiam itaque. Qui deserunt consectetur. Fugiat cupiditate mollitia. Est numquam atque. Facilis est laudantium. Ullam blanditiis consequatur. Expedita libero esse. Suscipit repudiandae qui. Accusamus qui et. Quis officia sint. Odio voluptas repellendus. Numquam expedita voluptas."], ["comment", "Possimus cum et. Facilis enim magni. Similique vitae adipisci. Deserunt repellat excepturi. Perspiciatis ut temporibus."], ["start_date", "2024-10-27 00:00:00"], ["due_date", "2024-10-29 00:00:00"], ["completed", false], ["created_at", "2024-10-20 11:59:30.362785"], ["updated_at", "2024-10-20 11:59:30.362785"]]
+  [1m[36mTRANSACTION (14.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mSubTask Create (5.6ms)[0m  [1m[32mINSERT INTO "sub_tasks" ("task_id", "order", "title", "description", "comment", "start_date", "due_date", "completed", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING "id"[0m  [["task_id", 1], ["order", 6], ["title", "Culpa Excepturi Magni Porro."], ["description", "Illum placeat praesentium. Vero voluptatum dicta. Tenetur harum voluptatem. Et iusto sed. Qui doloremque aut. Odit voluptates vitae. Sed reprehenderit aut. Dignissimos est voluptates. Temporibus et consectetur. Officia perferendis qui. Assumenda adipisci et. Est rerum harum. Rerum sit rem. Voluptatem in quas."], ["comment", "Recusandae ratione explicabo. Quis ut sit. Est vel in. Facere et laudantium. Voluptas vero rerum."], ["start_date", "2024-10-27 00:00:00"], ["due_date", "2024-10-29 00:00:00"], ["completed", false], ["created_at", "2024-10-20 11:59:30.398172"], ["updated_at", "2024-10-20 11:59:30.398172"]]
+  [1m[36mTRANSACTION (12.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTask Count (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "tasks"[0m
+  ↳ app/models/task.rb:35:in `set_initial_order'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTask Create (1.5ms)[0m  [1m[32mINSERT INTO "tasks" ("user_id", "routine", "recurs_on", "active", "task_type", "order", "title", "description", "comment", "start_date", "due_date", "completed", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14) RETURNING "id"[0m  [["user_id", 3], ["routine", 2], ["recurs_on", "{\"monday\":true,\"tuseday\":true,\"wednesday\":true,\"thursday\":false,\"friday\":false,\"saturday\":false,\"sunday\":false}"], ["active", true], ["task_type", 3], ["order", 2], ["title", "Eos Facilis Ut Sint Quasi."], ["description", "Aspernatur earum eveniet. Numquam ut ad. Esse cumque explicabo. Blanditiis consequuntur impedit. Nisi est repellendus. Molestias fuga rerum. Occaecati debitis et. Esse est omnis. Ipsum doloribus impedit. Sequi necessitatibus nobis. Doloribus aut in. Velit et laborum. Ab et unde. Tempora qui cumque. Beatae voluptatem doloremque. Tenetur in similique. Illum praesentium accusamus. Sunt consequatur qui. Voluptatem consequuntur accusamus."], ["comment", "Voluptas nisi sed. Laborum placeat magnam. Omnis et id. Incidunt ut aliquid. Adipisci est nobis. Minima inventore eius. Earum facere ea. Ut doloremque numquam. Labore hic iusto. Sit esse autem. Voluptatem odio et."], ["start_date", "2024-10-23 00:00:00"], ["due_date", "2024-10-24 00:00:00"], ["completed", false], ["created_at", "2024-10-20 11:59:30.428574"], ["updated_at", "2024-10-20 11:59:30.428574"]]
+  [1m[36mTRANSACTION (21.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mSubTask Create (2.8ms)[0m  [1m[32mINSERT INTO "sub_tasks" ("task_id", "order", "title", "description", "comment", "start_date", "due_date", "completed", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING "id"[0m  [["task_id", 2], ["order", 1], ["title", "Laudantium Autem Amet."], ["description", "Qui eius soluta. Quia culpa ab. Blanditiis et nihil. Harum officia culpa. Deleniti magnam architecto. Consequatur incidunt quod. Ea et debitis. Totam dolore sunt. Molestias omnis similique. Voluptatibus sint incidunt."], ["comment", "Corrupti alias delectus. Dolores iure excepturi. Rem consectetur ea. Non tenetur totam. Sint veritatis voluptas. Molestiae assumenda voluptas. Ad dicta vel."], ["start_date", "2024-10-23 00:00:00"], ["due_date", "2024-10-24 00:00:00"], ["completed", false], ["created_at", "2024-10-20 11:59:30.462762"], ["updated_at", "2024-10-20 11:59:30.462762"]]
+  [1m[36mTRANSACTION (14.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mSubTask Create (2.2ms)[0m  [1m[32mINSERT INTO "sub_tasks" ("task_id", "order", "title", "description", "comment", "start_date", "due_date", "completed", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING "id"[0m  [["task_id", 2], ["order", 2], ["title", "Doloribus Dolor Corporis Dolorum."], ["description", "In quisquam molestiae. Nisi maxime fugit. Dolorem rerum ad. Amet ut vel. Tenetur omnis maiores. Temporibus qui in. Officiis debitis nihil. Laboriosam sequi voluptate. Magni saepe voluptate. Sunt eaque asperiores. Ad ea dolores. Quisquam eveniet omnis. Officia placeat eum. Alias repellat minima."], ["comment", "Hic perferendis et. Explicabo quia repellat. Consequatur ut rerum. Excepturi facilis rerum. Suscipit laborum error. Quo et dolores. Magni est voluptas. Porro nobis ea. Quae enim voluptatem."], ["start_date", "2024-10-23 00:00:00"], ["due_date", "2024-10-24 00:00:00"], ["completed", false], ["created_at", "2024-10-20 11:59:30.492939"], ["updated_at", "2024-10-20 11:59:30.492939"]]
+  [1m[36mTRANSACTION (22.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mSubTask Create (6.1ms)[0m  [1m[32mINSERT INTO "sub_tasks" ("task_id", "order", "title", "description", "comment", "start_date", "due_date", "completed", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING "id"[0m  [["task_id", 2], ["order", 3], ["title", "Facilis Cum Exercitationem Ipsum Dolor."], ["description", "Fugit similique quae. Vel sit non. Aut ut eos. Eos quia commodi. Doloremque autem fuga. Consequatur ea et. Praesentium quam unde. Repellendus incidunt doloribus. Blanditiis tenetur ullam. Et deleniti nam. Accusamus vitae distinctio. Omnis ea vel."], ["comment", "Est est sint. Impedit qui ut. Qui nulla aut. Molestiae eum laborum. Id voluptas et."], ["start_date", "2024-10-23 00:00:00"], ["due_date", "2024-10-24 00:00:00"], ["completed", false], ["created_at", "2024-10-20 11:59:30.529442"], ["updated_at", "2024-10-20 11:59:30.529442"]]
+  [1m[36mTRANSACTION (12.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTask Count (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "tasks"[0m
+  ↳ app/models/task.rb:35:in `set_initial_order'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTask Create (4.8ms)[0m  [1m[32mINSERT INTO "tasks" ("user_id", "routine", "recurs_on", "active", "task_type", "order", "title", "description", "comment", "start_date", "due_date", "completed", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14) RETURNING "id"[0m  [["user_id", 2], ["routine", 2], ["recurs_on", "{\"monday\":false,\"tuseday\":false,\"wednesday\":false,\"thursday\":true,\"friday\":true,\"saturday\":false,\"sunday\":false}"], ["active", true], ["task_type", 4], ["order", 3], ["title", "Ratione Quae Praesentium."], ["description", "Minus ab explicabo. Accusamus qui nihil. Sed et praesentium. Dolore laboriosam blanditiis. Accusamus nisi similique. Placeat architecto quo. In error voluptas. Recusandae officia corporis. Aperiam et fugit. Dolorem eveniet excepturi. Quia suscipit qui. In totam ad. Qui error aspernatur. Quisquam quos eos. Repudiandae non est. In tempora sequi."], ["comment", "Iusto qui dolorem. Maxime libero similique. Saepe corrupti sed. Et et saepe. Earum ullam officia. A corporis aperiam. Exercitationem placeat tenetur. Culpa molestiae accusantium. Optio error cum. Soluta unde quisquam. Odit quos repellendus. Sit sed libero."], ["start_date", "2024-10-25 00:00:00"], ["due_date", "2024-10-28 00:00:00"], ["completed", false], ["created_at", "2024-10-20 11:59:30.566327"], ["updated_at", "2024-10-20 11:59:30.566327"]]
+  [1m[36mTRANSACTION (9.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mSubTask Create (2.8ms)[0m  [1m[32mINSERT INTO "sub_tasks" ("task_id", "order", "title", "description", "comment", "start_date", "due_date", "completed", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING "id"[0m  [["task_id", 3], ["order", 1], ["title", "Nam Sit Unde Aut Odio."], ["description", "Quaerat ut maiores. Culpa veniam debitis. Dolor provident qui. Minima rerum architecto. Possimus et minus. Libero commodi illum. Ea architecto nesciunt. Quas repellendus optio. Error aut rerum. Quas incidunt animi. Aut et et. Molestias quam cum."], ["comment", "Alias non eum. Consequatur voluptas est. Qui et modi. Facilis libero totam. Sed incidunt quia. Eligendi rerum cumque. Et amet id. Voluptatem voluptatum eos. Vel et expedita. Voluptates officia beatae."], ["start_date", "2024-10-25 00:00:00"], ["due_date", "2024-10-28 00:00:00"], ["completed", false], ["created_at", "2024-10-20 11:59:30.595872"], ["updated_at", "2024-10-20 11:59:30.595872"]]
+  [1m[36mTRANSACTION (15.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mSubTask Create (2.4ms)[0m  [1m[32mINSERT INTO "sub_tasks" ("task_id", "order", "title", "description", "comment", "start_date", "due_date", "completed", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING "id"[0m  [["task_id", 3], ["order", 2], ["title", "Quod Qui Amet."], ["description", "Recusandae adipisci illo. Sunt rerum alias. Totam numquam deleniti. Aut culpa accusamus. Quod illum quae. Exercitationem ut veritatis. Et voluptate dolorem. Est et totam. Doloremque quos quis. Expedita ea unde. Maxime labore porro. Aut rerum voluptate. Neque sint est."], ["comment", "Dolorum doloribus assumenda. Culpa consequatur est. Voluptatibus pariatur qui. Aut delectus et. Error sit eos. Sed voluptas laudantium. Temporibus amet et."], ["start_date", "2024-10-25 00:00:00"], ["due_date", "2024-10-28 00:00:00"], ["completed", false], ["created_at", "2024-10-20 11:59:30.627553"], ["updated_at", "2024-10-20 11:59:30.627553"]]
+  [1m[36mTRANSACTION (8.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mSubTask Create (2.2ms)[0m  [1m[32mINSERT INTO "sub_tasks" ("task_id", "order", "title", "description", "comment", "start_date", "due_date", "completed", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING "id"[0m  [["task_id", 3], ["order", 3], ["title", "Omnis Eaque Tempora."], ["description", "Sed aut odio. Sit deleniti dolores. Rem quaerat deserunt. Eveniet sapiente impedit. Ipsa nisi odit. Magnam officiis ut. Ut odit porro. Qui facilis reprehenderit. Quam qui cupiditate. Mollitia delectus eius."], ["comment", "Voluptatem rerum voluptas. Temporibus vel sed. Voluptate aut minus. Sunt et numquam. Distinctio vel illum. Sit qui nisi."], ["start_date", "2024-10-25 00:00:00"], ["due_date", "2024-10-28 00:00:00"], ["completed", false], ["created_at", "2024-10-20 11:59:30.646645"], ["updated_at", "2024-10-20 11:59:30.646645"]]
+  [1m[36mTRANSACTION (10.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTask Count (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "tasks"[0m
+  ↳ app/models/task.rb:35:in `set_initial_order'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTask Create (2.1ms)[0m  [1m[32mINSERT INTO "tasks" ("user_id", "routine", "recurs_on", "active", "task_type", "order", "title", "description", "comment", "start_date", "due_date", "completed", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14) RETURNING "id"[0m  [["user_id", 3], ["routine", 3], ["recurs_on", "{\"monday\":false,\"tuseday\":true,\"wednesday\":false,\"thursday\":false,\"friday\":false,\"saturday\":false,\"sunday\":true}"], ["active", true], ["task_type", 1], ["order", 4], ["title", "Enim Consequatur Dignissimos Alias Quia."], ["description", "Eligendi dolorem perferendis. Omnis omnis qui. Non consequuntur eos. Consequatur eum quis. Sequi dolorum expedita. Qui rem aut. Quos velit quae. Est numquam tenetur. Provident saepe eveniet. Tempora qui qui. Amet est quo. Sint laboriosam sunt. Voluptatem corporis est. Velit libero omnis. Et voluptatem sed. Reprehenderit voluptas sed. Ipsam consequatur est. Voluptas voluptates quia. Repellat nam et. Et ipsam sed. Doloribus nihil sed. Quia sed fugit. Non iste maxime. Culpa exercitationem et. Suscipit accusamus ad."], ["comment", "Dolores voluptatem eius. Omnis dolorem quas. Earum ipsum ut. Vel praesentium dignissimos. Repellat id id. Voluptatem eum qui. Rem culpa doloremque. Non esse sed. Id aspernatur temporibus. Eum repellendus fuga. Quis facilis quisquam. Et quos sed. Officia vitae sit."], ["start_date", "2024-10-27 00:00:00"], ["due_date", "2024-10-30 00:00:00"], ["completed", false], ["created_at", "2024-10-20 11:59:30.677305"], ["updated_at", "2024-10-20 11:59:30.677305"]]
+  [1m[36mTRANSACTION (37.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mSubTask Create (1.9ms)[0m  [1m[32mINSERT INTO "sub_tasks" ("task_id", "order", "title", "description", "comment", "start_date", "due_date", "completed", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING "id"[0m  [["task_id", 4], ["order", 1], ["title", "Voluptas Consequatur Nobis Et."], ["description", "Dicta animi veniam. Alias sed earum. Quae commodi amet. Dolores quo ipsam. Officiis dolor fuga. Nostrum aut consectetur. Atque eos delectus. Modi vel iusto. Magnam consectetur dolore. Quia aut ratione. Alias aperiam praesentium. Qui est quo."], ["comment", "Amet excepturi tempora. Vero illo aut. Aut et ipsam. Et occaecati iusto. Et illo possimus. Modi laudantium accusantium. Aut ducimus laborum."], ["start_date", "2024-10-27 00:00:00"], ["due_date", "2024-10-30 00:00:00"], ["completed", false], ["created_at", "2024-10-20 11:59:30.724688"], ["updated_at", "2024-10-20 11:59:30.724688"]]
+  [1m[36mTRANSACTION (12.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mSubTask Create (1.9ms)[0m  [1m[32mINSERT INTO "sub_tasks" ("task_id", "order", "title", "description", "comment", "start_date", "due_date", "completed", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING "id"[0m  [["task_id", 4], ["order", 2], ["title", "Tenetur Molestiae Delectus."], ["description", "Hic quasi sequi. Voluptates praesentium inventore. Assumenda officiis voluptatum. Sint aut vel. Sequi maxime et. Molestiae nisi debitis. Quas quia aspernatur. Culpa ab vero. Aspernatur ad natus. Ut itaque odio."], ["comment", "Qui dignissimos et. Dignissimos eos dolores. Dignissimos doloremque soluta. Qui hic sit. Dolorem soluta voluptate."], ["start_date", "2024-10-27 00:00:00"], ["due_date", "2024-10-30 00:00:00"], ["completed", false], ["created_at", "2024-10-20 11:59:30.744775"], ["updated_at", "2024-10-20 11:59:30.744775"]]
+  [1m[36mTRANSACTION (3.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mSubTask Create (1.5ms)[0m  [1m[32mINSERT INTO "sub_tasks" ("task_id", "order", "title", "description", "comment", "start_date", "due_date", "completed", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING "id"[0m  [["task_id", 4], ["order", 3], ["title", "Voluptatem Est Odit."], ["description", "Aliquam voluptates facere. Id ut odio. Autem et atque. Magni qui id. Vitae quibusdam veniam. Doloribus ducimus perferendis. Autem ullam assumenda. Dolore vel iure. Est eius omnis. Doloribus cupiditate reiciendis. Quia neque molestiae. Qui laborum ut. Voluptatem ut vero. Aut ullam perferendis."], ["comment", "Ipsam ut voluptatum. Qui autem non. Porro dolore placeat. Omnis ipsam qui. Perspiciatis aut est. Eligendi quia sed. Minima dolorum voluptatum."], ["start_date", "2024-10-27 00:00:00"], ["due_date", "2024-10-30 00:00:00"], ["completed", false], ["created_at", "2024-10-20 11:59:30.758672"], ["updated_at", "2024-10-20 11:59:30.758672"]]
+  [1m[36mTRANSACTION (12.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mSubTask Create (5.6ms)[0m  [1m[32mINSERT INTO "sub_tasks" ("task_id", "order", "title", "description", "comment", "start_date", "due_date", "completed", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING "id"[0m  [["task_id", 4], ["order", 4], ["title", "Enim Architecto Vero Repudiandae."], ["description", "Beatae blanditiis similique. Amet alias consequatur. Similique aliquam voluptatem. Ratione molestias error. In nemo hic. Aut est ut. Quo repellat eaque. Sit est iste. Est occaecati ab. Tempore occaecati suscipit. Quaerat magnam velit. Nostrum et aperiam. Vel sunt laborum. Voluptatem asperiores expedita."], ["comment", "Autem eum adipisci. Ad dolore omnis. Rerum quo enim. Totam atque qui. Unde et corporis. Voluptates eos alias. Nesciunt quaerat est. Labore quaerat vel. Quis ipsa molestiae."], ["start_date", "2024-10-27 00:00:00"], ["due_date", "2024-10-30 00:00:00"], ["completed", false], ["created_at", "2024-10-20 11:59:30.782827"], ["updated_at", "2024-10-20 11:59:30.782827"]]
+  [1m[36mTRANSACTION (3.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mSubTask Create (3.3ms)[0m  [1m[32mINSERT INTO "sub_tasks" ("task_id", "order", "title", "description", "comment", "start_date", "due_date", "completed", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING "id"[0m  [["task_id", 4], ["order", 5], ["title", "Sint Illo Et."], ["description", "Sed qui eos. Distinctio sit suscipit. Quos enim fuga. Dolore provident ea. Hic dolorem ea. Qui nesciunt nostrum. Sequi quam illo. Consequuntur quisquam quas. Nam iure sunt. Magnam in voluptates. Laborum culpa voluptates."], ["comment", "A asperiores omnis. Dolorem non quam. Esse quisquam sequi. Porro quibusdam sed. Ut perspiciatis est. Et dolorem est. Reiciendis inventore ducimus. Et magni maiores. Necessitatibus non dolorum. Expedita et voluptatem."], ["start_date", "2024-10-27 00:00:00"], ["due_date", "2024-10-30 00:00:00"], ["completed", false], ["created_at", "2024-10-20 11:59:30.809766"], ["updated_at", "2024-10-20 11:59:30.809766"]]
+  [1m[36mTRANSACTION (12.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mSubTask Create (3.1ms)[0m  [1m[32mINSERT INTO "sub_tasks" ("task_id", "order", "title", "description", "comment", "start_date", "due_date", "completed", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING "id"[0m  [["task_id", 4], ["order", 6], ["title", "Quod Iure Molestiae."], ["description", "Dolorum id magni. Repellendus nisi voluptatem. Eaque sit et. Exercitationem reprehenderit deleniti. Voluptatem similique facilis. Amet sint odio. Et quisquam quod. Inventore harum unde. Sit harum consectetur. Enim nemo cumque. Occaecati fuga vel. Praesentium reiciendis distinctio."], ["comment", "Qui aut dolor. Odit minima animi. Ipsa ullam nihil. Voluptatem ut consequatur. Sunt consectetur consequatur. Sit et similique. Officiis error esse."], ["start_date", "2024-10-27 00:00:00"], ["due_date", "2024-10-30 00:00:00"], ["completed", false], ["created_at", "2024-10-20 11:59:30.840800"], ["updated_at", "2024-10-20 11:59:30.840800"]]
+  [1m[36mTRANSACTION (15.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mSubTask Create (3.2ms)[0m  [1m[32mINSERT INTO "sub_tasks" ("task_id", "order", "title", "description", "comment", "start_date", "due_date", "completed", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING "id"[0m  [["task_id", 4], ["order", 7], ["title", "Omnis Nulla Debitis."], ["description", "Ut dignissimos esse. Labore est dolorem. Rerum in ut. Enim sed atque. Ratione nostrum sint. Nihil ut consequatur. Quia quos iste. Maiores sed fugit. Dolorem nesciunt dolorem. Vero ipsa est. Alias amet velit. Mollitia ea dignissimos."], ["comment", "Expedita minus accusamus. Tempora alias quaerat. Qui eius laudantium. Tempore sunt animi. Cumque consequatur non. Unde vel est. Tempora rem fuga. Cum eos aliquam. Reiciendis aspernatur commodi. Ullam voluptatem non."], ["start_date", "2024-10-27 00:00:00"], ["due_date", "2024-10-30 00:00:00"], ["completed", false], ["created_at", "2024-10-20 11:59:30.876321"], ["updated_at", "2024-10-20 11:59:30.876321"]]
+  [1m[36mTRANSACTION (12.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTask Count (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "tasks"[0m
+  ↳ app/models/task.rb:35:in `set_initial_order'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTask Create (2.2ms)[0m  [1m[32mINSERT INTO "tasks" ("user_id", "routine", "recurs_on", "active", "task_type", "order", "title", "description", "comment", "start_date", "due_date", "completed", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14) RETURNING "id"[0m  [["user_id", 1], ["routine", 0], ["recurs_on", "{\"monday\":false,\"tuseday\":false,\"wednesday\":false,\"thursday\":false,\"friday\":false,\"saturday\":false,\"sunday\":false}"], ["active", true], ["task_type", 1], ["order", 5], ["title", "Ut Nulla Rerum."], ["description", "Est commodi et. Excepturi est possimus. Et quisquam id. Est aspernatur aut. Quisquam quibusdam doloribus. Aliquid est porro. Fugit aliquam hic. Animi dolorum harum. Blanditiis vero adipisci. Quibusdam quia laboriosam. Quam quo mollitia. Rem nisi necessitatibus. Magnam omnis quam. Adipisci quis alias. Eveniet error saepe. Eos porro quos. Id pariatur dolore. Consequuntur quidem fugit. Adipisci optio saepe."], ["comment", "Sed culpa soluta. Architecto quasi alias. Enim laudantium impedit. Ut omnis asperiores. Aut qui praesentium. Necessitatibus nam quisquam. Magnam provident occaecati. Doloremque harum modi. Velit non consequuntur. Eaque vel at. Odio et et. Ut ut eius."], ["start_date", "2024-10-27 00:00:00"], ["due_date", "2024-10-30 00:00:00"], ["completed", false], ["created_at", "2024-10-20 11:59:30.910589"], ["updated_at", "2024-10-20 11:59:30.910589"]]
+  [1m[36mTRANSACTION (3.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mSubTask Create (1.9ms)[0m  [1m[32mINSERT INTO "sub_tasks" ("task_id", "order", "title", "description", "comment", "start_date", "due_date", "completed", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING "id"[0m  [["task_id", 5], ["order", 1], ["title", "Aut Consequuntur Porro Perspiciatis Autem."], ["description", "Doloremque voluptatem incidunt. Doloribus ut accusamus. Eos placeat quis. Numquam sapiente et. Ut sed qui. Consequatur sapiente doloremque. Est eos iure. Aliquid enim consequuntur. Deleniti sit hic. In temporibus maiores. Distinctio minus eos. Similique eveniet eius. Nihil nulla accusantium. Exercitationem accusantium et. Id laboriosam deserunt."], ["comment", "Ducimus quas mollitia. Qui fugit omnis. Voluptas consequatur cupiditate. Amet autem mollitia. Ipsa earum cupiditate. Dolor et voluptatum. Natus beatae sit."], ["start_date", "2024-10-27 00:00:00"], ["due_date", "2024-10-30 00:00:00"], ["completed", false], ["created_at", "2024-10-20 11:59:30.925249"], ["updated_at", "2024-10-20 11:59:30.925249"]]
+  [1m[36mTRANSACTION (11.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mSubTask Create (1.5ms)[0m  [1m[32mINSERT INTO "sub_tasks" ("task_id", "order", "title", "description", "comment", "start_date", "due_date", "completed", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING "id"[0m  [["task_id", 5], ["order", 2], ["title", "Ratione Libero Eveniet Omnis."], ["description", "Et non eligendi. Qui voluptatibus nisi. Et explicabo voluptas. Consequatur harum deleniti. Ut a et. Excepturi ut voluptas. Blanditiis laudantium nulla. Illo aperiam dolorem. Omnis tenetur aspernatur. Velit consequatur asperiores. Dicta rerum sapiente. Perferendis dolorum facere. Fugit odio qui. Eos ratione corporis. Minima officia sint."], ["comment", "Laboriosam dolorem voluptate. Neque libero dolores. Et nam et. Et corrupti corporis. Ut rem molestiae. Nisi vero odit. Tempora quia perspiciatis."], ["start_date", "2024-10-27 00:00:00"], ["due_date", "2024-10-30 00:00:00"], ["completed", false], ["created_at", "2024-10-20 11:59:30.957603"], ["updated_at", "2024-10-20 11:59:30.957603"]]
+  [1m[36mTRANSACTION (12.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTask Count (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "tasks"[0m
+  ↳ app/models/task.rb:35:in `set_initial_order'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTask Create (3.5ms)[0m  [1m[32mINSERT INTO "tasks" ("user_id", "routine", "recurs_on", "active", "task_type", "order", "title", "description", "comment", "start_date", "due_date", "completed", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14) RETURNING "id"[0m  [["user_id", 2], ["routine", 2], ["recurs_on", "{\"monday\":false,\"tuseday\":true,\"wednesday\":false,\"thursday\":true,\"friday\":false,\"saturday\":false,\"sunday\":false}"], ["active", true], ["task_type", 4], ["order", 6], ["title", "Debitis Tempore Reprehenderit."], ["description", "Quae tenetur numquam. Quibusdam omnis optio. Culpa dolorum eos. Aut omnis corrupti. Sit quaerat non. Numquam et dolor. Sed qui qui. Praesentium aut sed. Mollitia ipsa neque. Ipsa distinctio blanditiis. Placeat sequi itaque. Voluptates numquam qui. Eius ducimus et. Maiores animi ad. Modi magni ratione. A deserunt pariatur. Voluptates voluptatibus rerum. Quia voluptas odio. Earum et aut. Et dolor doloribus. Nostrum consequatur nesciunt. Et occaecati debitis. Et est quam. Dolorem aspernatur nesciunt. Eos non reiciendis. Sint et eligendi. Porro saepe voluptate. Reprehenderit quae beatae. Ea quia possimus."], ["comment", "Adipisci omnis et. Exercitationem tempora eius. Delectus amet quae. Dolore quia officiis. Sit doloremque ut. Mollitia quia accusamus. Sint rem quo. Autem aut aspernatur. Voluptas ex quae."], ["start_date", "2024-10-26 00:00:00"], ["due_date", "2024-10-27 00:00:00"], ["completed", false], ["created_at", "2024-10-20 11:59:30.981713"], ["updated_at", "2024-10-20 11:59:30.981713"]]
+  [1m[36mTRANSACTION (7.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mSubTask Create (3.5ms)[0m  [1m[32mINSERT INTO "sub_tasks" ("task_id", "order", "title", "description", "comment", "start_date", "due_date", "completed", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING "id"[0m  [["task_id", 6], ["order", 1], ["title", "Sunt Ut Fuga Rerum."], ["description", "Iusto aut consectetur. Consequuntur eaque et. Quibusdam culpa est. Aut vero ut. Ut illo voluptatem. Totam accusantium iste. Praesentium impedit quis. Ut ut et. Rerum voluptas ut. Necessitatibus laudantium tempore. Voluptates qui facere. Itaque velit et. Illo rerum laborum."], ["comment", "Voluptates et possimus. Dolor qui provident. Ratione est cum. Officiis minus et. Et sequi inventore. Deleniti ut perferendis."], ["start_date", "2024-10-26 00:00:00"], ["due_date", "2024-10-27 00:00:00"], ["completed", false], ["created_at", "2024-10-20 11:59:30.999399"], ["updated_at", "2024-10-20 11:59:30.999399"]]
+  [1m[36mTRANSACTION (13.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mSubTask Create (1.5ms)[0m  [1m[32mINSERT INTO "sub_tasks" ("task_id", "order", "title", "description", "comment", "start_date", "due_date", "completed", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING "id"[0m  [["task_id", 6], ["order", 2], ["title", "Quis Eos Et Similique."], ["description", "Voluptas facilis veritatis. Hic soluta et. Quas dolor eius. Voluptates soluta dolores. Harum asperiores ab. Error quasi est. Eum repudiandae dolores. Sequi amet maiores. Fugit voluptas aut. Rerum dolore doloribus. Rerum quod veritatis. Id hic delectus."], ["comment", "Atque eaque rerum. Laborum velit suscipit. Provident quaerat eveniet. Impedit aut optio. Similique deleniti rerum."], ["start_date", "2024-10-26 00:00:00"], ["due_date", "2024-10-27 00:00:00"], ["completed", false], ["created_at", "2024-10-20 11:59:31.024161"], ["updated_at", "2024-10-20 11:59:31.024161"]]
+  [1m[36mTRANSACTION (12.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTask Count (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "tasks"[0m
+  ↳ app/models/task.rb:35:in `set_initial_order'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTask Create (1.5ms)[0m  [1m[32mINSERT INTO "tasks" ("user_id", "routine", "recurs_on", "active", "task_type", "order", "title", "description", "comment", "start_date", "due_date", "completed", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14) RETURNING "id"[0m  [["user_id", 2], ["routine", 3], ["recurs_on", "{\"monday\":false,\"tuseday\":false,\"wednesday\":true,\"thursday\":false,\"friday\":false,\"saturday\":true,\"sunday\":false}"], ["active", true], ["task_type", 1], ["order", 7], ["title", "Ut Enim Officia Assumenda Ratione."], ["description", "Laborum impedit dolor. Est a fugiat. Nostrum in adipisci. Atque aliquid autem. Natus facere ratione. Et et est. Dolores quibusdam sequi. Id magnam sit. Aliquid ipsa magnam. Nemo voluptates et. Quibusdam quia perferendis. Ut nostrum animi. Quis magnam numquam. Totam reiciendis tenetur. Odio exercitationem et. Et tempora debitis. Cum ut aut. Deleniti voluptatem sit. Sit eius consectetur. Eos impedit aperiam. Qui beatae dolores."], ["comment", "Delectus et dolores. Itaque et porro. Voluptas dolore officia. Et aut facilis. Voluptates molestiae ab."], ["start_date", "2024-10-25 00:00:00"], ["due_date", "2024-10-27 00:00:00"], ["completed", false], ["created_at", "2024-10-20 11:59:31.045577"], ["updated_at", "2024-10-20 11:59:31.045577"]]
+  [1m[36mTRANSACTION (13.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mSubTask Create (2.7ms)[0m  [1m[32mINSERT INTO "sub_tasks" ("task_id", "order", "title", "description", "comment", "start_date", "due_date", "completed", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING "id"[0m  [["task_id", 7], ["order", 1], ["title", "Deleniti Quas Delectus Ex."], ["description", "Nostrum enim in. Ea reprehenderit ipsa. Quam quod ut. Quos rerum fugit. Unde repellendus et. Et corporis nobis. Aperiam fugiat neque. Aspernatur sit error. Placeat voluptates accusamus. Dolores fugiat voluptatem. Quis sed quo. Ea officia et. Ratione et quo. Qui aut autem. Qui quia praesentium."], ["comment", "Nesciunt sit et. Dolore autem totam. Maxime ut modi. Nesciunt qui neque. Commodi dolorem a. Magni voluptatem officiis. Officia voluptatem soluta."], ["start_date", "2024-10-25 00:00:00"], ["due_date", "2024-10-27 00:00:00"], ["completed", false], ["created_at", "2024-10-20 11:59:31.066448"], ["updated_at", "2024-10-20 11:59:31.066448"]]
+  [1m[36mTRANSACTION (12.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mSubTask Create (1.7ms)[0m  [1m[32mINSERT INTO "sub_tasks" ("task_id", "order", "title", "description", "comment", "start_date", "due_date", "completed", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING "id"[0m  [["task_id", 7], ["order", 2], ["title", "Consequatur Reprehenderit Ut Labore."], ["description", "Consectetur soluta ab. Molestiae dolor ea. Est soluta in. Voluptas dolorum libero. Facere accusantium sed. Earum dolor ut. Repellat aut quia. Sunt nobis iste. Rerum molestiae minus. Harum sequi facilis. Voluptas ea consequatur. Dolorem nemo saepe."], ["comment", "Quae nesciunt repellendus. Eveniet ab amet. Dolorum qui earum. Et quam ut. Reprehenderit possimus omnis. Aliquid odio distinctio. Sapiente minima pariatur. Harum et exercitationem. Recusandae eveniet voluptates. Magnam et labore."], ["start_date", "2024-10-25 00:00:00"], ["due_date", "2024-10-27 00:00:00"], ["completed", false], ["created_at", "2024-10-20 11:59:31.090221"], ["updated_at", "2024-10-20 11:59:31.090221"]]
+  [1m[36mTRANSACTION (12.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTask Count (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "tasks"[0m
+  ↳ app/models/task.rb:35:in `set_initial_order'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTask Create (1.5ms)[0m  [1m[32mINSERT INTO "tasks" ("user_id", "routine", "recurs_on", "active", "task_type", "order", "title", "description", "comment", "start_date", "due_date", "completed", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14) RETURNING "id"[0m  [["user_id", 3], ["routine", 1], ["recurs_on", "{\"monday\":false,\"tuseday\":false,\"wednesday\":false,\"thursday\":true,\"friday\":false,\"saturday\":false,\"sunday\":false}"], ["active", true], ["task_type", 3], ["order", 8], ["title", "Ipsam Saepe Ratione."], ["description", "Rerum dicta temporibus. Deserunt eum et. Ut enim aut. Assumenda et quae. Animi culpa omnis. Rem omnis dicta. Officiis deleniti nulla. Velit illo omnis. Cumque fugit dolorem. Expedita repudiandae est. Et qui accusantium. Fugit natus dolores. Sed dignissimos ipsam. Rerum quisquam qui. Incidunt et aut. Et optio repudiandae. Fugit perferendis nulla. Qui similique earum. Sequi inventore atque. Fugit harum corporis. Laudantium consequuntur non."], ["comment", "Cumque eum suscipit. Dicta illum aut. Dolor quia molestias. Rerum id consequatur. Rerum vitae consectetur. Fugiat ea facere. Suscipit voluptatem mollitia. Quod autem cupiditate. Alias ut quas. Nam inventore et."], ["start_date", "2024-10-27 00:00:00"], ["due_date", "2024-10-29 00:00:00"], ["completed", false], ["created_at", "2024-10-20 11:59:31.112540"], ["updated_at", "2024-10-20 11:59:31.112540"]]
+  [1m[36mTRANSACTION (12.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mSubTask Create (3.8ms)[0m  [1m[32mINSERT INTO "sub_tasks" ("task_id", "order", "title", "description", "comment", "start_date", "due_date", "completed", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING "id"[0m  [["task_id", 8], ["order", 1], ["title", "Possimus Et Aliquam Reiciendis."], ["description", "Aspernatur explicabo quae. Quasi inventore tenetur. Fugiat odit nostrum. Labore cumque debitis. Culpa quis non. Doloremque voluptatem aut. Optio velit maiores. Quibusdam cupiditate quis. Assumenda est qui. Explicabo et dolores."], ["comment", "Cupiditate mollitia sit. Inventore et eveniet. Dolorem quibusdam et. Quas hic suscipit. Repudiandae aperiam libero. Nihil possimus magnam."], ["start_date", "2024-10-27 00:00:00"], ["due_date", "2024-10-29 00:00:00"], ["completed", false], ["created_at", "2024-10-20 11:59:31.131847"], ["updated_at", "2024-10-20 11:59:31.131847"]]
+  [1m[36mTRANSACTION (14.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mSubTask Create (1.6ms)[0m  [1m[32mINSERT INTO "sub_tasks" ("task_id", "order", "title", "description", "comment", "start_date", "due_date", "completed", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING "id"[0m  [["task_id", 8], ["order", 2], ["title", "Vero Doloribus Maiores Totam Cupiditate."], ["description", "Aliquid quis error. Aliquam dolorem nulla. Quis vitae quasi. Necessitatibus aliquam sit. Odio sapiente vel. Nam consequuntur ipsa. Dolor officiis magni. Voluptate soluta unde. Ipsa eos quisquam. Aliquid neque officia. Corporis corrupti sit. Rerum fugiat voluptatem. Numquam ut autem. Deserunt est illum. Tempore rerum reiciendis."], ["comment", "Iure consequatur voluptates. Magni itaque dolorem. Harum est nemo. Laudantium dolorum id. Velit dolor libero. Velit ea nihil. Corrupti aut in. Et nihil deleniti. Est adipisci quam. Vel et repellendus."], ["start_date", "2024-10-27 00:00:00"], ["due_date", "2024-10-29 00:00:00"], ["completed", false], ["created_at", "2024-10-20 11:59:31.157819"], ["updated_at", "2024-10-20 11:59:31.157819"]]
+  [1m[36mTRANSACTION (11.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mSubTask Create (1.6ms)[0m  [1m[32mINSERT INTO "sub_tasks" ("task_id", "order", "title", "description", "comment", "start_date", "due_date", "completed", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING "id"[0m  [["task_id", 8], ["order", 3], ["title", "Quos Ut Aperiam Voluptatem."], ["description", "Nostrum esse ut. Rerum neque praesentium. Illum doloremque nostrum. Quo consequatur dolore. Suscipit dolore qui. Molestias accusantium qui. Suscipit quo provident. Sed incidunt dicta. Et molestias aut. Molestias neque omnis."], ["comment", "Nihil illo qui. Voluptas doloribus quae. Ut quae sunt. Aspernatur sit voluptatibus. Corrupti deserunt eius."], ["start_date", "2024-10-27 00:00:00"], ["due_date", "2024-10-29 00:00:00"], ["completed", false], ["created_at", "2024-10-20 11:59:31.176555"], ["updated_at", "2024-10-20 11:59:31.176555"]]
+  [1m[36mTRANSACTION (4.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mSubTask Create (1.6ms)[0m  [1m[32mINSERT INTO "sub_tasks" ("task_id", "order", "title", "description", "comment", "start_date", "due_date", "completed", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING "id"[0m  [["task_id", 8], ["order", 4], ["title", "Tenetur In Optio Unde."], ["description", "Rerum voluptatum non. Minus consequuntur quia. Quia sit et. Qui pariatur id. Ratione iure tempora. Quam ut provident. Fuga vel voluptatibus. Eos omnis autem. Qui assumenda quo. Iure perspiciatis corporis. Adipisci vel eos. Quidem placeat voluptas."], ["comment", "Explicabo mollitia voluptatem. Perferendis rerum iusto. Quas beatae omnis. Est velit porro. Porro eum nihil. Expedita totam reprehenderit."], ["start_date", "2024-10-27 00:00:00"], ["due_date", "2024-10-29 00:00:00"], ["completed", false], ["created_at", "2024-10-20 11:59:31.190945"], ["updated_at", "2024-10-20 11:59:31.190945"]]
+  [1m[36mTRANSACTION (11.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTask Count (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "tasks"[0m
+  ↳ app/models/task.rb:35:in `set_initial_order'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTask Create (1.5ms)[0m  [1m[32mINSERT INTO "tasks" ("user_id", "routine", "recurs_on", "active", "task_type", "order", "title", "description", "comment", "start_date", "due_date", "completed", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14) RETURNING "id"[0m  [["user_id", 2], ["routine", 2], ["recurs_on", "{\"monday\":false,\"tuseday\":false,\"wednesday\":false,\"thursday\":false,\"friday\":true,\"saturday\":true,\"sunday\":false}"], ["active", true], ["task_type", 4], ["order", 9], ["title", "Repudiandae Voluptatem Voluptatem Expedita."], ["description", "Expedita voluptatem nesciunt. Soluta reiciendis praesentium. Maxime doloribus et. Quae non a. Quasi neque dicta. Sunt et qui. Aut doloremque voluptate. Sapiente necessitatibus ut. Dolorem eligendi illo. Enim consequatur atque. Ratione minima tempore. Hic neque magnam. Maiores labore quas. Dignissimos illo recusandae. Accusamus suscipit cupiditate."], ["comment", "Molestiae minima qui. Quos ex aut. Voluptatem expedita molestiae. Sit omnis cum. Illum id expedita. Dolor est consectetur."], ["start_date", "2024-10-27 00:00:00"], ["due_date", "2024-10-27 00:00:00"], ["completed", false], ["created_at", "2024-10-20 11:59:31.211488"], ["updated_at", "2024-10-20 11:59:31.211488"]]
+  [1m[36mTRANSACTION (13.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mSubTask Create (3.4ms)[0m  [1m[32mINSERT INTO "sub_tasks" ("task_id", "order", "title", "description", "comment", "start_date", "due_date", "completed", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING "id"[0m  [["task_id", 9], ["order", 1], ["title", "Quia Natus Eaque."], ["description", "Dolor rem illo. Voluptatem vel autem. Eaque nemo eum. Quam alias ut. Beatae doloremque eligendi. Illum alias incidunt. Aliquam voluptatum vero. Aut corrupti et. Distinctio nihil molestiae. Illum distinctio adipisci. Delectus deleniti quia. Modi et ducimus. Eum sed et."], ["comment", "Possimus deserunt blanditiis. Enim cupiditate vel. Ratione beatae odit. Fugit alias atque. Eos quibusdam molestiae. Voluptatibus ut minima. Facilis ut quisquam. Dolorem quae rerum. Beatae qui reiciendis. Et ipsum molestias."], ["start_date", "2024-10-27 00:00:00"], ["due_date", "2024-10-27 00:00:00"], ["completed", false], ["created_at", "2024-10-20 11:59:31.232028"], ["updated_at", "2024-10-20 11:59:31.232028"]]
+  [1m[36mTRANSACTION (11.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mSubTask Create (1.7ms)[0m  [1m[32mINSERT INTO "sub_tasks" ("task_id", "order", "title", "description", "comment", "start_date", "due_date", "completed", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING "id"[0m  [["task_id", 9], ["order", 2], ["title", "Et Accusamus Velit."], ["description", "Fugit maxime nesciunt. Saepe id delectus. Nobis porro id. Est voluptatem laboriosam. Id excepturi quas. Dolor non voluptas. Quo earum dolores. Voluptatum doloremque reiciendis. Laboriosam occaecati repellat. Doloremque harum iure."], ["comment", "Voluptate sit delectus. Nisi nihil dolores. Est eius deleniti. Officiis nobis vel. Harum blanditiis pariatur. Culpa aut unde."], ["start_date", "2024-10-27 00:00:00"], ["due_date", "2024-10-27 00:00:00"], ["completed", false], ["created_at", "2024-10-20 11:59:31.255747"], ["updated_at", "2024-10-20 11:59:31.255747"]]
+  [1m[36mTRANSACTION (13.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mSubTask Create (1.4ms)[0m  [1m[32mINSERT INTO "sub_tasks" ("task_id", "order", "title", "description", "comment", "start_date", "due_date", "completed", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING "id"[0m  [["task_id", 9], ["order", 3], ["title", "Amet Recusandae Blanditiis."], ["description", "Corporis aut quis. Ex sit autem. Magni alias mollitia. Quia quo sunt. Non consectetur veniam. Quam ea assumenda. Aut omnis reiciendis. Assumenda quibusdam magnam. Nostrum est nobis. Ex impedit ab. Nostrum maiores enim. Quidem itaque illum. Enim qui molestias."], ["comment", "Voluptate a provident. Voluptate architecto et. Et voluptas similique. Recusandae sunt suscipit. Iusto ullam cupiditate. Aliquid numquam aut. Ex vero in. Quaerat nemo aut. Sunt animi deserunt."], ["start_date", "2024-10-27 00:00:00"], ["due_date", "2024-10-27 00:00:00"], ["completed", false], ["created_at", "2024-10-20 11:59:31.276107"], ["updated_at", "2024-10-20 11:59:31.276107"]]
+  [1m[36mTRANSACTION (4.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTask Count (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "tasks"[0m
+  ↳ app/models/task.rb:35:in `set_initial_order'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTask Create (1.9ms)[0m  [1m[32mINSERT INTO "tasks" ("user_id", "routine", "recurs_on", "active", "task_type", "order", "title", "description", "comment", "start_date", "due_date", "completed", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14) RETURNING "id"[0m  [["user_id", 2], ["routine", 2], ["recurs_on", "{\"monday\":true,\"tuseday\":false,\"wednesday\":false,\"thursday\":false,\"friday\":true,\"saturday\":false,\"sunday\":true}"], ["active", true], ["task_type", 3], ["order", 10], ["title", "Labore Autem Debitis."], ["description", "Facilis adipisci et. Delectus eos eligendi. Voluptate debitis ipsa. Qui aut dignissimos. Dolorem exercitationem dolor. Optio aperiam aut. Laboriosam aut nostrum. Consectetur dolor et. Fuga totam saepe. Et laborum quae. Provident voluptates consectetur. Ratione fugiat dolor. Repudiandae inventore quia. Nihil ut minima. Sit aut iusto. Quos est a. Vitae est et. Doloribus voluptatem amet. Totam et culpa. Aspernatur ratione qui. Sed inventore minima. Vitae similique et. Architecto eos voluptatem. Et temporibus ut. Totam quia sapiente. Odit harum delectus. Fuga eos unde. In nihil nam."], ["comment", "Harum qui consequatur. Impedit nemo provident. Ea ex eum. Vel accusantium eum. Et exercitationem sequi. Error rerum veniam. Voluptas modi aut. Soluta omnis dolorem. Id qui laboriosam. Repellendus rem accusantium. Numquam occaecati optio. Deleniti optio nihil. Amet dolores sunt. Voluptatum id rem."], ["start_date", "2024-10-24 00:00:00"], ["due_date", "2024-10-25 00:00:00"], ["completed", false], ["created_at", "2024-10-20 11:59:31.293111"], ["updated_at", "2024-10-20 11:59:31.293111"]]
+  [1m[36mTRANSACTION (8.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mSubTask Create (1.7ms)[0m  [1m[32mINSERT INTO "sub_tasks" ("task_id", "order", "title", "description", "comment", "start_date", "due_date", "completed", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING "id"[0m  [["task_id", 10], ["order", 1], ["title", "Vitae Eos Necessitatibus Omnis Odit."], ["description", "Aperiam veritatis ipsa. Et corrupti atque. Et nobis quis. Est quo adipisci. Et commodi ratione. Enim velit et. Architecto ea et. Libero vel ex. Qui deserunt nam. Consequatur et minus. Ut ad nihil."], ["comment", "Adipisci repudiandae iusto. Et facilis voluptatum. Mollitia voluptas id. Nihil ratione in. Et rerum et. Rerum ipsa iste. Aut enim nemo. Quod laborum consequatur."], ["start_date", "2024-10-24 00:00:00"], ["due_date", "2024-10-25 00:00:00"], ["completed", false], ["created_at", "2024-10-20 11:59:31.309447"], ["updated_at", "2024-10-20 11:59:31.309447"]]
+  [1m[36mTRANSACTION (4.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mSubTask Create (1.9ms)[0m  [1m[32mINSERT INTO "sub_tasks" ("task_id", "order", "title", "description", "comment", "start_date", "due_date", "completed", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING "id"[0m  [["task_id", 10], ["order", 2], ["title", "Aliquam Eos Accusantium."], ["description", "Laboriosam officia ut. Dolorem voluptatum molestias. Libero soluta aut. Vel non explicabo. Facere sit architecto. Enim debitis velit. Dolorem consequuntur cum. Iusto a qui. Non sint iure. Expedita cupiditate nostrum."], ["comment", "Perspiciatis iure dolores. Minima soluta recusandae. Repellendus ab velit. Labore cupiditate omnis. Sit eligendi aut. Rerum mollitia doloremque. Et et velit."], ["start_date", "2024-10-24 00:00:00"], ["due_date", "2024-10-25 00:00:00"], ["completed", false], ["created_at", "2024-10-20 11:59:31.322895"], ["updated_at", "2024-10-20 11:59:31.322895"]]
+  [1m[36mTRANSACTION (12.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mSubTask Create (1.6ms)[0m  [1m[32mINSERT INTO "sub_tasks" ("task_id", "order", "title", "description", "comment", "start_date", "due_date", "completed", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING "id"[0m  [["task_id", 10], ["order", 3], ["title", "Ut Doloribus Quia Molestias Ut."], ["description", "Aut ut veniam. Occaecati et eligendi. Consequatur velit nulla. Eos qui accusamus. Sed totam doloremque. Animi quia facere. Qui autem enim. Rerum quia consectetur. Repellat eius quo. Nihil voluptas quidem. Atque eius qui. Quae qui culpa."], ["comment", "Natus perspiciatis vero. Aut culpa quia. Hic sunt quis. Praesentium esse deleniti. Sit at quam. Asperiores et quaerat. Atque sed id. Suscipit quibusdam id. Voluptas et recusandae. Consequuntur est doloribus."], ["start_date", "2024-10-24 00:00:00"], ["due_date", "2024-10-25 00:00:00"], ["completed", false], ["created_at", "2024-10-20 11:59:31.342701"], ["updated_at", "2024-10-20 11:59:31.342701"]]
+  [1m[36mTRANSACTION (4.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mSubTask Create (11.9ms)[0m  [1m[32mINSERT INTO "sub_tasks" ("task_id", "order", "title", "description", "comment", "start_date", "due_date", "completed", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING "id"[0m  [["task_id", 10], ["order", 4], ["title", "Veritatis Qui Sequi Doloribus Sint."], ["description", "Similique qui voluptates. Id blanditiis a. Voluptatem nihil nisi. Consequatur aut consequatur. Est ullam ut. Quisquam voluptas id. Et temporibus pariatur. Eius voluptatem distinctio. Animi est sunt. Nisi labore velit. Reiciendis itaque quae."], ["comment", "A adipisci dolorem. Nam voluptas cumque. Eos quidem officiis. Itaque harum eum. Sed ut quia. Accusantium est inventore. Nostrum in id. Et voluptatem consequatur."], ["start_date", "2024-10-24 00:00:00"], ["due_date", "2024-10-25 00:00:00"], ["completed", false], ["created_at", "2024-10-20 11:59:31.356867"], ["updated_at", "2024-10-20 11:59:31.356867"]]
+  [1m[36mTRANSACTION (11.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mSubTask Create (1.8ms)[0m  [1m[32mINSERT INTO "sub_tasks" ("task_id", "order", "title", "description", "comment", "start_date", "due_date", "completed", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING "id"[0m  [["task_id", 10], ["order", 5], ["title", "Occaecati Expedita Pariatur Fugiat Beatae."], ["description", "Voluptas eaque aut. Omnis aspernatur eius. Magni distinctio eum. Illo voluptatem ducimus. Voluptatem numquam sapiente. Et est non. Voluptates cum sed. Aspernatur similique rem. Et perspiciatis animi. Et repellendus aspernatur. Ipsam enim cumque. Facere quae magni. Excepturi eum consequatur."], ["comment", "Error quia ipsam. Beatae officia saepe. Labore assumenda ut. Rerum quis ipsum. Occaecati labore laborum. Nulla quia voluptatibus."], ["start_date", "2024-10-24 00:00:00"], ["due_date", "2024-10-25 00:00:00"], ["completed", false], ["created_at", "2024-10-20 11:59:31.390696"], ["updated_at", "2024-10-20 11:59:31.390696"]]
+  [1m[36mTRANSACTION (11.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mJournalCategory Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "journal_categories" WHERE "journal_categories"."category_id" IS NULL AND "journal_categories"."journal_entry_id" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mCACHE JournalCategory Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "journal_categories" WHERE "journal_categories"."category_id" IS NULL AND "journal_categories"."journal_entry_id" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mJournalEntry Create (3.1ms)[0m  [1m[32mINSERT INTO "journal_entries" ("user_id", "title", "entry", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["user_id", 1], ["title", "Iure Perferendis Sit Nihil."], ["entry", "Nesciunt et velit. Velit et quia. Rerum quia distinctio. Dolores libero recusandae. Quo magnam molestiae. Laudantium assumenda dolore."], ["created_at", "2024-10-20 11:59:31.453382"], ["updated_at", "2024-10-20 11:59:31.453382"]]
+  [1m[36mCategory Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "categories" WHERE "categories"."category" = $1 LIMIT $2[0m  [["category", "praesentium-accusantium"], ["LIMIT", 1]]
+  [1m[36mCategory Create (0.5ms)[0m  [1m[32mINSERT INTO "categories" ("category", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["category", "praesentium-accusantium"], ["created_at", "2024-10-20 11:59:31.462865"], ["updated_at", "2024-10-20 11:59:31.462865"]]
+  [1m[36mJournalCategory Create (1.3ms)[0m  [1m[32mINSERT INTO "journal_categories" ("journal_entry_id", "category_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["journal_entry_id", 1], ["category_id", 1], ["created_at", "2024-10-20 11:59:31.466122"], ["updated_at", "2024-10-20 11:59:31.466122"]]
+  [1m[36mTRANSACTION (21.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mJournalCategory Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "journal_categories" WHERE "journal_categories"."category_id" IS NULL AND "journal_categories"."journal_entry_id" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mCACHE JournalCategory Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "journal_categories" WHERE "journal_categories"."category_id" IS NULL AND "journal_categories"."journal_entry_id" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mJournalEntry Create (3.6ms)[0m  [1m[32mINSERT INTO "journal_entries" ("user_id", "title", "entry", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["user_id", 2], ["title", "Voluptates Accusantium Fuga Quis Accusamus."], ["entry", "Illo et molestiae. Nisi sed quod. Occaecati dolore rerum. Mollitia doloribus molestiae. Ipsam animi iste. Eos incidunt atque."], ["created_at", "2024-10-20 11:59:31.504680"], ["updated_at", "2024-10-20 11:59:31.504680"]]
+  [1m[36mCategory Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "categories" WHERE "categories"."category" = $1 LIMIT $2[0m  [["category", "quo"], ["LIMIT", 1]]
+  [1m[36mCategory Create (0.4ms)[0m  [1m[32mINSERT INTO "categories" ("category", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["category", "quo"], ["created_at", "2024-10-20 11:59:31.512390"], ["updated_at", "2024-10-20 11:59:31.512390"]]
+  [1m[36mJournalCategory Create (0.7ms)[0m  [1m[32mINSERT INTO "journal_categories" ("journal_entry_id", "category_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["journal_entry_id", 2], ["category_id", 2], ["created_at", "2024-10-20 11:59:31.515049"], ["updated_at", "2024-10-20 11:59:31.515049"]]
+  [1m[36mTRANSACTION (19.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mJournalCategory Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM "journal_categories" WHERE "journal_categories"."category_id" IS NULL AND "journal_categories"."journal_entry_id" = $1 LIMIT $2[0m  [["journal_entry_id", 2], ["LIMIT", 1]]
+  [1m[36mCACHE JournalCategory Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "journal_categories" WHERE "journal_categories"."category_id" IS NULL AND "journal_categories"."journal_entry_id" = $1 LIMIT $2[0m  [["journal_entry_id", 2], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCategory Exists? (1.8ms)[0m  [1m[34mSELECT 1 AS one FROM "categories" WHERE "categories"."category" = $1 LIMIT $2[0m  [["category", "ex-cupiditate"], ["LIMIT", 1]]
+  [1m[36mCategory Create (0.4ms)[0m  [1m[32mINSERT INTO "categories" ("category", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["category", "ex-cupiditate"], ["created_at", "2024-10-20 11:59:31.547016"], ["updated_at", "2024-10-20 11:59:31.547016"]]
+  [1m[36mJournalCategory Create (2.0ms)[0m  [1m[32mINSERT INTO "journal_categories" ("journal_entry_id", "category_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["journal_entry_id", 2], ["category_id", 3], ["created_at", "2024-10-20 11:59:31.549084"], ["updated_at", "2024-10-20 11:59:31.549084"]]
+  [1m[36mTRANSACTION (18.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mJournalCategory Exists? (0.7ms)[0m  [1m[34mSELECT 1 AS one FROM "journal_categories" WHERE "journal_categories"."category_id" IS NULL AND "journal_categories"."journal_entry_id" = $1 LIMIT $2[0m  [["journal_entry_id", 2], ["LIMIT", 1]]
+  [1m[36mCACHE JournalCategory Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "journal_categories" WHERE "journal_categories"."category_id" IS NULL AND "journal_categories"."journal_entry_id" = $1 LIMIT $2[0m  [["journal_entry_id", 2], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCategory Exists? (6.5ms)[0m  [1m[34mSELECT 1 AS one FROM "categories" WHERE "categories"."category" = $1 LIMIT $2[0m  [["category", "omnis-a"], ["LIMIT", 1]]
+  [1m[36mCategory Create (0.8ms)[0m  [1m[32mINSERT INTO "categories" ("category", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["category", "omnis-a"], ["created_at", "2024-10-20 11:59:31.592777"], ["updated_at", "2024-10-20 11:59:31.592777"]]
+  [1m[36mJournalCategory Create (1.1ms)[0m  [1m[32mINSERT INTO "journal_categories" ("journal_entry_id", "category_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["journal_entry_id", 2], ["category_id", 4], ["created_at", "2024-10-20 11:59:31.597165"], ["updated_at", "2024-10-20 11:59:31.597165"]]
+  [1m[36mTRANSACTION (11.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mJournalCategory Exists? (0.8ms)[0m  [1m[34mSELECT 1 AS one FROM "journal_categories" WHERE "journal_categories"."category_id" IS NULL AND "journal_categories"."journal_entry_id" = $1 LIMIT $2[0m  [["journal_entry_id", 2], ["LIMIT", 1]]
+  [1m[36mCACHE JournalCategory Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "journal_categories" WHERE "journal_categories"."category_id" IS NULL AND "journal_categories"."journal_entry_id" = $1 LIMIT $2[0m  [["journal_entry_id", 2], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCategory Exists? (6.4ms)[0m  [1m[34mSELECT 1 AS one FROM "categories" WHERE "categories"."category" = $1 LIMIT $2[0m  [["category", "voluptatem-culpa"], ["LIMIT", 1]]
+  [1m[36mCategory Create (0.6ms)[0m  [1m[32mINSERT INTO "categories" ("category", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["category", "voluptatem-culpa"], ["created_at", "2024-10-20 11:59:31.640084"], ["updated_at", "2024-10-20 11:59:31.640084"]]
+  [1m[36mJournalCategory Create (2.1ms)[0m  [1m[32mINSERT INTO "journal_categories" ("journal_entry_id", "category_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["journal_entry_id", 2], ["category_id", 5], ["created_at", "2024-10-20 11:59:31.649230"], ["updated_at", "2024-10-20 11:59:31.649230"]]
+  [1m[36mTRANSACTION (14.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mJournalCategory Exists? (0.7ms)[0m  [1m[34mSELECT 1 AS one FROM "journal_categories" WHERE "journal_categories"."category_id" = $1 AND "journal_categories"."journal_entry_id" = $2 LIMIT $3[0m  [["category_id", 3], ["journal_entry_id", 2], ["LIMIT", 1]]
+  [1m[36mJournalCategory Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM "journal_categories" WHERE "journal_categories"."category_id" IS NULL AND "journal_categories"."journal_entry_id" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mCACHE JournalCategory Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "journal_categories" WHERE "journal_categories"."category_id" IS NULL AND "journal_categories"."journal_entry_id" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mJournalEntry Create (3.8ms)[0m  [1m[32mINSERT INTO "journal_entries" ("user_id", "title", "entry", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["user_id", 3], ["title", "Libero Provident Quaerat."], ["entry", "Ab vero aut. Ut hic at. Est voluptas molestiae. Eligendi rerum distinctio. Quo repudiandae aut. Facere iste est. Mollitia quia quod. Totam aut autem. Dolores non blanditiis."], ["created_at", "2024-10-20 11:59:31.693274"], ["updated_at", "2024-10-20 11:59:31.693274"]]
+  [1m[36mCategory Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM "categories" WHERE "categories"."category" = $1 LIMIT $2[0m  [["category", "mollitia"], ["LIMIT", 1]]
+  [1m[36mCategory Create (0.7ms)[0m  [1m[32mINSERT INTO "categories" ("category", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["category", "mollitia"], ["created_at", "2024-10-20 11:59:31.710813"], ["updated_at", "2024-10-20 11:59:31.710813"]]
+  [1m[36mJournalCategory Create (1.8ms)[0m  [1m[32mINSERT INTO "journal_categories" ("journal_entry_id", "category_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["journal_entry_id", 3], ["category_id", 6], ["created_at", "2024-10-20 11:59:31.718871"], ["updated_at", "2024-10-20 11:59:31.718871"]]
+  [1m[36mTRANSACTION (11.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mJournalCategory Exists? (0.8ms)[0m  [1m[34mSELECT 1 AS one FROM "journal_categories" WHERE "journal_categories"."category_id" IS NULL AND "journal_categories"."journal_entry_id" = $1 LIMIT $2[0m  [["journal_entry_id", 3], ["LIMIT", 1]]
+  [1m[36mCACHE JournalCategory Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "journal_categories" WHERE "journal_categories"."category_id" IS NULL AND "journal_categories"."journal_entry_id" = $1 LIMIT $2[0m  [["journal_entry_id", 3], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCategory Exists? (4.1ms)[0m  [1m[34mSELECT 1 AS one FROM "categories" WHERE "categories"."category" = $1 LIMIT $2[0m  [["category", "unde-qui"], ["LIMIT", 1]]
+  [1m[36mCategory Create (0.6ms)[0m  [1m[32mINSERT INTO "categories" ("category", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["category", "unde-qui"], ["created_at", "2024-10-20 11:59:31.763900"], ["updated_at", "2024-10-20 11:59:31.763900"]]
+  [1m[36mJournalCategory Create (0.7ms)[0m  [1m[32mINSERT INTO "journal_categories" ("journal_entry_id", "category_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["journal_entry_id", 3], ["category_id", 7], ["created_at", "2024-10-20 11:59:31.772105"], ["updated_at", "2024-10-20 11:59:31.772105"]]
+  [1m[36mTRANSACTION (5.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mJournalCategory Exists? (0.7ms)[0m  [1m[34mSELECT 1 AS one FROM "journal_categories" WHERE "journal_categories"."category_id" IS NULL AND "journal_categories"."journal_entry_id" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mCACHE JournalCategory Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "journal_categories" WHERE "journal_categories"."category_id" IS NULL AND "journal_categories"."journal_entry_id" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mJournalEntry Create (6.0ms)[0m  [1m[32mINSERT INTO "journal_entries" ("user_id", "title", "entry", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["user_id", 2], ["title", "Voluptas Recusandae Repudiandae."], ["entry", "Recusandae rerum quisquam. Et libero dolorem. Vitae ipsum sunt. Qui quam omnis. Et atque iste. Cum sint cupiditate. Labore consectetur fugit. Iure eaque reiciendis. Incidunt possimus itaque."], ["created_at", "2024-10-20 11:59:31.805851"], ["updated_at", "2024-10-20 11:59:31.805851"]]
+  [1m[36mCategory Exists? (0.8ms)[0m  [1m[34mSELECT 1 AS one FROM "categories" WHERE "categories"."category" = $1 LIMIT $2[0m  [["category", "eos-sit"], ["LIMIT", 1]]
+  [1m[36mCategory Create (0.4ms)[0m  [1m[32mINSERT INTO "categories" ("category", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["category", "eos-sit"], ["created_at", "2024-10-20 11:59:31.823224"], ["updated_at", "2024-10-20 11:59:31.823224"]]
+  [1m[36mJournalCategory Create (0.8ms)[0m  [1m[32mINSERT INTO "journal_categories" ("journal_entry_id", "category_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["journal_entry_id", 4], ["category_id", 8], ["created_at", "2024-10-20 11:59:31.834847"], ["updated_at", "2024-10-20 11:59:31.834847"]]
+  [1m[36mTRANSACTION (20.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mJournalCategory Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "journal_categories" WHERE "journal_categories"."category_id" = $1 AND "journal_categories"."journal_entry_id" = $2 LIMIT $3[0m  [["category_id", 7], ["journal_entry_id", 4], ["LIMIT", 1]]
+  [1m[36mCACHE JournalCategory Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "journal_categories" WHERE "journal_categories"."category_id" = $1 AND "journal_categories"."journal_entry_id" = $2 LIMIT $3[0m  [["category_id", 7], ["journal_entry_id", 4], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mJournalCategory Create (2.4ms)[0m  [1m[32mINSERT INTO "journal_categories" ("journal_entry_id", "category_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["journal_entry_id", 4], ["category_id", 7], ["created_at", "2024-10-20 11:59:31.864080"], ["updated_at", "2024-10-20 11:59:31.864080"]]
+  [1m[36mTRANSACTION (23.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mJournalCategory Exists? (0.8ms)[0m  [1m[34mSELECT 1 AS one FROM "journal_categories" WHERE "journal_categories"."category_id" = $1 AND "journal_categories"."journal_entry_id" = $2 LIMIT $3[0m  [["category_id", 1], ["journal_entry_id", 4], ["LIMIT", 1]]
+  [1m[36mCACHE JournalCategory Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "journal_categories" WHERE "journal_categories"."category_id" = $1 AND "journal_categories"."journal_entry_id" = $2 LIMIT $3[0m  [["category_id", 1], ["journal_entry_id", 4], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mJournalCategory Create (3.8ms)[0m  [1m[32mINSERT INTO "journal_categories" ("journal_entry_id", "category_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["journal_entry_id", 4], ["category_id", 1], ["created_at", "2024-10-20 11:59:31.909095"], ["updated_at", "2024-10-20 11:59:31.909095"]]
+  [1m[36mTRANSACTION (15.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mJournalCategory Exists? (0.8ms)[0m  [1m[34mSELECT 1 AS one FROM "journal_categories" WHERE "journal_categories"."category_id" = $1 AND "journal_categories"."journal_entry_id" = $2 LIMIT $3[0m  [["category_id", 7], ["journal_entry_id", 4], ["LIMIT", 1]]
+  [1m[36mJournalCategory Exists? (0.7ms)[0m  [1m[34mSELECT 1 AS one FROM "journal_categories" WHERE "journal_categories"."category_id" = $1 AND "journal_categories"."journal_entry_id" = $2 LIMIT $3[0m  [["category_id", 2], ["journal_entry_id", 4], ["LIMIT", 1]]
+  [1m[36mCACHE JournalCategory Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "journal_categories" WHERE "journal_categories"."category_id" = $1 AND "journal_categories"."journal_entry_id" = $2 LIMIT $3[0m  [["category_id", 2], ["journal_entry_id", 4], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mJournalCategory Create (3.9ms)[0m  [1m[32mINSERT INTO "journal_categories" ("journal_entry_id", "category_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["journal_entry_id", 4], ["category_id", 2], ["created_at", "2024-10-20 11:59:31.956747"], ["updated_at", "2024-10-20 11:59:31.956747"]]
+  [1m[36mTRANSACTION (16.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mJournalCategory Exists? (0.9ms)[0m  [1m[34mSELECT 1 AS one FROM "journal_categories" WHERE "journal_categories"."category_id" IS NULL AND "journal_categories"."journal_entry_id" = $1 LIMIT $2[0m  [["journal_entry_id", 4], ["LIMIT", 1]]
+  [1m[36mCACHE JournalCategory Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "journal_categories" WHERE "journal_categories"."category_id" IS NULL AND "journal_categories"."journal_entry_id" = $1 LIMIT $2[0m  [["journal_entry_id", 4], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCategory Exists? (7.2ms)[0m  [1m[34mSELECT 1 AS one FROM "categories" WHERE "categories"."category" = $1 LIMIT $2[0m  [["category", "est-eaque"], ["LIMIT", 1]]
+  [1m[36mCategory Create (0.7ms)[0m  [1m[32mINSERT INTO "categories" ("category", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["category", "est-eaque"], ["created_at", "2024-10-20 11:59:32.008592"], ["updated_at", "2024-10-20 11:59:32.008592"]]
+  [1m[36mJournalCategory Create (0.9ms)[0m  [1m[32mINSERT INTO "journal_categories" ("journal_entry_id", "category_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["journal_entry_id", 4], ["category_id", 9], ["created_at", "2024-10-20 11:59:32.013616"], ["updated_at", "2024-10-20 11:59:32.013616"]]
+  [1m[36mTRANSACTION (15.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mJournalCategory Exists? (0.9ms)[0m  [1m[34mSELECT 1 AS one FROM "journal_categories" WHERE "journal_categories"."category_id" = $1 AND "journal_categories"."journal_entry_id" = $2 LIMIT $3[0m  [["category_id", 1], ["journal_entry_id", 4], ["LIMIT", 1]]
+  [1m[36mJournalCategory Exists? (1.0ms)[0m  [1m[34mSELECT 1 AS one FROM "journal_categories" WHERE "journal_categories"."category_id" = $1 AND "journal_categories"."journal_entry_id" IS NULL LIMIT $2[0m  [["category_id", 6], ["LIMIT", 1]]
+  [1m[36mCACHE JournalCategory Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "journal_categories" WHERE "journal_categories"."category_id" = $1 AND "journal_categories"."journal_entry_id" IS NULL LIMIT $2[0m  [["category_id", 6], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mJournalEntry Create (9.4ms)[0m  [1m[32mINSERT INTO "journal_entries" ("user_id", "title", "entry", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["user_id", 3], ["title", "Vitae Fugit Qui."], ["entry", "Doloribus dolores doloremque. Placeat eos aut. Impedit ipsam qui. Facere ut ex. Eligendi pariatur ad. Rerum eligendi dolor. Ut voluptate doloremque. Nemo aut aliquid."], ["created_at", "2024-10-20 11:59:32.063228"], ["updated_at", "2024-10-20 11:59:32.063228"]]
+  [1m[36mJournalCategory Create (1.8ms)[0m  [1m[32mINSERT INTO "journal_categories" ("journal_entry_id", "category_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["journal_entry_id", 5], ["category_id", 6], ["created_at", "2024-10-20 11:59:32.079470"], ["updated_at", "2024-10-20 11:59:32.079470"]]
+  [1m[36mTRANSACTION (14.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mJournalCategory Exists? (0.8ms)[0m  [1m[34mSELECT 1 AS one FROM "journal_categories" WHERE "journal_categories"."category_id" = $1 AND "journal_categories"."journal_entry_id" = $2 LIMIT $3[0m  [["category_id", 9], ["journal_entry_id", 5], ["LIMIT", 1]]
+  [1m[36mCACHE JournalCategory Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "journal_categories" WHERE "journal_categories"."category_id" = $1 AND "journal_categories"."journal_entry_id" = $2 LIMIT $3[0m  [["category_id", 9], ["journal_entry_id", 5], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mJournalCategory Create (5.1ms)[0m  [1m[32mINSERT INTO "journal_categories" ("journal_entry_id", "category_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["journal_entry_id", 5], ["category_id", 9], ["created_at", "2024-10-20 11:59:32.115714"], ["updated_at", "2024-10-20 11:59:32.115714"]]
+  [1m[36mTRANSACTION (20.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mJournalCategory Exists? (1.0ms)[0m  [1m[34mSELECT 1 AS one FROM "journal_categories" WHERE "journal_categories"."category_id" IS NULL AND "journal_categories"."journal_entry_id" = $1 LIMIT $2[0m  [["journal_entry_id", 5], ["LIMIT", 1]]
+  [1m[36mCACHE JournalCategory Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "journal_categories" WHERE "journal_categories"."category_id" IS NULL AND "journal_categories"."journal_entry_id" = $1 LIMIT $2[0m  [["journal_entry_id", 5], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCategory Exists? (8.2ms)[0m  [1m[34mSELECT 1 AS one FROM "categories" WHERE "categories"."category" = $1 LIMIT $2[0m  [["category", "eum-aut"], ["LIMIT", 1]]
+  [1m[36mCategory Create (0.7ms)[0m  [1m[32mINSERT INTO "categories" ("category", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["category", "eum-aut"], ["created_at", "2024-10-20 11:59:32.175660"], ["updated_at", "2024-10-20 11:59:32.175660"]]
+  [1m[36mJournalCategory Create (2.2ms)[0m  [1m[32mINSERT INTO "journal_categories" ("journal_entry_id", "category_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["journal_entry_id", 5], ["category_id", 10], ["created_at", "2024-10-20 11:59:32.181206"], ["updated_at", "2024-10-20 11:59:32.181206"]]
+  [1m[36mTRANSACTION (14.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mJournalCategory Exists? (0.8ms)[0m  [1m[34mSELECT 1 AS one FROM "journal_categories" WHERE "journal_categories"."category_id" IS NULL AND "journal_categories"."journal_entry_id" = $1 LIMIT $2[0m  [["journal_entry_id", 5], ["LIMIT", 1]]
+  [1m[36mCACHE JournalCategory Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "journal_categories" WHERE "journal_categories"."category_id" IS NULL AND "journal_categories"."journal_entry_id" = $1 LIMIT $2[0m  [["journal_entry_id", 5], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCategory Exists? (8.2ms)[0m  [1m[34mSELECT 1 AS one FROM "categories" WHERE "categories"."category" = $1 LIMIT $2[0m  [["category", "nostrum-et"], ["LIMIT", 1]]
+  [1m[36mCategory Create (0.7ms)[0m  [1m[32mINSERT INTO "categories" ("category", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["category", "nostrum-et"], ["created_at", "2024-10-20 11:59:32.239121"], ["updated_at", "2024-10-20 11:59:32.239121"]]
+  [1m[36mJournalCategory Create (1.1ms)[0m  [1m[32mINSERT INTO "journal_categories" ("journal_entry_id", "category_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["journal_entry_id", 5], ["category_id", 11], ["created_at", "2024-10-20 11:59:32.248711"], ["updated_at", "2024-10-20 11:59:32.248711"]]
+  [1m[36mTRANSACTION (19.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mJournalCategory Exists? (1.0ms)[0m  [1m[34mSELECT 1 AS one FROM "journal_categories" WHERE "journal_categories"."category_id" = $1 AND "journal_categories"."journal_entry_id" = $2 LIMIT $3[0m  [["category_id", 3], ["journal_entry_id", 5], ["LIMIT", 1]]
+  [1m[36mCACHE JournalCategory Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "journal_categories" WHERE "journal_categories"."category_id" = $1 AND "journal_categories"."journal_entry_id" = $2 LIMIT $3[0m  [["category_id", 3], ["journal_entry_id", 5], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mJournalCategory Create (3.6ms)[0m  [1m[32mINSERT INTO "journal_categories" ("journal_entry_id", "category_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["journal_entry_id", 5], ["category_id", 3], ["created_at", "2024-10-20 11:59:32.293127"], ["updated_at", "2024-10-20 11:59:32.293127"]]
+  [1m[36mTRANSACTION (20.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mJournalCategory Exists? (0.9ms)[0m  [1m[34mSELECT 1 AS one FROM "journal_categories" WHERE "journal_categories"."category_id" = $1 AND "journal_categories"."journal_entry_id" = $2 LIMIT $3[0m  [["category_id", 2], ["journal_entry_id", 5], ["LIMIT", 1]]
+  [1m[36mCACHE JournalCategory Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "journal_categories" WHERE "journal_categories"."category_id" = $1 AND "journal_categories"."journal_entry_id" = $2 LIMIT $3[0m  [["category_id", 2], ["journal_entry_id", 5], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mJournalCategory Create (3.7ms)[0m  [1m[32mINSERT INTO "journal_categories" ("journal_entry_id", "category_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["journal_entry_id", 5], ["category_id", 2], ["created_at", "2024-10-20 11:59:32.338482"], ["updated_at", "2024-10-20 11:59:32.338482"]]
+  [1m[36mTRANSACTION (11.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mJournalCategory Exists? (0.8ms)[0m  [1m[34mSELECT 1 AS one FROM "journal_categories" WHERE "journal_categories"."category_id" = $1 AND "journal_categories"."journal_entry_id" IS NULL LIMIT $2[0m  [["category_id", 4], ["LIMIT", 1]]
+  [1m[36mCACHE JournalCategory Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "journal_categories" WHERE "journal_categories"."category_id" = $1 AND "journal_categories"."journal_entry_id" IS NULL LIMIT $2[0m  [["category_id", 4], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mJournalEntry Create (4.4ms)[0m  [1m[32mINSERT INTO "journal_entries" ("user_id", "title", "entry", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["user_id", 1], ["title", "Ipsum Occaecati Odio Qui."], ["entry", "Est repudiandae laborum. Et sed animi. Vitae recusandae ut. Quidem odio et. Iste est in. Nulla ut voluptatibus."], ["created_at", "2024-10-20 11:59:32.374702"], ["updated_at", "2024-10-20 11:59:32.374702"]]
+  [1m[36mJournalCategory Create (1.0ms)[0m  [1m[32mINSERT INTO "journal_categories" ("journal_entry_id", "category_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["journal_entry_id", 6], ["category_id", 4], ["created_at", "2024-10-20 11:59:32.386917"], ["updated_at", "2024-10-20 11:59:32.386917"]]
+  [1m[36mTRANSACTION (10.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mJournalCategory Exists? (0.8ms)[0m  [1m[34mSELECT 1 AS one FROM "journal_categories" WHERE "journal_categories"."category_id" IS NULL AND "journal_categories"."journal_entry_id" = $1 LIMIT $2[0m  [["journal_entry_id", 6], ["LIMIT", 1]]
+  [1m[36mCACHE JournalCategory Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "journal_categories" WHERE "journal_categories"."category_id" IS NULL AND "journal_categories"."journal_entry_id" = $1 LIMIT $2[0m  [["journal_entry_id", 6], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCategory Exists? (7.6ms)[0m  [1m[34mSELECT 1 AS one FROM "categories" WHERE "categories"."category" = $1 LIMIT $2[0m  [["category", "modi"], ["LIMIT", 1]]
+  [1m[36mCategory Create (0.7ms)[0m  [1m[32mINSERT INTO "categories" ("category", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["category", "modi"], ["created_at", "2024-10-20 11:59:32.425058"], ["updated_at", "2024-10-20 11:59:32.425058"]]
+  [1m[36mJournalCategory Create (0.9ms)[0m  [1m[32mINSERT INTO "journal_categories" ("journal_entry_id", "category_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["journal_entry_id", 6], ["category_id", 12], ["created_at", "2024-10-20 11:59:32.429703"], ["updated_at", "2024-10-20 11:59:32.429703"]]
+  [1m[36mTRANSACTION (19.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mJournalCategory Exists? (0.8ms)[0m  [1m[34mSELECT 1 AS one FROM "journal_categories" WHERE "journal_categories"."category_id" = $1 AND "journal_categories"."journal_entry_id" = $2 LIMIT $3[0m  [["category_id", 12], ["journal_entry_id", 6], ["LIMIT", 1]]
+  [1m[36mJournalCategory Exists? (0.8ms)[0m  [1m[34mSELECT 1 AS one FROM "journal_categories" WHERE "journal_categories"."category_id" = $1 AND "journal_categories"."journal_entry_id" = $2 LIMIT $3[0m  [["category_id", 1], ["journal_entry_id", 6], ["LIMIT", 1]]
+  [1m[36mCACHE JournalCategory Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "journal_categories" WHERE "journal_categories"."category_id" = $1 AND "journal_categories"."journal_entry_id" = $2 LIMIT $3[0m  [["category_id", 1], ["journal_entry_id", 6], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mJournalCategory Create (5.0ms)[0m  [1m[32mINSERT INTO "journal_categories" ("journal_entry_id", "category_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["journal_entry_id", 6], ["category_id", 1], ["created_at", "2024-10-20 11:59:32.479350"], ["updated_at", "2024-10-20 11:59:32.479350"]]
+  [1m[36mTRANSACTION (13.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mJournalCategory Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "journal_categories" WHERE "journal_categories"."category_id" = $1 AND "journal_categories"."journal_entry_id" IS NULL LIMIT $2[0m  [["category_id", 8], ["LIMIT", 1]]
+  [1m[36mCACHE JournalCategory Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "journal_categories" WHERE "journal_categories"."category_id" = $1 AND "journal_categories"."journal_entry_id" IS NULL LIMIT $2[0m  [["category_id", 8], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mJournalEntry Create (2.2ms)[0m  [1m[32mINSERT INTO "journal_entries" ("user_id", "title", "entry", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["user_id", 1], ["title", "Aut Quia Hic Facere."], ["entry", "Sit voluptatem eum. Maiores eum doloremque. Aliquam iste voluptatem. Dignissimos ut qui. Aut quia ut. Perspiciatis esse dolorum. Nostrum dolor quo."], ["created_at", "2024-10-20 11:59:32.509688"], ["updated_at", "2024-10-20 11:59:32.509688"]]
+  [1m[36mJournalCategory Create (0.5ms)[0m  [1m[32mINSERT INTO "journal_categories" ("journal_entry_id", "category_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["journal_entry_id", 7], ["category_id", 8], ["created_at", "2024-10-20 11:59:32.513733"], ["updated_at", "2024-10-20 11:59:32.513733"]]
+  [1m[36mTRANSACTION (5.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mJournalCategory Exists? (0.7ms)[0m  [1m[34mSELECT 1 AS one FROM "journal_categories" WHERE "journal_categories"."category_id" = $1 AND "journal_categories"."journal_entry_id" IS NULL LIMIT $2[0m  [["category_id", 10], ["LIMIT", 1]]
+  [1m[36mCACHE JournalCategory Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "journal_categories" WHERE "journal_categories"."category_id" = $1 AND "journal_categories"."journal_entry_id" IS NULL LIMIT $2[0m  [["category_id", 10], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mJournalEntry Create (4.6ms)[0m  [1m[32mINSERT INTO "journal_entries" ("user_id", "title", "entry", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["user_id", 1], ["title", "Quo Repellendus Adipisci Qui."], ["entry", "Quas enim ipsam. Quam soluta debitis. Corrupti voluptatum assumenda. Blanditiis eaque id. Expedita natus commodi. Non consequatur voluptatum. Ab qui facilis."], ["created_at", "2024-10-20 11:59:32.530691"], ["updated_at", "2024-10-20 11:59:32.530691"]]
+  [1m[36mJournalCategory Create (0.5ms)[0m  [1m[32mINSERT INTO "journal_categories" ("journal_entry_id", "category_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["journal_entry_id", 8], ["category_id", 10], ["created_at", "2024-10-20 11:59:32.537386"], ["updated_at", "2024-10-20 11:59:32.537386"]]
+  [1m[36mTRANSACTION (6.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mJournalCategory Exists? (1.0ms)[0m  [1m[34mSELECT 1 AS one FROM "journal_categories" WHERE "journal_categories"."category_id" = $1 AND "journal_categories"."journal_entry_id" = $2 LIMIT $3[0m  [["category_id", 6], ["journal_entry_id", 8], ["LIMIT", 1]]
+  [1m[36mCACHE JournalCategory Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "journal_categories" WHERE "journal_categories"."category_id" = $1 AND "journal_categories"."journal_entry_id" = $2 LIMIT $3[0m  [["category_id", 6], ["journal_entry_id", 8], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mJournalCategory Create (1.5ms)[0m  [1m[32mINSERT INTO "journal_categories" ("journal_entry_id", "category_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["journal_entry_id", 8], ["category_id", 6], ["created_at", "2024-10-20 11:59:32.554317"], ["updated_at", "2024-10-20 11:59:32.554317"]]
+  [1m[36mTRANSACTION (10.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mJournalCategory Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "journal_categories" WHERE "journal_categories"."category_id" = $1 AND "journal_categories"."journal_entry_id" = $2 LIMIT $3[0m  [["category_id", 2], ["journal_entry_id", 8], ["LIMIT", 1]]
+  [1m[36mCACHE JournalCategory Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "journal_categories" WHERE "journal_categories"."category_id" = $1 AND "journal_categories"."journal_entry_id" = $2 LIMIT $3[0m  [["category_id", 2], ["journal_entry_id", 8], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mJournalCategory Create (2.3ms)[0m  [1m[32mINSERT INTO "journal_categories" ("journal_entry_id", "category_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["journal_entry_id", 8], ["category_id", 2], ["created_at", "2024-10-20 11:59:32.574907"], ["updated_at", "2024-10-20 11:59:32.574907"]]
+  [1m[36mTRANSACTION (10.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mJournalCategory Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM "journal_categories" WHERE "journal_categories"."category_id" = $1 AND "journal_categories"."journal_entry_id" IS NULL LIMIT $2[0m  [["category_id", 6], ["LIMIT", 1]]
+  [1m[36mCACHE JournalCategory Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "journal_categories" WHERE "journal_categories"."category_id" = $1 AND "journal_categories"."journal_entry_id" IS NULL LIMIT $2[0m  [["category_id", 6], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mJournalEntry Create (2.9ms)[0m  [1m[32mINSERT INTO "journal_entries" ("user_id", "title", "entry", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["user_id", 3], ["title", "Vel Culpa Consequuntur Magni."], ["entry", "Dolores voluptates ipsa. Eaque veritatis architecto. Tempore qui quod. Aut laborum itaque. Ut ipsam quas. Accusamus blanditiis dicta. Reiciendis harum at. At est consequuntur. Porro optio qui. Deleniti animi sint."], ["created_at", "2024-10-20 11:59:32.604182"], ["updated_at", "2024-10-20 11:59:32.604182"]]
+  [1m[36mJournalCategory Create (0.4ms)[0m  [1m[32mINSERT INTO "journal_categories" ("journal_entry_id", "category_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["journal_entry_id", 9], ["category_id", 6], ["created_at", "2024-10-20 11:59:32.610126"], ["updated_at", "2024-10-20 11:59:32.610126"]]
+  [1m[36mTRANSACTION (10.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mJournalCategory Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "journal_categories" WHERE "journal_categories"."category_id" = $1 AND "journal_categories"."journal_entry_id" = $2 LIMIT $3[0m  [["category_id", 8], ["journal_entry_id", 9], ["LIMIT", 1]]
+  [1m[36mCACHE JournalCategory Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "journal_categories" WHERE "journal_categories"."category_id" = $1 AND "journal_categories"."journal_entry_id" = $2 LIMIT $3[0m  [["category_id", 8], ["journal_entry_id", 9], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mJournalCategory Create (3.6ms)[0m  [1m[32mINSERT INTO "journal_categories" ("journal_entry_id", "category_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["journal_entry_id", 9], ["category_id", 8], ["created_at", "2024-10-20 11:59:32.630625"], ["updated_at", "2024-10-20 11:59:32.630625"]]
+  [1m[36mTRANSACTION (8.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mJournalCategory Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM "journal_categories" WHERE "journal_categories"."category_id" IS NULL AND "journal_categories"."journal_entry_id" = $1 LIMIT $2[0m  [["journal_entry_id", 9], ["LIMIT", 1]]
+  [1m[36mCACHE JournalCategory Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "journal_categories" WHERE "journal_categories"."category_id" IS NULL AND "journal_categories"."journal_entry_id" = $1 LIMIT $2[0m  [["journal_entry_id", 9], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCategory Exists? (2.9ms)[0m  [1m[34mSELECT 1 AS one FROM "categories" WHERE "categories"."category" = $1 LIMIT $2[0m  [["category", "quidem"], ["LIMIT", 1]]
+  [1m[36mCategory Create (0.3ms)[0m  [1m[32mINSERT INTO "categories" ("category", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["category", "quidem"], ["created_at", "2024-10-20 11:59:32.660086"], ["updated_at", "2024-10-20 11:59:32.660086"]]
+  [1m[36mJournalCategory Create (0.5ms)[0m  [1m[32mINSERT INTO "journal_categories" ("journal_entry_id", "category_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["journal_entry_id", 9], ["category_id", 13], ["created_at", "2024-10-20 11:59:32.663415"], ["updated_at", "2024-10-20 11:59:32.663415"]]
+  [1m[36mTRANSACTION (11.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mJournalCategory Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM "journal_categories" WHERE "journal_categories"."category_id" = $1 AND "journal_categories"."journal_entry_id" IS NULL LIMIT $2[0m  [["category_id", 10], ["LIMIT", 1]]
+  [1m[36mCACHE JournalCategory Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "journal_categories" WHERE "journal_categories"."category_id" = $1 AND "journal_categories"."journal_entry_id" IS NULL LIMIT $2[0m  [["category_id", 10], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mJournalEntry Create (2.9ms)[0m  [1m[32mINSERT INTO "journal_entries" ("user_id", "title", "entry", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["user_id", 3], ["title", "Corrupti Consequuntur Eveniet."], ["entry", "Voluptatum sequi aut. Quae itaque nihil. Quasi animi similique. Mollitia quas unde. Sit quam sapiente. Ut est tenetur. Eveniet vel nisi. Animi rerum ex. Dicta quis sed. Ab nulla consequatur."], ["created_at", "2024-10-20 11:59:32.688693"], ["updated_at", "2024-10-20 11:59:32.688693"]]
+  [1m[36mJournalCategory Create (0.6ms)[0m  [1m[32mINSERT INTO "journal_categories" ("journal_entry_id", "category_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["journal_entry_id", 10], ["category_id", 10], ["created_at", "2024-10-20 11:59:32.695239"], ["updated_at", "2024-10-20 11:59:32.695239"]]
+  [1m[36mTRANSACTION (3.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mJournalCategory Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "journal_categories" WHERE "journal_categories"."category_id" = $1 AND "journal_categories"."journal_entry_id" IS NULL LIMIT $2[0m  [["category_id", 4], ["LIMIT", 1]]
+  [1m[36mCACHE JournalCategory Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "journal_categories" WHERE "journal_categories"."category_id" = $1 AND "journal_categories"."journal_entry_id" IS NULL LIMIT $2[0m  [["category_id", 4], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mJournalEntry Create (1.8ms)[0m  [1m[32mINSERT INTO "journal_entries" ("user_id", "title", "entry", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["user_id", 2], ["title", "Fugit Vero Fugiat Est Odit."], ["entry", "Velit eum quo. Aut id aliquid. Quia dolorem dicta. Nobis distinctio voluptas. Iure quod aut. Voluptas rem architecto. Sunt harum quia. Sequi iusto qui."], ["created_at", "2024-10-20 11:59:32.707977"], ["updated_at", "2024-10-20 11:59:32.707977"]]
+  [1m[36mJournalCategory Create (0.5ms)[0m  [1m[32mINSERT INTO "journal_categories" ("journal_entry_id", "category_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["journal_entry_id", 11], ["category_id", 4], ["created_at", "2024-10-20 11:59:32.711706"], ["updated_at", "2024-10-20 11:59:32.711706"]]
+  [1m[36mTRANSACTION (9.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mJournalCategory Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "journal_categories" WHERE "journal_categories"."category_id" = $1 AND "journal_categories"."journal_entry_id" = $2 LIMIT $3[0m  [["category_id", 9], ["journal_entry_id", 11], ["LIMIT", 1]]
+  [1m[36mCACHE JournalCategory Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "journal_categories" WHERE "journal_categories"."category_id" = $1 AND "journal_categories"."journal_entry_id" = $2 LIMIT $3[0m  [["category_id", 9], ["journal_entry_id", 11], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mJournalCategory Create (1.6ms)[0m  [1m[32mINSERT INTO "journal_categories" ("journal_entry_id", "category_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["journal_entry_id", 11], ["category_id", 9], ["created_at", "2024-10-20 11:59:32.727441"], ["updated_at", "2024-10-20 11:59:32.727441"]]
+  [1m[36mTRANSACTION (3.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mJournalCategory Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "journal_categories" WHERE "journal_categories"."category_id" = $1 AND "journal_categories"."journal_entry_id" IS NULL LIMIT $2[0m  [["category_id", 9], ["LIMIT", 1]]
+  [1m[36mCACHE JournalCategory Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "journal_categories" WHERE "journal_categories"."category_id" = $1 AND "journal_categories"."journal_entry_id" IS NULL LIMIT $2[0m  [["category_id", 9], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mJournalEntry Create (1.9ms)[0m  [1m[32mINSERT INTO "journal_entries" ("user_id", "title", "entry", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["user_id", 2], ["title", "Aspernatur Sint Molestiae Ducimus."], ["entry", "Perspiciatis nihil facere. In quis occaecati. Et sit aut. Est non esse. Voluptates eveniet aliquam."], ["created_at", "2024-10-20 11:59:32.742558"], ["updated_at", "2024-10-20 11:59:32.742558"]]
+  [1m[36mJournalCategory Create (0.4ms)[0m  [1m[32mINSERT INTO "journal_categories" ("journal_entry_id", "category_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["journal_entry_id", 12], ["category_id", 9], ["created_at", "2024-10-20 11:59:32.746377"], ["updated_at", "2024-10-20 11:59:32.746377"]]
+  [1m[36mTRANSACTION (29.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mJournalCategory Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "journal_categories" WHERE "journal_categories"."category_id" IS NULL AND "journal_categories"."journal_entry_id" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mCACHE JournalCategory Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "journal_categories" WHERE "journal_categories"."category_id" IS NULL AND "journal_categories"."journal_entry_id" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mJournalEntry Create (1.8ms)[0m  [1m[32mINSERT INTO "journal_entries" ("user_id", "title", "entry", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["user_id", 3], ["title", "Nihil Reprehenderit Hic Debitis."], ["entry", "Eaque animi sint. Sit non aut. Dolorum voluptatem nobis. Ducimus ab iste. Reiciendis expedita nisi. Itaque ea incidunt."], ["created_at", "2024-10-20 11:59:32.785928"], ["updated_at", "2024-10-20 11:59:32.785928"]]
+  [1m[36mCategory Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "categories" WHERE "categories"."category" = $1 LIMIT $2[0m  [["category", "sit-pariatur"], ["LIMIT", 1]]
+  [1m[36mCategory Create (0.3ms)[0m  [1m[32mINSERT INTO "categories" ("category", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["category", "sit-pariatur"], ["created_at", "2024-10-20 11:59:32.791583"], ["updated_at", "2024-10-20 11:59:32.791583"]]
+  [1m[36mJournalCategory Create (0.4ms)[0m  [1m[32mINSERT INTO "journal_categories" ("journal_entry_id", "category_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["journal_entry_id", 13], ["category_id", 14], ["created_at", "2024-10-20 11:59:32.794620"], ["updated_at", "2024-10-20 11:59:32.794620"]]
+  [1m[36mTRANSACTION (19.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mJournalCategory Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM "journal_categories" WHERE "journal_categories"."category_id" = $1 AND "journal_categories"."journal_entry_id" = $2 LIMIT $3[0m  [["category_id", 6], ["journal_entry_id", 13], ["LIMIT", 1]]
+  [1m[36mCACHE JournalCategory Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "journal_categories" WHERE "journal_categories"."category_id" = $1 AND "journal_categories"."journal_entry_id" = $2 LIMIT $3[0m  [["category_id", 6], ["journal_entry_id", 13], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mJournalCategory Create (1.7ms)[0m  [1m[32mINSERT INTO "journal_categories" ("journal_entry_id", "category_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["journal_entry_id", 13], ["category_id", 6], ["created_at", "2024-10-20 11:59:32.827200"], ["updated_at", "2024-10-20 11:59:32.827200"]]
+  [1m[36mTRANSACTION (25.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mJournalCategory Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "journal_categories" WHERE "journal_categories"."category_id" = $1 AND "journal_categories"."journal_entry_id" = $2 LIMIT $3[0m  [["category_id", 7], ["journal_entry_id", 13], ["LIMIT", 1]]
+  [1m[36mCACHE JournalCategory Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "journal_categories" WHERE "journal_categories"."category_id" = $1 AND "journal_categories"."journal_entry_id" = $2 LIMIT $3[0m  [["category_id", 7], ["journal_entry_id", 13], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mJournalCategory Create (2.4ms)[0m  [1m[32mINSERT INTO "journal_categories" ("journal_entry_id", "category_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["journal_entry_id", 13], ["category_id", 7], ["created_at", "2024-10-20 11:59:32.862056"], ["updated_at", "2024-10-20 11:59:32.862056"]]
+  [1m[36mTRANSACTION (19.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mJournalCategory Exists? (0.7ms)[0m  [1m[34mSELECT 1 AS one FROM "journal_categories" WHERE "journal_categories"."category_id" = $1 AND "journal_categories"."journal_entry_id" IS NULL LIMIT $2[0m  [["category_id", 6], ["LIMIT", 1]]
+  [1m[36mCACHE JournalCategory Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "journal_categories" WHERE "journal_categories"."category_id" = $1 AND "journal_categories"."journal_entry_id" IS NULL LIMIT $2[0m  [["category_id", 6], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mJournalEntry Create (4.0ms)[0m  [1m[32mINSERT INTO "journal_entries" ("user_id", "title", "entry", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["user_id", 2], ["title", "Numquam Quae Nulla Fugiat."], ["entry", "Illo corrupti expedita. Est atque beatae. Ullam culpa voluptatibus. Saepe asperiores minima. Modi pariatur voluptate. Maxime non dignissimos. Et provident beatae. Omnis explicabo asperiores."], ["created_at", "2024-10-20 11:59:32.906128"], ["updated_at", "2024-10-20 11:59:32.906128"]]
+  [1m[36mJournalCategory Create (0.8ms)[0m  [1m[32mINSERT INTO "journal_categories" ("journal_entry_id", "category_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["journal_entry_id", 14], ["category_id", 6], ["created_at", "2024-10-20 11:59:32.920602"], ["updated_at", "2024-10-20 11:59:32.920602"]]
+  [1m[36mTRANSACTION (19.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mJournalCategory Exists? (1.5ms)[0m  [1m[34mSELECT 1 AS one FROM "journal_categories" WHERE "journal_categories"."category_id" = $1 AND "journal_categories"."journal_entry_id" = $2 LIMIT $3[0m  [["category_id", 11], ["journal_entry_id", 14], ["LIMIT", 1]]
+  [1m[36mCACHE JournalCategory Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "journal_categories" WHERE "journal_categories"."category_id" = $1 AND "journal_categories"."journal_entry_id" = $2 LIMIT $3[0m  [["category_id", 11], ["journal_entry_id", 14], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mJournalCategory Create (2.1ms)[0m  [1m[32mINSERT INTO "journal_categories" ("journal_entry_id", "category_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["journal_entry_id", 14], ["category_id", 11], ["created_at", "2024-10-20 11:59:32.956094"], ["updated_at", "2024-10-20 11:59:32.956094"]]
+  [1m[36mTRANSACTION (6.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mJournalCategory Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "journal_categories" WHERE "journal_categories"."category_id" = $1 AND "journal_categories"."journal_entry_id" IS NULL LIMIT $2[0m  [["category_id", 11], ["LIMIT", 1]]
+  [1m[36mCACHE JournalCategory Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "journal_categories" WHERE "journal_categories"."category_id" = $1 AND "journal_categories"."journal_entry_id" IS NULL LIMIT $2[0m  [["category_id", 11], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mJournalEntry Create (2.8ms)[0m  [1m[32mINSERT INTO "journal_entries" ("user_id", "title", "entry", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["user_id", 2], ["title", "Voluptates Et Ratione Recusandae."], ["entry", "At numquam itaque. Velit animi illum. Voluptatem cumque perferendis. Facere tempora optio. Beatae et atque. Veniam perferendis saepe. Illo aut officiis. Sint voluptatem placeat."], ["created_at", "2024-10-20 11:59:32.978864"], ["updated_at", "2024-10-20 11:59:32.978864"]]
+  [1m[36mJournalCategory Create (0.4ms)[0m  [1m[32mINSERT INTO "journal_categories" ("journal_entry_id", "category_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["journal_entry_id", 15], ["category_id", 11], ["created_at", "2024-10-20 11:59:32.986246"], ["updated_at", "2024-10-20 11:59:32.986246"]]
+  [1m[36mTRANSACTION (11.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mJournalCategory Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "journal_categories" WHERE "journal_categories"."category_id" = $1 AND "journal_categories"."journal_entry_id" = $2 LIMIT $3[0m  [["category_id", 2], ["journal_entry_id", 15], ["LIMIT", 1]]
+  [1m[36mCACHE JournalCategory Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "journal_categories" WHERE "journal_categories"."category_id" = $1 AND "journal_categories"."journal_entry_id" = $2 LIMIT $3[0m  [["category_id", 2], ["journal_entry_id", 15], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mJournalCategory Create (1.4ms)[0m  [1m[32mINSERT INTO "journal_categories" ("journal_entry_id", "category_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["journal_entry_id", 15], ["category_id", 2], ["created_at", "2024-10-20 11:59:33.005723"], ["updated_at", "2024-10-20 11:59:33.005723"]]
+  [1m[36mTRANSACTION (24.4ms)[0m  [1m[35mCOMMIT[0m
+Started GET "/tasks" for ::1 at 2024-10-20 12:59:59 +0100
+  [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by TasksController#index as HTML
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Completed 401 Unauthorized in 174ms (ActiveRecord: 26.8ms | Allocations: 28328)
+
+
+Started GET "/users/sign_in" for ::1 at 2024-10-20 12:59:59 +0100
+Processing by Devise::SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (Duration: 2.7ms | Allocations: 549)
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 307.0ms | Allocations: 10547)
+  Rendered shared/_navbar.html.erb (Duration: 1.8ms | Allocations: 722)
+  Rendered shared/_flashes.html.erb (Duration: 0.9ms | Allocations: 207)
+  Rendered shared/_footer.html.erb (Duration: 0.7ms | Allocations: 117)
+  Rendered layout layouts/application.html.erb (Duration: 1359.4ms | Allocations: 85099)
+Completed 200 OK in 1415ms (Views: 1412.5ms | ActiveRecord: 0.0ms | Allocations: 88756)
+
+
+Started POST "/users/sign_in" for ::1 at 2024-10-20 13:00:10 +0100
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"email"=>"pauldevanney92@gmail.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "pauldevanney92@gmail.com"], ["LIMIT", 1]]
+Redirected to http://localhost:3000/tasks
+Completed 303 See Other in 406ms (ActiveRecord: 0.3ms | Allocations: 4028)
+
+
+Started GET "/tasks" for ::1 at 2024-10-20 13:00:10 +0100
+Processing by TasksController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering tasks/index.html.erb within layouts/application
+  [1m[36mTask Load (0.5ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks"[0m
+  ↳ app/views/tasks/index.html.erb:19
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/policies/task_policy.rb:33:in `if_user_or_admin?'
+  Rendered tasks/_links.html.erb (Duration: 44.8ms | Allocations: 3971)
+  [1m[36mSubTask Exists? (0.7ms)[0m  [1m[34mSELECT 1 AS one FROM "sub_tasks" WHERE "sub_tasks"."task_id" = $1 LIMIT $2[0m  [["task_id", 1], ["LIMIT", 1]]
+  ↳ app/views/tasks/_task_card.html.erb:23
+  [1m[36mSubTask Load (0.5ms)[0m  [1m[34mSELECT "sub_tasks".* FROM "sub_tasks" WHERE "sub_tasks"."task_id" = $1[0m  [["task_id", 1]]
+  ↳ app/views/tasks/_task_card.html.erb:32
+  Rendered sub_tasks/_links.html.erb (Duration: 1.6ms | Allocations: 678)
+  Rendered tasks/_subtask_card.html.erb (Duration: 2.7ms | Allocations: 1071)
+  Rendered sub_tasks/_links.html.erb (Duration: 0.3ms | Allocations: 111)
+  Rendered tasks/_subtask_card.html.erb (Duration: 0.5ms | Allocations: 207)
+  Rendered sub_tasks/_links.html.erb (Duration: 0.2ms | Allocations: 111)
+  Rendered tasks/_subtask_card.html.erb (Duration: 0.4ms | Allocations: 207)
+  Rendered sub_tasks/_links.html.erb (Duration: 0.2ms | Allocations: 111)
+  Rendered tasks/_subtask_card.html.erb (Duration: 0.4ms | Allocations: 207)
+  Rendered sub_tasks/_links.html.erb (Duration: 0.2ms | Allocations: 111)
+  Rendered tasks/_subtask_card.html.erb (Duration: 0.5ms | Allocations: 207)
+  Rendered sub_tasks/_links.html.erb (Duration: 0.2ms | Allocations: 111)
+  Rendered tasks/_subtask_card.html.erb (Duration: 0.4ms | Allocations: 207)
+  Rendered tasks/_task_card.html.erb (Duration: 95.3ms | Allocations: 16832)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/policies/task_policy.rb:33:in `if_user_or_admin?'
+  Rendered tasks/_links.html.erb (Duration: 1.5ms | Allocations: 580)
+  [1m[36mSubTask Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "sub_tasks" WHERE "sub_tasks"."task_id" = $1 LIMIT $2[0m  [["task_id", 2], ["LIMIT", 1]]
+  ↳ app/views/tasks/_task_card.html.erb:23
+  [1m[36mSubTask Load (0.3ms)[0m  [1m[34mSELECT "sub_tasks".* FROM "sub_tasks" WHERE "sub_tasks"."task_id" = $1[0m  [["task_id", 2]]
+  ↳ app/views/tasks/_task_card.html.erb:32
+  Rendered sub_tasks/_links.html.erb (Duration: 0.4ms | Allocations: 111)
+  Rendered tasks/_subtask_card.html.erb (Duration: 0.6ms | Allocations: 207)
+  Rendered sub_tasks/_links.html.erb (Duration: 0.3ms | Allocations: 111)
+  Rendered tasks/_subtask_card.html.erb (Duration: 0.5ms | Allocations: 207)
+  Rendered sub_tasks/_links.html.erb (Duration: 0.2ms | Allocations: 111)
+  Rendered tasks/_subtask_card.html.erb (Duration: 0.4ms | Allocations: 207)
+  Rendered tasks/_task_card.html.erb (Duration: 7.0ms | Allocations: 2536)
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/policies/task_policy.rb:33:in `if_user_or_admin?'
+  Rendered tasks/_links.html.erb (Duration: 3.1ms | Allocations: 701)
+  [1m[36mSubTask Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "sub_tasks" WHERE "sub_tasks"."task_id" = $1 LIMIT $2[0m  [["task_id", 3], ["LIMIT", 1]]
+  ↳ app/views/tasks/_task_card.html.erb:23
+  [1m[36mSubTask Load (0.3ms)[0m  [1m[34mSELECT "sub_tasks".* FROM "sub_tasks" WHERE "sub_tasks"."task_id" = $1[0m  [["task_id", 3]]
+  ↳ app/views/tasks/_task_card.html.erb:32
+  Rendered sub_tasks/_links.html.erb (Duration: 0.3ms | Allocations: 111)
+  Rendered tasks/_subtask_card.html.erb (Duration: 0.5ms | Allocations: 207)
+  Rendered sub_tasks/_links.html.erb (Duration: 0.2ms | Allocations: 111)
+  Rendered tasks/_subtask_card.html.erb (Duration: 0.4ms | Allocations: 206)
+  Rendered sub_tasks/_links.html.erb (Duration: 0.2ms | Allocations: 111)
+  Rendered tasks/_subtask_card.html.erb (Duration: 0.5ms | Allocations: 207)
+  Rendered tasks/_task_card.html.erb (Duration: 20.2ms | Allocations: 2653)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/policies/task_policy.rb:33:in `if_user_or_admin?'
+  Rendered tasks/_links.html.erb (Duration: 1.4ms | Allocations: 568)
+  [1m[36mSubTask Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "sub_tasks" WHERE "sub_tasks"."task_id" = $1 LIMIT $2[0m  [["task_id", 4], ["LIMIT", 1]]
+  ↳ app/views/tasks/_task_card.html.erb:23
+  [1m[36mSubTask Load (0.2ms)[0m  [1m[34mSELECT "sub_tasks".* FROM "sub_tasks" WHERE "sub_tasks"."task_id" = $1[0m  [["task_id", 4]]
+  ↳ app/views/tasks/_task_card.html.erb:32
+  Rendered sub_tasks/_links.html.erb (Duration: 0.3ms | Allocations: 111)
+  Rendered tasks/_subtask_card.html.erb (Duration: 0.5ms | Allocations: 207)
+  Rendered sub_tasks/_links.html.erb (Duration: 0.2ms | Allocations: 111)
+  Rendered tasks/_subtask_card.html.erb (Duration: 0.5ms | Allocations: 207)
+  Rendered sub_tasks/_links.html.erb (Duration: 0.2ms | Allocations: 111)
+  Rendered tasks/_subtask_card.html.erb (Duration: 0.4ms | Allocations: 207)
+  Rendered sub_tasks/_links.html.erb (Duration: 0.2ms | Allocations: 111)
+  Rendered tasks/_subtask_card.html.erb (Duration: 0.4ms | Allocations: 207)
+  Rendered sub_tasks/_links.html.erb (Duration: 0.2ms | Allocations: 111)
+  Rendered tasks/_subtask_card.html.erb (Duration: 0.4ms | Allocations: 206)
+  Rendered sub_tasks/_links.html.erb (Duration: 0.2ms | Allocations: 111)
+  Rendered tasks/_subtask_card.html.erb (Duration: 0.4ms | Allocations: 207)
+  Rendered sub_tasks/_links.html.erb (Duration: 0.2ms | Allocations: 111)
+  Rendered tasks/_subtask_card.html.erb (Duration: 0.4ms | Allocations: 207)
+  Rendered tasks/_task_card.html.erb (Duration: 8.9ms | Allocations: 3672)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/policies/task_policy.rb:33:in `if_user_or_admin?'
+  Rendered tasks/_links.html.erb (Duration: 1.9ms | Allocations: 701)
+  [1m[36mSubTask Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "sub_tasks" WHERE "sub_tasks"."task_id" = $1 LIMIT $2[0m  [["task_id", 5], ["LIMIT", 1]]
+  ↳ app/views/tasks/_task_card.html.erb:23
+  [1m[36mSubTask Load (0.2ms)[0m  [1m[34mSELECT "sub_tasks".* FROM "sub_tasks" WHERE "sub_tasks"."task_id" = $1[0m  [["task_id", 5]]
+  ↳ app/views/tasks/_task_card.html.erb:32
+  Rendered sub_tasks/_links.html.erb (Duration: 0.5ms | Allocations: 111)
+  Rendered tasks/_subtask_card.html.erb (Duration: 0.8ms | Allocations: 207)
+  Rendered sub_tasks/_links.html.erb (Duration: 0.4ms | Allocations: 111)
+  Rendered tasks/_subtask_card.html.erb (Duration: 0.6ms | Allocations: 207)
+  Rendered tasks/_task_card.html.erb (Duration: 7.0ms | Allocations: 2365)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/policies/task_policy.rb:33:in `if_user_or_admin?'
+  Rendered tasks/_links.html.erb (Duration: 2.1ms | Allocations: 568)
+  [1m[36mSubTask Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "sub_tasks" WHERE "sub_tasks"."task_id" = $1 LIMIT $2[0m  [["task_id", 6], ["LIMIT", 1]]
+  ↳ app/views/tasks/_task_card.html.erb:23
+  [1m[36mSubTask Load (0.6ms)[0m  [1m[34mSELECT "sub_tasks".* FROM "sub_tasks" WHERE "sub_tasks"."task_id" = $1[0m  [["task_id", 6]]
+  ↳ app/views/tasks/_task_card.html.erb:32
+  Rendered sub_tasks/_links.html.erb (Duration: 0.3ms | Allocations: 111)
+  Rendered tasks/_subtask_card.html.erb (Duration: 0.6ms | Allocations: 207)
+  Rendered sub_tasks/_links.html.erb (Duration: 0.2ms | Allocations: 111)
+  Rendered tasks/_subtask_card.html.erb (Duration: 0.4ms | Allocations: 207)
+  Rendered tasks/_task_card.html.erb (Duration: 8.0ms | Allocations: 2233)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/policies/task_policy.rb:33:in `if_user_or_admin?'
+  Rendered tasks/_links.html.erb (Duration: 2.2ms | Allocations: 568)
+  [1m[36mSubTask Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "sub_tasks" WHERE "sub_tasks"."task_id" = $1 LIMIT $2[0m  [["task_id", 7], ["LIMIT", 1]]
+  ↳ app/views/tasks/_task_card.html.erb:23
+  [1m[36mSubTask Load (0.2ms)[0m  [1m[34mSELECT "sub_tasks".* FROM "sub_tasks" WHERE "sub_tasks"."task_id" = $1[0m  [["task_id", 7]]
+  ↳ app/views/tasks/_task_card.html.erb:32
+  Rendered sub_tasks/_links.html.erb (Duration: 0.3ms | Allocations: 111)
+  Rendered tasks/_subtask_card.html.erb (Duration: 0.5ms | Allocations: 207)
+  Rendered sub_tasks/_links.html.erb (Duration: 0.2ms | Allocations: 111)
+  Rendered tasks/_subtask_card.html.erb (Duration: 0.5ms | Allocations: 207)
+  Rendered tasks/_task_card.html.erb (Duration: 6.5ms | Allocations: 2233)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/policies/task_policy.rb:33:in `if_user_or_admin?'
+  Rendered tasks/_links.html.erb (Duration: 1.6ms | Allocations: 568)
+  [1m[36mSubTask Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "sub_tasks" WHERE "sub_tasks"."task_id" = $1 LIMIT $2[0m  [["task_id", 8], ["LIMIT", 1]]
+  ↳ app/views/tasks/_task_card.html.erb:23
+  [1m[36mSubTask Load (0.2ms)[0m  [1m[34mSELECT "sub_tasks".* FROM "sub_tasks" WHERE "sub_tasks"."task_id" = $1[0m  [["task_id", 8]]
+  ↳ app/views/tasks/_task_card.html.erb:32
+  Rendered sub_tasks/_links.html.erb (Duration: 0.3ms | Allocations: 111)
+  Rendered tasks/_subtask_card.html.erb (Duration: 0.5ms | Allocations: 207)
+  Rendered sub_tasks/_links.html.erb (Duration: 0.2ms | Allocations: 111)
+  Rendered tasks/_subtask_card.html.erb (Duration: 0.4ms | Allocations: 207)
+  Rendered sub_tasks/_links.html.erb (Duration: 0.2ms | Allocations: 111)
+  Rendered tasks/_subtask_card.html.erb (Duration: 0.4ms | Allocations: 207)
+  Rendered sub_tasks/_links.html.erb (Duration: 0.2ms | Allocations: 111)
+  Rendered tasks/_subtask_card.html.erb (Duration: 0.4ms | Allocations: 207)
+  Rendered tasks/_task_card.html.erb (Duration: 7.3ms | Allocations: 2809)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/policies/task_policy.rb:33:in `if_user_or_admin?'
+  Rendered tasks/_links.html.erb (Duration: 1.9ms | Allocations: 568)
+  [1m[36mSubTask Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "sub_tasks" WHERE "sub_tasks"."task_id" = $1 LIMIT $2[0m  [["task_id", 9], ["LIMIT", 1]]
+  ↳ app/views/tasks/_task_card.html.erb:23
+  [1m[36mSubTask Load (0.2ms)[0m  [1m[34mSELECT "sub_tasks".* FROM "sub_tasks" WHERE "sub_tasks"."task_id" = $1[0m  [["task_id", 9]]
+  ↳ app/views/tasks/_task_card.html.erb:32
+  Rendered sub_tasks/_links.html.erb (Duration: 0.3ms | Allocations: 111)
+  Rendered tasks/_subtask_card.html.erb (Duration: 0.5ms | Allocations: 207)
+  Rendered sub_tasks/_links.html.erb (Duration: 0.2ms | Allocations: 111)
+  Rendered tasks/_subtask_card.html.erb (Duration: 0.4ms | Allocations: 207)
+  Rendered sub_tasks/_links.html.erb (Duration: 0.2ms | Allocations: 111)
+  Rendered tasks/_subtask_card.html.erb (Duration: 0.4ms | Allocations: 207)
+  Rendered tasks/_task_card.html.erb (Duration: 6.9ms | Allocations: 2521)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/policies/task_policy.rb:33:in `if_user_or_admin?'
+  Rendered tasks/_links.html.erb (Duration: 1.7ms | Allocations: 568)
+  [1m[36mSubTask Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "sub_tasks" WHERE "sub_tasks"."task_id" = $1 LIMIT $2[0m  [["task_id", 10], ["LIMIT", 1]]
+  ↳ app/views/tasks/_task_card.html.erb:23
+  [1m[36mSubTask Load (0.2ms)[0m  [1m[34mSELECT "sub_tasks".* FROM "sub_tasks" WHERE "sub_tasks"."task_id" = $1[0m  [["task_id", 10]]
+  ↳ app/views/tasks/_task_card.html.erb:32
+  Rendered sub_tasks/_links.html.erb (Duration: 0.3ms | Allocations: 111)
+  Rendered tasks/_subtask_card.html.erb (Duration: 0.6ms | Allocations: 207)
+  Rendered sub_tasks/_links.html.erb (Duration: 0.3ms | Allocations: 111)
+  Rendered tasks/_subtask_card.html.erb (Duration: 0.5ms | Allocations: 207)
+  Rendered sub_tasks/_links.html.erb (Duration: 0.2ms | Allocations: 111)
+  Rendered tasks/_subtask_card.html.erb (Duration: 0.4ms | Allocations: 207)
+  Rendered sub_tasks/_links.html.erb (Duration: 0.2ms | Allocations: 111)
+  Rendered tasks/_subtask_card.html.erb (Duration: 0.4ms | Allocations: 207)
+  Rendered sub_tasks/_links.html.erb (Duration: 0.2ms | Allocations: 111)
+  Rendered tasks/_subtask_card.html.erb (Duration: 0.4ms | Allocations: 207)
+  Rendered tasks/_task_card.html.erb (Duration: 8.0ms | Allocations: 3097)
+  Rendered tasks/index.html.erb within layouts/application (Duration: 211.9ms | Allocations: 58137)
+  Rendered shared/_navbar.html.erb (Duration: 4.1ms | Allocations: 255)
+  Rendered shared/_flashes.html.erb (Duration: 0.1ms | Allocations: 32)
+  Rendered shared/_footer.html.erb (Duration: 0.0ms | Allocations: 9)
+  Rendered layout layouts/application.html.erb (Duration: 277.8ms | Allocations: 66810)
+Completed 200 OK in 294ms (Views: 263.1ms | ActiveRecord: 16.4ms | Allocations: 71877)
+
+
+Started GET "/" for ::1 at 2024-10-20 13:00:15 +0100
+Processing by PagesController#home as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering pages/home.html.erb within layouts/application
+  Rendered shared/_jumbotron.html.erb (Duration: 1.9ms | Allocations: 182)
+  Rendered pages/home.html.erb within layouts/application (Duration: 19.9ms | Allocations: 451)
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/shared/_navbar.html.erb:16
+  Rendered shared/_navbar.html.erb (Duration: 6.4ms | Allocations: 926)
+  Rendered shared/_flashes.html.erb (Duration: 0.2ms | Allocations: 22)
+  Rendered shared/_footer.html.erb (Duration: 0.1ms | Allocations: 8)
+  Rendered layout layouts/application.html.erb (Duration: 55.2ms | Allocations: 9648)
+Completed 200 OK in 70ms (Views: 56.4ms | ActiveRecord: 0.5ms | Allocations: 10235)
+
+
+Started GET "/" for ::1 at 2024-10-20 13:01:53 +0100
+Processing by PagesController#home as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering pages/home.html.erb within layouts/application
+  Rendered shared/_jumbotron.html.erb (Duration: 0.6ms | Allocations: 187)
+  Rendered pages/home.html.erb within layouts/application (Duration: 1.9ms | Allocations: 452)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/shared/_navbar.html.erb:18
+  Rendered shared/_navbar.html.erb (Duration: 15.6ms | Allocations: 7144)
+  Rendered shared/_flashes.html.erb (Duration: 0.6ms | Allocations: 192)
+  Rendered shared/_footer.html.erb (Duration: 0.4ms | Allocations: 115)
+  Rendered layout layouts/application.html.erb (Duration: 53.1ms | Allocations: 40117)
+Completed 200 OK in 59ms (Views: 50.9ms | ActiveRecord: 4.1ms | Allocations: 42027)
+
+
+Started GET "/" for ::1 at 2024-10-20 13:02:06 +0100
+Processing by PagesController#home as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering pages/home.html.erb within layouts/application
+  Rendered shared/_jumbotron.html.erb (Duration: 0.5ms | Allocations: 187)
+  Rendered pages/home.html.erb within layouts/application (Duration: 1.8ms | Allocations: 458)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/shared/_navbar.html.erb:18
+  Rendered shared/_navbar.html.erb (Duration: 14.5ms | Allocations: 7144)
+  Rendered shared/_flashes.html.erb (Duration: 0.5ms | Allocations: 192)
+  Rendered shared/_footer.html.erb (Duration: 0.3ms | Allocations: 115)
+  Rendered layout layouts/application.html.erb (Duration: 50.5ms | Allocations: 40372)
+Completed 200 OK in 57ms (Views: 48.6ms | ActiveRecord: 3.8ms | Allocations: 42282)
+
+
+Started GET "/" for ::1 at 2024-10-20 13:03:07 +0100
+Processing by PagesController#home as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering pages/home.html.erb within layouts/application
+  Rendered shared/_jumbotron.html.erb (Duration: 0.7ms | Allocations: 187)
+  Rendered pages/home.html.erb within layouts/application (Duration: 2.1ms | Allocations: 456)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/shared/_navbar.html.erb:18
+  Rendered shared/_navbar.html.erb (Duration: 15.7ms | Allocations: 7146)
+  Rendered shared/_flashes.html.erb (Duration: 0.6ms | Allocations: 192)
+  Rendered shared/_footer.html.erb (Duration: 0.5ms | Allocations: 115)
+  Rendered layout layouts/application.html.erb (Duration: 57.7ms | Allocations: 40354)
+Completed 200 OK in 64ms (Views: 55.6ms | ActiveRecord: 4.0ms | Allocations: 42263)
+
+
+Started GET "/" for ::1 at 2024-10-20 13:03:31 +0100
+Processing by PagesController#home as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering pages/home.html.erb within layouts/application
+  Rendered shared/_jumbotron.html.erb (Duration: 0.5ms | Allocations: 187)
+  Rendered pages/home.html.erb within layouts/application (Duration: 1.5ms | Allocations: 456)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/shared/_navbar.html.erb:18
+  Rendered shared/_navbar.html.erb (Duration: 14.6ms | Allocations: 7148)
+  Rendered shared/_flashes.html.erb (Duration: 0.6ms | Allocations: 192)
+  Rendered shared/_footer.html.erb (Duration: 0.5ms | Allocations: 115)
+  Rendered layout layouts/application.html.erb (Duration: 52.0ms | Allocations: 40369)
+Completed 200 OK in 58ms (Views: 50.4ms | ActiveRecord: 3.7ms | Allocations: 42280)
+
+
+Started GET "/" for ::1 at 2024-10-20 13:04:09 +0100
+Processing by PagesController#home as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering pages/home.html.erb within layouts/application
+  Rendered shared/_jumbotron.html.erb (Duration: 0.5ms | Allocations: 187)
+  Rendered pages/home.html.erb within layouts/application (Duration: 1.4ms | Allocations: 456)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/shared/_navbar.html.erb:18
+  Rendered shared/_navbar.html.erb (Duration: 15.0ms | Allocations: 7144)
+  Rendered shared/_flashes.html.erb (Duration: 0.6ms | Allocations: 192)
+  Rendered shared/_footer.html.erb (Duration: 0.5ms | Allocations: 115)
+  Rendered layout layouts/application.html.erb (Duration: 51.6ms | Allocations: 40378)
+Completed 200 OK in 58ms (Views: 49.7ms | ActiveRecord: 3.8ms | Allocations: 42287)
+
+
+Started GET "/" for ::1 at 2024-10-20 13:04:35 +0100
+Processing by PagesController#home as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering pages/home.html.erb within layouts/application
+  Rendered shared/_jumbotron.html.erb (Duration: 0.6ms | Allocations: 187)
+  Rendered pages/home.html.erb within layouts/application (Duration: 2.2ms | Allocations: 456)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/shared/_navbar.html.erb:18
+  Rendered shared/_navbar.html.erb (Duration: 17.1ms | Allocations: 7146)
+  Rendered shared/_flashes.html.erb (Duration: 0.7ms | Allocations: 192)
+  Rendered shared/_footer.html.erb (Duration: 0.5ms | Allocations: 115)
+  Rendered layout layouts/application.html.erb (Duration: 61.2ms | Allocations: 40434)
+Completed 200 OK in 67ms (Views: 59.4ms | ActiveRecord: 3.6ms | Allocations: 42343)
+
+
+Started GET "/" for ::1 at 2024-10-20 13:04:45 +0100
+Processing by PagesController#home as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering pages/home.html.erb within layouts/application
+  Rendered shared/_jumbotron.html.erb (Duration: 0.5ms | Allocations: 187)
+  Rendered pages/home.html.erb within layouts/application (Duration: 1.8ms | Allocations: 456)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/shared/_navbar.html.erb:18
+  Rendered shared/_navbar.html.erb (Duration: 19.8ms | Allocations: 7163)
+  Rendered shared/_flashes.html.erb (Duration: 0.5ms | Allocations: 194)
+  Rendered shared/_footer.html.erb (Duration: 0.4ms | Allocations: 115)
+  Rendered layout layouts/application.html.erb (Duration: 55.9ms | Allocations: 40289)
+Completed 200 OK in 62ms (Views: 53.0ms | ActiveRecord: 4.7ms | Allocations: 42198)
+
+
+Started GET "/" for ::1 at 2024-10-20 13:04:55 +0100
+Processing by PagesController#home as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering pages/home.html.erb within layouts/application
+  Rendered shared/_jumbotron.html.erb (Duration: 0.5ms | Allocations: 187)
+  Rendered pages/home.html.erb within layouts/application (Duration: 1.7ms | Allocations: 456)
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/shared/_navbar.html.erb:18
+  Rendered shared/_navbar.html.erb (Duration: 17.4ms | Allocations: 7144)
+  Rendered shared/_flashes.html.erb (Duration: 0.5ms | Allocations: 192)
+  Rendered shared/_footer.html.erb (Duration: 0.3ms | Allocations: 115)
+  Rendered layout layouts/application.html.erb (Duration: 55.1ms | Allocations: 40385)
+Completed 200 OK in 61ms (Views: 52.1ms | ActiveRecord: 4.8ms | Allocations: 42294)
+
+
+Started GET "/tasks" for ::1 at 2024-10-20 13:05:18 +0100
+Processing by TasksController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering tasks/index.html.erb within layouts/application
+  [1m[36mTask Load (0.3ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks"[0m
+  ↳ app/views/tasks/index.html.erb:19
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/policies/task_policy.rb:33:in `if_user_or_admin?'
+  Rendered tasks/_links.html.erb (Duration: 4.5ms | Allocations: 2773)
+  [1m[36mSubTask Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "sub_tasks" WHERE "sub_tasks"."task_id" = $1 LIMIT $2[0m  [["task_id", 1], ["LIMIT", 1]]
+  ↳ app/views/tasks/_task_card.html.erb:23
+  [1m[36mSubTask Load (0.3ms)[0m  [1m[34mSELECT "sub_tasks".* FROM "sub_tasks" WHERE "sub_tasks"."task_id" = $1[0m  [["task_id", 1]]
+  ↳ app/views/tasks/_task_card.html.erb:32
+  Rendered sub_tasks/_links.html.erb (Duration: 1.8ms | Allocations: 675)
+  Rendered tasks/_subtask_card.html.erb (Duration: 2.9ms | Allocations: 1058)
+  Rendered sub_tasks/_links.html.erb (Duration: 0.3ms | Allocations: 111)
+  Rendered tasks/_subtask_card.html.erb (Duration: 0.5ms | Allocations: 207)
+  Rendered sub_tasks/_links.html.erb (Duration: 0.3ms | Allocations: 111)
+  Rendered tasks/_subtask_card.html.erb (Duration: 0.5ms | Allocations: 207)
+  Rendered sub_tasks/_links.html.erb (Duration: 0.2ms | Allocations: 111)
+  Rendered tasks/_subtask_card.html.erb (Duration: 0.4ms | Allocations: 207)
+  Rendered sub_tasks/_links.html.erb (Duration: 0.2ms | Allocations: 111)
+  Rendered tasks/_subtask_card.html.erb (Duration: 0.4ms | Allocations: 207)
+  Rendered sub_tasks/_links.html.erb (Duration: 0.3ms | Allocations: 111)
+  Rendered tasks/_subtask_card.html.erb (Duration: 0.5ms | Allocations: 207)
+  Rendered tasks/_task_card.html.erb (Duration: 29.5ms | Allocations: 14036)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/policies/task_policy.rb:33:in `if_user_or_admin?'
+  Rendered tasks/_links.html.erb (Duration: 2.1ms | Allocations: 570)
+  [1m[36mSubTask Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "sub_tasks" WHERE "sub_tasks"."task_id" = $1 LIMIT $2[0m  [["task_id", 2], ["LIMIT", 1]]
+  ↳ app/views/tasks/_task_card.html.erb:23
+  [1m[36mSubTask Load (0.3ms)[0m  [1m[34mSELECT "sub_tasks".* FROM "sub_tasks" WHERE "sub_tasks"."task_id" = $1[0m  [["task_id", 2]]
+  ↳ app/views/tasks/_task_card.html.erb:32
+  Rendered sub_tasks/_links.html.erb (Duration: 0.5ms | Allocations: 111)
+  Rendered tasks/_subtask_card.html.erb (Duration: 0.9ms | Allocations: 207)
+  Rendered sub_tasks/_links.html.erb (Duration: 0.3ms | Allocations: 111)
+  Rendered tasks/_subtask_card.html.erb (Duration: 0.5ms | Allocations: 207)
+  Rendered sub_tasks/_links.html.erb (Duration: 0.3ms | Allocations: 111)
+  Rendered tasks/_subtask_card.html.erb (Duration: 0.5ms | Allocations: 207)
+  Rendered tasks/_task_card.html.erb (Duration: 8.1ms | Allocations: 2526)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/policies/task_policy.rb:33:in `if_user_or_admin?'
+  Rendered tasks/_links.html.erb (Duration: 2.2ms | Allocations: 701)
+  [1m[36mSubTask Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM "sub_tasks" WHERE "sub_tasks"."task_id" = $1 LIMIT $2[0m  [["task_id", 3], ["LIMIT", 1]]
+  ↳ app/views/tasks/_task_card.html.erb:23
+  [1m[36mSubTask Load (0.3ms)[0m  [1m[34mSELECT "sub_tasks".* FROM "sub_tasks" WHERE "sub_tasks"."task_id" = $1[0m  [["task_id", 3]]
+  ↳ app/views/tasks/_task_card.html.erb:32
+  Rendered sub_tasks/_links.html.erb (Duration: 0.5ms | Allocations: 111)
+  Rendered tasks/_subtask_card.html.erb (Duration: 0.8ms | Allocations: 207)
+  Rendered sub_tasks/_links.html.erb (Duration: 0.4ms | Allocations: 111)
+  Rendered tasks/_subtask_card.html.erb (Duration: 0.6ms | Allocations: 206)
+  Rendered sub_tasks/_links.html.erb (Duration: 0.4ms | Allocations: 111)
+  Rendered tasks/_subtask_card.html.erb (Duration: 0.6ms | Allocations: 207)
+  Rendered tasks/_task_card.html.erb (Duration: 8.3ms | Allocations: 2653)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/policies/task_policy.rb:33:in `if_user_or_admin?'
+  Rendered tasks/_links.html.erb (Duration: 2.0ms | Allocations: 568)
+  [1m[36mSubTask Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM "sub_tasks" WHERE "sub_tasks"."task_id" = $1 LIMIT $2[0m  [["task_id", 4], ["LIMIT", 1]]
+  ↳ app/views/tasks/_task_card.html.erb:23
+  [1m[36mSubTask Load (0.3ms)[0m  [1m[34mSELECT "sub_tasks".* FROM "sub_tasks" WHERE "sub_tasks"."task_id" = $1[0m  [["task_id", 4]]
+  ↳ app/views/tasks/_task_card.html.erb:32
+  Rendered sub_tasks/_links.html.erb (Duration: 0.3ms | Allocations: 111)
+  Rendered tasks/_subtask_card.html.erb (Duration: 0.6ms | Allocations: 207)
+  Rendered sub_tasks/_links.html.erb (Duration: 0.2ms | Allocations: 111)
+  Rendered tasks/_subtask_card.html.erb (Duration: 0.4ms | Allocations: 207)
+  Rendered sub_tasks/_links.html.erb (Duration: 0.2ms | Allocations: 111)
+  Rendered tasks/_subtask_card.html.erb (Duration: 0.4ms | Allocations: 207)
+  Rendered sub_tasks/_links.html.erb (Duration: 0.2ms | Allocations: 111)
+  Rendered tasks/_subtask_card.html.erb (Duration: 0.4ms | Allocations: 207)
+  Rendered sub_tasks/_links.html.erb (Duration: 0.2ms | Allocations: 111)
+  Rendered tasks/_subtask_card.html.erb (Duration: 0.4ms | Allocations: 206)
+  Rendered sub_tasks/_links.html.erb (Duration: 0.2ms | Allocations: 111)
+  Rendered tasks/_subtask_card.html.erb (Duration: 0.4ms | Allocations: 207)
+  Rendered sub_tasks/_links.html.erb (Duration: 0.2ms | Allocations: 111)
+  Rendered tasks/_subtask_card.html.erb (Duration: 0.5ms | Allocations: 207)
+  Rendered tasks/_task_card.html.erb (Duration: 11.3ms | Allocations: 3672)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/policies/task_policy.rb:33:in `if_user_or_admin?'
+  Rendered tasks/_links.html.erb (Duration: 1.9ms | Allocations: 701)
+  [1m[36mSubTask Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "sub_tasks" WHERE "sub_tasks"."task_id" = $1 LIMIT $2[0m  [["task_id", 5], ["LIMIT", 1]]
+  ↳ app/views/tasks/_task_card.html.erb:23
+  [1m[36mSubTask Load (0.2ms)[0m  [1m[34mSELECT "sub_tasks".* FROM "sub_tasks" WHERE "sub_tasks"."task_id" = $1[0m  [["task_id", 5]]
+  ↳ app/views/tasks/_task_card.html.erb:32
+  Rendered sub_tasks/_links.html.erb (Duration: 0.3ms | Allocations: 111)
+  Rendered tasks/_subtask_card.html.erb (Duration: 0.6ms | Allocations: 207)
+  Rendered sub_tasks/_links.html.erb (Duration: 0.2ms | Allocations: 111)
+  Rendered tasks/_subtask_card.html.erb (Duration: 0.5ms | Allocations: 207)
+  Rendered tasks/_task_card.html.erb (Duration: 6.6ms | Allocations: 2365)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/policies/task_policy.rb:33:in `if_user_or_admin?'
+  Rendered tasks/_links.html.erb (Duration: 1.4ms | Allocations: 568)
+  [1m[36mSubTask Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "sub_tasks" WHERE "sub_tasks"."task_id" = $1 LIMIT $2[0m  [["task_id", 6], ["LIMIT", 1]]
+  ↳ app/views/tasks/_task_card.html.erb:23
+  [1m[36mSubTask Load (0.2ms)[0m  [1m[34mSELECT "sub_tasks".* FROM "sub_tasks" WHERE "sub_tasks"."task_id" = $1[0m  [["task_id", 6]]
+  ↳ app/views/tasks/_task_card.html.erb:32
+  Rendered sub_tasks/_links.html.erb (Duration: 0.3ms | Allocations: 111)
+  Rendered tasks/_subtask_card.html.erb (Duration: 0.6ms | Allocations: 207)
+  Rendered sub_tasks/_links.html.erb (Duration: 0.4ms | Allocations: 111)
+  Rendered tasks/_subtask_card.html.erb (Duration: 0.7ms | Allocations: 207)
+  Rendered tasks/_task_card.html.erb (Duration: 6.6ms | Allocations: 2233)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/policies/task_policy.rb:33:in `if_user_or_admin?'
+  Rendered tasks/_links.html.erb (Duration: 1.4ms | Allocations: 568)
+  [1m[36mSubTask Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "sub_tasks" WHERE "sub_tasks"."task_id" = $1 LIMIT $2[0m  [["task_id", 7], ["LIMIT", 1]]
+  ↳ app/views/tasks/_task_card.html.erb:23
+  [1m[36mSubTask Load (0.2ms)[0m  [1m[34mSELECT "sub_tasks".* FROM "sub_tasks" WHERE "sub_tasks"."task_id" = $1[0m  [["task_id", 7]]
+  ↳ app/views/tasks/_task_card.html.erb:32
+  Rendered sub_tasks/_links.html.erb (Duration: 0.3ms | Allocations: 111)
+  Rendered tasks/_subtask_card.html.erb (Duration: 0.5ms | Allocations: 207)
+  Rendered sub_tasks/_links.html.erb (Duration: 0.3ms | Allocations: 111)
+  Rendered tasks/_subtask_card.html.erb (Duration: 0.4ms | Allocations: 207)
+  Rendered tasks/_task_card.html.erb (Duration: 5.4ms | Allocations: 2233)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/policies/task_policy.rb:33:in `if_user_or_admin?'
+  Rendered tasks/_links.html.erb (Duration: 1.6ms | Allocations: 568)
+  [1m[36mSubTask Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "sub_tasks" WHERE "sub_tasks"."task_id" = $1 LIMIT $2[0m  [["task_id", 8], ["LIMIT", 1]]
+  ↳ app/views/tasks/_task_card.html.erb:23
+  [1m[36mSubTask Load (0.2ms)[0m  [1m[34mSELECT "sub_tasks".* FROM "sub_tasks" WHERE "sub_tasks"."task_id" = $1[0m  [["task_id", 8]]
+  ↳ app/views/tasks/_task_card.html.erb:32
+  Rendered sub_tasks/_links.html.erb (Duration: 0.3ms | Allocations: 111)
+  Rendered tasks/_subtask_card.html.erb (Duration: 0.5ms | Allocations: 207)
+  Rendered sub_tasks/_links.html.erb (Duration: 0.2ms | Allocations: 111)
+  Rendered tasks/_subtask_card.html.erb (Duration: 0.4ms | Allocations: 207)
+  Rendered sub_tasks/_links.html.erb (Duration: 0.2ms | Allocations: 111)
+  Rendered tasks/_subtask_card.html.erb (Duration: 0.4ms | Allocations: 207)
+  Rendered sub_tasks/_links.html.erb (Duration: 0.2ms | Allocations: 111)
+  Rendered tasks/_subtask_card.html.erb (Duration: 0.4ms | Allocations: 207)
+  Rendered tasks/_task_card.html.erb (Duration: 7.1ms | Allocations: 2809)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/policies/task_policy.rb:33:in `if_user_or_admin?'
+  Rendered tasks/_links.html.erb (Duration: 2.2ms | Allocations: 568)
+  [1m[36mSubTask Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "sub_tasks" WHERE "sub_tasks"."task_id" = $1 LIMIT $2[0m  [["task_id", 9], ["LIMIT", 1]]
+  ↳ app/views/tasks/_task_card.html.erb:23
+  [1m[36mSubTask Load (0.2ms)[0m  [1m[34mSELECT "sub_tasks".* FROM "sub_tasks" WHERE "sub_tasks"."task_id" = $1[0m  [["task_id", 9]]
+  ↳ app/views/tasks/_task_card.html.erb:32
+  Rendered sub_tasks/_links.html.erb (Duration: 0.3ms | Allocations: 111)
+  Rendered tasks/_subtask_card.html.erb (Duration: 0.5ms | Allocations: 207)
+  Rendered sub_tasks/_links.html.erb (Duration: 0.2ms | Allocations: 111)
+  Rendered tasks/_subtask_card.html.erb (Duration: 0.5ms | Allocations: 207)
+  Rendered sub_tasks/_links.html.erb (Duration: 0.3ms | Allocations: 111)
+  Rendered tasks/_subtask_card.html.erb (Duration: 0.6ms | Allocations: 207)
+  Rendered tasks/_task_card.html.erb (Duration: 7.4ms | Allocations: 2521)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/policies/task_policy.rb:33:in `if_user_or_admin?'
+  Rendered tasks/_links.html.erb (Duration: 1.6ms | Allocations: 568)
+  [1m[36mSubTask Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "sub_tasks" WHERE "sub_tasks"."task_id" = $1 LIMIT $2[0m  [["task_id", 10], ["LIMIT", 1]]
+  ↳ app/views/tasks/_task_card.html.erb:23
+  [1m[36mSubTask Load (0.2ms)[0m  [1m[34mSELECT "sub_tasks".* FROM "sub_tasks" WHERE "sub_tasks"."task_id" = $1[0m  [["task_id", 10]]
+  ↳ app/views/tasks/_task_card.html.erb:32
+  Rendered sub_tasks/_links.html.erb (Duration: 0.3ms | Allocations: 111)
+  Rendered tasks/_subtask_card.html.erb (Duration: 0.6ms | Allocations: 207)
+  Rendered sub_tasks/_links.html.erb (Duration: 0.2ms | Allocations: 111)
+  Rendered tasks/_subtask_card.html.erb (Duration: 0.4ms | Allocations: 207)
+  Rendered sub_tasks/_links.html.erb (Duration: 0.2ms | Allocations: 111)
+  Rendered tasks/_subtask_card.html.erb (Duration: 0.4ms | Allocations: 207)
+  Rendered sub_tasks/_links.html.erb (Duration: 0.3ms | Allocations: 111)
+  Rendered tasks/_subtask_card.html.erb (Duration: 0.5ms | Allocations: 207)
+  Rendered sub_tasks/_links.html.erb (Duration: 0.2ms | Allocations: 111)
+  Rendered tasks/_subtask_card.html.erb (Duration: 0.4ms | Allocations: 207)
+  Rendered tasks/_task_card.html.erb (Duration: 7.5ms | Allocations: 3097)
+  Rendered tasks/index.html.erb within layouts/application (Duration: 113.0ms | Allocations: 45302)
+  Rendered shared/_navbar.html.erb (Duration: 0.5ms | Allocations: 235)
+  Rendered shared/_flashes.html.erb (Duration: 0.1ms | Allocations: 22)
+  Rendered shared/_footer.html.erb (Duration: 0.0ms | Allocations: 8)
+  Rendered layout layouts/application.html.erb (Duration: 126.0ms | Allocations: 53865)
+Completed 200 OK in 140ms (Views: 113.5ms | ActiveRecord: 13.5ms | Allocations: 58403)
+
+
