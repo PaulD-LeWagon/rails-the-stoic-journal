@@ -198,84 +198,21 @@ div.navbar.sticky-top {
 }
 
 
-/* Style for the form container */
-form {
-  background-color: #f8f8f8;
-  padding: 20px;
-  border-radius: 10px;
-  max-width: 500px;
-  margin: 0 auto;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-}
+// /* Style for the form container */
+// form {
+//   background-color: #f8f8f8;
+//   padding: 20px;
+//   border-radius: 10px;
+//   max-width: 500px;
+//   margin: 0 auto;
+//   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+// }
 
 /* Headings */
-h2, h3 {
+.RR-form h2, .RR-form h3 {
   font-family: 'Arial', sans-serif;
   color: #333;
   margin-bottom: 15px;
-}
-
-/* Form Inputs */
-.form-inputs input[type="text"],
-.form-inputs input[type="email"],
-.form-inputs input[type="password"],
-.form-inputs textarea,
-.form-inputs input[type="file"] {
-  width: 100%;
-  padding: 10px;
-  margin-bottom: 15px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  font-size: 14px;
-}
-
-/* Form hint text */
-.form-inputs .hint {
-  color: #777;
-  font-size: 12px;
-  margin-top: -10px;
-  margin-bottom: 10px;
-}
-
-/* Submit button */
-.form-actions input[type="submit"] {
-  background-color: #66023c;
-  color: white;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  font-size: 14px;
-}
-
-.form-actions input[type="submit"]:hover {
-  background-color: #900154;
-}
-
-/* Cancel button */
-button {
-  background-color: #a70000;
-  color: white;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  font-size: 14px;
-}
-
-button:hover {
-  background-color: #c10401;
-}
-
-/* Link style */
-a {
-  text-decoration: none;
-  font-size: 14px;
-  margin-left: 350px;
-}
-
-a:hover {
-  text-decoration: underline;
 }
 
 footer {
