@@ -2,45 +2,28 @@
 
   <div class="col-md-10 p-3">
 
-    <h1 class="my-5 mb-3 fst-bold">All Tasks</h1>
+    <div class="header d-flex justify-content-between align-items-center">
+
+      <h1 class="my-5 mb-3 fst-bold">All Tasks</h1>
+
+      <%= link_to new_task_path, class: "btn bg-quinary btn-lg", title: "Add a new Task?" do %>
+        <i class="fa-solid fa-square-plus"></i>
+      <% end %>
+
+    </div>
 
     <hr>
 
-    <% @tasks.each do |task| %>
+    <div class="cards tasks-container collapse-container"  data-controller="dragula">
 
-      <h3>Task #<%= task.order %> <%= task.title %><h3>
+      <% @tasks.each do |task| %>
 
-      <p class="bd-font"><%= task.description %></p>
+        <%= render 'task_card', task: task %>
 
-      <div class="d-flex justify-content-end">
-        <button class="btn btn-warning btn-sm text-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapse<%= task.id %>" aria-expanded="false" aria-controls="collapse<%= task.id %>">
-          View all sub-tasks?
-        </button>
-      </div>
-      <div class="collapse" id="collapse<%= task.id %>">
+      <% end %>
 
-        <hr>
-
-        <% task.sub_tasks.each do |subtask| %>
-
-          <h4>SubTask #<%= subtask.order %> <%= subtask.title %><h4>
-
-          <p><%= subtask.description %></p>
-
-          <%= render 'sub_tasks/links', sub_task: subtask %>
-
-          <hr>
-
-        <% end %>
-
-      </div>
-
-      <%= render 'links', task: task %>
-
-      <hr>
-
-    <% end %>
+    </div>
 
   </div>
-
 </div>
+<%# <script src="https://gist.github.com/lucideuclid/953921ea16cd1fa60502fafb3b3da999.js"></script> %>

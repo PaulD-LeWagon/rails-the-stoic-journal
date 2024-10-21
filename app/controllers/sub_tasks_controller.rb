@@ -11,10 +11,8 @@ class SubTasksController < ApplicationController
 
   # GET /tasks/:task_id/subtask/new
   def new
-    # @task = Task.find(params[:task_id])
-    @sub_task = SubTask.new(task: Task.find(params[:task_id]))
-    # @sub_task.order = @task.default_subtask_order
-    # @sub_task.task = @task
+    @task = Task.find(params[:task_id])
+    @sub_task = SubTask.new(task: @task)
     authorize @sub_task
   end
 
@@ -51,7 +49,7 @@ class SubTasksController < ApplicationController
   def destroy
     authorize @sub_task
     @sub_task.destroy
-    redirect_to sub_tasks_url, notice: "Sub task #{@sub_task.title} was successfully destroyed."
+    redirect_to tasks_url, notice: "Sub task #{@sub_task.title} was successfully destroyed."
   end
 
   private

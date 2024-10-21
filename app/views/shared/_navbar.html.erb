@@ -2,9 +2,11 @@
 <div class="navbar navbar-expand-sm navbar-dark bg-dark navbar-lewagon sticky-top shadow-lg">
   <div class="container-fluid">
     <%= link_to root_path, class: "navbar-brand" do %>
-      <%# <%= image_tag("https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/logo.png", :class => "rounded") %>
-      <i class="fa-solid fa-scale-balanced"></i>
-      The Stoic Journal
+
+      <i class="fa-solid fa-building-columns"></i>
+
+      <h5 class="d-inline-block bd-font mx-1">The Stoic Journal</h5>
+
     <% end %>
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -14,11 +16,10 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto">
         <% if user_signed_in? %>
-
+          <!--
           <li class="nav-item">
             <%= link_to "Add a Task", new_task_path, class: "nav-link" %>
           </li>
-
           <li class="nav-item">
             <%= link_to "Today", tasks_path, class: "nav-link" %>
           </li>
@@ -34,17 +35,38 @@
           <li class="nav-item">
             <%= link_to "Sign out", destroy_user_session_path, data: {turbo_method: :delete}, class: "nav-link" %>
           </li>
+          -->
           <li class="nav-item dropdown">
             <a href="#" class="avatar" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              <%# <img src="<%= (user_signed_in? ? current_user.image_url : "https://kitt.lewagon.com/camps/1790")" class="avatar" alt="dropdown menu"> %>
-              <i class="fa-solid fa-circle-user"></i>
+              <img src="<%= (current_user.image_url.length > 0 ? current_user.image_url : "https://kitt.lewagon.com/camps/1790") %>" class="avatar" alt="dropdown menu">
             </a>
             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+
+              <%= link_to "All Tasks", tasks_path, class: "dropdown-item" %>
+
+              <hr>
+              <%if false %>
+              <%= link_to "Today's Log", tasks_path, class: "dropdown-item" %>
+
+              <%= link_to "Weekly Log", "#", class: "dropdown-item" %>
+
+              <%= link_to "Monthly Log", "#", class: "dropdown-item" %>
+
+              <%= link_to "Future Log", "#", class: "dropdown-item" %>
+
+              <hr>
+              <% end %>
               <%= link_to "Your Journal?", journal_entries_path, class: "dropdown-item" %>
+
               <%= link_to "Your profile?", users_profile_path, class: "dropdown-item" %>
+
+              <hr>
+
               <%= link_to "Sign out?", destroy_user_session_path, data: {turbo_method: :delete}, class: "dropdown-item" %>
+
             </div>
-          </li>        <% else %>
+          </li>
+        <% else %>
           <li class="nav-item">
             <%= link_to "Login?", new_user_session_path, class: "nav-link" %>
           </li>

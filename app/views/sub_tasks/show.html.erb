@@ -7,7 +7,9 @@
     <h1><%= @sub_task.title %></h1>
     <p><%= @sub_task.description %></p>
 
-    <%= render 'links', sub_task: @sub_task %>
+    <div class="links d-flex justify-content-end align-items-center">
+      <%= render 'links', sub_task: @sub_task %>
+    </div>
 
   </div>
 
