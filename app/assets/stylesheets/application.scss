@@ -202,3 +202,20 @@ footer {
   height: 300px;
   background-color: $secondary;
 }
+
+
+
+
+.team-img {
+  filter: grayscale(100%);
+  transition: filter 0.5s ease;
+}
+
+.team-img:hover {
+  filter: grayscale(0);
+}
+
+/* Adjust spacing for the gap between the heading and the images */
+.mb-5 {
+  margin-bottom: 3rem;
+}
