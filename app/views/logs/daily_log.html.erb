@@ -1,0 +1,104 @@
+<div class="container">
+
+  <h1 class="mt-5 mb-2"><%= DateTime.now.strftime("Today it's %I:%M%p on %d/%m/%Y")  %></h1>
+
+
+  <hr>
+
+<% 7.times do |i| %>
+
+  <div id="task_<%= i +1 %>" class="px-2 d-flex justify-content-between align-items-center">
+
+    <div class="ordinal m-1"><%= i + 1 %></div>
+
+    <i class="m-1 fa-solid fa-circle-arrow-right" title="Move to tomorrow's log."></i>
+
+    <div class="task_type_select">
+
+      <i class="d-none m-1 fa-regular fa-circle"></i>
+
+      <select id="task_types" class="m-1">
+
+        <% ["self development", "event", "fitness", "shopping", "admin", "work"].shuffle.each do |task| %>
+
+        <option value="<%= task %>"><%= task.titleize %></option>
+
+        <% end %>
+
+      </select>
+
+    </div>
+
+    <input class="m-1" type="text" placeholder="Task Title" value="<%= @lorem_ipsum_words.sample(rand(2..4)).join(" ") %>">
+
+    <input class="m-1 flex-grow-1" type="text" placeholder="Task Description" value="<%= @lorem_ipsum_sentences.sample(rand(5..7)).join(" ") %>">
+
+    <input class="m-1 d-none" type="text" placeholder="Task Comments (I should only be visible when task is marked complete!)" value="<%= @lorem_ipsum_sentences.sample(rand(3..7)).join(" ") %>">
+
+    <div class="m-1 start_date">
+      <input title="Start date/time." name="datepicker" type="date" value="<%= DateTime.now.strftime("%Y-%m-%d")  %>">
+      <input  name="timepicker"type="time" value="<%= (DateTime.now + rand(1..8).hour).strftime("%I:%M")  %>">
+    </div>
+
+    <div class="m-1 due_date">
+      <input class="d- none" title="Due date/time." name="datepicker" type="date" value="<%= (DateTime.now + rand(1..3).day).strftime("%Y-%m-%d")  %>">
+      <input class="d- none" name="timepicker" type="time" value="<%= DateTime.now.strftime("%I:%M") %>">
+    </div>
+
+    <i class="m-1 fa-solid fa-circle-plus" title="Add a sub-task?"></i>
+
+    <input class="m-1" title="Completed?" type="checkbox">
+
+  </div>
+
+  <hr>
+
+<% end %>
+
+<div id="task_nth" class="px-2 d-flex justify-content-between align-items-center">
+
+    <div class="ordinal m-1">X</div>
+
+    <i class="m-1 fa-solid fa-circle-arrow-right" title="Move to tomorrow's log."></i>
+
+    <div class="task_type_select">
+
+      <i class="d-none m-1 fa-regular fa-circle"></i>
+
+      <select id="task_types" class="m-1">
+        <option value="0">Task Type</option>
+        <option value="self-development">Self Development</option>
+        <option value="even">Event</option>
+        <option value="fitness">Fitness</option>
+        <option value="fitness">Shopping</option>
+        <option value="admin">Admin</option>
+        <option value="work">Work</option>
+      </select>
+
+    </div>
+
+    <input class="m-1" type="text" placeholder="Task Title">
+
+    <input class="m-1 flex-grow-1" type="text" placeholder="Task Description">
+
+    <input class="m-1 d-none" type="text" placeholder="Task Comments (I should only be visible when task is marked complete!)">
+
+    <div class="m-1 start_date">
+      <input title="Start date/time." type="date">
+      <input type="time">
+    </div>
+
+    <div class="m-1 due_date">
+      <input class="d- none" title="Due date/time." type="date">
+      <input class="d- none" type="time">
+    </div>
+
+    <i class="m-1 fa-solid fa-circle-plus" title="Add a sub-task?"></i>
+
+    <input class="m-1" title="Completed?" type="checkbox">
+
+  </div>
+
+  <hr>
+
+</div>

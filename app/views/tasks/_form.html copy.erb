@@ -1,0 +1,59 @@
+<%# "animate-shadow bg-body rounded-3 m-5 p-5 w-75 mx-auto" %>
+<%= simple_form_for(task, html: { data: { controller: "form" }, class: "card task m-3 p-2 mx-auto" }) do |f| %>
+
+  <%= f.error_notification %>
+  <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+
+    <%# :order, :routine, :recurs_on, :task_type, :title, :description, :comment, :start_date, :due_date, :completed, :active %>
+
+  <div class="form-inputs">
+
+    <%= f.input :order, input_html: { class: "form-control mb-3" } %>
+
+    <%= f.input :routine, collection: Task::transform_routines_for_html_select, input_html: { class: "form-control mb-3" } %>
+
+    <%# <%= f.input :recurs_on, as: :check_boxes, input_html: { class: "form-control mb-3" } %>
+
+    <%= f.input :task_type, collection: Task::transform_task_types_for_html_select, input_html: { class: "form-control mb-3" } %>
+
+    <%= f.input :title, input_html: { class: "form-control mb-3" } %>
+
+    <%= f.input :description, as: :text, input_html: { class: "form-control mb-3", 'rows' => 5, 'cols' => 10 } %>
+
+    <%#= f.input :comment, as: :text, input_html: { class: "form-control mb-3", 'rows' => 5, 'cols' => 10 } %>
+
+    <%= f.input :start_date, html5: true, input_html: { class: "form-control mb-3" } %>
+
+    <%= f.input :due_date, html5: true, input_html: { class: "form-control mb-3" } %>
+
+    <%#= f.input :completed, as: :boolean, input_html: { class: "form-control mb-3" } %>
+
+    <%#= f.input :active, as: :boolean, input_html: { class: "form-control mb-3" } %>
+
+  </div>
+
+  <h3>Create a subtask</h3>
+  <div class="subtasks-controller" data-controller="nested-rondo" data-nested-rondo-field-class-value="sub-task-fields">
+    <div data-nested-rondo-target="fieldContain">
+    <%= f.simple_fields_for :sub_tasks do |sub_task| %>
+      <%= render "sub_task_fields", f: sub_task %>
+    <% end %>
+    </div>
+    <div class="links">
+      <%= link_to_add_association f, :sub_tasks, class: "btn btn-primary m-1", title: "Add a subtask?" do %>
+        <i class="fa-solid fa-square-plus"></i>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="form-actions links d-flex justify-content-end align-items-center">
+
+    <%= render 'links', task: task %>
+
+    <%= button_tag type: 'submit', class: "btn btn-primary" do %>
+      <i class="fa-solid fa-thumbs-up"></i>
+    <% end %>
+
+  </div>
+
+<% end %>

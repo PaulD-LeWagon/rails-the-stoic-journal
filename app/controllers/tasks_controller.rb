@@ -12,6 +12,7 @@ class TasksController < ApplicationController
   def new
     @task = Task.new
     @task.user = current_user
+    @task.sub_tasks.build
     authorize @task
   end
 
@@ -23,20 +24,59 @@ class TasksController < ApplicationController
     @task = Task.new(task_params)
     @task.user = current_user
     authorize @task
-
-    if @task.save
-      redirect_to tasks_path, notice: "Task #{@task.title} was successfully created."
-    else
-      render :new, status: :unprocessable_entity
+    respond_to do |format|
+      if @task.save
+        format.html { redirect_to tasks_path, notice: "Task, #{@task.title}, created successfully with #{@task.sub_tasks.count} sub tasks!", status: :see_other }
+        format.json do
+          resp = {
+            status: "success",
+            task: @task,
+            errors: "",
+            message: "Task, #{@task.title}, created successfully with #{@task.sub_tasks.count} sub tasks!",
+          }
+          render json: resp.to_json, notice: "Task, #{@task.title}, created successfully with #{@task.sub_tasks.count} sub tasks!", status: :see_other
+        end
+      else
+        format.html { render :new, alert: "Could not create task #{@task.title}", status: :unprocessable_entity }
+        format.json do
+          resp = {
+            status: "error",
+            task: @task,
+            errors: @task.errors,
+            message: "Task NOT created!",
+          }
+          render json: resp.to_json, alert: "Could not create task #{@task.title}", status: :unprocessable_entity
+        end
+      end
     end
   end
 
   def update
     authorize @task
-    if @task.update(task_params)
-      redirect_to tasks_path, notice: "Task #{@task.title} was successfully updated."
-    else
-      render :edit, status: :unprocessable_entity
+    respond_to do |format|
+      if @task.update(task_params)
+        format.html { redirect_to tasks_path, notice: "Task, #{@task.title}, updated successfully with #{@task.sub_tasks.count} sub tasks!", status: :see_other }
+        format.json do
+          resp = {
+            status: "success",
+            task: @task,
+            errors: "",
+            message: "Task, #{@task.title}, successfully updated with #{@task.sub_tasks.count} sub tasks!",
+          }
+          render json: resp.to_json, notice: "Task, #{@task.title}, successfully updated with #{@task.sub_tasks.count} sub tasks!", status: :see_other
+        end
+      else
+        format.html { render :edit, alert: "Server error", status: :unprocessable_entity }
+        format.json do
+          resp = {
+            status: "error",
+            task: @task,
+            errors: @task.errors,
+            message: "Task #{@task.title} NOT updated!",
+          }
+          render json: resp.to_json, alert: "Error task could not be updated", status: :unprocessable_entity
+        end
+      end
     end
   end
 
@@ -45,7 +85,7 @@ class TasksController < ApplicationController
     title = @task.title
     @task.sub_tasks.destroy_all
     @task.destroy
-    redirect_to tasks_url, notice: "Task #{title} was successfully destroyed."
+    redirect_to tasks_url, notice: "Task #{title} deleted!"
   end
 
   private
@@ -55,6 +95,28 @@ class TasksController < ApplicationController
   end
 
   def task_params
-    params.require(:task).permit(:title, :description, :task_type, :routine, :order, :comment, :start_date, :due_date, :completed, :active)
+    params.require(:task).permit(
+      :order,
+      :routine,
+      :recurs_on,
+      :task_type,
+      :title,
+      :description,
+      :comment,
+      :start_date,
+      :due_date,
+      :completed,
+      :active,
+      sub_tasks_attributes: [
+        :id,
+        :order,
+        :title,
+        :description,
+        :comment,
+        :start_date,
+        :due_date,
+        :completed,
+        :_destroy
+      ])
   end
 end

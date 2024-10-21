@@ -1,0 +1,16 @@
+<%# :order, :title, :description, :comment, :start_date, :due_date, :completed %>
+<hr>
+<div class="sub-task-fields card m-1 p-2">
+  <%= f.input :order, input_html: { class: "form-control mb-3" } %>
+  <%= f.input :title, input_html: { class: "form-control mb-3" } %>
+  <%= f.input :description, as: :text, input_html: { class: "form-control mb-3", 'rows' => 5, 'cols' => 10 } %>
+  <%#= f.input :comment, as: :text, input_html: { class: "form-control mb-3", 'rows' => 5, 'cols' => 10 } %>
+  <%= f.input :start_date, html5: true, input_html: { class: "form-control mb-3" } %>
+  <%= f.input :due_date, html5: true, input_html: { class: "form-control mb-3" } %>
+  <%#= f.input :completed, as: :boolean %>
+  <div class="subtask-controls d-flex justify-content-end align-items-center">
+    <%= link_to_remove_association f, class: "btn btn-sm btn-danger m-1", title: "Remove this sub task?" do %>
+      <i class="fa-solid fa-trash"></i>
+    <% end %>
+  </div>
+</div>

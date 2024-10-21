@@ -4,3 +4,5 @@ import "controllers"
 import "@popperjs/core"
 import "bootstrap"
 import "dragula/dragula"
+import Swal from 'sweetalert2';
+window.Swal = Swal;

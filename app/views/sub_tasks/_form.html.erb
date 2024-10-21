@@ -1,4 +1,4 @@
-<%= simple_form_for([task, sub_task], html: { class: "animate-shadow bg-body rounded-3 m-5 p-5 w-50 mx-auto" }) do |f| %>
+<%= simple_form_for([task, sub_task], html: { data: { controller: "form" }, class: "card m-3 p-2 mx-auto" }) do |f| %>
 
       <%= f.error_notification %>
       <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
