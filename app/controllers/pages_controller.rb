@@ -7,4 +7,7 @@ class PagesController < ApplicationController
   def profile
 
   end
+
+  def meet_the_team
+  end
 end

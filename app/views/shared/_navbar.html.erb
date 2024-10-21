@@ -56,13 +56,17 @@
 
               <hr>
               <% end %>
-              <%= link_to "Your Journal?", journal_entries_path, class: "dropdown-item" %>
+              <%= link_to "Your Journal", journal_entries_path, class: "dropdown-item" %>
 
-              <%= link_to "Your profile?", users_profile_path, class: "dropdown-item" %>
+              <%= link_to "Your profile", users_profile_path, class: "dropdown-item" %>
 
               <hr>
 
-              <%= link_to "Sign out?", destroy_user_session_path, data: {turbo_method: :delete}, class: "dropdown-item" %>
+              <%= link_to "Sign out", destroy_user_session_path, data: {turbo_method: :delete}, class: "dropdown-item" %>
+
+              <hr>
+
+              <%= link_to "Meet The Team", meet_the_team_path, class: "dropdown-item" %>
 
             </div>
           </li>
