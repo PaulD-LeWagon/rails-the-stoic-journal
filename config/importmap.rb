@@ -9,3 +9,4 @@ pin "bootstrap", to: "bootstrap.min.js", preload: true
 pin "@popperjs/core", to: "popper.js", preload: true
 pin "dragula/dragula"
 pin "sweetalert2" # @11.14.1
+pin "vanilla-nested", to: "vanilla_nested.js", preload: true

@@ -35,6 +35,11 @@
   margin-left: 3rem !important;
 }
 
+// Totally hide the subtask card
+.sub-task-fields.removed-by-vanilla-nested {
+  display: none !important;
+}
+
 .handle:hover {
   cursor: pointer;
 }

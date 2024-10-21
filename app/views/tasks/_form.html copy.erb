@@ -33,8 +33,8 @@
   </div>
 
   <h3>Create a subtask</h3>
-  <div class="subtasks-controller" data-controller="nested-rondo" data-nested-rondo-field-class-value="sub-task-fields">
-    <div data-nested-rondo-target="fieldContain">
+  <div class="subtasks-controller" data-controller="somecontrolllername" data-somecontrolllername-field-class-value="sub-task-fields">
+    <div data-somecontrolllername-target="fieldContain">
     <%= f.simple_fields_for :sub_tasks do |sub_task| %>
       <%= render "sub_task_fields", f: sub_task %>
     <% end %>

@@ -7,7 +7,7 @@ export default class extends Controller {
 
   static targets = [ "form" ]
 
-  static values = {  }
+  static values = { }
 
   initialize() { }
 
@@ -38,27 +38,29 @@ export default class extends Controller {
   }
 
   submit(e) {
-    // e.preventDefault()
-    // fetch(this.formTarget.action, {
-    //   method: "POST",
-    //   headers: { "Accept": "application/json" },
-    //   body: new FormData(this.formTarget)
-    // })
-    //   .then(response => response.json())
-    //   .then((data) => {
-    //     // Icons: warning, error, success, info, and question
-    //     Swal.fire({
-    //       title: this.#capitalise(data.status),
-    //       text: data.message,
-    //       icon: data.status,
-    //       confirmButtonText: (data.status === 'success' ? 'Cool' : 'Okay'),
-    //       customClass: {
-    //         confirmButton: `btn btn-${data.status} btn-lg`,
-    //       }
-    //     });
-    //     this.formTarget.reset()
-    //     console.log(data)
-    //   })
+    e.preventDefault()
+    fetch(this.formTarget.action, {
+      method: "POST",
+      headers: { "Accept": "application/json" },
+      body: new FormData(this.formTarget)
+    })
+      .then(response => response.json())
+      .then((data) => {
+        // Icons: warning, error, success, info, and question
+        Swal.fire({
+          title: this.#capitalise(data.status),
+          text: data.message,
+          icon: data.status,
+          confirmButtonText: (data.status === 'success' ? 'Cool' : 'Okay'),
+          customClass: {
+            confirmButton: `btn btn-${data.status} btn-lg`,
+          }
+        });
+        // if(this.formTarget.id === 'new_task') {
+        //   this.formTarget.reset()
+        // }
+        // console.log(data)
+      })
   }
 
   #capitalise(strOfWords) {

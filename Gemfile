@@ -85,6 +85,6 @@ gem "base64", "~> 0.2.0"
 gem "bigdecimal", "~> 3.1"
 gem "mutex_m", "~> 0.2.0"
 gem 'faker'
-# gem 'vanilla_nested', github: 'arielj/vanilla-nested', branch: :main
-gem 'rondo_form', '~> 0.2.6'
+gem 'vanilla_nested', github: 'arielj/vanilla-nested', branch: :main
+# gem 'rondo_form', '~> 0.2.6'
 gem "pgreset" # VERY IMPORTANT IF USING postgresql DB
