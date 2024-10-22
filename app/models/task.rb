@@ -18,6 +18,8 @@ class Task < ApplicationRecord
   # scope :completed, -> { where(completed: true) }
   # scope :pending, -> { where(completed: false) }
 
+  scope :filter_by_user_routines, ->(user, routine) { where('user_id = ? AND routine = ?', user.id, routines[routine]) }
+
   validates_presence_of :title
   # validates_date_of :start_date, before: :due_date, message: "Must be before 'Due Date!'"
   # validates_date_of :start_date, after_or_equal_to: Time.now, message: "Valid 'Start Date' must be from today onwards!"
