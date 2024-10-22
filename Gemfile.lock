@@ -1,4 +1,11 @@
 GIT
+  remote: https://github.com/arielj/vanilla-nested.git
+  revision: cab8f390dc99eed933952f6fcc14603bad30c6a8
+  branch: main
+  specs:
+    vanilla_nested (1.7.0)
+
+GIT
   remote: https://github.com/heartcombo/simple_form.git
   revision: c2c7faf3e532072e1ef511a97d677ae0e7c38957
   specs:
@@ -346,6 +353,7 @@ DEPENDENCIES
   stimulus-rails
   turbo-rails
   tzinfo-data
+  vanilla_nested!
   web-console
   webdrivers
 

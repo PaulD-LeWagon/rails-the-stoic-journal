@@ -1,4 +1,4 @@
-<%= simple_form_for(journal_entry, html: { class: "animate-shadow bg-body rounded-3 m-5 p-5 w-50 mx-auto" }) do |f| %>
+<%= simple_form_for(journal_entry, html: { data: { controller: "form" }, class: "m-2 p-3 mx-auto" }) do |f| %>
 
   <%= f.error_notification %>
   <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
