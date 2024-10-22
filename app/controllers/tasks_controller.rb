@@ -85,7 +85,10 @@ class TasksController < ApplicationController
     title = @task.title
     @task.sub_tasks.destroy_all
     @task.destroy
-    redirect_to tasks_url, notice: "Task #{title} deleted!"
+    respond_to do |format|
+      format.turbo_stream
+      format.html { redirect_to tasks_url, notice: "Task #{title} deleted!", status: :see_other }
+    end
   end
 
   private

@@ -1,29 +1,51 @@
-<div class="d-flex justify-content-center align-items-start min-vh-100">
+<main class="container">
 
-  <div class="col-md-10 p-3">
+  <div class="d-flex justify-content-center align-items-start min-vh-100">
 
-    <div class="header d-flex justify-content-between align-items-center">
+    <div class="col-md-10 p-3">
 
-      <h1 class="my-5 mb-3 fst-bold">All Tasks</h1>
+      <%= turbo_frame_tag "tasks_index_turbo_frame" do %>
 
-      <%= link_to new_task_path, class: "btn bg-quinary btn-lg", title: "Add a new Task?" do %>
-        <i class="fa-solid fa-square-plus"></i>
+        <div class="header d-flex justify-content-between align-items-center">
+
+          <h1 class="my-5 mb-3 fst-bold">All Tasks</h1>
+
+          <%= link_to new_task_path,
+            data: {
+              turbo_frame: "new_task_turbo_frame"
+            },
+            class: "btn bg-quinary btn-lg",
+            title: "Add a new task" do %>
+
+            <i class="fa-solid fa-square-plus"></i>
+
+          <% end %>
+
+        </div>
+
       <% end %>
 
+      <hr>
+
+      <div class="cards tasks-container collapse-container">
+
+        <%= turbo_frame_tag "new_task_turbo_frame", data: { controller: "dragula" } do %>
+
+          <% @tasks.each_with_index do |task, index| %>
+
+            <%= turbo_frame_tag "edit_#{ dom_id task }" do %>
+
+              <%= render 'task_card', task: task %>
+
+            <% end %>
+
+          <% end %>
+
+        <% end %>
+
+      </div>
+
     </div>
-
-    <hr>
-
-    <div class="cards tasks-container collapse-container"  data-controller="dragula">
-
-      <% @tasks.each do |task| %>
-
-        <%= render 'task_card', task: task %>
-
-      <% end %>
-
-    </div>
-
   </div>
-</div>
-<%# <script src="https://gist.github.com/lucideuclid/953921ea16cd1fa60502fafb3b3da999.js"></script> %>
+
+</main>
