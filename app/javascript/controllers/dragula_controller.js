@@ -13,46 +13,25 @@ const setCardOrdinals = (cards) => {
 // Connects to data-controller="dragula"
 export default class extends Controller {
   initialize() {
+    counter += 1
 
-    const $collConts = $('.collapse-container');
-    $collConts.on('shown.bs.collapse', (e) => {
-      const $btn = $(`[aria-controls=${e.target.id}]`);
-      const icon = $btn.find('i').get(0);
-      if(icon.classList.contains('fa-chevron-down')) {
-        icon.classList.remove('fa-chevron-down')
-        icon.classList.add('fa-chevron-up')
-      } else if(icon.classList.contains('fa-angles-down')) {
-        icon.classList.remove('fa-angles-down')
-        icon.classList.add('fa-angles-up')
-      }
-    })
-    .on('hidden.bs.collapse', (e) => {
-      const $btn = $(`[aria-controls=${e.target.id}]`);
-      const icon = $btn.find('i').get(0);
-      if(icon.classList.contains('fa-chevron-up')) {
-        icon.classList.remove('fa-chevron-up')
-        icon.classList.add('fa-chevron-down')
-      } else if(icon.classList.contains('fa-angles-up')) {
-        icon.classList.remove('fa-angles-up')
-        icon.classList.add('fa-angles-down')
-      }
-    });
+    // log(this.identifier + " " + this.element.id + " " + counter)
 
     let reap = this.element.querySelectorAll(':scope > .task');
     if (reap.length) {
       setCardOrdinals(reap);
     } else {
-      reap = this.element.querySelectorAll('.subtask');
+      reap = this.element.querySelectorAll('.sub-task');
       setCardOrdinals(reap);
     }
 
     const drake = dragula([this.element], {
-      moves: (el, container, handle) => handle.classList.contains('handle'),
-      revertOnSpill: true,
-      accepts: (el, target, source, sibling) => {
-        // log(sibling)
-        return true;
-      }
+      // moves: (el, container, handle) => handle.classList.contains('handle'),
+      // revertOnSpill: true,
+      // accepts: (el, target, source, sibling) => {
+      //   // log(sibling)
+      //   return true;
+      // }
     });
     drake.on('drop', (el, target) => {
       setCardOrdinals(el.parentNode.children);
@@ -60,9 +39,5 @@ export default class extends Controller {
 
   }
 
-  connect() {
-    // counter += 1;
-    // log('Connecting...')
-    // log(counter)
-  }
+  connect() { }
 }
