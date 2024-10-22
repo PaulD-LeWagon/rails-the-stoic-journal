@@ -29,7 +29,7 @@
 
       <div class="cards tasks-container collapse-container">
 
-        <%= turbo_frame_tag "new_task_turbo_frame", data: { controller: "dragula" } do %>
+        <%= turbo_frame_tag @turbo_frame_id, data: { controller: "dragula" } do %>
 
           <% @tasks.each_with_index do |task, index| %>
 

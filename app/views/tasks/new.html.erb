@@ -6,7 +6,7 @@
 
       <h1 class="my-5 mb-3 fst-bold text-center">Add New Task</h1>
 
-      <%= turbo_frame_tag "new_task_turbo_frame" do %>
+      <%= turbo_frame_tag @turbo_frame_id do %>
 
         <%= render 'form', task: @task %>
 
