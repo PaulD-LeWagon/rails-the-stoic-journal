@@ -49600,3 +49600,44 @@ Processing by PagesController#meet_the_team as HTML
 Completed 200 OK in 52ms (Views: 38.0ms | ActiveRecord: 2.3ms | Allocations: 42577)
 
 
+Started GET "/" for 127.0.0.1 at 2024-10-22 14:04:17 +0100
+Processing by PagesController#home as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering pages/home.html.erb within layouts/application
+  Rendered shared/_jumbotron.html.erb (Duration: 0.5ms | Allocations: 172)
+  Rendered pages/home.html.erb within layouts/application (Duration: 2.3ms | Allocations: 433)
+  [1m[36mUser Load (2.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/shared/_navbar.html.erb:18
+  Rendered shared/_navbar.html.erb (Duration: 30.8ms | Allocations: 3829)
+  Rendered shared/_flashes.html.erb (Duration: 0.1ms | Allocations: 22)
+  Rendered shared/_footer.html.erb (Duration: 0.0ms | Allocations: 8)
+  Rendered layout layouts/application.html.erb (Duration: 61.4ms | Allocations: 12716)
+Completed 200 OK in 66ms (Views: 47.1ms | ActiveRecord: 15.0ms | Allocations: 13029)
+
+
+Started GET "/meet-the-team" for 127.0.0.1 at 2024-10-22 14:04:17 +0100
+Processing by PagesController#meet_the_team as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering pages/meet_the_team.html.erb within layouts/application
+  Rendered pages/meet_the_team.html.erb within layouts/application (Duration: 0.0ms | Allocations: 7)
+  Rendered shared/_navbar.html.erb (Duration: 0.4ms | Allocations: 278)
+  Rendered shared/_flashes.html.erb (Duration: 0.1ms | Allocations: 22)
+  Rendered shared/_footer.html.erb (Duration: 0.0ms | Allocations: 8)
+  Rendered layout layouts/application.html.erb (Duration: 14.1ms | Allocations: 8349)
+Completed 200 OK in 19ms (Views: 14.7ms | ActiveRecord: 0.2ms | Allocations: 9999)
+
+
+Started GET "/meet-the-team" for 127.0.0.1 at 2024-10-22 14:09:56 +0100
+Processing by PagesController#meet_the_team as HTML
+  [1m[36mUser Load (2.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering pages/meet_the_team.html.erb within layouts/application
+  Rendered pages/meet_the_team.html.erb within layouts/application (Duration: 0.0ms | Allocations: 7)
+  Rendered shared/_navbar.html.erb (Duration: 0.4ms | Allocations: 278)
+  Rendered shared/_flashes.html.erb (Duration: 0.0ms | Allocations: 22)
+  Rendered shared/_footer.html.erb (Duration: 0.0ms | Allocations: 8)
+  Rendered layout layouts/application.html.erb (Duration: 21.9ms | Allocations: 8496)
+Completed 200 OK in 49ms (Views: 22.3ms | ActiveRecord: 11.6ms | Allocations: 13011)
+
+
