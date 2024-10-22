@@ -1,4 +1,10 @@
-<%= simple_form_for([task, sub_task], html: { data: { controller: "form" }, class: "card m-3 p-2 mx-auto" }) do |f| %>
+<%= simple_form_for([task, sub_task],
+  html: {
+    data: {
+      controller: "form"
+    },
+    class: "card m-3 p-2 mx-auto"
+  }) do |f| %>
 
       <%= f.error_notification %>
       <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
@@ -27,10 +33,10 @@
 
       <div class="form-actions links d-flex justify-content-end align-items-center">
 
-        <%= render 'links', sub_task: sub_task %>
-
         <%= button_tag type: 'submit', class: "btn btn-primary" do %>
+
           <i class="fa-solid fa-thumbs-up"></i>
+
         <% end %>
 
       </div>
