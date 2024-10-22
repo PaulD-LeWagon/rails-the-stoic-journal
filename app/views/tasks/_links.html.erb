@@ -5,29 +5,55 @@
 <% if action_name != "index" %>
 
   <%= link_to tasks_path, class: "btn btn-secondary m-1", title: "Back to all tasks" do %>
+
     <i class="fa-solid fa-list-check"></i>
+
   <% end %>
 
 <% end %>
 
 <% if !task.nil? && task.persisted? %>
 
-  <%= link_to new_task_sub_task_path(task), class: "btn btn-primary m-1", title: "Add a subtask?" do %>
+  <%= link_to(new_task_sub_task_path(task),
+    data: {
+      turbo_frame: "turbo_new_sub_task_for_#{ dom_id task }"
+    },
+    class: "btn btn-primary m-1",
+    title: "Add a subtask?"
+  ) do %>
+
     <i class="fa-solid fa-square-plus"></i>
+
   <% end %>
 
   <% if policy(task).edit? %>
 
-    <%= link_to edit_task_path(task), class: "btn btn-warning m-1", title: "Edit this task" do %>
+    <%= link_to(edit_task_path(task),
+      data: { turbo_frame: "edit_#{ dom_id task }" },
+      class: "btn btn-warning m-1",
+      title: "Edit this task"
+    ) do %>
+
       <i class="fa-solid fa-pen-to-square"></i>
+
     <% end %>
 
   <% end %>
 
   <% if policy(task).destroy? %>
-    <%= link_to task_path(task), class: "btn btn-danger m-1", title: "Delete this task?", data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} do %>
+
+    <%= link_to task_path(task),
+      data: {
+        turbo_method: :delete,
+        turbo_confirm: "Are you sure?"
+      },
+      class: "btn btn-danger m-1",
+      title: "Delete this task?" do %>
+
       <i class="fa-solid fa-trash"></i>
+
     <% end %>
+
   <% end %>
 
 <% end %>

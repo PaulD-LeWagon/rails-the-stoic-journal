@@ -4,7 +4,11 @@
 
     <h1 class="my-5 mb-3 fst-bold">Edit Sub Task <%= @sub_task.order %></h1>
 
-    <%= render 'form', task: @task, sub_task: @sub_task %>
+      <%= turbo_frame_tag "edit_#{ dom_id @sub_task }_for_#{ dom_id @task }" do %>
+
+        <%= render 'form', task: @task, sub_task: @sub_task %>
+
+      <% end %>
 
   </div>
 </div>

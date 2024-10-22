@@ -11,7 +11,7 @@ class SubTasksController < ApplicationController
   end
 
   def new
-    @task = Task.find(params[:task_id])
+    # @task = Task.find(params[:task_id])
     @sub_task = SubTask.new(task: @task)
     authorize @sub_task
   end
@@ -21,6 +21,7 @@ class SubTasksController < ApplicationController
   end
 
   def create
+    @sub_task = SubTask.new(sub_task_params)
     @sub_task.task = @task
     authorize @sub_task
     if @sub_task.save
@@ -42,7 +43,10 @@ class SubTasksController < ApplicationController
   def destroy
     authorize @sub_task
     @sub_task.destroy
-    redirect_to tasks_url, notice: "Sub task #{@sub_task.title} was successfully destroyed."
+    respond_to do |format|
+      format.turbo_stream
+      format.html { redirect_to tasks_url, notice: "Sub task #{@sub_task.title} was successfully destroyed.", status: :see_other }
+    end
   end
 
   private

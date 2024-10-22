@@ -1,0 +1,66 @@
+<div id="<%= dom_id sub_task %>" class="card sub-task ms-5 my-1 me-1">
+
+  <div class="card-header d-flex justify-content-between align-items-center">
+
+    <h3>
+      <i class="d-none fa-solid fa-grip handle"></i>
+      Subtask #<span><%= sub_task.order %></span>
+      <%= sub_task.title %>
+    </h3>
+
+    <div class="controls d-flex justify-content-end">
+
+      <% if policy(sub_task).edit? %>
+
+        <%= link_to(edit_task_sub_task_path(sub_task.task_id, sub_task.id),
+          data: {
+            turbo_frame: "edit_#{ dom_id sub_task }_for_#{ dom_id sub_task.task }"
+          },
+          class: "btn btn-warning m-1",
+          title: "Edit this sub-task"
+        ) do %>
+
+          <i class="fa-solid fa-pen-to-square"></i>
+
+        <% end %>
+
+      <% end %>
+
+      <% if policy(sub_task).destroy? %>
+
+        <%= link_to(task_sub_task_path(sub_task.task_id, sub_task.id),
+          data: {
+            turbo_method: :delete,
+            turbo_confirm: "Are you sure?"
+          },
+          class: "btn btn-danger m-1",
+          title: "Delete this task?"
+        ) do %>
+
+          <i class="fa-solid fa-trash"></i>
+
+        <% end %>
+
+      <% end %>
+
+      <a href="#" type="button"
+        class="collapser btn btn-warning m-1"
+        title="View subtask description"
+        data-bs-toggle="collapse"
+        data-bs-target="#<%= dom_id sub_task %>_description"
+        aria-expanded="false"
+        aria-controls="<%= dom_id sub_task %>_description">
+
+        <i class="fa-solid fa-chevron-down"></i>
+
+      </a>
+
+    </div>
+
+  </div>
+  <div id="<%= dom_id sub_task %>_description" class="card-body collapse">
+
+    <p class="card-text bd-font"><%= sub_task.description %></p>
+
+  </div>
+</div>
