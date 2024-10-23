@@ -18,6 +18,13 @@ class SubTasksController < ApplicationController
 
   def edit
     authorize @sub_task
+    if request.headers["Content-Type"] == "application/json" || request.headers["Accept"] == "application/json"
+        render json: {
+          form: render_to_string(partial: "sub_tasks/form", formats: [:html], locals: { task: @task, sub_task: @sub_task }),
+          status: "success",
+          message: "Form ready to be edited."
+        }
+      end
   end
 
   def create
