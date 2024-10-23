@@ -1,64 +1,196 @@
+<div id="profile-page" class="d-flex justify-content-center align-items-start min-vh-800 fs-5">
 
-  <div class="row align-items-center my-5">
-    <!-- Profile Picture -->
-    <div class="col-md-3 text-center">
-      <img class="rounded-circle img-fluid" src="<%= current_user.image_url %>" alt="<%= current_user.full_name %>'s profile picture">
-    </div>
+  <div class="col-md-10 my-7 px-2 d-flex justify-content-between align-items-start">
 
-    <!-- User Info: Name, Email, Bio -->
-    <div class="col-md-9">
-      <h1><%= current_user.full_name %></h1>
-      <h4><%= current_user.email %></h4>
-      <p class="mt-3"><%= current_user.bio %></p>
-    </div>
-  </div>
-  <%= link_to "Edit Profile", edit_user_registration_path, class: "btn" %>
+    <div class="left">
 
-  <hr>
+      <div class="p-3 d-flex justify-content-between align-items-end">
 
+        <!-- Profile Picture -->
+        <div class="">
+          <img width="175" height="175" class="rounded-circle img-fluid" src="<%= current_user.image_url %>" alt="<%= current_user.full_name %>'s profile picture">
+        </div>
 
-<div class="accordion" id="accordionExample">
-  <div class="card">
-    <div class="card-header" id="headingOne">
-      <h5 class="mb-0">
-        <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-          AM Routine
-        </button>
-      </h5>
-    </div>
+        <!-- User Info: Name, Email, Bio -->
+        <div class="px-4">
+          <h1><%= current_user.full_name %></h1>
+          <h4><%= current_user.email %></h4>
+        </div>
 
-    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
-      <div class="card-body">
-        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
       </div>
+
+      <p class="mt-3 p-3 text-justify">
+        <%= current_user.bio %>
+      </p>
+
+      <%= link_to "Edit Profile", edit_user_registration_path %>
+
     </div>
-  </div>
-  <div class="card">
-    <div class="card-header" id="headingTwo">
-      <h5 class="mb-0">
-        <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-          Core Routine
-        </button>
-      </h5>
-    </div>
-    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
-      <div class="card-body">
-        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+
+    <div class="right">
+
+      <div class="accordion" id="routines-config">
+
+        <div class="card">
+          <div class="card-header" id="morning-routine">
+
+            <%= turbo_frame_tag "morning_routine" do %>
+
+              <div class="header d-flex justify-content-between align-items-center">
+
+                <h2 class="my-5 mb-3 fst-bold">
+                  <button class="" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                    Morning Routine
+                  </button>
+                </h2>
+
+                <%= link_to new_task_path(routine: 'morning'),
+                  data: {
+                    turbo_frame: "new_morning_routine_turbo_frame",
+                  },
+                  class: "btn bg-quinary btn-lg",
+                  title: "Add a new Routine" do %>
+
+                  <i class="fa-solid fa-square-plus"></i>
+
+                <% end %>
+
+              </div>
+
+            <% end %>
+
+          </div>
+
+          <div id="collapseOne" class="collapse show" aria-labelledby="morning-routine" data-parent="#routines-config">
+            <div class="card-body">
+
+              <%= turbo_frame_tag "new_morning_routine_turbo_frame" do %>
+
+                <% @morning_routines.each do |routine| %>
+
+                  <%= turbo_frame_tag "edit_#{ dom_id routine }" do %>
+
+                    <%= render 'tasks/task_card', task: routine %>
+
+                  <% end %>
+
+                <% end %>
+
+              <% end %>
+
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+
+          <div class="card-header" id="core-day">
+
+            <%= turbo_frame_tag "core_day_routine" do %>
+
+              <div class="header d-flex justify-content-between align-items-center">
+
+                <h2 class="my-5 mb-3 fst-bold">
+                  <button class="collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                    Core Day Routines
+                  </button>
+                </h2>
+
+                <%= link_to new_task_path(routine: 'day'),
+                  data: {
+                    turbo_frame: "new_day_routine_turbo_frame",
+                  },
+                  class: "btn bg-quinary btn-lg",
+                  title: "Add a new Routine" do %>
+
+                  <i class="fa-solid fa-square-plus"></i>
+
+                <% end %>
+
+              </div>
+
+            <% end %>
+
+          </div>
+          <div id="collapseTwo" class="collapse" aria-labelledby="core-day" data-parent="#routines-config">
+            <div class="card-body">
+
+
+              <%= turbo_frame_tag "new_day_routine_turbo_frame" do %>
+
+                <% @day_routines.each do |routine| %>
+
+                  <%= turbo_frame_tag "edit_#{ dom_id routine }" do %>
+
+                    <%= render 'tasks/task_card', task: routine %>
+
+                  <% end %>
+
+                <% end %>
+
+              <% end %>
+
+
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-header" id="evening-routine">
+
+            <%= turbo_frame_tag "evening_routine" do %>
+
+              <div class="header d-flex justify-content-between align-items-center">
+
+                <h2 class="my-5 mb-3 fst-bold">
+                  <button class="collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                    Evening Routine
+                  </button>
+                </h2>
+
+                <%= link_to new_task_path(routine: 'evening'),
+                  data: {
+                    turbo_frame: "new_evening_routine_turbo_frame",
+                  },
+                  class: "btn bg-quinary btn-lg",
+                  title: "Add a new Routine" do %>
+
+                  <i class="fa-solid fa-square-plus"></i>
+
+                <% end %>
+
+              </div>
+
+            <% end %>
+
+          </div>
+          <div id="collapseThree" class="collapse" aria-labelledby="evening-routine" data-parent="#routines-config">
+            <div class="card-body">
+
+              <%= turbo_frame_tag "new_evening_routine_turbo_frame" do %>
+
+                <% @evening_routines.each do |routine| %>
+
+                  <%= turbo_frame_tag "edit_#{ dom_id routine }" do %>
+
+                    <%= render 'tasks/task_card', task: routine %>
+
+                  <% end %>
+
+                <% end %>
+
+              <% end %>
+
+
+
+            </div>
+          </div>
+        </div>
+
       </div>
+
     </div>
-  </div>
-  <div class="card">
-    <div class="card-header" id="headingThree">
-      <h5 class="mb-0">
-        <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-          PM Routine
-        </button>
-      </h5>
-    </div>
-    <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
-      <div class="card-body">
-        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-      </div>
-    </div>
+
+
   </div>
 </div>

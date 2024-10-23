@@ -47,6 +47,10 @@ users << User.create!(
   bio: "I want to further develop my knowledge of front-end and immerse myself in to back end web development. I would love to be a freelance developer working on projects for clients in a diverse creative way."
 )
 
+# Try get better data (English as opposed to Latin)
+# Make a specific number of Tasks say, 3-5 AM Routine,
+# 7-10 Core-Day and 1-3 PM Routine
+
 10.times do |i|
 
   start_date = Date.today + rand(1..7)
@@ -75,13 +79,13 @@ users << User.create!(
   task.user = users.sample
   task.save!
 
-  rand(2..7).times do |j|
+  rand(2..5).times do |j|
 
     sub_task = SubTask.new(
       order: j + 1,
       title: Faker::Lorem.sentence(word_count: rand(3..5)).titleize,
-      description: Faker::Lorem.paragraph(sentence_count: rand(10..15)),
-      comment: Faker::Lorem.paragraph(sentence_count: rand(5..10)),
+      description: Faker::Lorem.paragraph(sentence_count: rand(3..7)),
+      comment: Faker::Lorem.paragraph(sentence_count: rand(0..3)),
       start_date: start_date,
       due_date: due_date,
       completed: false,
@@ -107,12 +111,13 @@ end
 
   je = JournalEntry.new(
     title: Faker::Lorem.sentence(word_count: rand(3..5)).titleize,
-    entry: Faker::Lorem.paragraph(sentence_count: rand(5..10))
+    entry: Faker::Lorem.paragraph(sentence_count: rand(30..50))
   )
 
   je.user = user
 
   # Add some categories...
+  # This breaks the seed file on occaision!!!
   rand(1..7).times do |i|
 
     cat = cats.sample

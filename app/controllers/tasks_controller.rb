@@ -1,8 +1,13 @@
 class TasksController < ApplicationController
   before_action :set_task, only: %i[ show edit update destroy ]
+  before_action :set_dynamic_routine_turbo_frame_id, except: %i[ edit update ]
 
   def index
-    @tasks = policy_scope(Task)
+    if has_valid_routine?
+      @tasks = policy_scope(Task.filter_by_user_routines(current_user, params[:routine]))
+    else
+      @tasks = policy_scope(Task)
+    end
   end
 
   def show
@@ -10,14 +15,14 @@ class TasksController < ApplicationController
   end
 
   def new
-    @task = Task.new
-    @task.user = current_user
-    @task.sub_tasks.build
-    authorize @task
-  end
-
-  def edit
-    authorize @task
+    if has_valid_routine?
+      @task = Task.new(routine: params[:routine].to_sym, user: current_user)
+      authorize @task
+    else
+      @task = Task.new(user: current_user)
+      @task.sub_tasks.build
+      authorize @task
+    end
   end
 
   def create
@@ -26,7 +31,8 @@ class TasksController < ApplicationController
     authorize @task
     respond_to do |format|
       if @task.save
-        format.html { redirect_to tasks_path, notice: "Task, #{@task.title}, created successfully with #{@task.sub_tasks.count} sub tasks!", status: :see_other }
+        path = @task.routine? ? tasks_path(routine: @task.routine) : tasks_path
+        format.html { redirect_to path, notice: "Task, #{@task.title}, created successfully with #{@task.sub_tasks.count} sub tasks!", status: :see_other }
         format.json do
           resp = {
             status: "success",
@@ -49,6 +55,10 @@ class TasksController < ApplicationController
         end
       end
     end
+  end
+
+  def edit
+    authorize @task
   end
 
   def update
@@ -87,7 +97,8 @@ class TasksController < ApplicationController
     @task.destroy
     respond_to do |format|
       format.turbo_stream
-      format.html { redirect_to tasks_url, notice: "Task #{title} deleted!", status: :see_other }
+      url = @task.routine? ? tasks_url(routine: @task.routine) : tasks_url
+      format.html { redirect_to url, notice: "Task #{title} deleted!", status: :see_other }
     end
   end
 
@@ -121,5 +132,13 @@ class TasksController < ApplicationController
         :completed,
         :_destroy
       ])
+  end
+
+  def has_valid_routine?
+    defined?(params[:routine]) && Task.routines.include?(params[:routine])
+  end
+
+  def set_dynamic_routine_turbo_frame_id
+    @turbo_frame_id = has_valid_routine? ? "new_#{params[:routine]}_routine_turbo_frame" : "new_task_turbo_frame"
   end
 end
