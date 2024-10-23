@@ -34,6 +34,9 @@ export default class extends Controller {
 
   initialize() {
     // log(this.cardTarget.id)
+    this.hiddenFormContainer = document.createElement('div')
+    this.hiddenFormContainer.classList.add('d-none')
+    document.getElementsByTagName('body')[0].insertAdjacentElement('beforeend', this.hiddenFormContainer)
   }
   connect() {
     setButtonTogglers()
@@ -41,27 +44,27 @@ export default class extends Controller {
 
 
   onChecked(e) {
-    e.preventDefault()
-    log(e.target.id)
+    // e.preventDefault()
+
     fetch(`${this.urlValue}/edit`, {
       method: "GET",
       headers: { "Accept": "application/json" },
     })
       .then(response => response.json())
       .then((data) => {
-        let div = document.createElement('div')
-        div.classList.add('d-none')
-        div.innerHTML = data.form
-        document.getElementsByTagName('body')[0].insertAdjacentElement('beforeend', div)
-        this.form = div.firstChild
-        let checkbox = div.querySelector(`#${e.target.id}`)
+
+        this.hiddenFormContainer.innerHTML = data.form
+        this.form = this.hiddenFormContainer.getElementsByTagName('form')[0]
+        let checkbox = this.form.querySelector(`#${e.target.id}`)
         checkbox.checked = e.target.checked
 
-        fetch(this.form.action, {
+        const request = {
           method: "POST",
           headers: { "Accept": "application/json" },
           body: new FormData(this.form)
-        })
+        }
+
+        fetch(this.form.action, request)
           .then(response => response.json())
           .then((data) => {
             // Icons: warning, error, success, info, and question
@@ -75,35 +78,36 @@ export default class extends Controller {
               }
             });
             console.log(data)
+            this.form.remove()
           })
       });
   }
 
   submit(e) {
-    e.preventDefault()
-    log('Submitting the form...')
-    fetch(this.form.action, {
-      method: "POST",
-      headers: { "Accept": "application/json" },
-      body: new FormData(this.formTarget)
-    })
-      .then(response => response.json())
-      .then((data) => {
-        // Icons: warning, error, success, info, and question
-        Swal.fire({
-          title: this.#capitalise(data.status),
-          text: data.message,
-          icon: data.status,
-          confirmButtonText: (data.status === 'success' ? 'Cool' : 'Okay'),
-          customClass: {
-            confirmButton: `btn btn-${data.status} btn-lg`,
-          }
-        });
-        // if(this.formTarget.id === 'new_task') {
-        //   this.formTarget.reset()
-        // }
-        // console.log(data)
-      })
+    // e.preventDefault()
+    // log('Submitting the form...')
+    // fetch(this.form.action, {
+    //   method: "POST",
+    //   headers: { "Accept": "application/json" },
+    //   body: new FormData(this.formTarget)
+    // })
+    //   .then(response => response.json())
+    //   .then((data) => {
+    //     // Icons: warning, error, success, info, and question
+    //     Swal.fire({
+    //       title: this.#capitalise(data.status),
+    //       text: data.message,
+    //       icon: data.status,
+    //       confirmButtonText: (data.status === 'success' ? 'Cool' : 'Okay'),
+    //       customClass: {
+    //         confirmButton: `btn btn-${data.status} btn-lg`,
+    //       }
+    //     });
+    //     // if(this.formTarget.id === 'new_task') {
+    //     //   this.formTarget.reset()
+    //     // }
+    //     // console.log(data)
+      // })
   }
 
   #capitalise(strOfWords) {

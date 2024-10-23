@@ -62,10 +62,6 @@ class TasksController < ApplicationController
     authorize @task
     # format.html { render :edit, task: @task, notice: "Task, #{@task.title}, with #{@task.sub_tasks.count} sub tasks ready for updating!", status: :see_other  }
     if request.headers["Content-Type"] == "application/json" || request.headers["Accept"] == "application/json"
-    #   with_format :html do
-    #     @the_form = render_to_string partial: 'tasks/form', :locals => { :task => @task }
-    #   end
-    #   render :json => { :form => @the_form, :status => "success", :message => "Form ready to be edited." }
       render json: {
         form: render_to_string(partial: "tasks/form", formats: [:html], locals: { task: @task }),
         status: "success",
