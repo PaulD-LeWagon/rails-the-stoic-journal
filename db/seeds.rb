@@ -1,11 +1,12 @@
 # Seed the database...
 #
-JournalCategory.destroy_all if JournalCategory.count > 0
-Category.destroy_all if Category.count > 0
-JournalEntry.destroy_all if JournalEntry.count > 0
-SubTask.destroy_all if SubTask.count > 0
-Task.destroy_all if Task.count > 0
-User.destroy_all if User.count > 0
+require 'faker'
+JournalCategory.destroy_all
+Category.destroy_all
+JournalEntry.destroy_all
+SubTask.destroy_all
+Task.destroy_all
+User.destroy_all
 
 Faker::Config.random = Random.new(42)
 
@@ -14,7 +15,7 @@ users = []
 one_in_three = [ true, false, false ]
 days = [ 'monday', 'tuseday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday' ]
 
-users << User.create!(
+users << User.create(
   email: "pauldevanney92@gmail.com",
   password: "devanney",
   username: "HarryD",
@@ -25,7 +26,7 @@ users << User.create!(
   bio: "In my last job I was a QA at an industrial bakery which supplied baked goods to most of the big supermarkets in the UK. It wasn't a bad job but its not what I wanted to do. I, obviously, want to get into Web Development or similar role. I have been in to coding, on and off, for quite a few years now. However, I didn't go to Uni nor do I have any industry recognised certification which meant I couldn't get passed the 'Recruitment Agencies'! So, I'm hoping this bootcamp can remedy that although, If I succeed on this bootcamp the freelance route could be a better option. I was a little apprehensive about applying for this course, initially, as I've practically no experience with the Ruby Programming language but quickly realised it would be a worth while challenge and learning experience."
 )
 
-users << User.create!(
+users << User.create(
   email: "jondriveuk@gmail.com",
   password: "password",
   username: "jon",
@@ -36,7 +37,7 @@ users << User.create!(
   bio: "Spent the last 5 years selling on Etsy, Amazon & ebay "
 )
 
-users << User.create!(
+users << User.create(
   email: "rehyan92@gmail.com",
   password: "Rehyan",
   username: "Rehyan",
@@ -50,9 +51,9 @@ users << User.create!(
 # Try get better data (English as opposed to Latin)
 # Make a specific number of Tasks say, 3-5 AM Routine,
 # 7-10 Core-Day and 1-3 PM Routine
-
-10.times do |i|
-
+i = 0
+10.times do
+i += 1
   start_date = Date.today + rand(1..7)
   due_date = start_date + rand(0..3)
 
@@ -69,23 +70,23 @@ users << User.create!(
     recurs_on: these_days,
     active: true,
     task_type: Task.task_types.keys[rand(0..(Task.task_types.length - 1))],
-    title: Faker::Lorem.sentence(word_count: rand(3..5)).titleize,
+    title: Faker::Hobby.activity,
     description: Faker::Lorem.paragraph(sentence_count: rand(15..30)),
-    comment: Faker::Lorem.paragraph(sentence_count: rand(5..15)),
+    comment: Faker::Quote.famous_last_words,
     start_date: start_date,
     due_date: due_date,
-    completed: false,
+    completed: false
   )
   task.user = users.sample
   task.save!
-
-  rand(2..5).times do |j|
-
+  j = 0
+  rand(2..5).times do
+    j += 1
     sub_task = SubTask.new(
       order: j + 1,
-      title: Faker::Lorem.sentence(word_count: rand(3..5)).titleize,
-      description: Faker::Lorem.paragraph(sentence_count: rand(3..7)),
-      comment: Faker::Lorem.paragraph(sentence_count: rand(0..3)),
+      title: Faker::Hobby.activity,
+      description: Faker::Lorem.paragraph(sentence_count: rand(15..30)),
+      comment: Faker::Quote.famous_last_words,
       start_date: start_date,
       due_date: due_date,
       completed: false,
@@ -98,27 +99,27 @@ users << User.create!(
 end
 
 # Ctegories...
-15.times do |i|
+15.times do
 
-  cats << Category.new(category: Faker::Lorem.words(number: rand(1..2)).join('-'))
+  cats << Category.create(category: Faker::Lorem.words(number: rand(1..2)).join('-'))
 
 end
 
 # Journal Entries...
-15.times do |i|
+15.times do
 
   user = users.sample
 
   je = JournalEntry.new(
-    title: Faker::Lorem.sentence(word_count: rand(3..5)).titleize,
-    entry: Faker::Lorem.paragraph(sentence_count: rand(30..50))
+    title: Faker::Hobby.activity,
+    entry: Faker::Quote.famous_last_words
   )
 
   je.user = user
 
   # Add some categories...
   # This breaks the seed file on occaision!!!
-  rand(1..7).times do |i|
+  rand(1..7).times do
 
     cat = cats.sample
 
@@ -141,3 +142,4 @@ end
   end
 
 end
+puts "seeding finished"

@@ -174,6 +174,7 @@ div.navbar.sticky-top {
 
 .btn {
   color: white;
+  background-color: #66023c;
   font-weight: 900;
   text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   box-shadow: 0 5px 8px rgba(0, 0, 0, 0.2);
@@ -204,6 +205,24 @@ div.navbar.sticky-top {
       }
     }
   }
+}
+
+
+// /* Style for the form container */
+// form {
+//   background-color: #f8f8f8;
+//   padding: 20px;
+//   border-radius: 10px;
+//   max-width: 500px;
+//   margin: 0 auto;
+//   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+// }
+
+/* Headings */
+.RR-form h2, .RR-form h3 {
+  font-family: 'Arial', sans-serif;
+  color: #333;
+  margin-bottom: 15px;
 }
 
 footer {
