@@ -16,17 +16,6 @@ class SubTasksController < ApplicationController
     authorize @sub_task
   end
 
-  def edit
-    authorize @sub_task
-    # if request.headers["Content-Type"] == "application/json" || request.headers["Accept"] == "application/json"
-    #     render json: {
-    #       form: render_to_string(partial: "sub_tasks/form", formats: [:html], locals: { task: @task, sub_task: @sub_task }),
-    #       status: "success",
-    #       message: "Form ready to be edited."
-    #     }
-    # end
-  end
-
   def create
     @sub_task = SubTask.new(sub_task_params)
     @sub_task.task = @task
@@ -38,12 +27,43 @@ class SubTasksController < ApplicationController
     end
   end
 
+  def edit
+    authorize @sub_task
+    if request.headers["Content-Type"] == "application/json" || request.headers["Accept"] == "application/json"
+        render json: {
+          form: render_to_string(partial: "sub_tasks/form", formats: [:html], locals: { task: @task, sub_task: @sub_task }),
+          status: "success",
+          message: "Form ready to be edited."
+        }
+    end
+  end
+
   def update
     authorize @sub_task
-    if @sub_task.update(sub_task_params)
-      redirect_to tasks_path, notice: "Sub task #{@sub_task.title} successfully updated."
-    else
-      render :edit, status: :unprocessable_entity
+    respond_to do |format|
+      if @sub_task.update(sub_task_params)
+        format.html { redirect_to tasks_path, notice: "Sub task #{@sub_task.title} successfully updated.", status: :see_other }
+        format.json do
+          resp = {
+            status: "success",
+            task: @sub_task,
+            errors: "",
+            message: "Sub-task, #{@sub_task.title}, updated!",
+          }
+          render json: resp.to_json, notice: "Sub-task, #{@sub_task.title} updated!", status: :see_other
+        end
+      else
+        format.html { render :edit, alert: "Server error", status: :unprocessable_entity }
+        format.json do
+          resp = {
+            status: "error",
+            task: @sub_task,
+            errors: @sub_task.errors,
+            message: "Sub-task #{@sub_task.title} NOT updated!",
+          }
+          render json: resp.to_json, alert: "Error sub-task could not be updated", status: :unprocessable_entity
+        end
+      end
     end
   end
 
