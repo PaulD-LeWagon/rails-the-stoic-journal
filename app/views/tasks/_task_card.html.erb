@@ -1,10 +1,11 @@
-<div id="<%= dom_id task %>" class="card task m-1" data-controller="form">
+<div id="<%= dom_id task %>" class="card task m-1" data-controller="cards" data-cards-target="card" data-cards-url-value="<%= task_url task %>">
 
   <div class="card-header d-flex justify-content-between align-items-center">
 
     <h3>
-      <i class="fa-solid fa-grip handle"></i>
-      Task #<span><%= task.order %></span>
+      <!-- <i class="fa-solid fa-grip handle"></i> -->
+      <input data-action="cards#onChecked" id="<%= "#{dom_id task}_completed" %>" type="checkbox"<%= task.completed ? " checked" : "" %>>
+      #<span id="<%= "#{dom_id task}_order" %>"><%= task.order %></span>
       <%= task.title %>
     </h3>
 

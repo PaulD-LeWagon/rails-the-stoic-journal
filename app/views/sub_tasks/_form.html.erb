@@ -1,7 +1,9 @@
 <%= simple_form_for([task, sub_task],
   html: {
     data: {
-      controller: "form"
+      controller: "cards",
+      action: "submit->cards#submit",
+      form_target: "form"
     },
     class: "card m-3 p-2 mx-auto"
   }) do |f| %>
@@ -17,17 +19,15 @@
 
         <%= f.input :title, input_html: { class: "form-control mb-3" } %>
 
-        <%= f.input :description, as: :text, input_html: { class: "form-control mb-3", 'rows' => 5, 'cols' => 10 } %>
+        <%= f.input :description, as: :text, input_html: { class: "form-control mb-3", 'rows' => 3, 'cols' => 10 } %>
 
-        <%# <%= f.input :comment, as: :text, input_html: { class: "form-control mb-3", 'rows' => 5, 'cols' => 10 } %>
+        <%= f.input :comment, as: :text, input_html: { class: "form-control mb-3", 'rows' => 3, 'cols' => 10 } %>
 
         <%= f.input :start_date, html5: true, input_html: { class: "form-control mb-3" } %>
 
         <%= f.input :due_date, html5: true, input_html: { class: "form-control mb-3" } %>
 
-        <%# <%= f.input :completed, as: :boolean, input_html: { class: "form-control mb-3" } %>
-
-        <%# <%= f.input :active, as: :boolean, input_html: { class: "form-control mb-3" } %>
+        <%= f.input :completed, as: :boolean, input_html: { id: "#{dom_id sub_task}_completed", class: "form-control mb-3" } %>
 
       </div>
 
