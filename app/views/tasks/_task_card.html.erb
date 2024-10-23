@@ -4,6 +4,8 @@
 
     <h3>
       <!-- <i class="fa-solid fa-grip handle"></i> -->
+      <!-- <i class="fa-solid fa-square-check"></i> -->
+      <!-- <i class="fa-solid fa-square"></i> -->
       <input data-action="cards#onChecked" id="<%= "#{dom_id task}_completed" %>" type="checkbox"<%= task.completed ? " checked" : "" %>>
       #<span id="<%= "#{dom_id task}_order" %>"><%= task.order %></span>
       <%= task.title %>
