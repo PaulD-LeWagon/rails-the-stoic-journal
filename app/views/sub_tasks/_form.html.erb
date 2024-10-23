@@ -1,11 +1,10 @@
 <%= simple_form_for([task, sub_task],
   html: {
+    id: "#{ dom_id sub_task }",
+    class: "sub-task sub-task-form m-3 p-2",
     data: {
-      controller: "cards",
-      # action: "submit->cards#submit",
-      # form_target: "form"
-    },
-    class: "card m-3 p-2 mx-auto"
+      controller: "cards"
+    }
   }) do |f| %>
 
       <%= f.error_notification %>
@@ -15,13 +14,13 @@
 
       <div class="form-inputs">
 
-        <%= f.input :order, input_html: { class: "form-control mb-3" } %>
+        <%= f.input :order, input_html: { id: "#{ dom_id sub_task }_order", class: "form-control mb-3" } %>
 
         <%= f.input :title, input_html: { class: "form-control mb-3" } %>
 
         <%= f.input :description, as: :text, input_html: { class: "form-control mb-3", 'rows' => 3, 'cols' => 10 } %>
 
-        <%= f.input :comment, as: :text, input_html: { class: "form-control mb-3", 'rows' => 3, 'cols' => 10 } %>
+        <%= f.input :comment, as: :text, input_html: { hidden: true, class: "form-control mb-3", 'rows' => 3, 'cols' => 10 } %>
 
         <%= f.input :start_date, html5: true, input_html: { class: "form-control mb-3" } %>
 
