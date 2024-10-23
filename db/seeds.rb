@@ -71,8 +71,8 @@ i += 1
     active: true,
     task_type: Task.task_types.keys[rand(0..(Task.task_types.length - 1))],
     title: Faker::Hobby.activity,
-    description: Faker::Hobby.activity,
-    comment: Faker::Hobby.activity,
+    description: Faker::Lorem.paragraph(sentence_count: rand(15..30)),
+    comment: Faker::Quote.famous_last_words,
     start_date: start_date,
     due_date: due_date,
     completed: false
@@ -85,8 +85,8 @@ i += 1
     sub_task = SubTask.new(
       order: j + 1,
       title: Faker::Hobby.activity,
-      description: Faker::Hobby.activity,
-      comment: Faker::Hobby.activity,
+      description: Faker::Lorem.paragraph(sentence_count: rand(15..30)),
+      comment: Faker::Quote.famous_last_words,
       start_date: start_date,
       due_date: due_date,
       completed: false,
@@ -112,7 +112,7 @@ end
 
   je = JournalEntry.new(
     title: Faker::Hobby.activity,
-    entry: Faker::Hobby.activity
+    entry: Faker::Quote.famous_last_words
   )
 
   je.user = user
