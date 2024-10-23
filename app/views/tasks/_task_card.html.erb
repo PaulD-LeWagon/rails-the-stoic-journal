@@ -5,7 +5,7 @@
     <h3>
       <!-- <i class="fa-solid fa-grip handle"></i> -->
       <input data-action="cards#onChecked" id="<%= "#{dom_id task}_completed" %>" type="checkbox"<%= task.completed ? " checked" : "" %>>
-      #<span id="<%= "#{dom_id task}_order" %>"><%= task.order %></span>
+      #<span id="<%= "#{dom_id task}_order" %>" data-action="click->cards#order"><%= task.order %></span>
       <%= task.title %>
     </h3>
 

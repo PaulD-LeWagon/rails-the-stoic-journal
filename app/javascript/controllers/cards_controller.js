@@ -42,6 +42,9 @@ export default class extends Controller {
     setButtonTogglers()
   }
 
+  order(e) {
+    log(e.target.innerText)
+  }
 
   onChecked(e) {
     // e.preventDefault()
