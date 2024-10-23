@@ -4,8 +4,8 @@
 
     <h3>
       <!-- <i class="d-none fa-solid fa-grip handle"></i> -->
-      <input data-action="cards#onChecked" id="<%= "#{dom_id sub_task}_completed" %>" type="checkbox"<%= sub_task.completed ? " checked" : "" %>>
-      #<span id="<%= "#{dom_id sub_task}_order" %>"><%= sub_task.order %></span>
+      <input id="<%= "#{dom_id sub_task}_completed" %>" data-cards-target="cardCompleted" data-action="cards#onChecked" type="checkbox"<%= sub_task.completed ? " checked" : "" %>>
+      <span id="<%= "#{dom_id sub_task}_order" %>" data-cards-target="cardOrder" data-action="click->cards#onReorder"><b><%= sub_task.order %></b></span>
       <%= sub_task.title %>
     </h3>
 

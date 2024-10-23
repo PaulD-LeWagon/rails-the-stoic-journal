@@ -6,8 +6,8 @@
       <!-- <i class="fa-solid fa-grip handle"></i> -->
       <!-- <i class="fa-solid fa-square-check"></i> -->
       <!-- <i class="fa-solid fa-square"></i> -->
-      <input data-action="cards#onChecked" id="<%= "#{dom_id task}_completed" %>" type="checkbox"<%= task.completed ? " checked" : "" %>>
-      #<span id="<%= "#{dom_id task}_order" %>" data-action="click->cards#order"><%= task.order %></span>
+      <input id="<%= "#{dom_id task}_completed" %>" data-cards-target="cardCompleted" data-action="cards#onChecked" type="checkbox"<%= task.completed ? " checked" : "" %>>
+      <span id="<%= "#{dom_id task}_order" %>" data-cards-target="cardOrder" data-action="click->cards#onReorder"><b><%= task.order %></b></span>
       <%= task.title %>
     </h3>
 

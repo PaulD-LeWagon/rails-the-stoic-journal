@@ -34,7 +34,14 @@ export default class extends Controller {
       // }
     });
     drake.on('drop', (el, target) => {
-      setCardOrdinals(el.parentNode.children);
+      const event = new Event("click")
+      const alucard = el.parentNode.children
+      setCardOrdinals(alucard)
+      Array.from(alucard).forEach((dracula, i) => {
+        dracula
+          .querySelectorAll('.card-header span')[0]
+          .dispatchEvent(event)
+      })
     });
 
   }

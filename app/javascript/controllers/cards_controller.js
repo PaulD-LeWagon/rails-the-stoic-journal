@@ -28,7 +28,7 @@ const setButtonTogglers = () => {
 }
 // Connects to data-controller="cards"
 export default class extends Controller {
-  static targets = [ "card", "form" ]
+  static targets = [ "card", "form", "cardOrder", "cardCompleted" ]
 
   static values = { url: String }
 
@@ -42,13 +42,15 @@ export default class extends Controller {
     setButtonTogglers()
   }
 
-  order(e) {
-    log(e.target.innerText)
+  onReorder(e) {
+    this.#updateBackEnd()
   }
 
   onChecked(e) {
-    // e.preventDefault()
+    this.#updateBackEnd()
+  }
 
+  #updateBackEnd() {
     fetch(`${this.urlValue}/edit`, {
       method: "GET",
       headers: { "Accept": "application/json" },
@@ -58,8 +60,11 @@ export default class extends Controller {
 
         this.hiddenFormContainer.innerHTML = data.form
         this.form = this.hiddenFormContainer.getElementsByTagName('form')[0]
-        let checkbox = this.form.querySelector(`#${e.target.id}`)
-        checkbox.checked = e.target.checked
+        let checkbox = this.form.querySelector(`#${this.cardTarget.id}_completed`)
+        let orderInput = this.form.querySelector(`#${this.cardTarget.id}_order`)
+
+        checkbox.checked = this.cardCompletedTarget.checked
+        orderInput.value = this.cardOrderTarget.innerHTML
 
         const request = {
           method: "POST",
@@ -71,46 +76,19 @@ export default class extends Controller {
           .then(response => response.json())
           .then((data) => {
             // Icons: warning, error, success, info, and question
-            Swal.fire({
-              title: this.#capitalise(data.status),
-              text: data.message,
-              icon: data.status,
-              confirmButtonText: (data.status === 'success' ? 'Cool' : 'Okay'),
-              customClass: {
-                confirmButton: `btn btn-${data.status} btn-lg`,
-              }
-            });
-            console.log(data)
+            // Swal.fire({
+            //   title: this.#capitalise(data.status),
+            //   text: data.message,
+            //   icon: data.status,
+            //   confirmButtonText: (data.status === 'success' ? 'Cool' : 'Okay'),
+            //   customClass: {
+            //     confirmButton: `btn btn-${data.status} btn-lg`,
+            //   }
+            // });
+            console.log(data.message)
             this.form.remove()
           })
       });
-  }
-
-  submit(e) {
-    // e.preventDefault()
-    // log('Submitting the form...')
-    // fetch(this.form.action, {
-    //   method: "POST",
-    //   headers: { "Accept": "application/json" },
-    //   body: new FormData(this.formTarget)
-    // })
-    //   .then(response => response.json())
-    //   .then((data) => {
-    //     // Icons: warning, error, success, info, and question
-    //     Swal.fire({
-    //       title: this.#capitalise(data.status),
-    //       text: data.message,
-    //       icon: data.status,
-    //       confirmButtonText: (data.status === 'success' ? 'Cool' : 'Okay'),
-    //       customClass: {
-    //         confirmButton: `btn btn-${data.status} btn-lg`,
-    //       }
-    //     });
-    //     // if(this.formTarget.id === 'new_task') {
-    //     //   this.formTarget.reset()
-    //     // }
-    //     // console.log(data)
-      // })
   }
 
   #capitalise(strOfWords) {
