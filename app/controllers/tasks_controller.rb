@@ -5,9 +5,9 @@ class TasksController < ApplicationController
 
   def index
     if has_valid_routine?
-      @tasks = policy_scope(Task.filter_by_user_routines(current_user, params[:routine]).order(:order))
+      @tasks = policy_scope(Task.filter_by_user_routines(current_user, params[:routine]))
     else
-      @tasks = policy_scope(Task.order(:user_id, :order))
+      @tasks = policy_scope(Task.order(:order)).where(routine: :not_recuring)
     end
   end
 
