@@ -1,12 +1,15 @@
 <div id="<%= dom_id task %>"
   class="card task<%= task.completed ? " card-checked" : "" %>"
-  data-controller="cards"
+  data-controller="cards task-buttons"
   data-cards-target="card"
   data-cards-url-value="<%= task_url task %>">
 
   <div class="card-header d-flex justify-content-between align-items-center">
 
     <h3 class="card-title">
+
+      <i class="fa-solid fa-grip"></i>
+
       <span class="checkbox-wrapper">
 
         <label data-action="click->cards#onChecked"
@@ -47,7 +50,9 @@
 
       <%= link_to(new_task_subtask_path(task),
         data: {
-          turbo_frame: "new_subtask_for_#{ dom_id task }"
+          turbo_frame: "new_subtask_for_#{ dom_id task }",
+          task_buttons_target: "addSubtaskBtn",
+          action: "click->task-buttons#addSubtaskClick"
         },
         class: "add-new-subtask btn btn-primary m-1",
         title: "Add a subtask?"
@@ -90,6 +95,7 @@
         title="View all subtasks"
         data-bs-toggle="collapse"
         data-bs-target="#<%= dom_id task %>_subtasks"
+        data-task-buttons-target="viewSubtasksBtn"
         aria-expanded="false"
         aria-controls="<%= dom_id task %>_subtasks">
 
@@ -119,7 +125,9 @@
     </div>
 
   </div>
-  <div id="<%= dom_id task %>_description" class="card-body collapse">
+  <div id="<%= dom_id task %>_description"
+    class="card-body collapse"
+    data-task-buttons-target="desc">
 
     <p class="card-text">
       <%= task.description %>
@@ -127,7 +135,9 @@
 
   </div>
 
-  <div id="<%= dom_id task %>_subtasks" class="cards subtasks-container collapse-container collapse">
+  <div id="<%= dom_id task %>_subtasks"
+    class="cards subtasks-container collapse-container collapse"
+    data-task-buttons-target="subtasks">
 
     <%= turbo_frame_tag "new_subtask_for_#{ dom_id task }", data: { controller: "dragula" } do %>
 

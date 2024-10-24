@@ -25,26 +25,6 @@ const setButtonTogglers = (controllerID) => {
       icon.classList.add('fa-angles-down')
     }
   })
-
-  const $addNewSTBtn = $('.add-new-subtask')
-  $addNewSTBtn.on('click', (e) => {
-    e.preventDefault()
-    const subtasks = $(`#${controllerID}`).find(`#${controllerID}_subtasks`).get(0)
-
-    if(typeof subtasks !== 'undefined'){
-      // log(subtasks.classList.contains('show'))
-      if(!subtasks.classList.contains('show')) {
-        if(e.target.classList.contains('add-new-subtask')) {
-          const $addBtn = $(e.target)
-          log($addBtn.siblings(`[aria-controls=#${controllerID}_subtasks}]`))
-        } else {
-          const $addBtn = $(e.target).closest('.add-new-subtask')
-          log($addBtn.siblings(`[aria-controls=#${controllerID}_subtasks}]`))
-        }
-      }
-    }
-    // $(this).siblings('.collapse').click()
-  })
 }
 
 // Connects to data-controller="cards"

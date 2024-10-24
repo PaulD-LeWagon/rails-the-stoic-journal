@@ -13,27 +13,27 @@
 
   <div class="form-inputs">
 
-    <%= f.input :order, input_html: { id: "#{ dom_id task }_order", class: "order" }, label: false %>
+    <%= f.input :order, as: :hidden, label: false, input_html: { id: "#{ dom_id task }_order", class: "order" } %>
 
-    <%= f.input :routine, collection: Task::transform_routines_for_html_select, input_html: { class: "form-control mb-3" } %>
+    <%= f.input :routine, as: :hidden, label: false, collection: Task::transform_routines_for_html_select, input_html: { class: "form-control mb-3" } %>
 
-    <%= f.input :recurs_on, as: :check_boxes, input_html: { class: "form-control mb-3" } %>
+    <%= f.input :recurs_on, as: :check_boxes, as: :hidden, label: false, input_html: { class: "form-control mb-3" } %>
 
-    <%= f.input :task_type, collection: Task::transform_task_types_for_html_select, input_html: { class: "form-control mb-3" } %>
+    <%= f.input :task_type, label: false, collection: Task::transform_task_types_for_html_select, input_html: { class: "form-control mb-3" } %>
 
-    <%= f.input :title, input_html: { class: "form-control mb-3" } %>
+    <%= f.input :title, label: false, placeholder: "Task title...", input_html: { class: "form-control mb-3" } %>
 
-    <%= f.input :description, as: :text, input_html: { class: "form-control mb-3", 'rows' => 3, 'cols' => 10 } %>
+    <%= f.input :description, as: :text, label: false, placeholder: "Add a description here...", input_html: { class: "form-control mb-3", 'rows' => 3, 'cols' => 10 } %>
 
-    <%= f.input :comment, as: :text, input_html: { hidden: true, class: "form-control mb-3", 'rows' => 3, 'cols' => 10 } %>
+    <%= f.input :comment, as: :text, as: :hidden, label: false, input_html: { hidden: true, class: "form-control mb-3", 'rows' => 3, 'cols' => 10 } %>
 
-    <%= f.input :start_date, html5: true, input_html: { class: "form-control mb-3" } %>
+    <%= f.input :start_date, html5: true, label: false, input_html: { class: "form-control mb-3" } %>
 
-    <%= f.input :due_date, html5: true, input_html: { class: "form-control mb-3" } %>
+    <%= f.input :due_date, html5: true, as: :hidden, label: false, input_html: { class: "form-control mb-3" } %>
 
-    <%= f.input :completed, as: :boolean, input_html: { id: "#{dom_id task}_completed", class: "form-control mb-3" } %>
+    <%= f.input :completed, as: :boolean, as: :hidden, label: false, input_html: { id: "#{dom_id task}_completed", class: "form-control mb-3" } %>
 
-    <%= f.input :active, as: :boolean, input_html: { hidden: true, class: "form-control mb-3" } %>
+    <%= f.input :active, as: :boolean, as: :hidden, label: false, input_html: { hidden: true, class: "form-control mb-3" } %>
 
   </div>
 
@@ -79,7 +79,7 @@
 
       <%# <i class="fa-solid fa-thumbs-up"></i> %>
 
-      <i class="fa-solid fa-circle-check"></i> Add Task
+      <i class="fa-solid fa-circle-check"></i> Done!
 
     <% end %>
 
