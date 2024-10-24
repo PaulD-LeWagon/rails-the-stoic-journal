@@ -2,33 +2,33 @@ import { Controller } from "@hotwired/stimulus"
 import Swal from "sweetalert2";
 const log = something => console.log(typeof something, something)
 const setButtonTogglers = () => {
-  const $collConts = $('.collapse-container');
-    $collConts.on('shown.bs.collapse', (e) => {
-      const $btn = $(`[aria-controls=${e.target.id}]`)
-      const icon = $btn.find('i').get(0)
-      if(icon.classList.contains('fa-chevron-down')) {
-        icon.classList.remove('fa-chevron-down')
-        icon.classList.add('fa-chevron-up')
-      } else if(icon.classList.contains('fa-angles-down')) {
-        icon.classList.remove('fa-angles-down')
-        icon.classList.add('fa-angles-up')
-      }
-    })
-    .on('hidden.bs.collapse', (e) => {
-      const $btn = $(`[aria-controls=${e.target.id}]`)
-      const icon = $btn.find('i').get(0)
-      if(icon.classList.contains('fa-chevron-up')) {
-        icon.classList.remove('fa-chevron-up')
-        icon.classList.add('fa-chevron-down')
-      } else if(icon.classList.contains('fa-angles-up')) {
-        icon.classList.remove('fa-angles-up')
-        icon.classList.add('fa-angles-down')
-      }
-    })
+  const $collConts = $('.collapse-container')
+  $collConts.on('shown.bs.collapse', (e) => {
+    const $btn = $(`[aria-controls=${e.target.id}]`)
+    const icon = $btn.find('i').get(0)
+    if(icon.classList.contains('fa-chevron-down')) {
+      icon.classList.remove('fa-chevron-down')
+      icon.classList.add('fa-chevron-up')
+    } else if(icon.classList.contains('fa-angles-down')) {
+      icon.classList.remove('fa-angles-down')
+      icon.classList.add('fa-angles-up')
+    }
+  })
+  .on('hidden.bs.collapse', (e) => {
+    const $btn = $(`[aria-controls=${e.target.id}]`)
+    const icon = $btn.find('i').get(0)
+    if(icon.classList.contains('fa-chevron-up')) {
+      icon.classList.remove('fa-chevron-up')
+      icon.classList.add('fa-chevron-down')
+    } else if(icon.classList.contains('fa-angles-up')) {
+      icon.classList.remove('fa-angles-up')
+      icon.classList.add('fa-angles-down')
+    }
+  })
 }
 // Connects to data-controller="cards"
 export default class extends Controller {
-  static targets = [ "card", "form", "cardOrder", "cardCompleted" ]
+  static targets = [ "card", "form", "cardOrder", "cardCompleted", "cardFauxCheck" ]
 
   static values = { url: String }
 
@@ -47,7 +47,15 @@ export default class extends Controller {
   }
 
   onChecked(e) {
+
+    this.unChecked = this.cardFauxCheckTarget.querySelectorAll('.fa-square')[0]
+    this.checked = this.cardFauxCheckTarget.querySelectorAll('.fa-square-check')[0]
+    this.unChecked.classList.toggle('d-none')
+    this.checked.classList.toggle('d-none')
+    this.element.classList.toggle('card-checked')
+    log(this.element.id)
     this.#updateBackEnd()
+
   }
 
   #updateBackEnd() {
@@ -64,7 +72,7 @@ export default class extends Controller {
         let orderInput = this.form.querySelector(`#${this.cardTarget.id}_order`)
 
         checkbox.checked = this.cardCompletedTarget.checked
-        orderInput.value = this.cardOrderTarget.innerHTML
+        orderInput.value = parseInt(this.cardOrderTarget.innerHTML, 10)
 
         const request = {
           method: "POST",
@@ -85,7 +93,7 @@ export default class extends Controller {
             //     confirmButton: `btn btn-${data.status} btn-lg`,
             //   }
             // });
-            console.log(data.message)
+            // console.log(data.message)
             this.form.remove()
           })
       });

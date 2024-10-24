@@ -7,8 +7,10 @@ class SubTask < ApplicationRecord
     end
   end
 
-  # scope :completed, -> { where(completed: true) }
-  # scope :pending, -> { where(completed: false) }
+  scope :completed, -> { where(completed: true) }
+  scope :pending, -> { where(completed: false) }
+
+  default_scope { order(:task_id, :order) }
 
   def set_initial_order
     if !self.task.nil?
@@ -16,5 +18,5 @@ class SubTask < ApplicationRecord
     end
   end
 
-  validates_presence_of :title # , :start_date
+  validates_presence_of :title
 end
