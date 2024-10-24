@@ -1,7 +1,7 @@
 import { Controller } from "@hotwired/stimulus"
 import Swal from "sweetalert2";
 const log = something => console.log(typeof something, something)
-const setButtonTogglers = () => {
+const setButtonTogglers = (controllerID) => {
   const $collConts = $('.collapse-container')
   $collConts.on('shown.bs.collapse', (e) => {
     const $btn = $(`[aria-controls=${e.target.id}]`)
@@ -25,7 +25,28 @@ const setButtonTogglers = () => {
       icon.classList.add('fa-angles-down')
     }
   })
+
+  const $addNewSTBtn = $('.add-new-subtask')
+  $addNewSTBtn.on('click', (e) => {
+    e.preventDefault()
+    const subtasks = $(`#${controllerID}`).find(`#${controllerID}_subtasks`).get(0)
+
+    if(typeof subtasks !== 'undefined'){
+      // log(subtasks.classList.contains('show'))
+      if(!subtasks.classList.contains('show')) {
+        if(e.target.classList.contains('add-new-subtask')) {
+          const $addBtn = $(e.target)
+          log($addBtn.siblings(`[aria-controls=#${controllerID}_subtasks}]`))
+        } else {
+          const $addBtn = $(e.target).closest('.add-new-subtask')
+          log($addBtn.siblings(`[aria-controls=#${controllerID}_subtasks}]`))
+        }
+      }
+    }
+    // $(this).siblings('.collapse').click()
+  })
 }
+
 // Connects to data-controller="cards"
 export default class extends Controller {
   static targets = [ "card", "form", "cardOrder", "cardCompleted", "cardFauxCheck" ]
@@ -39,7 +60,7 @@ export default class extends Controller {
     document.getElementsByTagName('body')[0].insertAdjacentElement('beforeend', this.hiddenFormContainer)
   }
   connect() {
-    setButtonTogglers()
+    setButtonTogglers(this.element.id)
   }
 
   onReorder(e) {

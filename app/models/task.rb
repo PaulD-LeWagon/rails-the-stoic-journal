@@ -1,8 +1,8 @@
 class Task < ApplicationRecord
   belongs_to :user
-  has_many :sub_tasks, inverse_of: :task, dependent: :destroy
+  has_many :subtasks, inverse_of: :task, dependent: :destroy
 
-  accepts_nested_attributes_for :sub_tasks, reject_if: :all_blank, allow_destroy: true
+  accepts_nested_attributes_for :subtasks, reject_if: :all_blank, allow_destroy: true
 
   after_initialize do |task|
     if !persisted?
@@ -15,7 +15,7 @@ class Task < ApplicationRecord
   enum routine: [ NONE_ROUTINE_NAME, :morning, :day, :evening ]
   enum task_type: [ :general, :event, :fitness, :admin, :work, :self_development ]
 
-  default_scope { order(:order) }
+  default_scope { order(:order, :start_date) }
 
   scope :completed, -> { where(completed: true) }
   scope :pending, -> { where(completed: false) }

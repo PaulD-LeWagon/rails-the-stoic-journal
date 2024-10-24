@@ -4,9 +4,9 @@
 
     <h1 class="my-5 mb-3 fst-bold text-center">Add a New Sub Task</h1>
 
-    <%= turbo_frame_tag "new_sub_task_for_#{ dom_id @task }" do %>
+    <%= turbo_frame_tag "new_subtask_for_#{ dom_id @task }" do %>
 
-      <%= render 'form', task: @task, sub_task: @sub_task %>
+      <%= render 'form', task: @task, subtask: @subtask %>
 
     <% end %>
 

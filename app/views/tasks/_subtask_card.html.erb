@@ -1,0 +1,97 @@
+<div id="<%= dom_id subtask %>"
+  class="card subtask<%= subtask.completed ? " card-checked" : "" %>"
+  data-controller="cards"
+  data-cards-target="card"
+  data-cards-url-value="<%= task_subtask_url(subtask.task, subtask) %>">
+
+  <div class="card-header d-flex justify-content-between align-items-center">
+
+    <h3 class="card-title">
+      <span class="checkbox-wrapper"></span>
+
+        <label data-action="click->cards#onChecked"
+          data-cards-target="cardFauxCheck"
+          for="<%= "#{dom_id subtask}_completed" %>">
+
+          <i class="<%= subtask.completed ? "" : "d-none " %>fa-solid fa-square-check"></i>
+          <i class="<%= subtask.completed ? "d-none " : "" %>fa-solid fa-square"></i>
+
+        </label>
+
+        <input id="<%= "#{dom_id subtask}_completed" %>"
+          class="checkbox d-none"
+          data-cards-target="cardCompleted"
+          type="checkbox"<%= subtask.completed ? " checked" : "" %>>
+
+      </span>
+
+      <span id="<%= "#{dom_id subtask}_order" %>"
+        class="order-wrapper"
+        data-cards-target="cardOrder"
+        data-action="click->cards#onReorder">
+
+        <%= subtask.order %>
+
+      </span>
+
+      <%= subtask.title %>
+    </h3>
+
+    <div class="controls d-flex justify-content-end">
+
+      <% if policy(subtask).edit? %>
+
+        <%= link_to(edit_task_subtask_path(subtask.task_id, subtask.id),
+          data: {
+            turbo_frame: "edit_#{ dom_id subtask }_for_#{ dom_id subtask.task }"
+          },
+          class: "btn btn-warning m-1",
+          title: "Edit this subtask"
+        ) do %>
+
+          <i class="fa-solid fa-pen-to-square"></i>
+
+        <% end %>
+
+      <% end %>
+
+      <a href="#" type="button"
+        class="collapser btn btn-warning m-1"
+        title="View subtask description"
+        data-bs-toggle="collapse"
+        data-bs-target="#<%= dom_id subtask %>_description"
+        aria-expanded="false"
+        aria-controls="<%= dom_id subtask %>_description">
+
+        <i class="fa-solid fa-chevron-down"></i>
+
+      </a>
+
+      <% if policy(subtask).destroy? %>
+
+        <%= link_to(task_subtask_path(subtask.task_id, subtask.id),
+          data: {
+            turbo_method: :delete,
+            turbo_confirm: "Are you sure?"
+          },
+          class: "btn btn-danger m-1",
+          title: "Delete this task?"
+        ) do %>
+
+          <i class="fa-solid fa-trash"></i>
+
+        <% end %>
+
+      <% end %>
+
+    </div>
+
+  </div>
+  <div id="<%= dom_id subtask %>_description" class="card-body collapse">
+
+    <p class="card-text">
+      <%= subtask.description %>
+    </p>
+
+  </div>
+</div>

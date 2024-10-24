@@ -1,0 +1,14 @@
+<div class="d-flex justify-content-center align-items-start min-vh-100">
+
+  <div class="col-md-10">
+
+    <h1 class="my-5 mb-3 fst-bold">Edit Sub Task <%= @subtask.order %></h1>
+
+      <%= turbo_frame_tag "edit_#{ dom_id @subtask }_for_#{ dom_id @task }" do %>
+
+        <%= render 'form', task: @task, subtask: @subtask %>
+
+      <% end %>
+
+  </div>
+</div>

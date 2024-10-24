@@ -21,7 +21,7 @@ export default class extends Controller {
     if (reap.length) {
       setCardOrdinals(reap);
     } else {
-      reap = this.element.querySelectorAll('.sub-task');
+      reap = this.element.querySelectorAll('.subtask');
       setCardOrdinals(reap);
     }
 

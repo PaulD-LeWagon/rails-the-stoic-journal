@@ -21,44 +21,81 @@
   width: 57% !important;
 }
 
-.card.task, .card.sub-task {
-  max-width: 100%;
-  text-shadow: 0 0 0 rgba(0, 0, 0, 0);
-  box-shadow: 0 0 0 rgba(0, 0, 0, 0);
-  transition: all 0.5s ease-in-out allow-discrete;
+
+.btn {
+  color: white;
+  background-color: $primary;
+  font-weight: 900;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
-.card.task:hover, .card.sub-task:hover {
-  text-shadow: 0 6px 8px rgba(0, 0, 0, 0.25);
-  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.25);
-  border: solid 1px $success;
-}
-.card .card-title .lead {
-  font-size: small;
-  font-weight: 200;
-  font-style: italic;
-}
-.card .card.sub-task {
-  margin-left: 3rem !important;
-}
-.card .card-header h3 {
-  margin: 0;
-  font-weight: 600;
-}
-.card .card-header h3 .order-wrapper {
-  padding: 0 .4rem;
-}
-.card .card-header h3 span:hover i,
-.card .card-header h3 span:hover {
-  cursor: pointer;
-}
+
 .card-checked {
   background-color: $quinary;
   color: white;
 }
+.card .card-header > * {
+  margin: 0;
+  font-weight: 600;
+}
+.card .card-header h3.card-title .order-wrapper {
+  padding: 0 .4rem;
+}
+.card .card-header > h3 > span > label {
+  display: inline-block;
+}
+// For the Faux-checkbox
+.card .card-header > h3 > span > label:hover,
+.card .card-header > h3 > span > label:hover i {
+  cursor: pointer;
+}
+.card .card-body .card-text {
+  font-weight: 600 !important;
+}
+
+.card.task {
+  margin: 1em 0.5em 0.5em 0.5em;
+}
+.card.task .card-header h3.card-title {
+  font-size: 1.7em !important;
+}
+.card.task .card-body .card-text {
+  font-size: 1.2em !important;
+}
+
+.card.subtask {
+  margin: .75em 0.5em 0em 3em !important;
+}
+.card.subtask:last-of-type {
+  margin-bottom: .75em !important;
+}
+.card.subtask .card-header h3.card-title {
+  font-size: 1.5em !important;
+}
+.card.subtask .card-body .card-text {
+  font-size: 1em !important;
+}
+
+.card.task,
+.card.subtask {
+  max-width: 100%;
+  text-shadow: 0 4px 6px rgba(0, 0, 0, 0.25);
+  box-shadow: 0 0 0 rgba(0, 0, 0, 0);
+  transition: all 0.5s ease-in-out allow-discrete;
+}
+.card.task:hover {
+  text-shadow: 0 0 0 rgba(0, 0, 0, 0);
+  box-shadow: 0 4px 7px rgba(0, 0, 0, 0.25);
+  border: solid 2px $success;
+}
+.card.subtask:hover {
+  text-shadow: 0 0 0 rgba(0, 0, 0, 0);
+  border: solid 1px $success;
+}
 
 
-// Totally hide the subtask card
-.sub-task-fields.removed-by-vanilla-nested {
+// Totally hide the subtask card if user clicks 'remove' button
+.subtask-fields.removed-by-vanilla-nested {
   display: none !important;
 }
 
@@ -126,13 +163,13 @@ body {
   // see config/_fonts.scs to change this globally
   background-color: $body-bg;
   font-optical-sizing: auto;
-  font-weight: 400;
+  font-weight: 500;
   font-style: normal;
 }
 h1, h2, h3, h4, h5, h6 {
   // Should be: Urbanist, see config/_fonts.scs to change this globally
   font-optical-sizing: auto;
-  font-weight: 300;
+  font-weight: 500;
   font-style: normal;
 }
 
@@ -155,25 +192,25 @@ div.navbar.sticky-top {
 
 
 .animate-shadow {
-  box-shadow: 0 1px 2px rgba(0,0,0,0.2);
+  box-shadow: 0 0 0 rgba(0,0,0,0.2);
   transition: box-shadow 0.3s ease-in-out;
 }
 .animate-shadow:hover {
-  box-shadow: 0 5px 15px rgba(0,0,0,0.45);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.45);
 }
 .animate-inset-shadow {
-  box-shadow: inset 0 1px 2px rgba(0,0,0,0.15);
+  box-shadow: inset 0 0 0 rgba(0,0,0,0.15);
   transition: box-shadow 0.3s ease-in-out;
 }
 .animate-inset-shadow:hover {
-  box-shadow: inset 0 5px 15px rgba(0,0,0,0.5);
+  box-shadow: inset 0 4px 8px rgba(0,0,0,0.5);
 }
 .animate-text-shadow {
-  text-shadow: 0 1px 2px rgba(0,0,0,0.15);
+  text-shadow: 0 0 0 rgba(0,0,0,0.15);
   transition: text-shadow 0.3s ease-in-out;
 }
 .animate-text-shadow:hover {
-  text-shadow: 0 5px 15px rgba(0,0,0,0.3);
+  text-shadow: 0 4px 6px rgba(0,0,0,0.3);
 }
 
 
@@ -187,15 +224,6 @@ div.navbar.sticky-top {
   font-size: .75rem;
   font-style: italic;
 }
-
-.btn {
-  color: white;
-  background-color: $primary;
-  font-weight: 900;
-  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2);
-}
-
 
 .form {
   font-size: 0.75rem !important;
@@ -246,8 +274,6 @@ footer {
   height: 300px;
   background-color: $secondary;
 }
-
-
 
 
 

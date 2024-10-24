@@ -38,7 +38,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_10_15_145351) do
     t.index ["user_id"], name: "index_journal_entries_on_user_id"
   end
 
-  create_table "sub_tasks", force: :cascade do |t|
+  create_table "subtasks", force: :cascade do |t|
     t.bigint "task_id", null: false
     t.integer "order", default: 0, null: false
     t.string "title", default: "", null: false
@@ -49,7 +49,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_10_15_145351) do
     t.boolean "completed", default: false, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["task_id"], name: "index_sub_tasks_on_task_id"
+    t.index ["task_id"], name: "index_subtasks_on_task_id"
   end
 
   create_table "tasks", force: :cascade do |t|
@@ -91,6 +91,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_10_15_145351) do
   add_foreign_key "journal_categories", "categories"
   add_foreign_key "journal_categories", "journal_entries"
   add_foreign_key "journal_entries", "users"
-  add_foreign_key "sub_tasks", "tasks"
+  add_foreign_key "subtasks", "tasks"
   add_foreign_key "tasks", "users"
 end
