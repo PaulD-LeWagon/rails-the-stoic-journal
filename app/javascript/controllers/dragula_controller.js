@@ -7,7 +7,7 @@ const log = something => console.log(typeof something, something)
 const setCardOrdinals = (cards) => {
   Array.from(cards).forEach((card, i) => {
     const j = i + 1;
-    card.querySelectorAll('.card-header span')[0].innerText = j;
+    card.querySelectorAll('.card-header span.order-wrapper')[0].innerText = j;
   });
 }
 // Connects to data-controller="dragula"
@@ -34,12 +34,12 @@ export default class extends Controller {
       // }
     });
     drake.on('drop', (el, target) => {
-      const event = new Event("click")
+      const event = new Event("change")
       const alucard = el.parentNode.children
       setCardOrdinals(alucard)
       Array.from(alucard).forEach((dracula, i) => {
         dracula
-          .querySelectorAll('.card-header span')[0]
+          .querySelectorAll('.card-header span.order-wrapper')[0]
           .dispatchEvent(event)
       })
     });

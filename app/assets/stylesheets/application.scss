@@ -40,6 +40,22 @@
 .card .card.sub-task {
   margin-left: 3rem !important;
 }
+.card .card-header h3 {
+  margin: 0;
+  font-weight: 600;
+}
+.card .card-header h3 .order-wrapper {
+  padding: 0 .4rem;
+}
+.card .card-header h3 span:hover i,
+.card .card-header h3 span:hover {
+  cursor: pointer;
+}
+.card-checked {
+  background-color: $quinary;
+  color: white;
+}
+
 
 // Totally hide the subtask card
 .sub-task-fields.removed-by-vanilla-nested {
