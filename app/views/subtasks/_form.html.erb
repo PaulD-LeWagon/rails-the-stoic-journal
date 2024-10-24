@@ -3,7 +3,7 @@
     id: "#{ dom_id subtask }",
     class: "subtask subtask-form m-3 p-2",
     data: {
-      controller: "cards"
+      controller: "cards form"
     }
   }) do |f| %>
 
@@ -14,7 +14,7 @@
 
       <div class="form-inputs">
 
-        <%= f.input :order, as: :hidden, label: false, input_html: { id: "#{ dom_id subtask }_order", class: "form-control mb-3" } %>
+        <%= f.input :order, input_html: { id: "#{ dom_id subtask }_order", class: "form-control mb-3" } %>
 
         <%= f.input :title, label: false, placeholder: "Subtask title here...", input_html: { class: "form-control mb-3" } %>
 
