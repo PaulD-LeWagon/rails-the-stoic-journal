@@ -93,17 +93,6 @@
   border: solid 1px $success;
 }
 
-#profile-page .card.task .card-header h3.card-title,
-#profile-page .card.subtask .card-header h3.card-title > * {
-  // font-weight: 500 !important;
-  font-size: 1.1em !important;
-}
-#profile-page .card.task .card-body .card-text,
-#profile-page .card.subtask .card-body .card-text {
-  // font-weight: 500 !important;
-  font-size: .9em !important;
-}
-
 
 // Totally hide the subtask card if user clicks 'remove' button
 .subtask-fields.removed-by-vanilla-nested {
@@ -115,13 +104,13 @@
 }
 
 .bg-red {
-  background-color: $red !important;
+  background-color: $red;
 }
 .bg-blue {
-  background-color: $blue !important;
+  background-color: $blue;
 }
 .bg-yellow {
-  background-color: $yellow !important;
+  background-color: $yellow;
 }
 
 // Theme class definitions
@@ -133,38 +122,38 @@
 }
 
 .bg-primary {
-  background-color: $primary !important;
+  background-color: $primary;
 }
 .text-primary {
-  color: $primary !important;
+  color: $primary;
 }
 
 .bg-secondary {
-  background-color: $secondary !important;
+  background-color: $secondary;
 }
 .text-secondary {
-  color: $secondary !important;
+  color: $secondary;
 }
 
 .bg-tertiary {
-  background-color: $tertiary !important;
+  background-color: $tertiary;
 }
 .text-tertiary {
-  color: $tertiary !important;
+  color: $tertiary;
 }
 
 .bg-quarternary {
-  background-color: $quarternary !important;
+  background-color: $quarternary;
 }
 .text-quarternary {
   color: $quarternary;
 }
 
 .bg-quinary {
-  background-color: $quinary !important;
+  background-color: $quinary;
 }
 .text-quinary {
-  color: $quinary !important;
+  color: $quinary;
 }
 
 
