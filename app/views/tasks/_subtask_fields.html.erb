@@ -1,5 +1,5 @@
 <%# :order, :title, :description, :comment, :start_date, :due_date, :completed %>
-<div class="sub-task-fields card m-1 p-2">
+<div class="subtask-fields card m-1 p-2">
 
   <%= f.input :order, input_html: { class: "mb-3" } %>
 
@@ -24,7 +24,7 @@
           title: "Remove this subtask"
         },
         link_classes: 'btn btn-sm btn-danger m-1',
-        fields_wrapper_selector: '.sub-task-fields'
+        fields_wrapper_selector: '.subtask-fields'
       ) do %>
 
       <i class="fa-solid fa-trash"></i>

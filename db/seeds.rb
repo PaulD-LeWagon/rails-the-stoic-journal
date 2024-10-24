@@ -4,7 +4,7 @@ require 'faker'
 JournalCategory.destroy_all
 Category.destroy_all
 JournalEntry.destroy_all
-SubTask.destroy_all
+Subtask.destroy_all
 Task.destroy_all
 User.destroy_all
 
@@ -82,7 +82,7 @@ i += 1
   j = 0
   rand(2..5).times do
     j += 1
-    sub_task = SubTask.new(
+    subtask = Subtask.new(
       order: j + 1,
       title: Faker::Hobby.activity,
       description: Faker::Lorem.paragraph(sentence_count: rand(15..30)),
@@ -91,8 +91,8 @@ i += 1
       due_date: due_date,
       completed: false,
     )
-    sub_task.task = task
-    sub_task.save!
+    subtask.task = task
+    subtask.save!
 
   end
 

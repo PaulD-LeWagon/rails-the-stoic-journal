@@ -21,7 +21,7 @@ class TasksController < ApplicationController
       authorize @task
     else
       @task = Task.new(user: current_user)
-      @task.sub_tasks.build
+      @task.subtasks.build
       authorize @task
     end
   end
@@ -33,15 +33,15 @@ class TasksController < ApplicationController
     respond_to do |format|
       if @task.save
         path = @task.routine? ? tasks_path(routine: @task.routine) : tasks_path
-        format.html { redirect_to path, notice: "Task, #{@task.title}, created successfully with #{@task.sub_tasks.count} sub tasks!", status: :see_other }
+        format.html { redirect_to path, notice: "Task, #{@task.title}, created successfully with #{@task.subtasks.count} sub tasks!", status: :see_other }
         format.json do
           resp = {
             status: "success",
             task: @task,
             errors: "",
-            message: "Task, #{@task.title}, created successfully with #{@task.sub_tasks.count} sub tasks!",
+            message: "Task, #{@task.title}, created successfully with #{@task.subtasks.count} sub tasks!",
           }
-          render json: resp.to_json, notice: "Task, #{@task.title}, created successfully with #{@task.sub_tasks.count} sub tasks!", status: :see_other
+          render json: resp.to_json, notice: "Task, #{@task.title}, created successfully with #{@task.subtasks.count} sub tasks!", status: :see_other
         end
       else
         format.html { render :new, alert: "Could not create task #{@task.title}", status: :unprocessable_entity }
@@ -60,7 +60,7 @@ class TasksController < ApplicationController
 
   def edit
     authorize @task
-    # format.html { render :edit, task: @task, notice: "Task, #{@task.title}, with #{@task.sub_tasks.count} sub tasks ready for updating!", status: :see_other  }
+    # format.html { render :edit, task: @task, notice: "Task, #{@task.title}, with #{@task.subtasks.count} sub tasks ready for updating!", status: :see_other  }
     if request.headers["Content-Type"] == "application/json" || request.headers["Accept"] == "application/json"
       render json: {
         form: render_to_string(partial: "tasks/form", formats: [:html], locals: { task: @task }),
@@ -74,15 +74,15 @@ class TasksController < ApplicationController
     authorize @task
     respond_to do |format|
       if @task.update(task_params)
-        format.html { redirect_to tasks_path, notice: "Task, #{@task.title}, updated successfully with #{@task.sub_tasks.count} sub tasks!", status: :see_other }
+        format.html { redirect_to tasks_path, notice: "Task, #{@task.title}, updated successfully with #{@task.subtasks.count} sub tasks!", status: :see_other }
         format.json do
           resp = {
             status: "success",
             task: @task,
             errors: "",
-            message: "Task, #{@task.title}, successfully updated with #{@task.sub_tasks.count} sub tasks!",
+            message: "Task, #{@task.title}, successfully updated with #{@task.subtasks.count} sub tasks!",
           }
-          render json: resp.to_json, notice: "Task, #{@task.title}, successfully updated with #{@task.sub_tasks.count} sub tasks!", status: :see_other
+          render json: resp.to_json, notice: "Task, #{@task.title}, successfully updated with #{@task.subtasks.count} sub tasks!", status: :see_other
         end
       else
         format.html { render :edit, alert: "Server error", status: :unprocessable_entity }
@@ -102,7 +102,7 @@ class TasksController < ApplicationController
   def destroy
     authorize @task
     title = @task.title
-    @task.sub_tasks.destroy_all
+    @task.subtasks.destroy_all
     @task.destroy
     respond_to do |format|
       format.turbo_stream
@@ -130,7 +130,7 @@ class TasksController < ApplicationController
       :due_date,
       :completed,
       :active,
-      sub_tasks_attributes: [
+      subtasks_attributes: [
         :id,
         :order,
         :title,

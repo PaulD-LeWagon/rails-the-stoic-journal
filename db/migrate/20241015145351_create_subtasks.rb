@@ -1,6 +1,6 @@
-class CreateSubTasks < ActiveRecord::Migration[7.1]
+class CreateSubtasks < ActiveRecord::Migration[7.1]
   def change
-    create_table :sub_tasks do |t|
+    create_table :subtasks do |t|
       t.references :task, null: false, foreign_key: true
       t.integer :order, null: false, default: 0
       t.string :title, null: false, default: ""

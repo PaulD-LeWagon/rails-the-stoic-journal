@@ -1,15 +1,15 @@
 Rails app generated with [lewagon/rails-templates](https://github.com/lewagon/rails-templates), created by the [Le Wagon coding bootcamp](https://www.lewagon.com) team.
 
 
-<div id="<%= dom_id task %>_sub_tasks" class="<%= dom_id task %>_sub_tasks collapse-container collapse" data-controller="dragula"></div>
+<div id="<%= dom_id task %>_subtasks" class="<%= dom_id task %>_subtasks collapse-container collapse" data-controller="dragula"></div>
 
-          <% task.sub_tasks.each do |subtask| %>
+          <% task.subtasks.each do |subtask| %>
 
             <div class="card subtask m-1">
               <div class="card-header d-flex justify-content-between align-items-center">
                 <h3><i class="fa-solid fa-grip handle"></i> #<span><%= subtask.order %></span>  <%= subtask.title %></h3>
                 <div class="d-flex justify-content-end">
-                  <%= render 'sub_tasks/links', sub_task: subtask %>
+                  <%= render 'subtasks/links', subtask: subtask %>
                   <!--
                   <i class="fa-solid fa-square-check"></i>
                   <i class="fa-regular fa-square-check"></i>

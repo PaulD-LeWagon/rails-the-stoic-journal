@@ -7,17 +7,17 @@
 
     <hr>
 
-    <% @sub_tasks.each do |sub_task| %>
+    <% @subtasks.each do |subtask| %>
 
-      <h4 class="fst-bold">Task ID: <%= sub_task.task.id %></h4>
-      <h4 class="fst-bold">STsk ID: <%= sub_task.id %></h4>
+      <h4 class="fst-bold">Task ID: <%= subtask.task.id %></h4>
+      <h4 class="fst-bold">STsk ID: <%= subtask.id %></h4>
 
-      <h3><%= sub_task.title %><h3>
+      <h3><%= subtask.title %><h3>
 
-      <p><%= sub_task.description %></p>
+      <p><%= subtask.description %></p>
 
       <div class="links">
-        <%= render 'links', sub_task: @sub_task %>
+        <%= render 'links', subtask: @subtask %>
       </div>
 
       <hr>

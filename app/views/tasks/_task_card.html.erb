@@ -22,9 +22,9 @@
 
     <div class="card-controls d-flex justify-content-end">
 
-      <%= link_to(new_task_sub_task_path(task),
+      <%= link_to(new_task_subtask_path(task),
         data: {
-          turbo_frame: "new_sub_task_for_#{ dom_id task }"
+          turbo_frame: "new_subtask_for_#{ dom_id task }"
         },
         class: "btn btn-primary m-1",
         title: "Add a subtask?"
@@ -81,11 +81,11 @@
         class="collapser btn btn-warning m-1"
         title="View all subtasks"
         data-bs-toggle="collapse"
-        data-bs-target="#<%= dom_id task %>_sub_tasks"
+        data-bs-target="#<%= dom_id task %>_subtasks"
         aria-expanded="false"
-        aria-controls="<%= dom_id task %>_sub_tasks">
+        aria-controls="<%= dom_id task %>_subtasks">
 
-        <%# = task.sub_tasks.empty? ? " disabled" : "" %>
+        <%# = task.subtasks.empty? ? " disabled" : "" %>
         <i class="fa-solid fa-angles-down"></i>
 
       </button>
@@ -99,17 +99,17 @@
 
   </div>
 
-  <div id="<%= dom_id task %>_sub_tasks" class="cards subtasks-container collapse-container collapse">
+  <div id="<%= dom_id task %>_subtasks" class="cards subtasks-container collapse-container collapse">
 
-    <%= turbo_frame_tag "new_sub_task_for_#{ dom_id task }", data: { controller: "dragula" } do %>
+    <%= turbo_frame_tag "new_subtask_for_#{ dom_id task }", data: { controller: "dragula" } do %>
 
-      <% if task.sub_tasks.length.positive? %>
+      <% if task.subtasks.length.positive? %>
 
-        <% task.sub_tasks.each do |sub_task| %>
+        <% task.subtasks.each do |subtask| %>
 
-          <%= turbo_frame_tag "edit_#{ dom_id sub_task }_for_#{ dom_id sub_task.task }" do %>
+          <%= turbo_frame_tag "edit_#{ dom_id subtask }_for_#{ dom_id subtask.task }" do %>
 
-            <%= render 'tasks/sub_task_card', sub_task: sub_task %>
+            <%= render 'tasks/subtask_card', subtask: subtask %>
 
           <% end %>
 

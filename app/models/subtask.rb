@@ -1,8 +1,8 @@
-class SubTask < ApplicationRecord
-  belongs_to :task, inverse_of: :sub_tasks
+class Subtask < ApplicationRecord
+  belongs_to :task, inverse_of: :subtasks
 
-  after_initialize do |sub_task|
-    if !sub_task.persisted?
+  after_initialize do |subtask|
+    if !subtask.persisted?
       set_initial_order
     end
   end
@@ -14,7 +14,7 @@ class SubTask < ApplicationRecord
 
   def set_initial_order
     if !self.task.nil?
-      self.task.sub_tasks.count + 1
+      self.task.subtasks.count + 1
     end
   end
 

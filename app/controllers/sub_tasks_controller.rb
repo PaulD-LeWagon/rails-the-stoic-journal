@@ -1,26 +1,26 @@
-class SubTasksController < ApplicationController
+class SubtasksController < ApplicationController
   before_action :set_task
-  before_action :set_sub_task, only: %i[ show edit update destroy ]
+  before_action :set_subtask, only: %i[ show edit update destroy ]
 
   def index
-    @sub_tasks = policy_scope(SubTask)
+    @subtasks = policy_scope(Subtask)
   end
 
   def show
-    authorize @sub_task
+    authorize @subtask
   end
 
   def new
     # @task = Task.find(params[:task_id])
-    @sub_task = SubTask.new(task: @task)
-    authorize @sub_task
+    @subtask = Subtask.new(task: @task)
+    authorize @subtask
   end
 
   def create
-    @sub_task = SubTask.new(sub_task_params)
-    @sub_task.task = @task
-    authorize @sub_task
-    if @sub_task.save
+    @subtask = Subtask.new(subtask_params)
+    @subtask.task = @task
+    authorize @subtask
+    if @subtask.save
       redirect_to tasks_path, notice: "Sub task successfully created."
     else
       render :new, status: :unprocessable_entity
@@ -28,10 +28,10 @@ class SubTasksController < ApplicationController
   end
 
   def edit
-    authorize @sub_task
+    authorize @subtask
     if request.headers["Content-Type"] == "application/json" || request.headers["Accept"] == "application/json"
         render json: {
-          form: render_to_string(partial: "sub_tasks/form", formats: [:html], locals: { task: @task, sub_task: @sub_task }),
+          form: render_to_string(partial: "subtasks/form", formats: [:html], locals: { task: @task, subtask: @subtask }),
           status: "success",
           message: "Form ready to be edited."
         }
@@ -39,40 +39,40 @@ class SubTasksController < ApplicationController
   end
 
   def update
-    authorize @sub_task
+    authorize @subtask
     respond_to do |format|
-      if @sub_task.update(sub_task_params)
-        format.html { redirect_to tasks_path, notice: "Sub task #{@sub_task.title} successfully updated.", status: :see_other }
+      if @subtask.update(subtask_params)
+        format.html { redirect_to tasks_path, notice: "Sub task #{@subtask.title} successfully updated.", status: :see_other }
         format.json do
           resp = {
             status: "success",
-            task: @sub_task,
+            task: @subtask,
             errors: "",
-            message: "Sub-task, #{@sub_task.title}, updated!",
+            message: "Sub-task, #{@subtask.title}, updated!",
           }
-          render json: resp.to_json, notice: "Sub-task, #{@sub_task.title} updated!", status: :see_other
+          render json: resp.to_json, notice: "Sub-task, #{@subtask.title} updated!", status: :see_other
         end
       else
         format.html { render :edit, alert: "Server error", status: :unprocessable_entity }
         format.json do
           resp = {
             status: "error",
-            task: @sub_task,
-            errors: @sub_task.errors,
-            message: "Sub-task #{@sub_task.title} NOT updated!",
+            task: @subtask,
+            errors: @subtask.errors,
+            message: "Sub-task #{@subtask.title} NOT updated!",
           }
-          render json: resp.to_json, alert: "Error sub-task could not be updated", status: :unprocessable_entity
+          render json: resp.to_json, alert: "Error subtask could not be updated", status: :unprocessable_entity
         end
       end
     end
   end
 
   def destroy
-    authorize @sub_task
-    @sub_task.destroy
+    authorize @subtask
+    @subtask.destroy
     respond_to do |format|
       format.turbo_stream
-      format.html { redirect_to tasks_url, notice: "Sub task #{@sub_task.title} was successfully destroyed.", status: :see_other }
+      format.html { redirect_to tasks_url, notice: "Sub task #{@subtask.title} was successfully destroyed.", status: :see_other }
     end
   end
 
@@ -82,12 +82,12 @@ class SubTasksController < ApplicationController
     @task = Task.find(params[:task_id])
   end
 
-  def set_sub_task
-    @sub_task = @task.sub_tasks.find(params[:id])
+  def set_subtask
+    @subtask = @task.subtasks.find(params[:id])
   end
 
-  def sub_task_params
-    params.require(:sub_task).permit(
+  def subtask_params
+    params.require(:subtask).permit(
       :id,
       :order,
       :title,

@@ -14,9 +14,9 @@
 
 <% if !task.nil? && task.persisted? %>
 
-  <%= link_to(new_task_sub_task_path(task),
+  <%= link_to(new_task_subtask_path(task),
     data: {
-      turbo_frame: "turbo_new_sub_task_for_#{ dom_id task }"
+      turbo_frame: "turbo_new_subtask_for_#{ dom_id task }"
     },
     class: "btn btn-primary m-1",
     title: "Add a subtask?"
