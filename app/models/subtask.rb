@@ -18,5 +18,4 @@ class Subtask < ApplicationRecord
     end
   end
 
-  validates_presence_of :title
 end

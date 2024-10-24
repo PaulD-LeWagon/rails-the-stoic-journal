@@ -9,8 +9,7 @@ Rails.application.routes.draw do
   root to: "pages#home"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   resources :tasks do
-    resources :subtasks, path: "subtasks" # , only: [ :new, :create ]
+    resources :subtasks
   end
-  # resources :subtasks, path: "subtasks", only: [ :index, :show, :edit, :update, :destroy ]
   resources :journal_entries, path: "journal-entries"
 end
