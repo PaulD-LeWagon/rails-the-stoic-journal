@@ -16,7 +16,7 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto">
         <% if user_signed_in? %>
-          <!--
+          <% if false %>
           <li class="nav-item">
             <%= link_to "Add a Task", new_task_path, class: "nav-link" %>
           </li>
@@ -35,7 +35,7 @@
           <li class="nav-item">
             <%= link_to "Sign out", destroy_user_session_path, data: {turbo_method: :delete}, class: "nav-link" %>
           </li>
-          -->
+          <% end %>>
           <li class="nav-item dropdown">
             <a href="#" class="avatar" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               <img src="<%= (current_user.image_url.length > 0 ? current_user.image_url : "https://kitt.lewagon.com/camps/1790") %>" class="avatar" alt="dropdown menu">
@@ -43,7 +43,7 @@
             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
 
               <%= link_to "All Tasks", tasks_path, class: "dropdown-item" %>
-
+              <% if false %>
               <hr>
 
               <%= link_to "Today's Log", tasks_path, class: "dropdown-item" %>
@@ -55,16 +55,14 @@
               <%= link_to "Future Log", future_log_path, class: "dropdown-item" %>
 
               <hr>
-
+              <% end %>
               <%= link_to "Journal", journal_entries_path, class: "dropdown-item" %>
 
               <%= link_to "Profile", users_profile_path, class: "dropdown-item" %>
 
-              <hr>
-
               <%= link_to "Meet The Team", meet_the_team_path, class: "dropdown-item" %>
 
-              <hr>
+              <hr class="my-2">
 
               <%= link_to "Sign out", destroy_user_session_path, data: {turbo_method: :delete}, class: "dropdown-item" %>
 
