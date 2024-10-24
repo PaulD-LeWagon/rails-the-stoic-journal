@@ -47,4 +47,13 @@ export default class extends Controller {
   }
 
   connect() { }
+
+  updateOrdinals(e) {
+    const domEls = e.target.hasChildNodes() ? e.target.children : false
+    // log(e.target)
+    if (domEls.length > 1) {
+      setCardOrdinals(domEls)
+    }
+
+  }
 }

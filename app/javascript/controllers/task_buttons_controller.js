@@ -10,7 +10,7 @@ export default class extends Controller {
       // show.bs.collapse
       const event = new Event("click")
       this.viewSubtasksBtnTarget.dispatchEvent(event)
-      log(this.viewSubtasksBtnTarget)
+      // log(this.viewSubtasksBtnTarget)
     }
   }
 }

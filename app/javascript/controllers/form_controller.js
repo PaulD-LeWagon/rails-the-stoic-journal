@@ -12,7 +12,8 @@ export default class extends Controller {
   initialize() { }
 
   connect() {
-    log(this.element.id)
+    log(this.element.id + ' form')
+    // log(this)
   }
 
   submit(e) {

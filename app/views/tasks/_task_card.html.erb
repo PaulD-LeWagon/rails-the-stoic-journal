@@ -54,7 +54,7 @@
           task_buttons_target: "addSubtaskBtn",
           action: "click->task-buttons#addSubtaskClick"
         },
-        class: "add-new-subtask btn btn-primary m-1",
+        class: "add-new-subtask btn btn-secondary m-1",
         title: "Add a subtask?"
       ) do %>
 
@@ -68,7 +68,7 @@
           data: {
             turbo_frame: "edit_#{ dom_id task }"
           },
-          class: "btn btn-warning m-1",
+          class: "btn btn-quarternary m-1",
           title: "Edit this task"
         ) do %>
 
@@ -79,7 +79,7 @@
       <% end %>
 
       <a href="#" type="button"
-        class="collapser btn btn-warning m-1"
+        class="collapser btn btn-success m-1"
         title="View description"
         data-bs-toggle="collapse"
         data-bs-target="#<%= dom_id task %>_description"
@@ -137,9 +137,10 @@
 
   <div id="<%= dom_id task %>_subtasks"
     class="cards subtasks-container collapse-container collapse"
-    data-task-buttons-target="subtasks">
+    data-task-buttons-target="subtasks"
+    data-subtasks-count="<%= task.subtasks.length %>">
 
-    <%= turbo_frame_tag "new_subtask_for_#{ dom_id task }", data: { controller: "dragula" } do %>
+    <%= turbo_frame_tag "new_subtask_for_#{ dom_id task }", data: { controller: "dragula", action: "turbo:frame-render->dragula#updateOrdinals" } do %>
 
       <% if task.subtasks.length.positive? %>
 
