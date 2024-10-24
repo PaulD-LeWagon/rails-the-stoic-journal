@@ -64,7 +64,7 @@
           <div id="collapseOne" class="collapse show" aria-labelledby="morning-routine" data-parent="#routines-config">
             <div class="card-body">
 
-              <%= turbo_frame_tag "new_morning_routine_turbo_frame" do %>
+              <%= turbo_frame_tag "new_morning_routine_turbo_frame", data: { controller: "dragula", action: "turbo:frame-render->dragula#updateOrdinals" } do %>
 
                 <% @morning_routines.each do |routine| %>
 
@@ -116,7 +116,7 @@
             <div class="card-body">
 
 
-              <%= turbo_frame_tag "new_day_routine_turbo_frame" do %>
+              <%= turbo_frame_tag "new_day_routine_turbo_frame", data: { controller: "dragula", action: "turbo:frame-render->dragula#updateOrdinals" } do %>
 
                 <% @day_routines.each do |routine| %>
 
@@ -167,7 +167,7 @@
           <div id="collapseThree" class="collapse" aria-labelledby="evening-routine" data-parent="#routines-config">
             <div class="card-body">
 
-              <%= turbo_frame_tag "new_evening_routine_turbo_frame" do %>
+              <%= turbo_frame_tag "new_evening_routine_turbo_frame", data: { controller: "dragula", action: "turbo:frame-render->dragula#updateOrdinals" } do %>
 
                 <% @evening_routines.each do |routine| %>
 

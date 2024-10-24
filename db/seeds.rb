@@ -51,6 +51,137 @@ users << User.create(
 # Try get better data (English as opposed to Latin)
 # Make a specific number of Tasks say, 3-5 AM Routine,
 # 7-10 Core-Day and 1-3 PM Routine
+these_days = { 'monday' => true, 'tuseday' => true, 'wednesday' => true, 'thursday' => true, 'friday' => true, 'saturday' => true, 'sunday' => true }
+
+users.each_with_index do |user, i|
+
+  start_date = Date.today + rand(1..3)
+  due_date = start_date
+
+  task = Task.new(
+    order: i + 1,
+    routine: 'morning',
+    recurs_on: these_days,
+    active: true,
+    task_type: 'self_development',
+    title: 'Cold Shower',
+    description: '',
+    comment: '',
+    start_date: start_date,
+    due_date: due_date,
+    completed: false
+  )
+  task.user = user
+  task.save!
+  task = Task.new(
+    order: i + 2,
+    routine: 'morning',
+    recurs_on: these_days,
+    active: true,
+    task_type: 'self_development',
+    title: 'Kettlebell Workout',
+    description: '',
+    comment: '',
+    start_date: start_date,
+    due_date: due_date,
+    completed: false
+  )
+  task.user = user
+  task.save!
+  ['Hand 2 Hand Swings - 5x15 Reps', 'One Handed Cleans - 5x10 Reps', 'Full Snatch - 5x20 Reps'].each_with_index do |exercise, i|
+    subtask = Subtask.new(
+      order: i + 1,
+      title: exercise,
+      description: Faker::Lorem.paragraph(sentence_count: rand(2..3)),
+      comment: '',
+      start_date: start_date,
+      due_date: due_date,
+      completed: false,
+    )
+    subtask.task = task
+    subtask.save!
+  end
+  task = Task.new(
+    order: i + 3,
+    routine: 'morning',
+    recurs_on: these_days,
+    active: true,
+    task_type: 'self_development',
+    title: 'Meditate',
+    description: 'Meditate for approx. 20-30 minutes every morning!',
+    comment: '',
+    start_date: start_date,
+    due_date: due_date,
+    completed: false
+  )
+  task.user = user
+  task.save!
+  ['Find a calm and quiet place.',
+    'Make yourself comfortable.',
+    'Now, empty your mind!!!'].each_with_index do |step, i|
+    subtask = Subtask.new(
+      order: i + 1,
+      title: step,
+      description: '',
+      comment: '',
+      start_date: start_date,
+      due_date: due_date,
+      completed: false,
+    )
+    subtask.task = task
+    subtask.save!
+  end
+
+end
+
+i = 0
+10.times do
+i += 1
+  start_date = Date.today + rand(1..3)
+  due_date = start_date
+
+  # routine = Task.routines.keys[rand(0..(Task.routines.length - 1))]
+  # if routine != Task::NONE_ROUTINE_NAME.to_s
+  #   these_days = Hash[days.map { |day| [day, one_in_three.sample] }]
+  # else
+  #   these_days = Hash[days.map { |day| [day, false] }]
+  # end
+
+  routine = 'not_recuring'
+
+  task = Task.new(
+    order: i + 1,
+    routine: routine,
+    recurs_on: these_days,
+    active: true,
+    task_type: Task.task_types.keys[rand(0..(Task.task_types.length - 1))],
+    title: Faker::Hobby.activity,
+    description: Faker::Quote.famous_last_words + ' ' + Faker::Lorem.paragraph(sentence_count: rand(15..30)),
+    comment: Faker::Quote.famous_last_words,
+    start_date: start_date,
+    due_date: due_date,
+    completed: false
+  )
+  task.user = users.sample
+  task.save!
+  j = 0
+  rand(2..5).times do
+    j += 1
+    subtask = Subtask.new(
+      order: j + 1,
+      title: Faker::Hobby.activity,
+      description: Faker::Lorem.paragraph(sentence_count: rand(15..30)),
+      comment: Faker::Quote.famous_last_words,
+      start_date: start_date,
+      due_date: due_date,
+      completed: false,
+    )
+    subtask.task = task
+    subtask.save!
+  end
+
+end
+
 i = 0
 10.times do
 i += 1
@@ -142,4 +273,4 @@ end
   end
 
 end
-puts "seeding finished"
+puts "...seeding DB Complete!"

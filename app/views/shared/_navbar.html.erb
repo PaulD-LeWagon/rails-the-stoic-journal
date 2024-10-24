@@ -43,7 +43,7 @@
             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
 
               <%= link_to "All Tasks", tasks_path, class: "dropdown-item" %>
-
+              <% if false %>
               <hr>
 
               <%= link_to "Today's Log", tasks_path, class: "dropdown-item" %>
@@ -53,7 +53,7 @@
               <%= link_to "Monthly Log", monthly_log_path, class: "dropdown-item" %>
 
               <%= link_to "Future Log", future_log_path, class: "dropdown-item" %>
-
+              <% end %>
               <hr>
 
               <%= link_to "Journal", journal_entries_path, class: "dropdown-item" %>
