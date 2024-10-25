@@ -1,9 +1,13 @@
 <!DOCTYPE html>
 <html>
   <head>
-  <%= favicon_link_tag %>
-    <title>The Stoic Journal. Your Daily Stoic Reflection and Personal Growth Tool</title>
+    <%= favicon_link_tag %>
+    <title>The Stoic Journal - Your Daily Stoic Reflection and Personal Growth Tool</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <meta name="turbo-refresh-method" content="morph">
+    <meta name="turbo-refresh-scroll" content="preserve">
+
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -12,8 +16,6 @@
   </head>
 
   <body class="body-bg">
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
 
     <%= render "shared/navbar" %>
 
@@ -22,5 +24,8 @@
     <%= yield %>
 
     <%= render "shared/footer" %>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
   </body>
 </html>
