@@ -13,7 +13,7 @@
 
   <div class="form-inputs">
 
-    <%= f.input :order, as: :hidden, label: false, input_html: { id: "#{ dom_id task }_order", class: "order" } %>
+    <%= f.input :order, label: false, input_html: { id: "#{ dom_id task }_order", class: "order" } %>
 
     <%= f.input :routine, as: :hidden, label: false, collection: Task::transform_routines_for_html_select, input_html: { class: "form-control mb-3" } %>
 
@@ -31,7 +31,7 @@
 
     <%= f.input :due_date, html5: true, as: :hidden, label: false, input_html: { class: "form-control mb-3" } %>
 
-    <%= f.input :completed, as: :boolean, as: :hidden, label: false, input_html: { id: "#{dom_id task}_completed", class: "form-control mb-3" } %>
+    <%= f.input :completed, as: :boolean, label: false, input_html: { id: "#{dom_id task}_completed", class: "d-none form-control mb-3" } %>
 
     <%= f.input :active, as: :boolean, as: :hidden, label: false, input_html: { hidden: true, class: "form-control mb-3" } %>
 

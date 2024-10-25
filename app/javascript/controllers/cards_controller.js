@@ -54,12 +54,13 @@ export default class extends Controller {
     this.unChecked.classList.toggle('d-none')
     this.checked.classList.toggle('d-none')
     this.element.classList.toggle('card-checked')
-    log(this.element.id)
+    // log(this.element.id)
     this.#updateBackEnd()
 
   }
 
   #updateBackEnd() {
+    // log('In updateBackend')
     fetch(`${this.urlValue}/edit`, {
       method: "GET",
       headers: { "Accept": "application/json" },
@@ -94,7 +95,7 @@ export default class extends Controller {
             //     confirmButton: `btn btn-${data.status} btn-lg`,
             //   }
             // });
-            // console.log(data.message)
+            console.log(data)
             this.form.remove()
           })
       });

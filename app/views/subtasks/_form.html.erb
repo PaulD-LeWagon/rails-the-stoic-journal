@@ -26,7 +26,7 @@
 
         <%#= f.input :due_date, html5: true, input_html: { class: "form-control mb-3" } %>
 
-        <%= f.input :completed, as: :boolean, as: :hidden, input_html: { id: "#{dom_id subtask}_completed", class: "form-control mb-3" } %>
+        <%= f.input :completed, as: :boolean, input_html: { id: "#{dom_id subtask}_completed", class: "d-none form-control mb-3" } %>
 
       </div>
 

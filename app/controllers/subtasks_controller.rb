@@ -41,7 +41,7 @@ class SubtasksController < ApplicationController
   def update
     authorize @subtask
     respond_to do |format|
-      if @subtask.update(subtask_params)
+      if @subtask.update!(subtask_params)
         format.html { redirect_to tasks_path, notice: "Sub task #{@subtask.title} successfully updated.", status: :see_other }
         format.json do
           resp = {
