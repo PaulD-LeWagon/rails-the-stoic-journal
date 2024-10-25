@@ -3,7 +3,7 @@ class Task < ApplicationRecord
   has_many :subtasks, inverse_of: :task, dependent: :destroy
 
   accepts_nested_attributes_for :subtasks, reject_if: :all_blank, allow_destroy: true
-
+  # after_initialize :set_default_time, :if => :new_record?
   after_initialize do |task|
     if !persisted?
       set_initial_order
@@ -43,7 +43,11 @@ class Task < ApplicationRecord
 
   private
 
-    def set_initial_order
-      self.order = Task.count + 1
-    end
+  # def set_default_time
+  #   self.start_time = Time.now
+  # end
+
+  def set_initial_order
+    self.order = Task.count + 1
+  end
 end

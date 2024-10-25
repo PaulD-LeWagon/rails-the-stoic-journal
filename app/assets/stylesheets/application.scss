@@ -22,6 +22,8 @@
 }
 
 
+
+
 .btn {
   font-weight: 900;
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
@@ -74,6 +76,20 @@
 }
 .card.subtask .card-body .card-text {
   font-size: 1em !important;
+}
+
+#profile-page .card.task .card-header h3.card-title,
+#profile-page .card.subtask .card-header h3.card-title {
+  font-weight: 500;
+  font-size: 1.2em !important;
+}
+#profile-page .card.task .card-body .card-text,
+#profile-page .card.subtask .card-body .card-text {
+  font-weight: 500;
+  font-size: 0.9em !important;
+}
+#profile-page h2 button {
+  border: none !important;
 }
 
 .card.task,
