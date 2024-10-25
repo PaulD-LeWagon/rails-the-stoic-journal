@@ -14,7 +14,7 @@ class Subtask < ApplicationRecord
   scope :completed, -> { where(completed: true) }
   scope :pending, -> { where(completed: false) }
 
-  default_scope { order(:task_id, order: :desc) }
+  default_scope { order(:created_at) }
 
   def set_initial_order
     if !self.task.nil?
