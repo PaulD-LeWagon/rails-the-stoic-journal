@@ -14,7 +14,7 @@
 
       <div class="form-inputs">
 
-        <%= f.input :order, input_html: { id: "#{ dom_id subtask }_order", class: "form-control mb-3" } %>
+        <%= f.input :order, label: false, input_html: { id: "#{ dom_id subtask }_order", class: "d-none form-control mb-3" } %>
 
         <%= f.input :title, label: false, placeholder: "Subtask title here...", input_html: { class: "form-control mb-3" } %>
 

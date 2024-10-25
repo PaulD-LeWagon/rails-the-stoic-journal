@@ -1,7 +1,7 @@
 <%# :order, :title, :description, :comment, :start_date, :due_date, :completed %>
 <div class="subtask-fields card m-1 p-2">
 
-  <%= f.input :order, input_html: { class: "mb-3" } %>
+  <%= f.input :order, label: false, input_html: { class: "d-none mb-3" } %>
 
   <%= f.input :title, label: false, placeholder: "Subtask title here...", input_html: { class: "mb-3" } %>
 
