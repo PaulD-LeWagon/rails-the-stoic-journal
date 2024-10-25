@@ -15,7 +15,7 @@ class Task < ApplicationRecord
   enum routine: [ NONE_ROUTINE_NAME, :morning, :day, :evening ]
   enum task_type: [ :general, :event, :fitness, :admin, :work, :self_development ]
 
-  default_scope { order(:order, :start_date) }
+  default_scope { order(:order) }
 
   scope :completed, -> { where(completed: true) }
   scope :pending, -> { where(completed: false) }
