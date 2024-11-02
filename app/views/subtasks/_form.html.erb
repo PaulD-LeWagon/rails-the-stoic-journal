@@ -3,7 +3,7 @@
     id: "#{ dom_id subtask }",
     class: "subtask subtask-form m-3 p-2",
     data: {
-      controller: "cards form"
+      controller: "cards"
     }
   }) do |f| %>
 
@@ -14,19 +14,66 @@
 
       <div class="form-inputs">
 
-        <%= f.input :order, label: false, input_html: { id: "#{ dom_id subtask }_order", class: "d-none form-control mb-3" } %>
+        <%= f.input :order,
+          label: false,
+          input_html: {
+            id: "#{ dom_id subtask }_order",
+            class: "d-none form-control"
+          }, wrapper_html: {
+            class: "d-none m-0",
+          } %>
 
-        <%= f.input :title, label: false, placeholder: "Subtask title here...", input_html: { class: "form-control mb-3" } %>
+        <%= f.input :title,
+          label: false,
+          placeholder: "Subtask title here...",
+          input_html: {
+            class: "form-control mb-3"
+          } %>
 
-        <%= f.input :description, as: :text, label: false, placeholder: "Add a description...", input_html: { class: "form-control mb-3", 'rows' => 3, 'cols' => 10 } %>
+        <%= f.input :description, as: :text,
+          label: false,
+          placeholder: "Add a description...",
+          input_html: {
+            class: "form-control mb-3",
+            rows: 3,
+            cols: 10
+          } %>
 
-        <%#= f.input :comment, as: :text, input_html: { hidden: true, class: "form-control mb-3", 'rows' => 3, 'cols' => 10 } %>
+        <%= f.input :comment, as: :text,
+          label: false,
+          input_html: {
+            class: "d-none form-control",
+            rows: 3,
+            cols: 10
+          },
+          wrapper_html: {
+            class: "d-none m-0"
+          } %>
 
-        <%#= f.input :start_date, html5: true, input_html: { class: "form-control mb-3" } %>
+        <%= f.input :start_date, html5: true,
+          label: false,
+          input_html: {
+            class: "form-control mb-3"
+          } %>
 
-        <%#= f.input :due_date, html5: true, input_html: { class: "form-control mb-3" } %>
+        <%= f.input :due_date, html5: true,
+          label: false,
+          input_html: {
+            class: "d-none form-control"
+          },
+          wrapper_html: {
+            class: "d-none m-0"
+          } %>
 
-        <%= f.input :completed, as: :boolean, input_html: { id: "#{dom_id subtask}_completed", class: "d-none form-control mb-3" } %>
+        <%= f.input :completed, as: :boolean,
+          label: false,
+          input_html: {
+            id: "#{dom_id subtask}_completed",
+            class: "d-none form-control"
+          },
+          wrapper_html: {
+            class: "d-none m-0"
+          } %>
 
       </div>
 

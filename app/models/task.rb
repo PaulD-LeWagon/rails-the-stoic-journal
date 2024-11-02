@@ -43,7 +43,11 @@ class Task < ApplicationRecord
     self.start_date = Time.now
   end
 
+  # Will return the highest order number for the task
+  # If no tasks exist for the user and routine, will return 1
   def set_initial_order
+    # Think we will need to revisit when we start working on the journal
+    #   logs i.e. daily log, etc. with different days...
     count = Task.where(user_id: self.user_id, routine: self.routine).maximum(:order)
     self.order = count.nil? ? 1 : count + 1
   end
