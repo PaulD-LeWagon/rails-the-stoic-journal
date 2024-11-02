@@ -1,6 +1,8 @@
 import { Controller } from "@hotwired/stimulus"
 import Swal from "sweetalert2";
+
 const log = something => console.log(typeof something, something)
+
 const setButtonTogglers = (controllerID) => {
   const $collConts = $('.collapse-container')
   $collConts.on('shown.bs.collapse', (e) => {
@@ -95,7 +97,7 @@ export default class extends Controller {
             //     confirmButton: `btn btn-${data.status} btn-lg`,
             //   }
             // });
-            console.log(data)
+            // console.log(data)
             this.form.remove()
           })
       });
