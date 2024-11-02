@@ -45,6 +45,10 @@ export default class extends Controller {
     setButtonTogglers(this.element.id)
   }
 
+  cardOrderTargetConnected(target) {
+    log(target.innerHTML)
+  }
+
   onReorder(e) {
     this.#updateBackEnd()
   }
@@ -56,7 +60,11 @@ export default class extends Controller {
     this.unChecked.classList.toggle('d-none')
     this.checked.classList.toggle('d-none')
     this.element.classList.toggle('card-checked')
-    // log(this.element.id)
+
+    // Check to see if the subtasks are all checked
+    // Should a checked task's subtasks be checked?
+    log('To-do: task/Subtasks consistency check!?')
+
     this.#updateBackEnd()
 
   }

@@ -1,19 +1,65 @@
 <%# :order, :title, :description, :comment, :start_date, :due_date, :completed %>
 <div class="subtask-fields card m-1 p-2">
 
-  <%= f.input :order, label: false, input_html: { class: "d-none mb-3" } %>
+  <%= f.input :order,
+    label: false,
+    input_html: {
+      class: "d-none"
+    },
+    wrapper_html: {
+      class: "d-none m-0"
+    } %>
 
-  <%= f.input :title, label: false, placeholder: "Subtask title here...", input_html: { class: "mb-3" } %>
+  <%= f.input :title,
+    label: false,
+    placeholder: "Subtask title goes here...",
+    input_html: {
+      class: "form-control"
+    } %>
 
-  <%= f.input :description, as: :text, label: false, placeholder: "More detail here...", input_html: { class: "mb-3", 'rows' => 5, 'cols' => 10 } %>
+  <%= f.input :description, as: :text,
+    label: false,
+    placeholder: "More detail here...",
+    input_html: {
+      class: "form-control mb-3",
+      rows: 5,
+      cols: 10
+    } %>
 
-  <%#= f.input :comment, as: :text, input_html: { class: "mb-3", 'rows' => 5, 'cols' => 10 } %>
+  <%= f.input :comment, as: :text,
+    label: false,
+    placeholder: "Comment here...",
+    input_html: {
+      class: "d-none",
+      rows: 5, cols: 10
+    },
+    wrapper_html: {
+      class: "d-none m-0"
+    } %>
 
-  <%= f.input :start_date, html5: true, label: false, input_html: { class: "mb-3" } %>
+  <%= f.input :start_date, html5: true,
+    label: false,
+    input_html: {
+      class: "form-control mb-3"
+    } %>
 
-  <%= f.input :due_date, as: :hidden, html5: true, input_html: { class: "mb-3" } %>
+  <%= f.input :due_date, html5: true,
+    label: false,
+    input_html: {
+      class: "d-none"
+    },
+    wrapper_html: {
+      class: "d-none m-0"
+    } %>
 
-  <%= f.input :completed, as: :boolean, label: false, input_html: { class: "d-none" } %>
+  <%= f.input :completed, as: :boolean,
+    label: false,
+    input_html: {
+      class: "d-none"
+    },
+    wrapper_html: {
+      class: "d-none m-0"
+    } %>
 
   <div class="subtask-controls d-flex justify-content-end align-items-center">
 

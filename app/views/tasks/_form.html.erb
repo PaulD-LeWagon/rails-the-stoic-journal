@@ -13,27 +13,89 @@
 
   <div class="form-inputs">
 
-    <%= f.input :order, label: false, input_html: { id: "#{ dom_id task }_order", class: "d-n one order" } %>
+    <%= f.input :order,
+      label: false,
+      input_html: {
+        id: "#{dom_id task}_order",
+        class: "d-none order"
+      } %>
 
-    <%= f.input :routine, as: :hidden, label: false, collection: Task::transform_routines_for_html_select, input_html: { class: "form-control mb-3" } %>
+    <%= f.input :routine,
+      label: false,
+      collection: Task::transform_routines_for_html_select,
+      input_html: {
+        class: "d-none form-control"
+      } %>
 
     <%= f.input :recurs_on, as: :check_boxes, as: :hidden, label: false, input_html: { class: "form-control mb-3" } %>
 
-    <%= f.input :task_type, label: false, collection: Task::transform_task_types_for_html_select, input_html: { class: "form-control mb-3" } %>
+    <%= f.input :task_type,
+      label: false,
+      collection: Task::transform_task_types_for_html_select,
+      input_html: {
+        class: "form-control mb-3"
+      } %>
 
-    <%= f.input :title, label: false, placeholder: "Task title...", input_html: { class: "form-control mb-3" } %>
+    <%= f.input :title,
+      label: false,
+      placeholder: "Task title...",
+      input_html: {
+        class: "form-control mb-3"
+      } %>
 
-    <%= f.input :description, as: :text, label: false, placeholder: "Add a description here...", input_html: { class: "form-control mb-3", 'rows' => 3, 'cols' => 10 } %>
+    <%= f.input :description, as: :text,
+      label: false,
+      placeholder: "Add a description here...",
+      input_html: {
+        class: "form-control mb-3",
+        rows: 10,
+        cols: 10
+      } %>
 
-    <%= f.input :comment, as: :text, as: :hidden, label: false, input_html: { hidden: true, class: "form-control mb-3", 'rows' => 3, 'cols' => 10 } %>
+    <%= f.input :comment, as: :text,
+      label: false,
+      input_html: {
+        class: "d-none form-control",
+        rows: 10,
+        cols: 10
+      },
+      wrapper_html: {
+        class: "d-none m-0"
+      } %>
 
-    <%= f.input :start_date, html5: true, label: false, input_html: { class: "form-control mb-3" } %>
+    <%= f.input :start_date, html5: true,
+      label: false,
+      input_html: {
+        class: "form-control mb-3"
+      } %>
 
-    <%= f.input :due_date, html5: true, as: :hidden, label: false, input_html: { class: "form-control mb-3" } %>
+    <%= f.input :due_date, html5: true,
+      label: false,
+      input_html: {
+        class: "d-none form-control"
+      },
+      wrapper_html: {
+        class: "d-none m-0"
+      } %>
 
-    <%= f.input :completed, as: :boolean, label: false, input_html: { id: "#{dom_id task}_completed", class: "d-none form-control mb-3" } %>
+    <%= f.input :completed, as: :boolean,
+      label: false,
+      input_html: {
+        id: "#{dom_id task}_completed",
+        class: "d-none form-control"
+      },
+      wrapper_html: {
+        class: "d-none m-0"
+      } %>
 
-    <%= f.input :active, as: :boolean, as: :hidden, label: false, input_html: { hidden: true, class: "form-control mb-3" } %>
+    <%= f.input :active, as: :boolean,
+      label: false,
+      input_html: {
+        class: "d-none form-control"
+      },
+      wrapper_html: {
+        class: "d-none m-0"
+      } %>
 
   </div>
 
@@ -55,10 +117,10 @@
       <%= link_to_add_nested(
         f,
         :subtasks,
-        "#subtasks_for_#{ dom_id task }",
+        "#subtasks_for_#{dom_id task}",
         partial_form_variable: :f,
         tag_attributes: {
-          class: "Add-nested-assoc",
+          class: "add-nested-assoc",
           title: "Add a subtask"
         },
         link_classes: 'btn btn-sm btn-primary m-1'
@@ -73,7 +135,7 @@
 
   <div class="form-actions links d-flex justify-content-end align-items-center">
 
-    <%= render 'links', task: task %>
+    <%#= render 'links', task: task %>
 
     <%= button_tag type: 'submit', class: "btn btn-primary" do %>
 
