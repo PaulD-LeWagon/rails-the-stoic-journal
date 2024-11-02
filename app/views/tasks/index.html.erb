@@ -29,9 +29,9 @@
 
       <div class="cards tasks-container collapse-container">
 
-        <%= turbo_frame_tag @turbo_frame_id, data: { controller: "dragula" } do %>
+        <%= turbo_frame_tag @turbo_frame_id, data: { controller: "dragula", dragula_target: "dracule" } do %>
 
-          <% @tasks.each_with_index do |task, index| %>
+          <% @tasks.each do |task| %>
 
             <%= turbo_frame_tag "edit_#{ dom_id task }" do %>
 

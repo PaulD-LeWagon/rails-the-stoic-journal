@@ -28,7 +28,7 @@
       <span id="<%= "#{dom_id subtask}_order" %>"
         class="order-wrapper"
         data-cards-target="cardOrder"
-        data-action="click->cards#onReorder">
+        data-action="change->cards#onReorder">
 
         <%= subtask.order %>
 
@@ -73,7 +73,7 @@
           data: {
             turbo_method: :delete,
             turbo_confirm: "Are you sure?",
-            action: "turbo:frame-render->dragula#updateOrdinals"
+            action: "click->dragula#updateOrdinals"
           },
           class: "btn btn-danger m-1",
           title: "Delete this task?"

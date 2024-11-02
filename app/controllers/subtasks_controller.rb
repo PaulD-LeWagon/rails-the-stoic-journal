@@ -21,7 +21,8 @@ class SubtasksController < ApplicationController
     @subtask.task = @task
     authorize @subtask
     if @subtask.save
-      redirect_to tasks_path, notice: "Sub task successfully created."
+      path = @task.routine? ? tasks_path(routine: @task.routine) : tasks_path
+      redirect_to path, notice: "Sub task successfully created.", status: :see_other
     else
       render :new, status: :unprocessable_entity
     end
@@ -30,19 +31,20 @@ class SubtasksController < ApplicationController
   def edit
     authorize @subtask
     if request.headers["Content-Type"] == "application/json" || request.headers["Accept"] == "application/json"
-        render json: {
-          form: render_to_string(partial: "subtasks/form", formats: [:html], locals: { task: @task, subtask: @subtask }),
-          status: "success",
-          message: "Form ready to be edited."
-        }
+      render json: {
+               form: render_to_string(partial: "subtasks/form", formats: [:html], locals: { task: @task, subtask: @subtask }),
+               status: "success",
+               message: "Form ready to be edited.",
+             }
     end
   end
 
   def update
     authorize @subtask
     respond_to do |format|
-      if @subtask.update!(subtask_params)
-        format.html { redirect_to tasks_path, notice: "Sub task #{@subtask.title} successfully updated.", status: :see_other }
+      if @subtask.update(subtask_params)
+        path = @task.routine? ? tasks_path(routine: @task.routine) : tasks_path
+        format.html { redirect_to path, notice: "Sub task #{@subtask.title} successfully updated.", status: :see_other }
         format.json do
           resp = {
             status: "success",

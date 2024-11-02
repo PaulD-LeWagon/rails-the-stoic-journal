@@ -110,7 +110,8 @@
         <%= link_to(task_path(task),
           data: {
             turbo_method: :delete,
-            turbo_confirm: "Are you sure?"
+            turbo_confirm: "Are you sure?",
+            action: "click->dragula#onDeleteTask"
           },
           class: "btn btn-danger m-1",
           title: "Delete this task?"
@@ -140,7 +141,11 @@
     data-task-buttons-target="subtasks"
     data-subtasks-count="<%= task.subtasks.length %>">
 
-    <%= turbo_frame_tag "new_subtask_for_#{ dom_id task }", data: { controller: "dragula", action: "turbo:frame-render->dragula#updateOrdinals" } do %>
+    <%= turbo_frame_tag "new_subtask_for_#{ dom_id task }",
+      data: {
+        controller: "dragula",
+        action: "turbo:frame-render->dragula#updateOrdinals"
+      } do %>
 
       <% if task.subtasks.length.positive? %>
 

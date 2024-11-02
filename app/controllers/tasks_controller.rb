@@ -7,7 +7,7 @@ class TasksController < ApplicationController
     if has_valid_routine?
       @tasks = policy_scope(Task.filter_by_user_routines(current_user, params[:routine]))
     else
-      @tasks = policy_scope(Task.order(:order))
+      @tasks = policy_scope(Task).where(routine: Task::NONE_ROUTINE_NAME)
     end
   end
 
@@ -60,21 +60,23 @@ class TasksController < ApplicationController
 
   def edit
     authorize @task
-    # format.html { render :edit, task: @task, notice: "Task, #{@task.title}, with #{@task.subtasks.count} sub tasks ready for updating!", status: :see_other  }
     if request.headers["Content-Type"] == "application/json" || request.headers["Accept"] == "application/json"
       render json: {
         form: render_to_string(partial: "tasks/form", formats: [:html], locals: { task: @task }),
         status: "success",
-        message: "Form ready to be edited."
+        message: "Form ready to be edited.",
       }
+    else
+      render :edit, task: @task, notice: "Task, #{@task.title}, with #{@task.subtasks.count} sub tasks ready for updating!", status: :see_other
     end
   end
 
   def update
     authorize @task
     respond_to do |format|
-      if @task.update!(task_params)
-        format.html { redirect_to tasks_path, notice: "Task, #{@task.title}, updated successfully with #{@task.subtasks.count} sub tasks!", status: :see_other }
+      if @task.update(task_params)
+        path = @task.routine? ? tasks_path(routine: @task.routine) : tasks_path
+        format.html { redirect_to path, notice: "Task, #{@task.title}, updated successfully with #{@task.subtasks.count} sub tasks!", status: :see_other }
         format.json do
           resp = {
             status: "success",
@@ -139,8 +141,9 @@ class TasksController < ApplicationController
         :start_date,
         :due_date,
         :completed,
-        :_destroy
-      ])
+        :_destroy,
+      ],
+    )
   end
 
   def has_valid_routine?

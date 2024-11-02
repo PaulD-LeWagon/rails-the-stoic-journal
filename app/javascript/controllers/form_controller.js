@@ -11,10 +11,7 @@ export default class extends Controller {
 
   initialize() { }
 
-  connect() {
-    log(this.element.id + ' form')
-    // log(this)
-  }
+  connect() { }
 
   submit(e) {
     e.preventDefault()
@@ -35,7 +32,7 @@ export default class extends Controller {
             confirmButton: `btn btn-${data.status} btn-lg`,
           }
         });
-        console.log(data)
+        // console.log(data)
       })
   }
 
