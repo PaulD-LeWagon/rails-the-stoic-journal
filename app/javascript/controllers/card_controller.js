@@ -1,7 +1,7 @@
 import { Controller } from "@hotwired/stimulus"
 import Swal from "sweetalert2";
 
-const log = something => console.log(typeof something, something)
+const log = console.log
 
 const setButtonTogglers = (controllerID) => {
   const $collConts = $('.collapse-container')
@@ -31,46 +31,82 @@ const setButtonTogglers = (controllerID) => {
 
 // Connects to data-controller="cards"
 export default class extends Controller {
+
   static targets = [ "card", "form", "cardOrder", "cardCompleted", "cardFauxCheck" ]
+
+  static outlets = [ "card" ]
 
   static values = { url: String }
 
   initialize() {
-    // log(this.cardTarget.id)
-    this.hiddenFormContainer = document.createElement('div')
-    this.hiddenFormContainer.classList.add('d-none')
-    document.getElementsByTagName('body')[0].insertAdjacentElement('beforeend', this.hiddenFormContainer)
+    this.hiddenFormCont = document.createElement('div')
+    this.hiddenFormCont.classList.add('d-none')
+    document.getElementsByTagName('body')[0]
+      .insertAdjacentElement('beforeend', this.hiddenFormCont)
   }
+
   connect() {
     setButtonTogglers(this.element.id)
   }
 
-  cardOrderTargetConnected(target) {
-    log(target.innerHTML)
-  }
-
   onReorder(e) {
-    this.#updateBackEnd()
+    this.updateBackEnd()
   }
 
   onChecked(e) {
-
-    this.unChecked = this.cardFauxCheckTarget.querySelectorAll('.fa-square')[0]
-    this.checked = this.cardFauxCheckTarget.querySelectorAll('.fa-square-check')[0]
-    this.unChecked.classList.toggle('d-none')
-    this.checked.classList.toggle('d-none')
-    this.element.classList.toggle('card-checked')
-
-    // Check to see if the subtasks are all checked
-    // Should a checked task's subtasks be checked?
-    log('To-do: task/Subtasks consistency check!?')
-
-    this.#updateBackEnd()
-
+    e.preventDefault()
+    // Toggle the check icons
+    if(this.cardIsChecked()) {
+      this.uncheckCard()
+    } else {
+      this.checkCard()
+      if (this.hasCardOutlet) {
+        this.cardOutlets.forEach(outlet => {
+          if(!outlet.cardIsChecked()) {
+            outlet.checkCard()
+            outlet.updateBackEnd()
+          }
+        })
+      }
+    }
+    this.updateBackEnd()
   }
 
-  #updateBackEnd() {
-    // log('In updateBackend')
+  cardIsChecked() {
+    return this.cardCompletedTarget.checked
+  }
+
+  checkCard() {
+    this.cardFauxCheckTarget.classList.remove('fa-square')
+    this.cardFauxCheckTarget.classList.add('fa-square-check')
+    this.element.classList.add('card-checked')
+    this.cardCompletedTarget.checked = true
+  }
+
+  uncheckCard() {
+    this.cardFauxCheckTarget.classList.remove('fa-square-check')
+    this.cardFauxCheckTarget.classList.add('fa-square')
+    this.element.classList.remove('card-checked')
+    this.cardCompletedTarget.checked = false
+  }
+
+  get card() {
+    return this.cardTarget
+  }
+
+  get cardOrder() {
+    return this.cardOrderTarget
+  }
+
+  get cardCompleted() {
+    return this.cardCompletedTarget
+  }
+
+  get cardFauxCheck() {
+    return this.cardFauxCheckTarget
+  }
+
+  updateBackEnd() {
     fetch(`${this.urlValue}/edit`, {
       method: "GET",
       headers: { "Accept": "application/json" },
@@ -78,8 +114,8 @@ export default class extends Controller {
       .then(response => response.json())
       .then((data) => {
 
-        this.hiddenFormContainer.innerHTML = data.form
-        this.form = this.hiddenFormContainer.getElementsByTagName('form')[0]
+        this.hiddenFormCont.innerHTML = data.form
+        this.form = this.hiddenFormCont.getElementsByTagName('form')[0]
         let checkbox = this.form.querySelector(`#${this.cardTarget.id}_completed`)
         let orderInput = this.form.querySelector(`#${this.cardTarget.id}_order`)
 
@@ -96,22 +132,35 @@ export default class extends Controller {
           .then(response => response.json())
           .then((data) => {
             // Icons: warning, error, success, info, and question
-            // Swal.fire({
-            //   title: this.#capitalise(data.status),
-            //   text: data.message,
-            //   icon: data.status,
-            //   confirmButtonText: (data.status === 'success' ? 'Cool' : 'Okay'),
-            //   customClass: {
-            //     confirmButton: `btn btn-${data.status} btn-lg`,
-            //   }
-            // });
-            // console.log(data)
+            Swal.fire({
+              position: "top-end",
+              icon: data.status,
+              title: this.capitalise(data.status),
+              text: data.message,
+              showConfirmButton: false,
+              timer: 1500,
+              showClass: {
+                popup: `
+                  animate__animated
+                  animate__fadeInDown
+                  animate__faster
+                `
+              },
+              hideClass: {
+                popup: `
+                  animate__animated
+                  animate__fadeOutDown
+                  animate__faster
+                `
+              }
+            })
+            console.log(data)
             this.form.remove()
           })
       });
   }
 
-  #capitalise(strOfWords) {
+  capitalise(strOfWords) {
     const words = strOfWords.split(" ")
     return words.map((word) => { return word[0].toUpperCase() + word.substring(1); }).join(" ")
   }

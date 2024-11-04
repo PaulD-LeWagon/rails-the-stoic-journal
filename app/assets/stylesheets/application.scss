@@ -1,4 +1,7 @@
-@import "plugins/dragula.min.css";
+// This has no effect so comment it out
+// @import "plugins/animate-css/animate";
+
+@import "plugins/dragula";
 // Graphical variables
 @import "config/fonts";
 @import "config/colors";
@@ -8,10 +11,10 @@
 @import "bootstrap";
 @import "font-awesome";
 
-
-// Your CSS partials
 @import "components/index";
 @import "pages/index";
+
+
 
 #profile-page .left {
   width: 43% !important;
@@ -20,8 +23,6 @@
 #profile-page .right {
   width: 57% !important;
 }
-
-
 
 
 .btn {
