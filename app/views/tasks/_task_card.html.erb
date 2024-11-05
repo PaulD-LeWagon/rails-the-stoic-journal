@@ -1,5 +1,5 @@
 <div id="<%= dom_id task %>"
-  class="card task<%= task.completed ? " card-checked" : "" %>"
+  class="card task parent-<%= (dom_id task).gsub("_", "-") %><%= task.completed ? " card-checked" : "" %>"
   data-controller="card task-buttons"
   data-card-card-outlet=".subtask-of-<%= (dom_id task).gsub("_", "-") %>"
   data-card-target="card"

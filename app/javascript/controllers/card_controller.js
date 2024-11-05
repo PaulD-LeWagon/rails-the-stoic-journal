@@ -39,6 +39,7 @@ export default class extends Controller {
   static values = { url: String }
 
   initialize() {
+    this.type = this.element.classList.contains('task') ? 'task' : 'subtask'
     this.hiddenFormCont = document.createElement('div')
     this.hiddenFormCont.classList.add('d-none')
     document.getElementsByTagName('body')[0]
@@ -58,20 +59,57 @@ export default class extends Controller {
     // Toggle the check icons
     if(this.cardIsChecked()) {
       this.uncheckCard()
-    } else {
+      this.updateBackEnd()
+      if (this.type == 'subtask' && this.hasCardOutlet && this.cardOutlets.length === 1) {
+        // Which should be the parent card. Have the parent card/task
+        // uncheck itself if it is checked.
+        if (this.cardOutlet.cardIsChecked()) {
+          this.cardOutlet.uncheckCard()
+          this.cardOutlet.updateBackEnd()
+        }
+      }
+    } else { // If it's not checked
       this.checkCard()
-      if (this.hasCardOutlet) {
-        this.cardOutlets.forEach(outlet => {
-          if(!outlet.cardIsChecked()) {
-            outlet.checkCard()
-            outlet.updateBackEnd()
-          }
-        })
+      this.updateBackEnd()
+      if (this.type == 'task' && this.hasCardOutlet && this.cardOutlets.length > 0) {
+        this.checkAllChildren()
+      } else if (this.type == 'subtask' && this.hasCardOutlet && this.cardOutlets.length === 1) {
+        // Which should be the parent card.
+        this.cardOutlet.checkChildren()
       }
     }
-    this.updateBackEnd()
   }
 
+  checkAllChildren() {
+    this.cardOutlets.forEach(outlet => {
+      if(outlet.cardIsNotChecked()) {
+        outlet.checkCard()
+        outlet.updateBackEnd()
+      }
+    })
+  }
+
+  checkChildren() {
+    let allChecked = true
+    for (let i = 0; i < this.cardOutlets.length; i++) {
+      if (this.cardOutlets[i].cardIsNotChecked()) {
+        log(this.cardOutlets[i].element.id, this.cardOutlets[i].checked)
+        allChecked = false
+        break
+      }
+    }
+    if (allChecked) {
+      this.checkCard()
+      this.updateBackEnd()
+    } else {
+      this.uncheckCard()
+      this.updateBackEnd()
+    }
+  }
+
+  cardIsNotChecked() {
+    return this.cardIsChecked() ? false : true
+  }
   cardIsChecked() {
     return this.cardCompletedTarget.checked
   }
@@ -154,7 +192,7 @@ export default class extends Controller {
                 `
               }
             })
-            console.log(data)
+            console.log(this.element.id, data.task.title, data.task.completed)
             this.form.remove()
           })
       });
