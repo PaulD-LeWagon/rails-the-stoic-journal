@@ -2,23 +2,53 @@ import { Controller } from "@hotwired/stimulus"
 import Swal from "sweetalert2"
 const log = console.log
 
-// Connects to data-controller="task-manager"
 export default class extends Controller {
+
+  static outlets = [ 'task' ]
+
+  static values = {
+    updateRate: {
+      type: Number,
+      default: 5000
+    }
+  }
 
   initialize() {
     this.createFormCont()
   }
 
-  connect() { }
+  connect() {
+    const ut = setInterval(() => {
+      this.updateBackEnd()
+    }, this.updateRate)
+    this.updateTimer = ut
+  }
 
-  updateBackEnd(task) {
+  disconnect() {
+    clearInterval(this.updateTimer)
+    this.updateBackEnd()
+  }
 
-    log(task.element.id, task.ordinal, task.checked)
-    task.subtasks.forEach((subtask) => {
-      log(subtask.element.id, subtask.ordinal, subtask.checked)
-    })
+  get updateRate() {
+    return this.updateRateValue
+  }
 
-    return
+  set updateRate(value) {
+    this.updateRateValue = Number(value)
+  }
+
+  updateBackEnd() {
+    if(this.hasTaskOutlet) {
+      this.taskOutlets.forEach((task) => {
+        // log('Check for update?', task.doUpdate)
+        if (task.doUpdate === true) {
+          this.doFetch(task)
+        }
+      })
+    }
+  }
+
+  doFetch(task) {
 
     fetch(`${task.urlValue}/edit`, {
       method: "GET",
@@ -30,22 +60,22 @@ export default class extends Controller {
         this.hiddenFormCont.innerHTML = data.form
         this.form = this.hiddenFormCont.getElementsByTagName('form')[0]
 
-        log('taskmanager#updateBackEnd')
-        log(task)
+        const formData = new FormData(this.form)
 
-        return
+        formData.set('task[completed]', task.checked ? 1 : 0)
+        formData.set('task[order]', task.ordinal)
 
-
-        let checkbox = this.form.querySelector(`#${this.cardTarget.id}_completed`)
-        let orderInput = this.form.querySelector(`#${this.cardTarget.id}_order`)
-
-        checkbox.checked = this.cardCompletedTarget.checked
-        orderInput.value = parseInt(this.cardOrderTarget.innerHTML, 10)
+        if (task.subtasks) {
+          task.subtasks.forEach((subtask, i) => {
+            formData.set(`task[subtasks_attributes][${i}][completed]`, subtask.checked ? 1 : 0)
+            formData.set(`task[subtasks_attributes][${i}][order]`, subtask.ordinal)
+          })
+        }
 
         const request = {
           method: "POST",
           headers: { "Accept": "application/json" },
-          body: new FormData(this.form)
+          body: formData
         }
 
         fetch(this.form.action, request)
@@ -74,8 +104,10 @@ export default class extends Controller {
                 `
               }
             })
-            console.log(this.element.id, data.task.title, data.task.completed)
+            // log(task.element.id, data.task.title, data.task.order, data.task.completed)
             this.form.remove()
+            task.doUpdate = false
+            // log(`${task.element.id}, ${data.task.title}, needs update? ${task.doUpdate}`)
           })
       });
   }

@@ -1,8 +1,7 @@
 
 <div id="<%= dom_id task %>"
-  class="card task <%= task.completed ? " card-checked" : "" %> parent-<%= (dom_id task).gsub("_", "-") %>"
+  class="card task parent-<%= (dom_id task).gsub("_", "-") %><%= task.completed ? " card-checked" : "" %>"
   data-controller="task"
-  data-action=""
   data-task-task-manager-outlet="#task-manager"
   data-task-subtask-outlet=".subtask-of-<%= (dom_id task).gsub("_", "-") %>"
   data-task-url-value="<%= task_url task %>"
@@ -54,12 +53,6 @@
     </h3>
 
     <div class="card-controls d-flex justify-content-end">
-
-      <a href="#" type="button"
-        class="collapser btn btn-success m-1"
-        data-action="task#update">
-        <i class="fa-solid fa-thumbs-up"></i> Fake Update
-      </a>
 
       <%= link_to(new_task_subtask_path(task),
         data: {

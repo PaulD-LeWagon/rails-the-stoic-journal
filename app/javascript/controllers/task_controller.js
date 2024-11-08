@@ -12,22 +12,13 @@ export default class extends AbstractTask {
 
   connect() {
     super.connect()
-    // this.updateTimer = setInterval(this.update, 5000)
   }
 
-  disconnect() {
-    // clearInterval(this.updateTimer)
-  }
+  disconnect() {}
 
   update(e) {
     e.preventDefault()
     this.taskManagerOutlet.updateBackEnd(this)
-    // this.taskManagerOutlet.updateBackEnd(this.element)
-    // if (this.updateBackend && this.hasTaskManagerOutlet) {
-    //   this.taskManagerOutlet.updateBackEnd(this.element)
-    //   this.updateBackend = false
-    // }
-    // log('Calling taskmanager#updateBackEnd')
   }
 
   onSubtasksOpen(e) {
@@ -43,7 +34,7 @@ export default class extends AbstractTask {
   onCheckboxClicked(e) {
     super.onCheckboxClicked(e)
     // Toggle the check icons
-    if(!this.isChecked() && this.areAllSubtasksChecked()) {
+    if(!this.isChecked() && this.areAllSubtasksChecked() && this.subtasks.length) {
       this.subtasks[this.subtasks.length -1].uncheckIt()
     } else if (this.isChecked() && !this.areAllSubtasksChecked()) {
       this.subtasks.forEach((subtask) => {
@@ -60,7 +51,7 @@ export default class extends AbstractTask {
       // Then uncheck urself!!!
       this.uncheckIt()
     }
-    this.updateBackend = true
+    this.doUpdate = true
   }
 
   areAllSubtasksChecked() {
@@ -77,10 +68,10 @@ export default class extends AbstractTask {
   }
 
   get subtasks() {
-    if (this.hasSubtaskOutlet) {
+    if (this.hasSubtaskOutlet && this.subtaskOutlets.length) {
       return this.subtaskOutlets
     } else {
-      return null
+      return []
     }
   }
 

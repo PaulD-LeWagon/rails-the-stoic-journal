@@ -15,18 +15,30 @@ export default class extends Controller {
 
   static values = {
     url: String,
-    checked: Boolean
+    checked: Boolean,
+    doUpdate: {
+      type: Boolean,
+      default: false
+    }
   }
 
-  initialize() {
-    this.updateBackend = false
-  }
+  initialize() {}
 
   connect() {}
 
+  get doUpdate() {
+    return this.doUpdateValue
+  }
+
+  set doUpdate(value) {
+    this.doUpdateValue = value
+  }
+
+  doUpdateValueChanged() {}
+
   // Checkbox functionality
 
-   get checkbox() {
+  get checkbox() {
     return this.checkboxTarget
   }
 
@@ -43,6 +55,7 @@ export default class extends Controller {
       // If it's not checked
       this.checkIt()
     }
+    this.doUpdate = true
   }
 
   isChecked() {
@@ -52,14 +65,14 @@ export default class extends Controller {
   checkIt() {
     this.fauxCheckIconTarget.classList.remove('fa-square')
     this.fauxCheckIconTarget.classList.add('fa-square-check')
-    this.realCheckboxTarget.checked = true
+    this.realCheckboxTarget.checked = true // Do we need this?
     this.checked = true
   }
 
   uncheckIt() {
     this.fauxCheckIconTarget.classList.remove('fa-square-check')
     this.fauxCheckIconTarget.classList.add('fa-square')
-    this.realCheckboxTarget.checked = false
+    this.realCheckboxTarget.checked = false // Do we need this?
     this.checked = false
   }
 
@@ -75,7 +88,6 @@ export default class extends Controller {
 
   checkedValueChanged() {
     this.checked ? this.element.classList.add('card-checked') : this.element.classList.remove('card-checked')
-    // this.updateBackend = true
   }
 
   // Ordinal functionality
@@ -89,7 +101,8 @@ export default class extends Controller {
   }
 
   onChange(e) {
-    log(this.element.id, this.ordinal, this.checked)
+    // Triggered by drag 'n' drop event.
+    this.doUpdate = true
   }
 
   // Description functionality
