@@ -6,6 +6,4 @@ import "@popperjs/core"
 import "bootstrap"
 import "vanilla-nested"
 import "sweetalert2"
-import "dragula/dragula"
-// import Swal from 'sweetalert2'
-// window.Swal = Swal
+import "Sortable"

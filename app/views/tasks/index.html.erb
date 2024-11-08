@@ -2,9 +2,7 @@
 
   <div class="d-flex justify-content-center align-items-start min-vh-100">
 
-    <div id="task-manager"
-      data-controller="task-manager"
-      data-task-manager-task-outlet=".task" class="col-md-10 p-3">
+    <div class="col-md-10 p-3">
 
       <%= turbo_frame_tag "tasks_index_turbo_frame" do %>
 
@@ -29,13 +27,24 @@
 
       <hr>
 
-      <div class="cards tasks-container collapse-container">
+      <div id="task-manager"
+        data-controller="task-manager"
+        data-task-manager-task-outlet=".task"
+        class="cards tasks-container collapse-container">
 
-        <%= turbo_frame_tag @turbo_frame_id, data: { controller: "dragula" } do %>
+        <%= turbo_frame_tag @turbo_frame_id,
+          data: {
+            controller: 'sortable',
+            sortable_group_value: "#{@turbo_frame_id}"
+          } do %>
 
           <% @tasks.each do |task| %>
 
-            <%= turbo_frame_tag "edit_#{ dom_id task }" do %>
+            <%= turbo_frame_tag "edit_#{ dom_id task }",
+              data: {
+                sortable_target: 'dragable'
+              },
+              class: "dragable-item" do %>
 
               <%= render 'task_card', task: task, type: 'task' %>
 
