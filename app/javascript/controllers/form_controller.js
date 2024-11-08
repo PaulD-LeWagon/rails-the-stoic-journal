@@ -1,6 +1,6 @@
 import { Controller } from "@hotwired/stimulus"
-import Swal from "sweetalert2";
-const log = something => console.log(typeof something, something)
+import Swal from "sweetalert2"
+const log = console.log
 
 // Connects to data-controller="form"
 export default class extends Controller {

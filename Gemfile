@@ -88,4 +88,5 @@ gem "mutex_m", "~> 0.2.0"
 gem "faker"
 gem "vanilla_nested", github: "arielj/vanilla-nested", branch: :main
 gem "animate.css-rails", "~> 3.2"
+# gem "anime_js_rails"
 gem "pgreset" # VERY IMPORTANT IF USING postgresql DB

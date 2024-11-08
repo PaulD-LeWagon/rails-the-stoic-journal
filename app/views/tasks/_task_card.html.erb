@@ -1,42 +1,50 @@
+
 <div id="<%= dom_id task %>"
-  class="card task<%= task.completed ? " card-checked" : "" %>"
-  data-controller="card task-buttons"
-  data-card-card-outlet=".subtask-of-<%= (dom_id task).gsub("_", "-") %>"
-  data-card-target="card"
-  data-card-url-value="<%= task_url task %>">
+  class="card task <%= task.completed ? " card-checked" : "" %> parent-<%= (dom_id task).gsub("_", "-") %>"
+  data-controller="task"
+  data-action=""
+  data-task-task-manager-outlet="#task-manager"
+  data-task-subtask-outlet=".subtask-of-<%= (dom_id task).gsub("_", "-") %>"
+  data-task-url-value="<%= task_url task %>"
+  data-task-checked-value="<%= task.completed %>">
 
   <div class="card-header d-flex justify-content-between align-items-center">
 
     <h3 class="card-title">
 
-      <i class="fa-solid fa-grip handle"></i>
+      <i class="fa-solid fa-grip-vertical handle"></i>
 
-      <span class="checkbox-wrapper">
+      <span id="<%= "#{dom_id task}_checkbox_wrapper" %>"
+        class="checkbox-wrapper"
+        data-task-target="checkbox">
 
-        <label data-action="click->card#onChecked"
+        <label
+          data-task-target="fauxCheckbox"
+          data-action="click->task#onCheckboxClicked"
           for="<%= "#{dom_id task}_completed" %>">
 
-          <i data-card-target="cardFauxCheck" class="fa-solid <%= task.completed ? "fa-square-check" : "fa-square" %>"></i>
+          <i data-task-target="fauxCheckIcon" class="fa-solid <%= task.completed ? "fa-square-check" : "fa-square" %>"></i>
 
         </label>
 
         <input id="<%= "#{dom_id task}_completed" %>"
           class="checkbox d-none"
-          data-card-target="cardCompleted"
+          data-task-target="realCheckbox"
           type="checkbox"<%= task.completed ? " checked" : "" %>>
 
       </span>
 
       <span id="<%= "#{dom_id task}_order" %>"
         class="order-wrapper"
-        data-card-target="cardOrder"
-        data-action="change->card#onReorder">
+        data-task-target="ordinal"
+        data-action="change->task#onChange">
 
         <%= task.order %>
 
       </span>
 
       <%= task.title %>
+
     </h3>
 
     <h3 class="start-date-time">
@@ -47,11 +55,15 @@
 
     <div class="card-controls d-flex justify-content-end">
 
+      <a href="#" type="button"
+        class="collapser btn btn-success m-1"
+        data-action="task#update">
+        <i class="fa-solid fa-thumbs-up"></i> Fake Update
+      </a>
+
       <%= link_to(new_task_subtask_path(task),
         data: {
-          turbo_frame: "new_subtask_for_#{ dom_id task }",
-          task_buttons_target: "addSubtaskBtn",
-          action: "click->task-buttons#addSubtaskClick"
+          turbo_frame: "new_subtask_for_#{ dom_id task }"
         },
         class: "add-new-subtask btn btn-secondary m-1",
         title: "Add a subtask?"
@@ -79,13 +91,13 @@
 
       <a href="#" type="button"
         class="collapser btn btn-success m-1"
-        title="View description"
+        title="View task description"
         data-bs-toggle="collapse"
         data-bs-target="#<%= dom_id task %>_description"
         aria-expanded="false"
         aria-controls="<%= dom_id task %>_description">
 
-        <i class="fa-solid fa-chevron-down"></i>
+        <i data-task-target="descBtnIcon" class="fa-solid fa-chevron-down"></i>
 
       </a>
 
@@ -94,13 +106,10 @@
         title="View all subtasks"
         data-bs-toggle="collapse"
         data-bs-target="#<%= dom_id task %>_subtasks"
-        data-task-buttons-target="viewSubtasksBtn"
         aria-expanded="false"
         aria-controls="<%= dom_id task %>_subtasks">
 
-        <%# = task.subtasks.empty? ? " disabled" : "" %>
-
-        <i class="fa-solid fa-angles-down"></i>
+        <i data-task-target="subtasksBtnIcon" class="fa-solid fa-angles-down"></i>
 
       </button>
 
@@ -125,10 +134,11 @@
 
   </div>
   <div id="<%= dom_id task %>_description"
-    class="card-body collapse"
-    data-task-buttons-target="desc">
+    class="card-body p-0 collapse"
+    data-task-target="desc"
+    data-action="shown.bs.collapse->task#onDescOpen hidden.bs.collapse->task#onDescClose">
 
-    <p class="card-text">
+    <p class="card-text p-2">
       <%= task.description %>
     </p>
 
@@ -136,8 +146,8 @@
 
   <div id="<%= dom_id task %>_subtasks"
     class="cards subtasks-container collapse-container collapse"
-    data-task-buttons-target="subtasks"
-    data-subtasks-count="<%= task.subtasks.length %>">
+    data-action="shown.bs.collapse->task#onSubtasksOpen hidden.bs.collapse->task#onSubtasksClose"
+    data-task-target="subtasks">
 
     <%= turbo_frame_tag "new_subtask_for_#{ dom_id task }", data: { controller: "dragula" } do %>
 
@@ -147,7 +157,7 @@
 
           <%= turbo_frame_tag "edit_#{ dom_id subtask }_for_#{ dom_id subtask.task }" do %>
 
-            <%= render 'tasks/subtask_card', subtask: subtask %>
+            <%= render 'subtask_card', subtask: subtask %>
 
           <% end %>
 

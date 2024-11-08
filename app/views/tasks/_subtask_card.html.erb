@@ -1,41 +1,47 @@
 <div id="<%= dom_id subtask %>"
-  class="card subtask subtask-of-<%= (dom_id subtask.task).gsub("_", "-") %><%= subtask.completed ? " card-checked" : "" %>"
-  data-controller="card"
-  data-card-target="card"
-  data-card-url-value="<%= task_subtask_url(subtask.task, subtask) %>">
+  class="card subtask subtask-of-<%= (dom_id subtask.task).gsub("_", "-") %><%= subtask.completed? ? " card-checked" : "" %>"
+  data-controller="subtask"
+  data-subtask-task-outlet=".parent-<%= (dom_id subtask.task).gsub("_", "-") %>"
+  data-subtask-url-value="<%= task_subtask_url(subtask.task, subtask) %>"
+  data-subtask-checked-value="<%= subtask.completed %>">
 
   <div class="card-header d-flex justify-content-between align-items-center">
 
     <h3 class="card-title">
 
-      <%#= <i class="fa-solid fa-grip handle"></i> %>
+      <%# <i class="fa-solid fa-grip handle"></i> %>
 
-      <span class="checkbox-wrapper">
+      <span id="<%= "#{dom_id subtask}_checkbox_wrapper" %>"
+        class="checkbox-wrapper"
+        data-subtask-target="checkbox">
 
-        <label data-action="click->card#onChecked"
+        <label
+          data-subtask-target="fauxCheckbox"
+          data-action="click->subtask#onCheckboxClicked"
           for="<%= "#{dom_id subtask}_completed" %>">
 
-          <i data-card-target="cardFauxCheck" class="fa-solid <%= subtask.completed ? "fa-square-check" : "fa-square" %>"></i>
+          <i data-subtask-target="fauxCheckIcon" class="fa-solid <%= subtask.completed ? "fa-square-check" : "fa-square" %>"></i>
 
         </label>
 
         <input id="<%= "#{dom_id subtask}_completed" %>"
           class="checkbox d-none"
-          data-card-target="cardCompleted"
+          data-subtask-target="realCheckbox"
           type="checkbox"<%= subtask.completed ? " checked" : "" %>>
 
       </span>
 
       <span id="<%= "#{dom_id subtask}_order" %>"
         class="order-wrapper"
-        data-card-target="cardOrder"
-        data-action="change->card#onReorder">
+        data-subtask-target="ordinal"
+        data-action="change->subtask#onChange">
 
         <%= subtask.order %>
 
       </span>
 
       <%= subtask.title %>
+
     </h3>
 
     <div class="controls d-flex justify-content-end">
@@ -59,12 +65,13 @@
       <a href="#" type="button"
         class="collapser btn btn-success m-1"
         title="View subtask description"
+        data-subtask-target="descButton"
         data-bs-toggle="collapse"
         data-bs-target="#<%= dom_id subtask %>_description"
         aria-expanded="false"
         aria-controls="<%= dom_id subtask %>_description">
 
-        <i class="fa-solid fa-chevron-down"></i>
+        <i data-subtask-target="descBtnIcon" class="fa-solid fa-chevron-down"></i>
 
       </a>
 
@@ -88,9 +95,12 @@
     </div>
 
   </div>
-  <div id="<%= dom_id subtask %>_description" class="card-body collapse">
+  <div id="<%= dom_id subtask %>_description"
+    class="card-body p-0 collapse"
+    data-subtask-target="desc"
+    data-action="shown.bs.collapse->subtask#onDescOpen hidden.bs.collapse->subtask#onDescClose">
 
-    <p class="card-text">
+    <p class="card-text p-2">
       <%= subtask.description %>
     </p>
 

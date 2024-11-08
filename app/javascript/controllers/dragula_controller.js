@@ -5,8 +5,6 @@ const log = something => console.log(typeof something, something)
 // Connects to data-controller="dragula"
 export default class extends Controller {
 
-  static targets = [ "dracule" ]
-
   initialize() {
     this.count = this.element.children.length
 
@@ -64,8 +62,6 @@ export default class extends Controller {
 
   }
 
-  connect() {}
-
   updateOrdinals(e) {
     const turboCards = this.element.hasChildNodes() ? this.element.children : false
     if (turboCards && turboCards.length && turboCards[0].tagName != "FORM") {
@@ -83,7 +79,4 @@ export default class extends Controller {
     this.observer.disconnect();
   }
 
-  #printCount() {
-    log(`${this.element.id} has ${this.count} children`)
-  }
 }

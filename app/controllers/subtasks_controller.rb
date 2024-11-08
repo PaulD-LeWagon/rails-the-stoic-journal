@@ -36,13 +36,15 @@ class SubtasksController < ApplicationController
                status: "success",
                message: "Form ready to be edited.",
              }
+    else
+      render :edit, task: @task, subtask: @subtask, notice: "Subtask, #{@subtask.title} ready for editing!", status: :see_other
     end
   end
 
   def update
     authorize @subtask
     respond_to do |format|
-      if @subtask.update(subtask_params)
+      if @subtask.update!(subtask_params)
         path = @task.routine? ? tasks_path(routine: @task.routine) : tasks_path
         format.html { redirect_to path, notice: "Sub task #{@subtask.title} successfully updated.", status: :see_other }
         format.json do

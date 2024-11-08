@@ -27,7 +27,7 @@
 
       <hr>
 
-      <div class="cards tasks-container collapse-container">
+      <div id="task-manager" data-controller="task-manager" class="cards tasks-container collapse-container">
 
         <%= turbo_frame_tag @turbo_frame_id, data: { controller: "dragula" } do %>
 
@@ -35,7 +35,7 @@
 
             <%= turbo_frame_tag "edit_#{ dom_id task }" do %>
 
-              <%= render 'task_card', task: task %>
+              <%= render 'task_card', task: task, type: 'task' %>
 
             <% end %>
 
