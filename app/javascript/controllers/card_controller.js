@@ -1,33 +1,35 @@
+
 import { Controller } from "@hotwired/stimulus"
-import Swal from "sweetalert2";
+
+import Swal from "sweetalert2"
 
 const log = console.log
 
-const setButtonTogglers = (controllerID) => {
-  const $collConts = $('.collapse-container')
-  $collConts.on('shown.bs.collapse', (e) => {
-    const $btn = $(`[aria-controls=${e.target.id}]`)
-    const icon = $btn.find('i').get(0)
-    if(icon.classList.contains('fa-chevron-down')) {
-      icon.classList.remove('fa-chevron-down')
-      icon.classList.add('fa-chevron-up')
-    } else if(icon.classList.contains('fa-angles-down')) {
-      icon.classList.remove('fa-angles-down')
-      icon.classList.add('fa-angles-up')
-    }
-  })
-  .on('hidden.bs.collapse', (e) => {
-    const $btn = $(`[aria-controls=${e.target.id}]`)
-    const icon = $btn.find('i').get(0)
-    if(icon.classList.contains('fa-chevron-up')) {
-      icon.classList.remove('fa-chevron-up')
-      icon.classList.add('fa-chevron-down')
-    } else if(icon.classList.contains('fa-angles-up')) {
-      icon.classList.remove('fa-angles-up')
-      icon.classList.add('fa-angles-down')
-    }
-  })
-}
+// const setButtonTogglers = (controllerID) => {
+//   const $collConts = $('.collapse-container')
+//   $collConts.on('shown.bs.collapse', (e) => {
+//     const $btn = $(`[aria-controls=${e.target.id}]`)
+//     const icon = $btn.find('i').get(0)
+//     if(icon.classList.contains('fa-chevron-down')) {
+//       icon.classList.remove('fa-chevron-down')
+//       icon.classList.add('fa-chevron-up')
+//     } else if(icon.classList.contains('fa-angles-down')) {
+//       icon.classList.remove('fa-angles-down')
+//       icon.classList.add('fa-angles-up')
+//     }
+//   })
+//   .on('hidden.bs.collapse', (e) => {
+//     const $btn = $(`[aria-controls=${e.target.id}]`)
+//     const icon = $btn.find('i').get(0)
+//     if(icon.classList.contains('fa-chevron-up')) {
+//       icon.classList.remove('fa-chevron-up')
+//       icon.classList.add('fa-chevron-down')
+//     } else if(icon.classList.contains('fa-angles-up')) {
+//       icon.classList.remove('fa-angles-up')
+//       icon.classList.add('fa-angles-down')
+//     }
+//   })
+// }
 
 // Connects to data-controller="cards"
 export default class extends Controller {
@@ -39,15 +41,15 @@ export default class extends Controller {
   static values = { url: String }
 
   initialize() {
-    this.type = this.element.classList.contains('task') ? 'task' : 'subtask'
-    this.hiddenFormCont = document.createElement('div')
-    this.hiddenFormCont.classList.add('d-none')
-    document.getElementsByTagName('body')[0]
-      .insertAdjacentElement('beforeend', this.hiddenFormCont)
+    // this.type = this.element.classList.contains('task') ? 'task' : 'subtask'
+    // this.hiddenFormCont = document.createElement('div')
+    // this.hiddenFormCont.classList.add('d-none')
+    // document.getElementsByTagName('body')[0]
+    //   .insertAdjacentElement('beforeend', this.hiddenFormCont)
   }
 
   connect() {
-    setButtonTogglers(this.element.id)
+    // setButtonTogglers(this.element.id)
   }
 
   onReorder(e) {
@@ -132,7 +134,7 @@ export default class extends Controller {
     return this.cardTarget
   }
 
-  get cardOrder() {
+  get cardOrder() {value
     return this.cardOrderTarget
   }
 

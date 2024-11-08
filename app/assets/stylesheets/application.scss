@@ -24,12 +24,19 @@
   width: 57% !important;
 }
 
-
 .btn {
   font-weight: 900;
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
+
+// .card .fa-solid.fa-grip-vertical {
+//   opacity: 0.4;
+//   transition: opacity 0.5s ease-in-out;
+// }
+// .card:hover .fa-solid.fa-grip-vertical {
+//   opacity: 1;
+// }
 
 .card-checked {
   background-color: $quinary;
