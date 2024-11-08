@@ -21,6 +21,12 @@ export default class extends AbstractTask {
     }
   }
 
+  onChange(e) {
+    super.onChange(e)
+    this.parentTask.notify()
+    this.doUpdate = true
+  }
+
   onCheckboxClicked(e) {
     super.onCheckboxClicked(e)
     this.parentTask.notify()

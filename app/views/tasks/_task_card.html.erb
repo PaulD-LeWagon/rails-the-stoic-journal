@@ -142,13 +142,22 @@
     data-action="shown.bs.collapse->task#onSubtasksOpen hidden.bs.collapse->task#onSubtasksClose"
     data-task-target="subtasks">
 
-    <%= turbo_frame_tag "new_subtask_for_#{ dom_id task }", data: { controller: "dragula" } do %>
+    <%= turbo_frame_tag "new_subtask_for_#{ dom_id task }",
+      data: {
+        controller: 'sortable',
+        sortable_group_value: "new_subtask_for_#{ dom_id task }"
+      },
+      class: "subtasks-container" do %>
 
       <% if task.subtasks.length.positive? %>
 
         <% task.subtasks.each do |subtask| %>
 
-          <%= turbo_frame_tag "edit_#{ dom_id subtask }_for_#{ dom_id subtask.task }" do %>
+          <%= turbo_frame_tag "edit_#{ dom_id subtask }_for_#{ dom_id subtask.task }",
+            data: {
+              sortable_target: 'dragable',
+            },
+            class: "dragable-item" do %>
 
             <%= render 'subtask_card', subtask: subtask %>
 

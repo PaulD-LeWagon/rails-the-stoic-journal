@@ -93,7 +93,6 @@ GEM
     addressable (2.8.7)
       public_suffix (>= 2.0.2, < 7.0)
     animate.css-rails (3.2.0)
-    anime_js_rails (1.1.0)
     autoprefixer-rails (10.4.19.0)
       execjs (~> 2)
     base64 (0.2.0)
@@ -272,6 +271,8 @@ GEM
       rexml (~> 3.2, >= 3.2.5)
       rubyzip (>= 1.2.2, < 3.0)
       websocket (~> 1.0)
+    sortablejs-rails (1.15.0)
+      rails (>= 6.0.0, < 8)
     sprockets (4.2.1)
       concurrent-ruby (~> 1.0)
       rack (>= 2.2.4, < 4)
@@ -328,7 +329,6 @@ PLATFORMS
 
 DEPENDENCIES
   animate.css-rails (~> 3.2)
-  anime_js_rails
   autoprefixer-rails
   base64 (~> 0.2.0)
   bigdecimal (~> 3.1)
@@ -353,6 +353,7 @@ DEPENDENCIES
   sassc-rails
   selenium-webdriver
   simple_form!
+  sortablejs-rails (~> 1.10)
   sprockets-rails
   stimulus-rails
   turbo-rails

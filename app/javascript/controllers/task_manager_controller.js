@@ -73,7 +73,7 @@ export default class extends Controller {
         }
 
         const request = {
-          method: "POST",
+          method: "PATCH",
           headers: { "Accept": "application/json" },
           body: formData
         }
