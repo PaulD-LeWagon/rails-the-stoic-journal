@@ -2,7 +2,7 @@ import AbstractTask from 'controllers/abstract_task_controller'
 import { log } from 'controllers/abstract_task_controller'
 export default class extends AbstractTask {
 
-  static targets = [ 'subtasksBtnIcon' ]
+  static targets = [ 'subtasksBtn','subtasksBtnIcon' ]
 
   static outlets = [ 'subtask' , 'task-manager' ]
 
@@ -19,6 +19,12 @@ export default class extends AbstractTask {
   update(e) {
     e.preventDefault()
     this.taskManagerOutlet.updateBackEnd(this)
+  }
+
+  doSubtasksOpen(e) {
+    // e.preventDefault()
+    const event = new Event('click')
+    this.subtasksBtnTarget.dispatchEvent(event)
   }
 
   onSubtasksOpen(e) {
@@ -43,7 +49,7 @@ export default class extends AbstractTask {
     }
   }
 
-  notify() {
+  verifySubtasksCheckedState() {
     if (this.areAllSubtasksChecked()) {
       // Then check yourself b4 you reck-urself!!!
       this.checkIt()
@@ -51,7 +57,6 @@ export default class extends AbstractTask {
       // Then uncheck urself!!!
       this.uncheckIt()
     }
-    this.doUpdate = true
   }
 
   areAllSubtasksChecked() {

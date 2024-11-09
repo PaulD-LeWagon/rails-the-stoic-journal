@@ -4,9 +4,9 @@ class Task < ApplicationRecord
 
   accepts_nested_attributes_for :subtasks, reject_if: proc { |attributes| attributes["title"].blank? || attributes["_destroy"] == "1" }, allow_destroy: true
 
-  after_initialize :set_default_start_date, :if => :new_record?
+  after_initialize :set_default_start_date, if: :new_record?
 
-  before_save :set_initial_order, :if => :new_record?
+  before_save :set_initial_order, if: :new_record?
 
   NONE_ROUTINE_NAME = :not_recuring
 
@@ -17,9 +17,10 @@ class Task < ApplicationRecord
 
   scope :completed, -> { where(completed: true) }
   scope :pending, -> { where(completed: false) }
+
   scope :filter_by_user_routines, ->(user, routine) { where("user_id = ? AND routine = ?", user.id, routines[routine]) }
 
-  validates_presence_of :title
+  validates :title, presence: true
   validates :user_id, presence: true
 
   # validates_date_of :start_date, before: :due_date, message: "Must be before 'Due Date!'"

@@ -50,6 +50,10 @@ export default class extends Controller {
 
   doFetch(task) {
 
+    if (task == null) {
+      return false
+    }
+
     fetch(`${task.urlValue}/edit`, {
       method: "GET",
       headers: { "Accept": "application/json" },
@@ -62,11 +66,15 @@ export default class extends Controller {
 
         const formData = new FormData(this.form)
 
+        formData.set('task[title]', task.title.trim())
+        formData.set('task[description]', task.desc.trim())
         formData.set('task[completed]', task.checked ? 1 : 0)
         formData.set('task[order]', task.ordinal)
 
         if (task.subtasks) {
           task.subtasks.forEach((subtask, i) => {
+            formData.set(`task[subtasks_attributes][${i}][title]`, subtask.title.trim())
+            formData.set(`task[subtasks_attributes][${i}][description]`, subtask.desc.trim())
             formData.set(`task[subtasks_attributes][${i}][completed]`, subtask.checked ? 1 : 0)
             formData.set(`task[subtasks_attributes][${i}][order]`, subtask.ordinal)
           })

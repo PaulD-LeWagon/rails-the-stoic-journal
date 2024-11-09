@@ -34,13 +34,21 @@
       <span id="<%= "#{dom_id subtask}_order" %>"
         class="order-wrapper"
         data-subtask-target="ordinal"
-        data-action="change->subtask#onChange">
+        data-action="change->subtask#onOrdinalChange">
 
         <%= subtask.order %>
 
       </span>
 
-      <%= subtask.title %>
+      <span id="<%= "#{dom_id subtask}_title" %>"
+        class="title-wrapper"
+        contenteditable="true"
+        data-subtask-target="title"
+        data-action="focusout->subtask#onTitleChange">
+
+        <%= subtask.title %>
+
+      </span>
 
     </h3>
 
@@ -100,8 +108,13 @@
     data-subtask-target="desc"
     data-action="shown.bs.collapse->subtask#onDescOpen hidden.bs.collapse->subtask#onDescClose">
 
-    <p class="card-text p-2">
+    <p class="card-text p-2"
+      contenteditable="true"
+      data-subtask-target="desc"
+      data-action="focusout->subtask#onDescChange">
+
       <%= subtask.description %>
+
     </p>
 
   </div>

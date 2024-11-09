@@ -5,11 +5,15 @@ export default class extends Controller {
 
   static targets = [
 
-    "checkbox", 'realCheckbox', 'fauxCheckbox', 'fauxCheckIcon',
-
-    "ordinal",
-
-    "desc", "descButton", "descBtnIcon"
+    'title',
+    "checkbox",
+    'realCheckbox',
+    'fauxCheckbox',
+    'fauxCheckIcon',
+    'ordinal',
+    'desc',
+    'descButton',
+    'descBtnIcon'
 
   ]
 
@@ -31,10 +35,27 @@ export default class extends Controller {
   }
 
   set doUpdate(value) {
-    this.doUpdateValue = value
+    if (this.hasDoUpdateValue) {
+      this.doUpdateValue = value
+    }
   }
 
   doUpdateValueChanged() {}
+
+  // Title functionality
+
+  get title() {
+    return this.titleTarget.innerText
+  }
+
+  set title(value) {
+    this.titleTarget.innerText = value
+  }
+
+  onTitleChange(e) {
+    e.preventDefault()
+    this.doUpdate = true
+  }
 
   // Checkbox functionality
 
@@ -100,8 +121,9 @@ export default class extends Controller {
     this.ordinalTarget.innerText = value
   }
 
-  onChange(e) {
+  onOrdinalChange(e) {
     // Triggered by drag 'n' drop event.
+    e.preventDefault()
     this.doUpdate = true
   }
 
@@ -117,8 +139,21 @@ export default class extends Controller {
     this.descBtnIconTarget.classList.replace('fa-chevron-up', 'fa-chevron-down')
   }
 
+  onDescChange(e) {
+    e.preventDefault()
+    this.doUpdate = true
+  }
+
   haveDesc() {
-    return this.descTarget.querySelector('p').textContent.trim().length > 0
+    return this.descTarget.textContent.trim().length > 0
+  }
+
+  get desc() {
+    return this.descTarget.textContent.trim()
+  }
+
+  set desc(value) {
+    this.descTarget.innerText = value
   }
 
 }

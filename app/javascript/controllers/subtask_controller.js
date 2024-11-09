@@ -21,14 +21,40 @@ export default class extends AbstractTask {
     }
   }
 
-  onChange(e) {
-    super.onChange(e)
-    this.parentTask.notify()
-    this.doUpdate = true
+  onOrdinalChange(e) {
+    // Full override
+    e.preventDefault()
+    if (this.doUpdate != null) {
+      this.doUpdate = true
+    }
+  }
+
+  onTitleChange(e) {
+    // Full override
+    e.preventDefault()
+    if (this.doUpdate != null) {
+      this.doUpdate = true
+    }
   }
 
   onCheckboxClicked(e) {
     super.onCheckboxClicked(e)
-    this.parentTask.notify()
+    this.parentTask.verifySubtasksCheckedState()
+    this.doUpdate = true
+  }
+
+  get doUpdate() {
+    if (this.hasDoUpdateValue) {
+      return this.doUpdateValue
+    }
+  }
+
+  set doUpdate(value) {
+    if (this.hasDoUpdateValue) {
+      this.doUpdateValue = value
+      if (value) {
+        this.parentTask.doUpdate = value
+      }
+    }
   }
 }
