@@ -12,8 +12,9 @@ export default class extends Controller {
     'fauxCheckIcon',
     'ordinal',
     'desc',
-    'descButton',
-    'descBtnIcon'
+    'descBtn',
+    'descBtnIcon',
+    'descContainer'
 
   ]
 
@@ -29,6 +30,15 @@ export default class extends Controller {
   initialize() {}
 
   connect() {}
+
+  onHandleGrabbed(e) {
+    // Do not cancel the event: e.preventDefault()
+    if (this.descContainerTarget.classList.contains('show')) {
+      // Then close it
+      const event = new Event('click')
+      this.descBtnTarget.dispatchEvent(event)
+    }
+  }
 
   get doUpdate() {
     return this.doUpdateValue
@@ -54,6 +64,11 @@ export default class extends Controller {
 
   onTitleChange(e) {
     e.preventDefault()
+    e.target.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: "smooth",
+    })
     this.doUpdate = true
   }
 
