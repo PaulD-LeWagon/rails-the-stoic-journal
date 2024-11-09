@@ -36,13 +36,21 @@
       <span id="<%= "#{dom_id task}_order" %>"
         class="order-wrapper"
         data-task-target="ordinal"
-        data-action="change->task#onChange">
+        data-action="change->task#onOrdinalChange">
 
         <%= task.order %>
 
       </span>
 
-      <%= task.title %>
+      <span id="<%= "#{dom_id task}_title" %>"
+        class="title-wrapper"
+        contenteditable="true"
+        data-task-target="title"
+        data-action="focusout->task#onTitleChange">
+
+        <%= task.title %>
+
+      </span>
 
     </h3>
 
@@ -56,7 +64,8 @@
 
       <%= link_to(new_task_subtask_path(task),
         data: {
-          turbo_frame: "new_subtask_for_#{ dom_id task }"
+          turbo_frame: "new_subtask_for_#{ dom_id task }",
+          action: "task#doSubtasksOpen"
         },
         class: "add-new-subtask btn btn-secondary m-1",
         title: "Add a subtask?"
@@ -94,17 +103,18 @@
 
       </a>
 
-      <button type="button"
+      <a href="#" type="button"
         class="collapser btn btn-warning m-1"
         title="View all subtasks"
         data-bs-toggle="collapse"
         data-bs-target="#<%= dom_id task %>_subtasks"
+        data-task-target="subtasksBtn"
         aria-expanded="false"
         aria-controls="<%= dom_id task %>_subtasks">
 
         <i data-task-target="subtasksBtnIcon" class="fa-solid fa-angles-down"></i>
 
-      </button>
+      </a>
 
       <% if policy(task).destroy? %>
 
@@ -128,11 +138,15 @@
   </div>
   <div id="<%= dom_id task %>_description"
     class="card-body p-0 collapse"
-    data-task-target="desc"
     data-action="shown.bs.collapse->task#onDescOpen hidden.bs.collapse->task#onDescClose">
 
-    <p class="card-text p-2">
+    <p class="card-text p-2"
+      contenteditable="true"
+      data-task-target="desc"
+      data-action="focusout->task#onDescChange">
+
       <%= task.description %>
+
     </p>
 
   </div>
@@ -140,7 +154,7 @@
   <div id="<%= dom_id task %>_subtasks"
     class="cards subtasks-container collapse-container collapse"
     data-action="shown.bs.collapse->task#onSubtasksOpen hidden.bs.collapse->task#onSubtasksClose"
-    data-task-target="subtasks">
+    data-task-target="subtasksContainer">
 
     <%= turbo_frame_tag "new_subtask_for_#{ dom_id task }",
       data: {

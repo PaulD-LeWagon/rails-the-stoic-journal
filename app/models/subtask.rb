@@ -3,7 +3,12 @@ class Subtask < ApplicationRecord
 
   before_save :set_initial_order, if: :new_record?
 
+  before_validation do |subtask|
+    subtask.order = subtask.order.to_i
+  end
+
   default_scope -> { order(:order) }
+
   scope :completed, -> { where(completed: true) }
   scope :pending, -> { where(completed: false) }
 
@@ -12,5 +17,5 @@ class Subtask < ApplicationRecord
     self.order = count.nil? ? 1 : count + 1
   end
 
-  # validates :title, presence: true
+  validates :title, presence: true
 end
