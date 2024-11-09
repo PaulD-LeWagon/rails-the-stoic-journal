@@ -22,16 +22,14 @@ export default class extends AbstractTask {
   }
 
   onOrdinalChange(e) {
-    // Full override
-    e.preventDefault()
+    super.onOrdinalChange(e)
     if (this.doUpdate != null) {
       this.doUpdate = true
     }
   }
 
   onTitleChange(e) {
-    // Full override
-    e.preventDefault()
+    super.onTitleChange(e)
     if (this.doUpdate != null) {
       this.doUpdate = true
     }

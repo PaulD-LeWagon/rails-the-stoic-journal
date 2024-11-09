@@ -2,7 +2,7 @@ import AbstractTask from 'controllers/abstract_task_controller'
 import { log } from 'controllers/abstract_task_controller'
 export default class extends AbstractTask {
 
-  static targets = [ 'subtasksBtn','subtasksBtnIcon' ]
+  static targets = [ 'subtasksBtn','subtasksBtnIcon', 'subtasksContainer' ]
 
   static outlets = [ 'subtask' , 'task-manager' ]
 
@@ -19,6 +19,16 @@ export default class extends AbstractTask {
   update(e) {
     e.preventDefault()
     this.taskManagerOutlet.updateBackEnd(this)
+  }
+
+  onHandleGrabbed(e) {
+    // Do not cancel the event: e.preventDefault()
+    super.onHandleGrabbed(e)
+    if (this.subtasksContainerTarget.classList.contains('show')) {
+      // Then close it
+      const event = new Event('click')
+      this.subtasksBtnTarget.dispatchEvent(event)
+    }
   }
 
   doSubtasksOpen(e) {

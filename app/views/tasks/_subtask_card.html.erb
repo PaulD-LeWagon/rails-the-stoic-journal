@@ -3,16 +3,26 @@
   data-controller="subtask"
   data-subtask-task-outlet=".parent-<%= (dom_id subtask.task).gsub("_", "-") %>"
   data-subtask-url-value="<%= task_subtask_url(subtask.task, subtask) %>"
-  data-subtask-checked-value="<%= subtask.completed %>">
+  data-subtask-checked-value="<%= subtask.completed %>"
+  data-subtask-start-time-value="<%= subtask.start_date.nil? ? "" : subtask.start_date.strftime("%H:%M %C-%m-%Y") %>">
 
   <div class="card-header d-flex justify-content-between align-items-center">
 
-    <h3 class="card-title">
+    <h3 class="card-title d-flex justify-content-between align-items-center flex-grow-1 overflow-fade">
 
-      <i class="fa-solid fa-grip-vertical handle"></i>
+      <span id="<%= "#{dom_id subtask}_order" %>"
+        class="order-wrapper pe-2"
+        data-subtask-target="ordinal"
+        data-action="change->subtask#onOrdinalChange">
+
+        <%= subtask.order %>
+
+      </span>
+
+      <i class="fa-solid fa-grip-vertical handle pe-2"></i>
 
       <span id="<%= "#{dom_id subtask}_checkbox_wrapper" %>"
-        class="checkbox-wrapper"
+        class="checkbox-wrapper pe-2"
         data-subtask-target="checkbox">
 
         <label
@@ -31,17 +41,18 @@
 
       </span>
 
-      <span id="<%= "#{dom_id subtask}_order" %>"
-        class="order-wrapper"
-        data-subtask-target="ordinal"
-        data-action="change->subtask#onOrdinalChange">
+      <% if subtask.start_date? %>
+      <span class="start-date-time pe-2">
 
-        <%= subtask.order %>
+        <%#= subtask.start_date.strftime("%H:%M %C-%m-%Y") %>
+
+        <%= subtask.start_date.strftime("%H:%M") %>
 
       </span>
+      <% end %>
 
       <span id="<%= "#{dom_id subtask}_title" %>"
-        class="title-wrapper"
+        class="title-wrapper pe-2 flex-grow-1"
         contenteditable="true"
         data-subtask-target="title"
         data-action="focusout->subtask#onTitleChange">

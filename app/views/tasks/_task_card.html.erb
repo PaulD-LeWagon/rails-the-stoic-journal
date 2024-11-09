@@ -5,16 +5,26 @@
   data-task-task-manager-outlet="#task-manager"
   data-task-subtask-outlet=".subtask-of-<%= (dom_id task).gsub("_", "-") %>"
   data-task-url-value="<%= task_url task %>"
-  data-task-checked-value="<%= task.completed %>">
+  data-task-checked-value="<%= task.completed %>"
+  data-task-start-time-value="<%= task.start_date.strftime("%H:%M %C-%m-%Y") %>">
 
   <div class="card-header d-flex justify-content-between align-items-center">
 
-    <h3 class="card-title">
+    <h3 class="card-title d-flex justify-content-between align-items-center flex-grow-1 overflow-fade">
 
-      <i class="fa-solid fa-grip-vertical handle"></i>
+      <span id="<%= "#{dom_id task}_order" %>"
+        class="order-wrapper pe-2"
+        data-task-target="ordinal"
+        data-action="change->task#onOrdinalChange">
+
+        <%= task.order %>
+
+      </span>
+
+      <i class="fa-solid fa-grip-vertical handle pe-2" data-action="mousedown->task#onHandleGrabbed"></i>
 
       <span id="<%= "#{dom_id task}_checkbox_wrapper" %>"
-        class="checkbox-wrapper"
+        class="checkbox-wrapper p-2"
         data-task-target="checkbox">
 
         <label
@@ -33,17 +43,16 @@
 
       </span>
 
-      <span id="<%= "#{dom_id task}_order" %>"
-        class="order-wrapper"
-        data-task-target="ordinal"
-        data-action="change->task#onOrdinalChange">
+      <span class="start-date-time pe-2">
 
-        <%= task.order %>
+        <%#= task.start_date.strftime("%H:%M %C-%m-%Y") %>
+
+        <%= task.start_date.strftime("%H:%M") %>
 
       </span>
 
       <span id="<%= "#{dom_id task}_title" %>"
-        class="title-wrapper"
+        class="title-wrapper pe-2 flex-grow-1"
         contenteditable="true"
         data-task-target="title"
         data-action="focusout->task#onTitleChange">
@@ -51,12 +60,6 @@
         <%= task.title %>
 
       </span>
-
-    </h3>
-
-    <h3 class="start-date-time">
-
-      <%#= task.start_date.strftime("%H:%M %C-%m-%Y") %>
 
     </h3>
 
@@ -96,6 +99,7 @@
         title="View task description"
         data-bs-toggle="collapse"
         data-bs-target="#<%= dom_id task %>_description"
+        data-task-target="descBtn"
         aria-expanded="false"
         aria-controls="<%= dom_id task %>_description">
 
@@ -138,6 +142,7 @@
   </div>
   <div id="<%= dom_id task %>_description"
     class="card-body p-0 collapse"
+    data-task-target="descContainer"
     data-action="shown.bs.collapse->task#onDescOpen hidden.bs.collapse->task#onDescClose">
 
     <p class="card-text p-2"
