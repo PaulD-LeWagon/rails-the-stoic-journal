@@ -31,9 +31,12 @@
 
     <div class="right">
 
-      <div class="accordion" id="routines-config">
+      <div id="task-manager" class="accordion"
+        data-controller="task-manager"
+        data-task-manager-task-outlet=".task">
 
         <div class="card">
+
           <div class="card-header" id="morning-routine">
 
             <%= turbo_frame_tag "morning_routine" do %>
@@ -41,7 +44,11 @@
               <div class="header d-flex justify-content-between align-items-center">
 
                 <h2 class="my-5 mb-3 fst-bold">
-                  <button class="" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                  <button type="button"
+                    data-toggle="collapse"
+                    data-target="#collapseOne"
+                    aria-expanded="true"
+                    aria-controls="collapseOne">
                     Morning Routine
                   </button>
                 </h2>
@@ -63,14 +70,26 @@
 
           </div>
 
-          <div id="collapseOne" class="collapse show" aria-labelledby="morning-routine" data-parent="#routines-config">
+          <div id="collapseOne"
+            class="collapse show"
+            aria-labelledby="morning-routine"
+            data-parent="#task-manager">
+
             <div class="card-body">
 
-              <%= turbo_frame_tag "new_morning_routine_turbo_frame", data: { controller: "dragula", action: "turbo:frame-render->dragula#updateOrdinals" } do %>
+              <%= turbo_frame_tag "new_morning_routine_turbo_frame",
+                data: {
+                  controller: "sortable",
+                  sortable_group_value: "new_morning_routine_turbo_frame"
+                } do %>
 
                 <% @morning_routines.each do |routine| %>
 
-                  <%= turbo_frame_tag "edit_#{ dom_id routine }" do %>
+                  <%= turbo_frame_tag "edit_#{ dom_id routine }",
+                    data: {
+                      sortable_target: 'dragable'
+                    },
+                    class: "dragable-item" do %>
 
                     <%= render 'tasks/task_card', task: routine %>
 
@@ -82,6 +101,7 @@
 
             </div>
           </div>
+
         </div>
 
         <div class="card">
@@ -93,7 +113,13 @@
               <div class="header d-flex justify-content-between align-items-center">
 
                 <h2 class="my-5 mb-3 fst-bold">
-                  <button class="collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                  <button
+                    class="collapsed"
+                    type="button"
+                    data-toggle="collapse"
+                    data-target="#collapseTwo"
+                    aria-expanded="false"
+                    aria-controls="collapseTwo">
                     Core Day Routines
                   </button>
                 </h2>
@@ -114,11 +140,19 @@
             <% end %>
 
           </div>
-          <div id="collapseTwo" class="collapse" aria-labelledby="core-day" data-parent="#routines-config">
+          <div id="collapseTwo"
+            class="collapse"
+            aria-labelledby="core-day"
+            data-parent="#task-manager">
+
             <div class="card-body">
 
 
-              <%= turbo_frame_tag "new_day_routine_turbo_frame", data: { controller: "dragula", action: "turbo:frame-render->dragula#updateOrdinals" } do %>
+              <%= turbo_frame_tag "new_day_routine_turbo_frame",
+                data: {
+                  controller: "sortable",
+                  # action: "turbo:frame-render->dragula#updateOrdinals"
+                } do %>
 
                 <% @day_routines.each do |routine| %>
 
@@ -138,6 +172,7 @@
         </div>
 
         <div class="card">
+
           <div class="card-header" id="evening-routine">
 
             <%= turbo_frame_tag "evening_routine" do %>
@@ -145,7 +180,13 @@
               <div class="header d-flex justify-content-between align-items-center">
 
                 <h2 class="my-5 mb-3 fst-bold">
-                  <button class="collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                  <button
+                    class="collapsed"
+                    type="button"
+                    data-toggle="collapse"
+                    data-target="#collapseThree"
+                    aria-expanded="false"
+                    aria-controls="collapseThree">
                     Evening Routine
                   </button>
                 </h2>
@@ -166,10 +207,18 @@
             <% end %>
 
           </div>
-          <div id="collapseThree" class="collapse" aria-labelledby="evening-routine" data-parent="#routines-config">
+          <div id="collapseThree"
+            class="collapse"
+            aria-labelledby="evening-routine"
+            data-parent="#task-manager">
+
             <div class="card-body">
 
-              <%= turbo_frame_tag "new_evening_routine_turbo_frame", data: { controller: "dragula", action: "turbo:frame-render->dragula#updateOrdinals" } do %>
+              <%= turbo_frame_tag "new_evening_routine_turbo_frame",
+                data: {
+                  controller: "sortable",
+                  # action: "turbo:frame-render->dragula#updateOrdinals"
+                } do %>
 
                 <% @evening_routines.each do |routine| %>
 
@@ -187,6 +236,7 @@
 
             </div>
           </div>
+
         </div>
 
       </div>
