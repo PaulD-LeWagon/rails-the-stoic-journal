@@ -74,6 +74,13 @@ class TasksController < ApplicationController
     authorize @task
     respond_to do |format|
       if @task.update(task_params)
+        # Check for routines and if so, are they completed?
+        # If completed, clone for the next occurence
+        if @task.routine? && @task.completed?
+          @task.clone_for_next_occurence
+          @task.active = false
+          @task.save!
+        end
         path = @task.routine? ? tasks_path(routine: @task.routine) : tasks_path
         format.html { redirect_to path, notice: "Task, #{@task.title}, updated successfully with #{@task.subtasks.count} sub tasks!", status: :see_other }
         format.json do

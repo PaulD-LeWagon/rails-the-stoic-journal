@@ -23,7 +23,7 @@
 
     <%= f.input :routine,
       label: false,
-      # selected: 1,
+      # selected: 1, (not needed!)
       include_blank: false,
       collection: Task::transform_routines_for_html_select,
       input_html: {
@@ -31,6 +31,7 @@
           form_target: "routine",
           action: "form#onRoutineChange"
         },
+        # Should we hide this input if called outside of the profile page?
         class: "form-control"
       } %>
 
@@ -94,13 +95,13 @@
       } %>
 
     <%= f.input :completed, as: :boolean,
-      label: false,
+      # label: false,
       input_html: {
         id: "#{dom_id task}_completed",
-        class: "d-none form-control"
+        class: "d-n one form-control"
       },
       wrapper_html: {
-        class: "d-none m-0"
+        class: "d-n one m-0"
       } %>
 
     <%= f.input :active, as: :boolean,
