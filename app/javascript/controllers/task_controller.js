@@ -1,10 +1,9 @@
-import AbstractTask from 'controllers/abstract_task_controller'
-import { log } from 'controllers/abstract_task_controller'
+import AbstractTask from "controllers/abstract_task_controller"
+import { log } from "controllers/abstract_task_controller"
 export default class extends AbstractTask {
+  static targets = ["subtasksBtn", "subtasksBtnIcon", "subtasksContainer"]
 
-  static targets = [ 'subtasksBtn','subtasksBtnIcon', 'subtasksContainer' ]
-
-  static outlets = [ 'subtask' , 'task-manager' ]
+  static outlets = ["subtask", "task-manager"]
 
   initialize() {
     super.initialize()
@@ -24,35 +23,45 @@ export default class extends AbstractTask {
   onHandleGrabbed(e) {
     // Do not cancel the event: e.preventDefault()
     super.onHandleGrabbed(e)
-    if (this.subtasksContainerTarget.classList.contains('show')) {
+    if (this.subtasksContainerTarget.classList.contains("show")) {
       // Then close it
-      const event = new Event('click')
+      const event = new Event("click")
       this.subtasksBtnTarget.dispatchEvent(event)
     }
   }
 
   doSubtasksOpen(e) {
     // e.preventDefault()
-    const event = new Event('click')
+    const event = new Event("click")
     this.subtasksBtnTarget.dispatchEvent(event)
   }
 
   onSubtasksOpen(e) {
     e.preventDefault()
-    this.subtasksBtnIconTarget.classList.replace('fa-angles-down', 'fa-angles-up')
+    this.subtasksBtnIconTarget.classList.replace(
+      "fa-angles-down",
+      "fa-angles-up"
+    )
   }
 
   onSubtasksClose(e) {
     e.preventDefault()
-    this.subtasksBtnIconTarget.classList.replace('fa-angles-up', 'fa-angles-down')
+    this.subtasksBtnIconTarget.classList.replace(
+      "fa-angles-up",
+      "fa-angles-down"
+    )
   }
 
   onCheckboxClicked(e) {
     super.onCheckboxClicked(e)
     // Toggle the check icons
-    if(!this.isChecked() && this.areAllSubtasksChecked() && this.subtasks.length) {
-      this.subtasks[this.subtasks.length -1].uncheckIt()
-    } else if (this.isChecked() && !this.areAllSubtasksChecked()) {
+    if (
+      this.isNotChecked() &&
+      this.subtasks.length &&
+      this.allSubtasksChecked()
+    ) {
+      this.subtasks[this.subtasks.length - 1].uncheckIt()
+    } else if (this.isChecked() && this.allSubtasksNotChecked()) {
       this.subtasks.forEach((subtask) => {
         subtask.checkIt()
       })
@@ -60,7 +69,7 @@ export default class extends AbstractTask {
   }
 
   verifySubtasksCheckedState() {
-    if (this.areAllSubtasksChecked()) {
+    if (this.allSubtasksChecked()) {
       // Then check yourself b4 you reck-urself!!!
       this.checkIt()
     } else {
@@ -69,7 +78,7 @@ export default class extends AbstractTask {
     }
   }
 
-  areAllSubtasksChecked() {
+  allSubtasksChecked() {
     let allChecked = true
     const subtasks = this.subtasks
     const count = subtasks.length
@@ -82,6 +91,10 @@ export default class extends AbstractTask {
     return allChecked
   }
 
+  allSubtasksNotChecked() {
+    return !this.allSubtasksChecked()
+  }
+
   get subtasks() {
     if (this.hasSubtaskOutlet && this.subtaskOutlets.length) {
       return this.subtaskOutlets
@@ -89,5 +102,4 @@ export default class extends AbstractTask {
       return []
     }
   }
-
 }

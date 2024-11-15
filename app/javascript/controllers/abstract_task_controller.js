@@ -2,20 +2,17 @@ import { Controller } from "@hotwired/stimulus"
 export const log = console.log
 // Connects to data-controller="abstract-task"
 export default class extends Controller {
-
   static targets = [
-
-    'title',
+    "title",
     "checkbox",
-    'realCheckbox',
-    'fauxCheckbox',
-    'fauxCheckIcon',
-    'ordinal',
-    'desc',
-    'descBtn',
-    'descBtnIcon',
-    'descContainer'
-
+    "realCheckbox",
+    "fauxCheckbox",
+    "fauxCheckIcon",
+    "ordinal",
+    "desc",
+    "descBtn",
+    "descBtnIcon",
+    "descContainer",
   ]
 
   static values = {
@@ -23,8 +20,8 @@ export default class extends Controller {
     checked: Boolean,
     doUpdate: {
       type: Boolean,
-      default: false
-    }
+      default: false,
+    },
   }
 
   initialize() {}
@@ -33,9 +30,9 @@ export default class extends Controller {
 
   onHandleGrabbed(e) {
     // Do not cancel the event: e.preventDefault()
-    if (this.descContainerTarget.classList.contains('show')) {
+    if (this.descContainerTarget.classList.contains("show")) {
       // Then close it
-      const event = new Event('click')
+      const event = new Event("click")
       this.descBtnTarget.dispatchEvent(event)
     }
   }
@@ -85,7 +82,7 @@ export default class extends Controller {
   onCheckboxClicked(e) {
     e.preventDefault()
     // Toggle the check icons
-    if(this.isChecked()) {
+    if (this.isChecked()) {
       this.uncheckIt()
     } else {
       // If it's not checked
@@ -98,16 +95,20 @@ export default class extends Controller {
     return this.realCheckboxTarget.checked
   }
 
+  isNotChecked() {
+    return !this.realCheckboxTarget.checked
+  }
+
   checkIt() {
-    this.fauxCheckIconTarget.classList.remove('fa-square')
-    this.fauxCheckIconTarget.classList.add('fa-square-check')
+    this.fauxCheckIconTarget.classList.remove("fa-square")
+    this.fauxCheckIconTarget.classList.add("fa-square-check")
     this.realCheckboxTarget.checked = true // Do we need this?
     this.checked = true
   }
 
   uncheckIt() {
-    this.fauxCheckIconTarget.classList.remove('fa-square-check')
-    this.fauxCheckIconTarget.classList.add('fa-square')
+    this.fauxCheckIconTarget.classList.remove("fa-square-check")
+    this.fauxCheckIconTarget.classList.add("fa-square")
     this.realCheckboxTarget.checked = false // Do we need this?
     this.checked = false
   }
@@ -123,7 +124,9 @@ export default class extends Controller {
   }
 
   checkedValueChanged() {
-    this.checked ? this.element.classList.add('card-checked') : this.element.classList.remove('card-checked')
+    this.checked
+      ? this.element.classList.add("card-checked")
+      : this.element.classList.remove("card-checked")
   }
 
   // Ordinal functionality
@@ -139,19 +142,21 @@ export default class extends Controller {
   onOrdinalChange(e) {
     // Triggered by drag 'n' drop event.
     e.preventDefault()
-    this.doUpdate = true
+    if (this.hasDoUpdateValue) {
+      this.doUpdate = true
+    }
   }
 
   // Description functionality
 
   onDescOpen(e) {
     e.preventDefault()
-    this.descBtnIconTarget.classList.replace('fa-chevron-down', 'fa-chevron-up')
+    this.descBtnIconTarget.classList.replace("fa-chevron-down", "fa-chevron-up")
   }
 
   onDescClose(e) {
     e.preventDefault()
-    this.descBtnIconTarget.classList.replace('fa-chevron-up', 'fa-chevron-down')
+    this.descBtnIconTarget.classList.replace("fa-chevron-up", "fa-chevron-down")
   }
 
   onDescChange(e) {
@@ -170,5 +175,4 @@ export default class extends Controller {
   set desc(value) {
     this.descTarget.innerText = value
   }
-
 }

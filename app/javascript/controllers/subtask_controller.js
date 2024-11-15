@@ -1,9 +1,8 @@
-import AbstractTask from 'controllers/abstract_task_controller'
-import { log } from 'controllers/abstract_task_controller'
+import AbstractTask from "controllers/abstract_task_controller"
+import { log } from "controllers/abstract_task_controller"
 
 export default class extends AbstractTask {
-
-  static outlets = [ 'task' ]
+  static outlets = ["task"]
 
   initialize() {
     super.initialize()
@@ -21,36 +20,19 @@ export default class extends AbstractTask {
     }
   }
 
-  onOrdinalChange(e) {
-    super.onOrdinalChange(e)
-    if (this.doUpdate != null) {
-      this.doUpdate = true
-    }
-  }
-
-  onTitleChange(e) {
-    super.onTitleChange(e)
-    if (this.doUpdate != null) {
-      this.doUpdate = true
-    }
-  }
-
   onCheckboxClicked(e) {
     super.onCheckboxClicked(e)
     this.parentTask.verifySubtasksCheckedState()
     this.doUpdate = true
   }
 
-  get doUpdate() {
-    if (this.hasDoUpdateValue) {
-      return this.doUpdateValue
-    }
-  }
-
+  /**
+   * @param {boolean} value
+   */
   set doUpdate(value) {
     if (this.hasDoUpdateValue) {
       this.doUpdateValue = value
-      if (value) {
+      if (value && this.parentTask) {
         this.parentTask.doUpdate = value
       }
     }

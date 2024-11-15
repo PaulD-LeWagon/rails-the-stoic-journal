@@ -2,6 +2,8 @@ class Task < ApplicationRecord
   belongs_to :user
   has_many :subtasks, inverse_of: :task, dependent: :destroy
 
+  store_accessor :recurs_on, :monday, :tuesday, :wednesday, :thursday, :friday, :saturday, :sunday
+
   accepts_nested_attributes_for :subtasks, reject_if: proc { |attributes| attributes["title"].blank? || attributes["_destroy"] == "1" }, allow_destroy: true
 
   after_initialize :set_default_start_date, if: :new_record?
@@ -24,11 +26,15 @@ class Task < ApplicationRecord
   validates :user_id, presence: true
 
   # validates_date_of :start_date, before: :due_date, message: "Must be before 'Due Date!'"
-  # validates_date_of :start_date, after_or_equal_to: Time.now, message: "Valid 'Start Date' must be from today onwards!"
+  # validates_date_of :start_date, after_or_equal_to: Proc.new { Time.now }, message: "Valid 'Start Date' must be from today onwards!"
 
   def routine?
     self.routine != NONE_ROUTINE_NAME.to_s
   end
+
+  # def transform_recurs_on_for_html_checkboxes
+  #   self.recurs_on.each_with_object({ recurs_on: {} }) { |(key, value), ro| ro[:recurs_on][key] = value }
+  # end
 
   def self.transform_routines_for_html_select
     self.routines.each_with_object({}) { |(item, index), r| r[item.gsub("_", " ").titleize] = item }

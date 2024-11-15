@@ -1,5 +1,4 @@
 class TasksController < ApplicationController
-  include ApplicationHelper
   before_action :set_task, only: %i[ show edit update destroy ]
   before_action :set_dynamic_routine_turbo_frame_id, except: %i[ edit update ]
 
@@ -123,7 +122,13 @@ class TasksController < ApplicationController
     params.require(:task).permit(
       :order,
       :routine,
-      :recurs_on,
+      :monday,
+      :tuesday,
+      :wednesday,
+      :thursday,
+      :friday,
+      :saturday,
+      :sunday,
       :task_type,
       :title,
       :description,

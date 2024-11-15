@@ -2,13 +2,14 @@
   task,
   html: {
     id: "#{ dom_id task }",
-    class: "task task-form m-3 p-2",
+    class: "task-form m-3 p-2",
     data: {
-      controller: "cards"
-    }
+      controller: "form"
+    },
   }) do |f| %>
 
   <%= f.error_notification %>
+
   <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
   <div class="form-inputs">
@@ -22,12 +23,26 @@
 
     <%= f.input :routine,
       label: false,
+      # selected: 1,
+      include_blank: false,
       collection: Task::transform_routines_for_html_select,
       input_html: {
-        class: "d-none form-control"
+        data: {
+          form_target: "routine",
+          action: "form#onRoutineChange"
+        },
+        class: "form-control"
       } %>
 
-    <%= f.input :recurs_on, as: :check_boxes, as: :hidden, label: false, input_html: { class: "form-control mb-3" } %>
+    <div data-form-target="recursOnCont" class="form-group recurs-on-days<%= task.routine? ? "" : " d-none" %>">
+      <%= f.input :monday, as: :boolean, input_html: { class: "mb-3" } %>
+      <%= f.input :tuesday, as: :boolean, input_html: { class: "mb-3" } %>
+      <%= f.input :wednesday, as: :boolean, input_html: { class: "mb-3" } %>
+      <%= f.input :thursday, as: :boolean, input_html: { class: "mb-3" } %>
+      <%= f.input :friday, as: :boolean, input_html: { class: "mb-3" } %>
+      <%= f.input :saturday, as: :boolean, input_html: { class: "mb-3" } %>
+      <%= f.input :sunday, as: :boolean, input_html: { class: "mb-3" } %>
+    </div>
 
     <%= f.input :task_type,
       label: false,

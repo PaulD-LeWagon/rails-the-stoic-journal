@@ -19,7 +19,7 @@
 
       </span>
 
-      <i class="fa-solid fa-grip-vertical handle pe-2"></i>
+      <i class="fa-solid fa-grip-vertical handle pe-2" data-action="mousedown->subtask#onHandleGrabbed"></i>
 
       <span id="<%= "#{dom_id subtask}_checkbox_wrapper" %>"
         class="checkbox-wrapper pe-2"
@@ -84,7 +84,7 @@
       <a href="#" type="button"
         class="collapser btn btn-success m-1"
         title="View subtask description"
-        data-subtask-target="descButton"
+        data-subtask-target="descBtn"
         data-bs-toggle="collapse"
         data-bs-target="#<%= dom_id subtask %>_description"
         aria-expanded="false"
@@ -116,7 +116,7 @@
   </div>
   <div id="<%= dom_id subtask %>_description"
     class="card-body p-0 collapse"
-    data-subtask-target="desc"
+    data-subtask-target="descContainer"
     data-action="shown.bs.collapse->subtask#onDescOpen hidden.bs.collapse->subtask#onDescClose">
 
     <p class="card-text p-2"
