@@ -1,20 +1,42 @@
-// This has no effect so comment it out
-// @import "plugins/animate-css/animate";
-
-@import "plugins/dragula";
+@import "simple_calendar";
 // Graphical variables
 @import "config/fonts";
 @import "config/colors";
 @import "config/bootstrap_variables";
-
 // External libraries
 @import "bootstrap";
 @import "font-awesome";
-
 @import "components/index";
 @import "pages/index";
 
-
+.recurs-on-days.form-group fieldset {
+  display: inline-block !important;
+  margin: 0;
+  padding: 0;
+}
+.recurs-on-days.form-group fieldset .form-check {
+  margin: 0;
+  padding: 0;
+}
+.recurs-on-days.form-group fieldset .form-check-input {
+  position: absolute;
+  transform: scale(0);
+}
+.recurs-on-days.form-group fieldset .form-check-input + label {
+  display: inline-block;
+  cursor: pointer;
+  color: $quinary;
+  background-color: lighten($quinary, 20%);
+  border: solid 2px $quinary;
+  border-radius: 1.5rem;
+  padding: 0.5rem 1.5rem;
+  margin: 0 0.5rem 0 0;
+}
+.recurs-on-days.form-group fieldset .form-check-input:checked + label {
+  color: lighten($quinary, 20%);
+  background-color: $quinary;
+  border: solid 2px lighten($quinary, 20%);
+}
 
 #profile-page .left {
   width: 43% !important;
@@ -58,20 +80,28 @@
 }
 
 .card h3.card-title.overflow-fade::after {
-  content:'';
+  content: "";
   position: absolute;
 
   // left: 33%;
   right: 0;
   margin-left: -40px;
   width: 40px;
-  height:100%;
-  top:0;
-  background:linear-gradient(to right, rgba(240, 244, 245, 0), rgba(240, 244, 245, 1));
+  height: 100%;
+  top: 0;
+  background: linear-gradient(
+    to right,
+    rgba(240, 244, 245, 0),
+    rgba(240, 244, 245, 1)
+  );
 }
 
 .card-checked h3.card-title.overflow-fade::after {
-  background:linear-gradient(to right, rgba(240, 244, 245, 0), rgba(red($quinary), green($quinary), blue($quinary), 1));
+  background: linear-gradient(
+    to right,
+    rgba(240, 244, 245, 0),
+    rgba(red($quinary), green($quinary), blue($quinary), 1)
+  );
 }
 
 .card-checked {
@@ -84,7 +114,7 @@
 }
 .card .card-header h3.card-title > i,
 .card .card-header h3.card-title .order-wrapper {
-  padding: 0 .4rem;
+  padding: 0 0.4rem;
 }
 .card .card-header > h3 > span > label {
   display: inline-block;
@@ -110,10 +140,10 @@
 }
 
 .card.subtask {
-  margin: .75em 0.5em 0em 3em !important;
+  margin: 0.75em 0.5em 0em 3em !important;
 }
 .card.subtask:last-of-type {
-  margin-bottom: .75em !important;
+  margin-bottom: 0.75em !important;
 }
 .card.subtask .card-header h3.card-title {
   font-size: 1.5em !important;
@@ -161,9 +191,8 @@
 #profile-page .card.task .card-body .card-text,
 #profile-page .card.subtask .card-body .card-text {
   // font-weight: 500 !important;
-  font-size: .9em !important;
+  font-size: 0.9em !important;
 }
-
 
 // Totally hide the subtask card if user clicks 'remove' button
 .subtask-fields.removed-by-vanilla-nested {
@@ -227,7 +256,6 @@
   color: $quinary !important;
 }
 
-
 // Copied over from AirCNC
 body {
   // Should be: font-family: "Playwrite DE Grund", cursive;
@@ -237,7 +265,12 @@ body {
   font-weight: 500;
   font-style: normal;
 }
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   // Should be: Urbanist, see config/_fonts.scs to change this globally
   font-optical-sizing: auto;
   font-weight: 500;
@@ -260,30 +293,27 @@ div.navbar.sticky-top {
   border: solid 3px $success;
 }
 
-
-
 .animate-shadow {
-  box-shadow: 0 0 0 rgba(0,0,0,0.2);
+  box-shadow: 0 0 0 rgba(0, 0, 0, 0.2);
   transition: box-shadow 0.3s ease-in-out;
 }
 .animate-shadow:hover {
-  box-shadow: 0 4px 8px rgba(0,0,0,0.45);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.45);
 }
 .animate-inset-shadow {
-  box-shadow: inset 0 0 0 rgba(0,0,0,0.15);
+  box-shadow: inset 0 0 0 rgba(0, 0, 0, 0.15);
   transition: box-shadow 0.3s ease-in-out;
 }
 .animate-inset-shadow:hover {
-  box-shadow: inset 0 4px 8px rgba(0,0,0,0.5);
+  box-shadow: inset 0 4px 8px rgba(0, 0, 0, 0.5);
 }
 .animate-text-shadow {
-  text-shadow: 0 0 0 rgba(0,0,0,0.15);
+  text-shadow: 0 0 0 rgba(0, 0, 0, 0.15);
   transition: text-shadow 0.3s ease-in-out;
 }
 .animate-text-shadow:hover {
-  text-shadow: 0 4px 6px rgba(0,0,0,0.3);
+  text-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
 }
-
 
 .text-nowrap {
   white-space: nowrap;
@@ -292,7 +322,7 @@ div.navbar.sticky-top {
 .devise-signup-links a {
   color: $gray;
   text-decoration: none;
-  font-size: .75rem;
+  font-size: 0.75rem;
   font-style: italic;
 }
 
@@ -322,7 +352,6 @@ div.navbar.sticky-top {
   }
 }
 
-
 // /* Style for the form container */
 // form {
 //   background-color: #f8f8f8;
@@ -334,8 +363,9 @@ div.navbar.sticky-top {
 // }
 
 /* Headings */
-.RR-form h2, .RR-form h3 {
-  font-family: 'Arial', sans-serif;
+.RR-form h2,
+.RR-form h3 {
+  font-family: "Arial", sans-serif;
   color: #333;
   margin-bottom: 15px;
 }
@@ -345,8 +375,6 @@ footer {
   height: 300px;
   background-color: $secondary;
 }
-
-
 
 .team-img {
   filter: grayscale(100%);

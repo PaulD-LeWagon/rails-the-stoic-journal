@@ -10,3 +10,4 @@ pin "@popperjs/core", to: "popper.js", preload: true
 pin "vanilla-nested", to: "vanilla_nested.js", preload: true
 pin "sweetalert2" # @11.14.1
 pin "Sortable"
+pin "classList"
