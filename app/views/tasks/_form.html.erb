@@ -95,13 +95,13 @@
       } %>
 
     <%= f.input :completed, as: :boolean,
-      # label: false,
+      label: false,
       input_html: {
         id: "#{dom_id task}_completed",
-        class: "d-n one form-control"
+        class: "d-none form-control"
       },
       wrapper_html: {
-        class: "d-n one m-0"
+        class: "d-none m-0"
       } %>
 
     <%= f.input :active, as: :boolean,
