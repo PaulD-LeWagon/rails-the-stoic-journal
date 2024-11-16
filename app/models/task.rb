@@ -13,9 +13,9 @@ class Task < ApplicationRecord
   NONE_ROUTINE_NAME = :not_recuring
 
   enum routine: [NONE_ROUTINE_NAME, :morning, :day, :evening]
-  enum task_type: [:general, :event, :fitness, :admin, :work, :self_development]
+  enum task_type: [:general, :event, :fitness, :admin, :work, :self_development, :spiritual, :stoic_exercise, :stoic_discipline]
 
-  default_scope { order(:order) }
+  default_scope { where(active: true).order(:start_date, :order) }
 
   scope :completed, -> { where(completed: true) }
   scope :pending, -> { where(completed: false) }
@@ -33,13 +33,14 @@ class Task < ApplicationRecord
   end
 
   def clone_for_next_occurence
-    is_self_dev_routine = self.task_type == "self_development"
+    # Stoic Exercise Routine - will be the only ones with AI generated feedback
+    is_stoic_exercise_routine = self.task_type == "stoic_exercise"
     # Clone the task
     new_task = self.dup
-    if is_self_dev_routine
+    if is_stoic_exercise_routine && self.subtasks.count < 1
       new_task.description = ""
     end
-    # AI generated feedback is done via the comment field. (Well that's the plan anyway!)
+    # AI generated feedback is added via the comment field. (Well that's the plan anyway!)
     new_task.comment = ""
     new_task.completed = false
 
@@ -50,15 +51,18 @@ class Task < ApplicationRecord
 
     # Save the newly cloned task
     new_task.save!
+    # Clone the subtasks if they exist
     self.subtasks.each do |subtask|
       new_subtask = subtask.dup
       new_subtask.task = new_task
       new_subtask.completed = false
       # Users input i.e. their log/journaling etc. is done via the description field
-      if is_self_dev_routine
+      if is_stoic_exercise_routine
         new_subtask.description = ""
       end
       # AI generated feedback is done via the comment field.
+      # Although, may just use the parent task's comment field as sending
+      # individual subtasks/question/answers could be very costly.
       new_subtask.comment = ""
       new_subtask.save!
     end
@@ -75,17 +79,20 @@ class Task < ApplicationRecord
   private
 
   def set_default_start_date
-    self.start_date = Time.now
+    self.start_date = Time.now if self.start_date.nil?
   end
 
   def find_next_occurence
     # Need to work out when the next occurence is...
-    today = Time.now
-    next_occurence = today
+    time = self.start_date.strftime("%k:%M")
+    date = Time.now.strftime("%d/%m/%Y")
+    today = Time.parse("#{date} #{time}")
     7.times do |i|
       j = i + 1
       the_date = today + j.day
       this_day = eval("self.#{(the_date).strftime("%A").downcase}")
+      # Was originally actual boolean values, but the frontend
+      # has switched to a string value of "1" or "0" ???
       if this_day.class == String && this_day == "1" || this_day.class == Integer && this_day == 1
         return the_date
       end

@@ -76,7 +76,7 @@ class TasksController < ApplicationController
       if @task.update(task_params)
         # Check for routines and if so, are they completed?
         # If completed, clone for the next occurence
-        if @task.routine? && @task.completed?
+        if @task.routine? && @task.completed? && @task.active?
           @task.clone_for_next_occurence
           @task.active = false
           @task.save!

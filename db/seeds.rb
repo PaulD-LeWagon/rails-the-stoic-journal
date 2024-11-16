@@ -11,9 +11,11 @@ User.destroy_all
 
 # Now seed it!
 puts "Seeding Database..."
-cats = []
+
+# cats = []
+
 users = []
-one_in_three = [true, false, false]
+
 days = [
   "monday",
   "tuseday",
@@ -61,26 +63,27 @@ users << User.create(
 # Make a specific number of Tasks say, 3-5 AM Routine,
 # 7-10 Core-Day and 1-3 PM Routine
 these_days = {
-  "monday" => true,
-  "tuseday" => true,
-  "wednesday" => true,
-  "thursday" => true,
-  "friday" => true,
-  "saturday" => true,
-  "sunday" => true,
+  "monday" => "1",
+  "tuseday" => "1",
+  "wednesday" => "1",
+  "thursday" => "1",
+  "friday" => "1",
+  "saturday" => "1",
+  "sunday" => "1",
 }
 
 # Make some routine tasks
 users.each_with_index do |user, i|
-  start_date = Date.today # + rand(1..3)
-  due_date = start_date
-  # Cold Shower
+  start_date = Date.tomorrow
+
+  # Cold Shower (Stoic Discipline)
   task = Task.new(
     routine: "morning",
     recurs_on: these_days,
-    task_type: "self_development",
+    task_type: "stoic_discipline",
     title: "Cold Shower",
     description: "A quick shower to get your body ready for the day.",
+    start_date: Time.parse("#{start_date} 06:00"),
   )
   task.user = user
   task.save!
@@ -89,15 +92,17 @@ users.each_with_index do |user, i|
   task = Task.new(
     routine: "morning",
     recurs_on: these_days,
-    active: true,
     task_type: "fitness",
     title: "Kettlebell Workout",
+    start_date: Time.parse("#{start_date} 06:15"),
   )
   task.user = user
   task.save!
-  ["Hand 2 Hand Swings - 5x15 Reps",
-   "One Handed Cleans - 5x10 Reps",
-   "Full Snatch - 5x20 Reps"]
+  [
+    "Hand 2 Hand Swings - 5x15 Reps",
+    "One Handed Cleans - 5x10 Reps",
+    "Full Snatch - 5x20 Reps",
+  ]
     .each_with_index do |exercise, i|
     subtask = Subtask.new(
       title: exercise,
@@ -107,19 +112,22 @@ users.each_with_index do |user, i|
     subtask.save!
   end
 
-  # Meditate (Self Development)
+  # Meditate (Spiritual Development)
   task = Task.new(
     routine: "morning",
     recurs_on: these_days,
-    task_type: "self_development",
+    task_type: "spiritual",
     title: "Meditate",
     description: "Meditate for approx. 20-30 minutes every morning!",
+    start_date: Time.parse("#{start_date} 07:00"),
   )
   task.user = user
   task.save!
-  ["Find a calm and quiet place.",
-   "Make yourself comfortable.",
-   "Now, empty your mind!!!"]
+  [
+    "Find a calm and quiet place.",
+    "Make yourself comfortable.",
+    "Now, empty your mind!!!",
+  ]
     .each_with_index do |step, i|
     subtask = Subtask.new(
       title: step,
@@ -128,20 +136,25 @@ users.each_with_index do |user, i|
     subtask.save!
   end
 
-  # Evening Routine (Review the Day)
+  # Evening Routine - Stoic Exercise (Review the Day)
   # Reset the 'order' to 1 (as it's a new Routine type)
   task = Task.new(
     routine: "evening",
     recurs_on: these_days,
-    task_type: "self_development",
+    task_type: "stoic_exercise",
     title: "Review the Day",
     description: "Review the day and reflect on what you did well and what you could have done better.",
+    start_date: Time.parse("#{start_date} 21:30"),
   )
   task.user = user
   task.save!
-  ["What did you do well?",
-   "What could you have done better?",
-   "What would you like to do next time?"]
+  [
+    "Mentally review the day three times from beginning to end.",
+    "What mistakes did you make today?",
+    "What virtue, that is, what strength or wisdom did you show today?",
+    "What have you omitted or what could have been done better?",
+    "Gratitude - What are you grateful for today?",
+  ]
     .each_with_index do |step, i|
     subtask = Subtask.new(
       title: step,
@@ -153,10 +166,13 @@ end
 
 # Create some non-routine tasks - actual core-day tasks
 15.times do
-  these_days = Hash[days.map { |day| [day, false] }]
-
+  start_date = Date.tomorrow
+  these_days = Hash[days.map { |day| [day, "0"] }]
   routine = Task::NONE_ROUTINE_NAME.to_s
 
+  # Randomise the start time
+  start_time = rand(8..18)
+  start_date = start_time.digits.count == 1 ? Time.parse("#{start_date} 0#{start_time}:00") : Time.parse("#{start_date} #{start_time}:00")
   task = Task.new(
     routine: routine,
     recurs_on: these_days,
@@ -164,6 +180,7 @@ end
     title: Faker::Hobby.activity,
     description: Faker::Quote.famous_last_words + " " + Faker::Lorem.paragraph(sentence_count: rand(15..30)),
     comment: Faker::Quote.famous_last_words,
+    start_date: start_date,
   )
   task.user = users.sample
   task.save!
