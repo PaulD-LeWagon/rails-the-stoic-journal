@@ -15,7 +15,7 @@ class Task < ApplicationRecord
   enum routine: [NONE_ROUTINE_NAME, :morning, :day, :evening]
   enum task_type: [:general, :event, :fitness, :admin, :work, :self_development, :spiritual, :stoic_exercise, :stoic_discipline]
 
-  default_scope { where(active: true).order(:start_date, :order) }
+  default_scope { where(active: true).order(:start_date) } # completed: false ???
 
   scope :completed, -> { where(completed: true) }
   scope :pending, -> { where(completed: false) }
@@ -99,6 +99,7 @@ class Task < ApplicationRecord
     end
   end
 
+  # May remove this field as it makes more sense to order tasks by time.
   # Will return the highest order number for the task
   # If no tasks exist for the user and routine, will return 1
   def set_initial_order
