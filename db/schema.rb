@@ -55,7 +55,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_10_15_145351) do
   create_table "tasks", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.integer "routine", default: 0, null: false
-    t.json "recurs_on", default: {"monday"=>false, "tuesday"=>false, "wednesday"=>false, "thursday"=>false, "friday"=>false, "saturday"=>false, "sunday"=>false}, null: false
+    t.json "recurs_on", default: {"monday"=>"0", "tuesday"=>"0", "wednesday"=>"0", "thursday"=>"0", "friday"=>"0", "saturday"=>"0", "sunday"=>"0"}, null: false
     t.boolean "active", default: true, null: false
     t.integer "task_type", default: 0, null: false
     t.integer "order", default: 0, null: false

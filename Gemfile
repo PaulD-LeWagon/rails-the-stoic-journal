@@ -92,4 +92,4 @@ gem "sortablejs-rails", "~> 1.10"
 gem "simple_calendar", "~> 2.0"
 gem "pgreset" # VERY IMPORTANT IF USING postgresql DB
 
-gem "active_model_serializers"
+# gem "active_model_serializers"

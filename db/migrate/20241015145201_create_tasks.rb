@@ -4,15 +4,15 @@ class CreateTasks < ActiveRecord::Migration[7.1]
       t.references :user, null: false, foreign_key: true
 
       t.integer :routine, null: false, default: 0
-      t.json    :recurs_on, null: false, default: {
-        monday: false,
-        tuesday: false,
-        wednesday: false,
-        thursday: false,
-        friday: false,
-        saturday: false,
-        sunday: false
-      }
+      t.json :recurs_on, null: false, default: {
+                    monday: "0",
+                    tuesday: "0",
+                    wednesday: "0",
+                    thursday: "0",
+                    friday: "0",
+                    saturday: "0",
+                    sunday: "0",
+                  }
       t.boolean :active, null: false, default: true
       t.integer :task_type, null: false, default: 0
 
