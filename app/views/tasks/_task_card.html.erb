@@ -2,11 +2,10 @@
 <div id="<%= dom_id task %>"
   class="card task parent-<%= (dom_id task).gsub("_", "-") %><%= task.completed ? " card-checked" : "" %>"
   data-controller="task"
-  data-task-task-manager-outlet="#task-manager"
   data-task-subtask-outlet=".subtask-of-<%= (dom_id task).gsub("_", "-") %>"
   data-task-url-value="<%= task_url task %>"
   data-task-checked-value="<%= task.completed %>"
-  data-task-start-time-value="<%= task.start_date.strftime("%H:%M %C-%m-%Y") %>">
+  data-task-start-time-value="<%= task.start_date %>">
 
   <div class="card-header d-flex justify-content-between align-items-center">
 
@@ -43,9 +42,9 @@
 
       </span>
 
-      <span class="start-date-time pe-2">
-
-        <%#= task.start_date.strftime("%H:%M %C-%m-%Y") %>
+      <span class="start-date-time pe-2"
+        data-task-target="startTime"
+        data-task-start-time-value="<%= task.start_date %>">
 
         <%= task.start_date.strftime("%H:%M") %>
 
@@ -55,7 +54,7 @@
         class="title-wrapper pe-2 flex-grow-1"
         contenteditable="true"
         data-task-target="title"
-        data-action="focusout->task#onTitleChange">
+        data-action="focus->task#onTitleFocus focusout->task#onTitleLostFocus">
 
         <%= task.title %>
 
@@ -148,7 +147,7 @@
     <p class="card-text p-2"
       contenteditable="true"
       data-task-target="desc"
-      data-action="focusout->task#onDescChange">
+      data-action="focus->task#onDescFocus focusout->task#onDescLostFocus">
 
       <%= task.description %>
 

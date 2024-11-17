@@ -4,7 +4,7 @@
   data-subtask-task-outlet=".parent-<%= (dom_id subtask.task).gsub("_", "-") %>"
   data-subtask-url-value="<%= task_subtask_url(subtask.task, subtask) %>"
   data-subtask-checked-value="<%= subtask.completed %>"
-  data-subtask-start-time-value="<%= subtask.start_date.nil? ? "" : subtask.start_date.strftime("%H:%M %C-%m-%Y") %>">
+  data-subtask-start-time-value="<%= subtask.start_date.nil? ? "" : subtask.start_date %>">
 
   <div class="card-header d-flex justify-content-between align-items-center">
 
@@ -55,7 +55,7 @@
         class="title-wrapper pe-2 flex-grow-1"
         contenteditable="true"
         data-subtask-target="title"
-        data-action="focusout->subtask#onTitleChange">
+        data-action="focus->subtask#onTitleFocus focusout->subtask#onTitleLostFocus">
 
         <%= subtask.title %>
 
@@ -122,7 +122,7 @@
     <p class="card-text p-2"
       contenteditable="true"
       data-subtask-target="desc"
-      data-action="focusout->subtask#onDescChange">
+      data-action="focus->subtask#onDescFocus focusout->subtask#onDescLostFocus">
 
       <%= subtask.description %>
 

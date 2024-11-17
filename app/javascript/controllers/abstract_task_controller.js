@@ -47,8 +47,6 @@ export default class extends Controller {
     }
   }
 
-  doUpdateValueChanged() {}
-
   // Title functionality
 
   get title() {
@@ -59,14 +57,21 @@ export default class extends Controller {
     this.titleTarget.innerText = value
   }
 
-  onTitleChange(e) {
+  onTitleFocus(e) {
+    e.preventDefault()
+    this.titleChar = this.title
+  }
+
+  onTitleLostFocus(e) {
     e.preventDefault()
     e.target.scrollTo({
       top: 0,
       left: 0,
       behavior: "smooth",
     })
-    this.doUpdate = true
+    if (this.titleChar !== this.title) {
+      this.doUpdate = true
+    }
   }
 
   // Checkbox functionality
@@ -159,9 +164,21 @@ export default class extends Controller {
     this.descBtnIconTarget.classList.replace("fa-chevron-up", "fa-chevron-down")
   }
 
-  onDescChange(e) {
+  onDescFocus(e) {
     e.preventDefault()
-    this.doUpdate = true
+    this.descChar = this.desc
+  }
+
+  onDescLostFocus(e) {
+    e.preventDefault()
+    e.target.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: "smooth",
+    })
+    if (this.descChar !== this.desc) {
+      this.doUpdate = true
+    }
   }
 
   haveDesc() {
