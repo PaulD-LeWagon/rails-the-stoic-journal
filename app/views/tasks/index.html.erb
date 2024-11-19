@@ -33,20 +33,13 @@
         <%= turbo_frame_tag @turbo_frame_id,
           data: {
             controller: 'sortable',
+            sortable_task_outlet: '.task',
             sortable_group_value: "#{@turbo_frame_id}"
           } do %>
 
           <% @tasks.each do |task| %>
 
-            <%= turbo_frame_tag "edit_#{ dom_id task }",
-              data: {
-                sortable_target: 'dragable'
-              },
-              class: "dragable-item" do %>
-
-              <%= render 'task_card', task: task, type: 'task' %>
-
-            <% end %>
+            <%= render 'task_card', task: task, type: 'task' %>
 
           <% end %>
 

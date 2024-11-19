@@ -11,3 +11,5 @@ pin "vanilla-nested", to: "vanilla_nested.js", preload: true
 pin "sweetalert2" # @11.14.1
 pin "Sortable"
 pin "classList"
+pin "flatpickr" # @4.6.13
+pin "my-utils"

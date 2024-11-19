@@ -1,4 +1,5 @@
 @import "simple_calendar";
+@import "flatpickr.min";
 // Graphical variables
 @import "config/fonts";
 @import "config/colors";
@@ -51,14 +52,6 @@
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
-
-// .card .fa-solid.fa-grip-vertical {
-//   opacity: 0.4;
-//   transition: opacity 0.5s ease-in-out;
-// }
-// .card:hover .fa-solid.fa-grip-vertical {
-//   opacity: 1;
-// }
 
 .card h3.card-title {
   display: inline-block;
@@ -120,10 +113,15 @@
   display: inline-block;
 }
 // For the Faux-checkbox and drag 'n' drop handle
+.card .card-header h3.card-title .start-date-time,
+.card .card-header h3.card-title .title-wrapper,
 .card .card-header h3.card-title > i,
 .card .card-header > h3 > span > label:hover,
 .card .card-header > h3 > span > label:hover i {
   cursor: pointer;
+}
+.card .card-header h3.card-title .start-date-time {
+  position: relative;
 }
 .card .card-body .card-text {
   font-weight: 600 !important;

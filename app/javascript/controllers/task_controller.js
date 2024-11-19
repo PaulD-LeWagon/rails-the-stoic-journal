@@ -3,16 +3,9 @@ import Swal from "sweetalert2"
 import { log } from "controllers/abstract_task_controller"
 
 export default class extends AbstractTask {
-  static targets = [
-    "startTime",
-    "subtasksBtn",
-    "subtasksBtnIcon",
-    "subtasksContainer",
-  ]
+  static targets = ["subtasksBtn", "subtasksBtnIcon", "subtasksContainer"]
 
   static outlets = ["subtask"]
-
-  static values = { startTime: String }
 
   initialize() {
     super.initialize()
@@ -43,10 +36,13 @@ export default class extends AbstractTask {
     }
   }
 
-  doSubtasksOpen(e) {
+  doSubtasksOpenForNewSubtask(e) {
     // e.preventDefault()
-    const event = new Event("click")
-    this.subtasksBtnTarget.dispatchEvent(event)
+    if (!this.subtasksContainerTarget.classList.contains("show")) {
+      // Then open it
+      const event = new Event("click")
+      this.subtasksBtnTarget.dispatchEvent(event)
+    }
   }
 
   onSubtasksOpen(e) {
@@ -140,6 +136,7 @@ export default class extends AbstractTask {
         formData.set("task[description]", this.desc.trim())
         formData.set("task[completed]", this.checked ? 1 : 0)
         formData.set("task[order]", this.ordinal)
+        formData.set("task[start_date]", this.startDateTime)
 
         if (this.subtasks) {
           this.subtasks.forEach((subtask, i) => {
@@ -178,32 +175,30 @@ export default class extends AbstractTask {
             return response.json() // Parse the response as JSON
           })
           .then((data) => {
-            // // Icons: warning, error, success, info, and question
-            // Swal.fire({
-            //   position: "top-end",
-            //   icon: data.status,
-            //   title: this.capitalise(data.status),
-            //   text: data.message,
-            //   showConfirmButton: false,
-            //   timer: 1500,
-            //   showClass: {
-            //     popup: `
-            //       animate__animated
-            //       animate__fadeInDown
-            //       animate__faster
-            //     `,
-            //   },
-            //   hideClass: {
-            //     popup: `
-            //       animate__animated
-            //       animate__fadeOutDown
-            //       animate__faster
-            //     `,
-            //   },
-            // })
-
-            log(`${this.element.id}, ${data.message}`)
-
+            // Icons: warning, error, success, info, and question
+            Swal.fire({
+              position: "top-end",
+              icon: data.status,
+              title: this.capitalise(data.status),
+              text: data.message,
+              showConfirmButton: false,
+              timer: 1500,
+              showClass: {
+                popup: `
+                  animate__animated
+                  animate__fadeInDown
+                  animate__faster
+                `,
+              },
+              hideClass: {
+                popup: `
+                  animate__animated
+                  animate__fadeOutDown
+                  animate__faster
+                `,
+              },
+            })
+            // log(`${this.element.id}, ${data.message}`)
             this.form.remove()
             this.doUpdate = false
           })
