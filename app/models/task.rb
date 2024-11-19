@@ -12,8 +12,24 @@ class Task < ApplicationRecord
 
   NONE_ROUTINE_NAME = :not_recuring
 
-  enum routine: [NONE_ROUTINE_NAME, :morning, :day, :evening]
-  enum task_type: [:general, :event, :fitness, :admin, :work, :self_development, :spiritual, :stoic_exercise, :stoic_discipline]
+  enum routine: [
+    NONE_ROUTINE_NAME,
+    :morning,
+    :day,
+    :evening,
+  ]
+
+  enum task_type: [
+    :general,
+    :event,
+    :fitness,
+    :admin,
+    :work,
+    :self_development,
+    :spiritual,
+    :stoic_exercise,
+    :stoic_discipline,
+  ]
 
   default_scope { where(active: true).order(:start_date) } # completed: false ???
 

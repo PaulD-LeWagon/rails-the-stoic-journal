@@ -1,8 +1,11 @@
 import { Controller } from "@hotwired/stimulus"
+import flatpickr from "flatpickr"
 export const log = console.log
 // Connects to data-controller="abstract-task"
 export default class extends Controller {
   static targets = [
+    "startTime",
+    "startDateTime",
     "title",
     "checkbox",
     "realCheckbox",
@@ -18,15 +21,93 @@ export default class extends Controller {
   static values = {
     url: String,
     checked: Boolean,
-    doUpdate: {
-      type: Boolean,
-      default: false,
-    },
+    startTime: String,
+    doUpdate: { type: Boolean, default: false },
   }
 
-  initialize() {}
+  initialize() {
+    // this.flatpickr = this.constructFlatpickr()
+  }
 
   connect() {}
+
+  disconnect() {}
+
+  hasStartDateTime() {
+    return this.hasStartDateTimeTarget
+  }
+
+  get startDateTime() {
+    if (this.hasStartDateTimeTarget) {
+      return this.startDateTimeTarget.value
+    } else {
+      return false
+    }
+  }
+
+  set startDateTime(value) {
+    if (this.hasStartDateTimeTarget) {
+      this.startDateTimeTarget.value = value
+    }
+  }
+
+  onStartTimeClick(e) {
+    e.preventDefault()
+    // this.startDateTimeTarget.classList.toggle("d-none")
+    this.startDateTimeTarget.click()
+  }
+
+  onStartDateTimePickerClose(selectedDates, dateStr, instance) {
+    if (this.hasStartDateTime()) {
+      // this.startDateTimeTarget.classList.toggle("d-none")
+      const newDate = new Date(dateStr)
+      const formatter = new Intl.DateTimeFormat("en-EN", {
+        hour: "2-digit",
+        minute: "2-digit",
+      })
+      this.startTime = formatter.format(newDate)
+      this.doUpdate = true
+    }
+  }
+
+  constructFlatpickr(customOptions = {}) {
+    if (this.hasStartDateTimeTarget) {
+      const that = this
+      const options = {
+        positionElement: this.startTimeTarget,
+        position: "above center",
+        enableTime: true,
+        time_24hr: true,
+        minTime: "06:00",
+        maxTime: "18:00",
+        minuteIncrement: 15,
+        dateFormat: "Y-m-d H:i",
+        onClose: function (selectedDates, dateStr, instance) {
+          that.onStartDateTimePickerClose(selectedDates, dateStr, instance)
+        },
+      }
+      const cfg = Object.assign(options, customOptions)
+      return flatpickr(this.startDateTimeTarget, cfg)
+    }
+  }
+
+  hasStartTime() {
+    return this.hasStartTimeTarget
+  }
+
+  get startTime() {
+    if (this.hasStartTimeTarget) {
+      return this.startTimeTarget.innerText
+    } else {
+      return false
+    }
+  }
+
+  set startTime(value) {
+    if (this.hasStartTimeTarget) {
+      this.startTimeTarget.innerText = value
+    }
+  }
 
   onHandleGrabbed(e) {
     // Do not cancel the event: e.preventDefault()
@@ -47,8 +128,6 @@ export default class extends Controller {
     }
   }
 
-  doUpdateValueChanged() {}
-
   // Title functionality
 
   get title() {
@@ -59,14 +138,21 @@ export default class extends Controller {
     this.titleTarget.innerText = value
   }
 
-  onTitleChange(e) {
+  onTitleFocus(e) {
+    e.preventDefault()
+    this.titleChar = this.title
+  }
+
+  onTitleLostFocus(e) {
     e.preventDefault()
     e.target.scrollTo({
       top: 0,
       left: 0,
       behavior: "smooth",
     })
-    this.doUpdate = true
+    if (this.titleChar !== this.title) {
+      this.doUpdate = true
+    }
   }
 
   // Checkbox functionality
@@ -131,12 +217,22 @@ export default class extends Controller {
 
   // Ordinal functionality
 
+  hasOrdinal() {
+    return this.hasOrdinalTarget
+  }
+
   get ordinal() {
-    return Number(this.ordinalTarget.innerText)
+    if (this.hasOrdinalTarget) {
+      return parseInt(this.ordinalTarget.innerText.trim(), 10)
+    } else {
+      return 0
+    }
   }
 
   set ordinal(value) {
-    this.ordinalTarget.innerText = value
+    if (this.hasOrdinalTarget) {
+      this.ordinalTarget.innerText = value
+    }
   }
 
   onOrdinalChange(e) {
@@ -159,9 +255,21 @@ export default class extends Controller {
     this.descBtnIconTarget.classList.replace("fa-chevron-up", "fa-chevron-down")
   }
 
-  onDescChange(e) {
+  onDescFocus(e) {
     e.preventDefault()
-    this.doUpdate = true
+    this.descChar = this.desc
+  }
+
+  onDescLostFocus(e) {
+    e.preventDefault()
+    e.target.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: "smooth",
+    })
+    if (this.descChar !== this.desc) {
+      this.doUpdate = true
+    }
   }
 
   haveDesc() {
