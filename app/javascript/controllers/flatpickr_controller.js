@@ -1,7 +1,7 @@
 import { Controller } from "@hotwired/stimulus"
 
 // import Flatpickr
-import Flatpickr from "stimulus-flatpickr"
+import Flatpickr from "flatpickr"
 
 import { log, MyUtils } from "my-utils"
 
