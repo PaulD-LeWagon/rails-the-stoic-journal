@@ -2,15 +2,14 @@
   data: {
     sortable_target: 'dragable',
     controller: "subtask",
-    task_sortable_outlet: "#new_subtask_for_#{ dom_id subtask.task }",
+    subtask_sortable_outlet: "#new_subtask_for_#{ dom_id subtask.task }",
     subtask_task_outlet: ".parent-#{ (dom_id subtask.task).gsub("_", "-") }",
     subtask_url_value: "#{ task_subtask_url(subtask.task, subtask) }",
     subtask_checked_value: "#{ subtask.completed }",
-    subtask_start_time_value: "#{ subtask.start_date.nil? ? "" : subtask.start_date.strftime("%Y-%m-%dT%H:%M") }",
   },
   class: "dragable-item card subtask subtask-of-#{ (dom_id subtask.task).gsub('_', '-') } #{ subtask.completed ? ' card-checked' : '' }" do %>
 
-  <div>
+  <div data-subtask-target="card-title" title="<%= subtask.task.start_date.nil? ? "" : subtask.task.start_date.strftime("%H:%M %d/%m/%Y %A") %>">
 
     <div class="card-header d-flex justify-content-between align-items-center">
 
