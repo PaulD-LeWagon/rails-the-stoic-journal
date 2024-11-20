@@ -32,7 +32,7 @@ class TasksController < ApplicationController
     respond_to do |format|
       if @task.save
         path = @task.routine? ? tasks_path(routine: @task.routine) : tasks_path
-        format.html { redirect_to path, notice: "Task, #{@task.title}, created successfully with #{@task.subtasks.count} sub tasks!", status: :ok }
+        format.html { redirect_to path, notice: "Task, #{@task.title}, created successfully with #{@task.subtasks.count} sub tasks!", status: :see_other }
         format.json do
           resp = {
             status: "success",
@@ -40,7 +40,7 @@ class TasksController < ApplicationController
             errors: "",
             message: "Task, #{@task.title}, created successfully with #{@task.subtasks.count} sub tasks!",
           }
-          render json: resp.to_json, notice: "Task, #{@task.title}, created successfully with #{@task.subtasks.count} sub tasks!", status: :ok
+          render json: resp.to_json, notice: "Task, #{@task.title}, created successfully with #{@task.subtasks.count} sub tasks!", status: :see_other
         end
       else
         format.html { render :new, alert: "Could not create task #{@task.title}", status: :unprocessable_entity }
@@ -82,7 +82,7 @@ class TasksController < ApplicationController
           @task.save!
         end
         path = @task.routine? ? tasks_path(routine: @task.routine) : tasks_path
-        format.html { redirect_to path, notice: "Task, #{@task.title}, updated successfully with #{@task.subtasks.count} sub tasks!", status: :ok }
+        format.html { redirect_to path, notice: "Task, #{@task.title}, updated successfully with #{@task.subtasks.count} sub tasks!", status: :see_other }
         format.json do
           resp = {
             status: "success",
@@ -90,7 +90,7 @@ class TasksController < ApplicationController
             errors: "",
             message: "Task, #{@task.title}, successfully updated with #{@task.subtasks.count} sub tasks!",
           }
-          render json: resp.to_json, notice: "Task, #{@task.title}, successfully updated with #{@task.subtasks.count} sub tasks!", status: :ok
+          render json: resp.to_json, notice: "Task, #{@task.title}, successfully updated with #{@task.subtasks.count} sub tasks!", status: :see_other
         end
       else
         format.html { render :edit, alert: "Server error", status: :unprocessable_entity }

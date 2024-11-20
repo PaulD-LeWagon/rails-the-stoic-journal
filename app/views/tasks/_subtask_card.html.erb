@@ -54,8 +54,16 @@
 
           <%= subtask.start_date.strftime("%H:%M") %>
 
+<<<<<<< HEAD
         </span>
         <% end %>
+=======
+      <span id="<%= "#{dom_id subtask}_title" %>"
+        class="title-wrapper pe-2 flex-grow-1"
+        contenteditable="true"
+        data-subtask-target="title"
+        data-action="focusout->subtask#onTitleChange">
+>>>>>>> parent of d53e783 (Remove task_manager_controller)
 
         <span id="<%= "#{dom_id subtask}_title" %>"
           class="title-wrapper pe-2 flex-grow-1"
@@ -137,4 +145,18 @@
     </div>
   </div>
 
+<<<<<<< HEAD
 <% end %>
+=======
+    <p class="card-text p-2"
+      contenteditable="true"
+      data-subtask-target="desc"
+      data-action="focusout->subtask#onDescChange">
+
+      <%= subtask.description %>
+
+    </p>
+
+  </div>
+</div>
+>>>>>>> parent of d53e783 (Remove task_manager_controller)

@@ -48,7 +48,13 @@
 
         </span>
 
+<<<<<<< HEAD
         <span class="start-date-time pe-2">
+=======
+      <span class="start-date-time pe-2">
+
+        <%#= task.start_date.strftime("%H:%M %C-%m-%Y") %>
+>>>>>>> parent of d53e783 (Remove task_manager_controller)
 
           <input class="d-none" type="text"
             data-task-target="startDateTime"
@@ -160,8 +166,13 @@
 
       <p class="card-text p-2"
         contenteditable="true"
+<<<<<<< HEAD
         data-task-target="desc"
         data-action="focus->task#onDescFocus focusout->task#onDescLostFocus">
+=======
+        data-task-target="title"
+        data-action="focusout->task#onTitleChange">
+>>>>>>> parent of d53e783 (Remove task_manager_controller)
 
         <%= task.description %>
 
@@ -174,6 +185,7 @@
       data-action="shown.bs.collapse->task#onSubtasksOpen hidden.bs.collapse->task#onSubtasksClose"
       data-task-target="subtasksContainer">
 
+<<<<<<< HEAD
       <%= turbo_frame_tag "new_subtask_for_#{ dom_id task }",
         data: {
           controller: 'sortable',
@@ -181,6 +193,12 @@
           sortable_group_value: "new_subtask_for_#{ dom_id task }"
         },
         class: "subtasks-container" do %>
+=======
+    <p class="card-text p-2"
+      contenteditable="true"
+      data-task-target="desc"
+      data-action="focusout->task#onDescChange">
+>>>>>>> parent of d53e783 (Remove task_manager_controller)
 
         <% if task.subtasks.length.positive? %>
 

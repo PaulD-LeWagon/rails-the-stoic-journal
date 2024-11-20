@@ -1,29 +1,27 @@
 import AbstractTask from "controllers/abstract_task_controller"
-import Swal from "sweetalert2"
 import { log } from "controllers/abstract_task_controller"
-
 export default class extends AbstractTask {
   static targets = ["subtasksBtn", "subtasksBtnIcon", "subtasksContainer"]
 
+<<<<<<< HEAD
   static outlets = ["subtask"]
+=======
+  static outlets = ["subtask", "task-manager"]
+>>>>>>> parent of d53e783 (Remove task_manager_controller)
 
   initialize() {
     super.initialize()
-    this.createFormCont()
   }
 
   connect() {
     super.connect()
   }
 
-  disconnect() {
-    super.disconnect()
-  }
+  disconnect() {}
 
-  doUpdateValueChanged(newValue) {
-    if (newValue) {
-      this.update(this)
-    }
+  update(e) {
+    e.preventDefault()
+    this.taskManagerOutlet.updateBackEnd(this)
   }
 
   onHandleGrabbed(e) {
