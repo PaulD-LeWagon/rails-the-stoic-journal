@@ -2,6 +2,8 @@ import AbstractTask from "controllers/abstract_task_controller"
 import { log } from "controllers/abstract_task_controller"
 
 export default class extends AbstractTask {
+  static targets = ["ordinal"]
+
   static outlets = ["task"]
 
   initialize() {
@@ -20,6 +22,34 @@ export default class extends AbstractTask {
     }
   }
 
+  // Ordinal functionality
+
+  hasOrdinal() {
+    return this.hasOrdinalTarget
+  }
+
+  get ordinal() {
+    if (this.hasOrdinalTarget) {
+      return parseInt(this.ordinalTarget.innerText.trim(), 10)
+    } else {
+      return 0
+    }
+  }
+
+  set ordinal(value) {
+    if (this.hasOrdinalTarget) {
+      this.ordinalTarget.innerText = value
+    }
+  }
+
+  onOrdinalChange(e) {
+    // Triggered by drag 'n' drop event.
+    e.preventDefault()
+    if (this.hasDoUpdateValue) {
+      this.doUpdate = true
+    }
+  }
+
   onCheckboxClicked(e) {
     super.onCheckboxClicked(e)
     this.parentTask.verifySubtasksCheckedState()
@@ -32,7 +62,7 @@ export default class extends AbstractTask {
   set doUpdate(value) {
     if (this.hasDoUpdateValue) {
       this.doUpdateValue = value
-      if (value && this.parentTask) {
+      if (typeof value === "boolean" && value === true && this.parentTask) {
         this.parentTask.doUpdate = value
       }
     }

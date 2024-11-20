@@ -165,14 +165,16 @@ users.each_with_index do |user, i|
 end
 
 # Create some non-routine tasks - actual core-day tasks
-15.times do
+25.times do
   start_date = Date.tomorrow
+
   these_days = Hash[days.map { |day| [day, "0"] }]
   routine = Task::NONE_ROUTINE_NAME.to_s
 
   # Randomise the start time
-  start_time = rand(8..18)
-  start_date = start_time.digits.count == 1 ? Time.parse("#{start_date} 0#{start_time}:00") : Time.parse("#{start_date} #{start_time}:00")
+  start_time = "#{rand(8..18)}:#{["00", "15", "30", "45"].sample}"
+
+  start_date = start_time.chars.count == 4 ? Time.parse("#{start_date} 0#{start_time}:00") : Time.parse("#{start_date} #{start_time}:00")
   task = Task.new(
     routine: routine,
     recurs_on: these_days,

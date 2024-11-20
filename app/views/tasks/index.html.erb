@@ -37,9 +37,9 @@
             sortable_group_value: "#{@turbo_frame_id}"
           } do %>
 
-          <% @tasks.each do |task| %>
+          <% @tasks.each_with_index do |task, i| %>
 
-            <%= render 'task_card', task: task, type: 'task' %>
+            <%= render 'task_card', task: task, type: 'task', i: i %>
 
           <% end %>
 

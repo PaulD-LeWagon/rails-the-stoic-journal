@@ -5,7 +5,7 @@ import { log } from "controllers/abstract_task_controller"
 export default class extends AbstractTask {
   static targets = ["subtasksBtn", "subtasksBtnIcon", "subtasksContainer"]
 
-  static outlets = ["subtask"]
+  static outlets = ["subtask", "sortable"]
 
   initialize() {
     super.initialize()
@@ -14,14 +14,25 @@ export default class extends AbstractTask {
 
   connect() {
     super.connect()
+    // if (this.hasSortableOutlet) {
+    //   log(this.sortableOutlet.element)
+    // }
   }
 
   disconnect() {
     super.disconnect()
   }
 
-  doUpdateValueChanged(newValue) {
-    if (newValue) {
+  onStartDateTimePickerClose(selectedDates, dateStr, instance) {
+    // log("Task onStartDateTimePickerClose")
+    super.onStartDateTimePickerClose(selectedDates, dateStr, instance)
+    if (this.hasSortableOutlet) {
+      this.sortableOutlet.sort()
+    }
+  }
+
+  doUpdateValueChanged(newValue, oldValue) {
+    if (newValue === true) {
       this.update(this)
     }
   }
@@ -175,30 +186,30 @@ export default class extends AbstractTask {
             return response.json() // Parse the response as JSON
           })
           .then((data) => {
-            // Icons: warning, error, success, info, and question
-            Swal.fire({
-              position: "top-end",
-              icon: data.status,
-              title: this.capitalise(data.status),
-              text: data.message,
-              showConfirmButton: false,
-              timer: 1500,
-              showClass: {
-                popup: `
-                  animate__animated
-                  animate__fadeInDown
-                  animate__faster
-                `,
-              },
-              hideClass: {
-                popup: `
-                  animate__animated
-                  animate__fadeOutDown
-                  animate__faster
-                `,
-              },
-            })
-            // log(`${this.element.id}, ${data.message}`)
+            // // Icons: warning, error, success, info, and question
+            // Swal.fire({
+            //   position: "top-end",
+            //   icon: data.status,
+            //   title: this.capitalise(data.status),
+            //   text: data.message,
+            //   showConfirmButton: false,
+            //   timer: 1500,
+            //   showClass: {
+            //     popup: `
+            //       animate__animated
+            //       animate__fadeInDown
+            //       animate__faster
+            //     `,
+            //   },
+            //   hideClass: {
+            //     popup: `
+            //       animate__animated
+            //       animate__fadeOutDown
+            //       animate__faster
+            //     `,
+            //   },
+            // })
+            log(`${this.element.id}, updated.`)
             this.form.remove()
             this.doUpdate = false
           })
