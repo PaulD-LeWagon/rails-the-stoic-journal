@@ -1,4 +1,3 @@
-<!-- This is just to so I can get heroku to accept a push as this file on heroku has git conflict tags messing up the file -->
 <%= turbo_frame_tag "edit_#{ dom_id subtask }_for_#{ dom_id subtask.task }",
   data: {
     sortable_target: 'dragable',
@@ -47,23 +46,22 @@
 
         </span>
 
-        <% if subtask.start_date? %>
         <span class="start-date-time pe-2">
 
-          <%#= subtask.start_date.strftime("%H:%M %C-%m-%Y") %>
+          <input class="d-none" type="text"
+            data-subtask-target="startDateTime"
+            value="<%= subtask.start_date? ? subtask.start_date.strftime("%Y-%m-%d %H:%M") : "" %>"
+          />
 
-          <%= subtask.start_date.strftime("%H:%M") %>
+          <span
+            data-subtask-target="startTime"
+            data-action="click->subtask#onStartTimeClick">
 
-<<<<<<< HEAD
+            <%= subtask.start_date? ? subtask.start_date.strftime("%H:%M") : "" %>
+
+          </span>
+
         </span>
-        <% end %>
-=======
-      <span id="<%= "#{dom_id subtask}_title" %>"
-        class="title-wrapper pe-2 flex-grow-1"
-        contenteditable="true"
-        data-subtask-target="title"
-        data-action="focusout->subtask#onTitleChange">
->>>>>>> parent of d53e783 (Remove task_manager_controller)
 
         <span id="<%= "#{dom_id subtask}_title" %>"
           class="title-wrapper pe-2 flex-grow-1"
@@ -156,18 +154,4 @@
     </div>
   </div>
 
-<<<<<<< HEAD
 <% end %>
-=======
-    <p class="card-text p-2"
-      contenteditable="true"
-      data-subtask-target="desc"
-      data-action="focusout->subtask#onDescChange">
-
-      <%= subtask.description %>
-
-    </p>
-
-  </div>
-</div>
->>>>>>> parent of d53e783 (Remove task_manager_controller)
