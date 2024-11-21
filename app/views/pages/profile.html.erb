@@ -75,23 +75,18 @@
 
             <div class="card-body">
 
-              <%= turbo_frame_tag "new_morning_routine_turbo_frame",
+              <% @turbo_frame_id = "new_morning_routine_turbo_frame" %>
+
+              <%= turbo_frame_tag @turbo_frame_id,
                 data: {
                   controller: "sortable",
-                  sortable_group_value: "new_morning_routine_turbo_frame"
+                  sortable_task_outlet: '.task',
+                  sortable_group_value: @turbo_frame_id
                 } do %>
 
                 <% @morning_routines.each do |routine| %>
 
-                  <%= turbo_frame_tag "edit_#{ dom_id routine }",
-                    data: {
-                      sortable_target: 'dragable'
-                    },
-                    class: "dragable-item" do %>
-
-                    <%= render 'tasks/task_card', task: routine %>
-
-                  <% end %>
+                  <%= render 'tasks/task_card', task: routine, turbo_frame_id: @turbo_frame_id %>
 
                 <% end %>
 
@@ -145,24 +140,18 @@
 
             <div class="card-body">
 
+              <% @turbo_frame_id = "new_day_routine_turbo_frame" %>
 
-              <%= turbo_frame_tag "new_day_routine_turbo_frame",
+              <%= turbo_frame_tag @turbo_frame_id,
                 data: {
                   controller: "sortable",
-                  sortable_group_value: "new_day_routine_turbo_frame"
+                  sortable_task_outlet: '.task',
+                  sortable_group_value: @turbo_frame_id
                 } do %>
 
                 <% @day_routines.each do |routine| %>
 
-                  <%= turbo_frame_tag "edit_#{ dom_id routine }",
-                    data: {
-                      sortable_target: 'dragable'
-                    },
-                    class: "dragable-item" do %>
-
-                    <%= render 'tasks/task_card', task: routine %>
-
-                  <% end %>
+                  <%= render 'tasks/task_card', task: routine, turbo_frame_id: @turbo_frame_id %>
 
                 <% end %>
 
@@ -216,23 +205,18 @@
 
             <div class="card-body">
 
-              <%= turbo_frame_tag "new_evening_routine_turbo_frame",
+              <% @turbo_frame_id = "new_evening_routine_turbo_frame" %>
+
+              <%= turbo_frame_tag @turbo_frame_id,
                 data: {
                   controller: "sortable",
-                  sortable_group_value: "new_evening_routine_turbo_frame"
+                  sortable_task_outlet: '.task',
+                  sortable_group_value: @turbo_frame_id
                 } do %>
 
                 <% @evening_routines.each do |routine| %>
 
-                  <%= turbo_frame_tag "edit_#{ dom_id routine }",
-                    data: {
-                      sortable_target: 'dragable'
-                    },
-                    class: "dragable-item" do %>
-
-                    <%= render 'tasks/task_card', task: routine %>
-
-                  <% end %>
+                  <%= render 'tasks/task_card', task: routine, turbo_frame_id: @turbo_frame_id %>
 
                 <% end %>
 

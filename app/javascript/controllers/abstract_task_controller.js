@@ -1,6 +1,9 @@
 import { Controller } from "@hotwired/stimulus"
+
 import flatpickr from "flatpickr"
+
 export const log = console.log
+
 // Connects to data-controller="abstract-task"
 export default class extends Controller {
   static targets = [
@@ -125,17 +128,26 @@ export default class extends Controller {
   constructFlatpickr(customOptions = {}) {
     if (this.hasStartDateTimeTarget) {
       const that = this
+      const confirmDateOptions = {
+        confirmIcon: "<i class='fa-solid fa-circle-check'></i>",
+        confirmText: "Done",
+      }
+      const confirmDate = new confirmDatePlugin(confirmDateOptions)
       const options = {
         positionElement: this.startTimeTarget,
         position: "above center",
+        dateFormat: "Y-m-d H:i",
         enableTime: true,
         time_24hr: true,
         minTime: "06:00",
         maxTime: "18:00",
         minuteIncrement: 15,
-        dateFormat: "Y-m-d H:i",
+        plugins: [confirmDate],
         onClose: function (selectedDates, dateStr, instance) {
-          that.onStartDateTimePickerClose(selectedDates, dateStr, instance)
+          if (this.fpBtnConfirmed) {
+            that.onStartDateTimePickerClose(selectedDates, dateStr, instance)
+            this.fpBtnConfirmed = false
+          }
         },
       }
       const cfg = Object.assign(options, customOptions)

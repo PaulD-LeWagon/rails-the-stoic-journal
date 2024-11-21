@@ -14,9 +14,6 @@ export default class extends AbstractTask {
 
   connect() {
     super.connect()
-    // if (this.hasSortableOutlet) {
-    //   log(this.sortableOutlet.element)
-    // }
   }
 
   disconnect() {

@@ -32,12 +32,12 @@
         data: {
           controller: 'sortable',
           sortable_task_outlet: '.task',
-          sortable_group_value: "#{@turbo_frame_id}"
+          sortable_group_value: @turbo_frame_id
         } do %>
 
         <% @tasks.each_with_index do |task| %>
 
-          <%= render 'task_card', task: task %>
+          <%= render 'task_card', task: task, turbo_frame_id: @turbo_frame_id %>
 
         <% end %>
 
