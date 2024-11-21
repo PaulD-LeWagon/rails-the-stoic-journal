@@ -1,53 +1,47 @@
-<main class="container">
+<main class="container-md">
 
-  <div class="d-flex justify-content-center align-items-start min-vh-100">
+  <dev class="col-md-12 p-md-3">
 
-    <div class="col-md-10 p-3">
+    <%= turbo_frame_tag "tasks_index_turbo_frame" do %>
 
-      <%= turbo_frame_tag "tasks_index_turbo_frame" do %>
+      <div class="header d-flex justify-content-between align-items-center">
 
-        <div class="header d-flex justify-content-between align-items-center">
+        <h1 class="my-5 mb-3 fst-bold">All Tasks</h1>
 
-          <h1 class="my-5 mb-3 fst-bold">All Tasks</h1>
-
-          <%= link_to new_task_path,
-            data: {
-              turbo_frame: "new_task_turbo_frame"
-            },
-            class: "btn bg-quinary btn-lg",
-            title: "Add a new task" do %>
-
-            <i class="fa-solid fa-square-plus"></i>
-
-          <% end %>
-
-        </div>
-
-      <% end %>
-
-      <hr>
-
-      <div id="task-manager"
-        data-controller="task-manager"
-        data-task-manager-task-outlet=".task"
-        class="cards tasks-container collapse-container">
-
-        <%= turbo_frame_tag @turbo_frame_id,
+        <%= link_to new_task_path,
           data: {
-            controller: 'sortable',
-            sortable_task_outlet: '.task',
-            sortable_group_value: "#{@turbo_frame_id}"
-          } do %>
+            turbo_frame: "new_task_turbo_frame"
+          },
+          class: "btn bg-quinary btn-lg",
+          title: "Add a new task" do %>
 
-          <% @tasks.each do |task| %>
-
-            <%= render 'task_card', task: task, type: 'task' %>
-
-          <% end %>
+          <i class="fa-solid fa-square-plus"></i>
 
         <% end %>
 
       </div>
+
+    <% end %>
+
+    <hr>
+
+    <div id="all-tasks"
+      class="cards tasks-container collapse-container">
+
+      <%= turbo_frame_tag @turbo_frame_id,
+        data: {
+          controller: 'sortable',
+          sortable_task_outlet: '.task',
+          sortable_group_value: @turbo_frame_id
+        } do %>
+
+        <% @tasks.each_with_index do |task| %>
+
+          <%= render 'task_card', task: task, turbo_frame_id: @turbo_frame_id %>
+
+        <% end %>
+
+      <% end %>
 
     </div>
 

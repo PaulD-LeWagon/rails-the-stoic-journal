@@ -1,5 +1,7 @@
 @import "simple_calendar";
 @import "flatpickr.min";
+@import "confirmDate";
+@import "material_green";
 // Graphical variables
 @import "config/fonts";
 @import "config/colors";
@@ -9,6 +11,32 @@
 @import "font-awesome";
 @import "components/index";
 @import "pages/index";
+
+.btn-xs {
+  @include button-size(0.15rem, 0.4rem, $btn-font-size-sm, 1px);
+}
+
+.btn-sm {
+  @include button-size(
+    $btn-padding-y-sm,
+    $btn-padding-x-sm,
+    $btn-font-size-sm,
+    $btn-border-radius-sm
+  );
+}
+
+.task-menu-toggle::after,
+.subtask-menu-toggle::after {
+  content: none;
+}
+.task-menu-dropdown.dropdown-menu.dropdown-menu-end {
+  min-width: 17rem;
+  padding: 0.5rem;
+}
+.subtask-menu-dropdown.dropdown-menu.dropdown-menu-end {
+  min-width: 9rem;
+  padding: 0.5rem;
+}
 
 .recurs-on-days.form-group fieldset {
   display: inline-block !important;

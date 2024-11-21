@@ -1,7 +1,12 @@
-function Greetings() {
-  log("Salve Mundus! Futue te Ipsum!")
-}
 export default () => {}
+
+const log = console.log
+export { log }
+
+const Salutations = () => {
+  log("Salve Mundus et Futue Te Ipsum!")
+}
+export { Salutations }
 
 class MyUtils {
   constructor() {
@@ -39,7 +44,3 @@ Array.prototype.toShuffle = function () {
   }
   return array
 }
-
-const log = console.log
-
-export { log }

@@ -1,17 +1,24 @@
 import { Controller } from "@hotwired/stimulus"
+
 import flatpickr from "flatpickr"
+
 export const log = console.log
+
 // Connects to data-controller="abstract-task"
 export default class extends Controller {
   static targets = [
     "startTime",
     "startDateTime",
+
     "title",
+
+    "cardTitle",
+
     "checkbox",
     "realCheckbox",
     "fauxCheckbox",
     "fauxCheckIcon",
-    "ordinal",
+
     "desc",
     "descBtn",
     "descBtnIcon",
@@ -22,16 +29,66 @@ export default class extends Controller {
     url: String,
     checked: Boolean,
     startTime: String,
+    startDateTime: String,
     doUpdate: { type: Boolean, default: false },
   }
 
-  initialize() {
-    // this.flatpickr = this.constructFlatpickr()
-  }
+  initialize() {}
 
   connect() {}
 
   disconnect() {}
+
+  // StartTime functionality
+
+  hasStartTime() {
+    return this.hasStartTimeTarget
+  }
+
+  get startTime() {
+    if (this.hasStartTimeTarget) {
+      return this.startTimeTarget.innerText
+    } else {
+      return false
+    }
+  }
+
+  set startTime(value) {
+    if (this.hasStartTimeTarget) {
+      this.startTimeTarget.innerText = value
+      this.startTimeValue = value
+    }
+  }
+
+  onStartTimeClick(e) {
+    e.preventDefault()
+    // this.startDateTimeTarget.classList.toggle("d-none")
+    this.startDateTimeTarget.click()
+  }
+
+  // StartDateTime functionality
+
+  startDateTimeValueChanged(theValue, oldValue) {
+    if (
+      typeof theValue === "string" &&
+      theValue.length > 0 &&
+      this.hasStartDateTime() &&
+      theValue !== oldValue
+    ) {
+      this.doUpdate = true
+    }
+    this.updateCardTitleDate(theValue)
+  }
+
+  updateCardTitleDate(theDate) {
+    if (this.hasCardTitleTarget) {
+      const fmt = new Intl.DateTimeFormat("en-GB", {
+        dateStyle: "full",
+        timeStyle: "short",
+      }).format(new Date(theDate))
+      this.cardTitleTarget.title = fmt
+    }
+  }
 
   hasStartDateTime() {
     return this.hasStartDateTimeTarget
@@ -51,61 +108,50 @@ export default class extends Controller {
     }
   }
 
-  onStartTimeClick(e) {
-    e.preventDefault()
-    // this.startDateTimeTarget.classList.toggle("d-none")
-    this.startDateTimeTarget.click()
-  }
-
   onStartDateTimePickerClose(selectedDates, dateStr, instance) {
     if (this.hasStartDateTime()) {
       // this.startDateTimeTarget.classList.toggle("d-none")
       const newDate = new Date(dateStr)
-      const formatter = new Intl.DateTimeFormat("en-EN", {
+      const formatter = new Intl.DateTimeFormat("en-GB", {
         hour: "2-digit",
         minute: "2-digit",
       })
       this.startTime = formatter.format(newDate)
-      this.doUpdate = true
+      if (this.startDateTime !== this.startDateTimeValue) {
+        this.startDateTimeValue = this.startDateTime
+        // log("startDateTimeValue changed in onStartDateTimePickerClose")
+        // this.doUpdate = true
+      }
     }
   }
 
   constructFlatpickr(customOptions = {}) {
     if (this.hasStartDateTimeTarget) {
       const that = this
+      const confirmDateOptions = {
+        confirmIcon: "<i class='fa-solid fa-circle-check'></i>",
+        confirmText: "Done",
+      }
+      const confirmDate = new confirmDatePlugin(confirmDateOptions)
       const options = {
         positionElement: this.startTimeTarget,
         position: "above center",
+        dateFormat: "Y-m-d H:i",
         enableTime: true,
         time_24hr: true,
         minTime: "06:00",
         maxTime: "18:00",
         minuteIncrement: 15,
-        dateFormat: "Y-m-d H:i",
+        plugins: [confirmDate],
         onClose: function (selectedDates, dateStr, instance) {
-          that.onStartDateTimePickerClose(selectedDates, dateStr, instance)
+          if (this.fpBtnConfirmed) {
+            that.onStartDateTimePickerClose(selectedDates, dateStr, instance)
+            this.fpBtnConfirmed = false
+          }
         },
       }
       const cfg = Object.assign(options, customOptions)
       return flatpickr(this.startDateTimeTarget, cfg)
-    }
-  }
-
-  hasStartTime() {
-    return this.hasStartTimeTarget
-  }
-
-  get startTime() {
-    if (this.hasStartTimeTarget) {
-      return this.startTimeTarget.innerText
-    } else {
-      return false
-    }
-  }
-
-  set startTime(value) {
-    if (this.hasStartTimeTarget) {
-      this.startTimeTarget.innerText = value
     }
   }
 
@@ -123,31 +169,9 @@ export default class extends Controller {
   }
 
   set doUpdate(value) {
-    if (this.hasDoUpdateValue) {
+    if (typeof value == "boolean" && this.hasDoUpdateValue) {
       this.doUpdateValue = value
     }
-  }
-
-  doUpdateValueChanged() {}
-
-  // Title functionality
-
-  get title() {
-    return this.titleTarget.innerText
-  }
-
-  set title(value) {
-    this.titleTarget.innerText = value
-  }
-
-  onTitleChange(e) {
-    e.preventDefault()
-    e.target.scrollTo({
-      top: 0,
-      left: 0,
-      behavior: "smooth",
-    })
-    this.doUpdate = true
   }
 
   // Checkbox functionality
@@ -210,30 +234,29 @@ export default class extends Controller {
       : this.element.classList.remove("card-checked")
   }
 
-  // Ordinal functionality
+  // Title functionality
 
-  hasOrdinal() {
-    return this.hasOrdinalTarget
+  get title() {
+    return this.titleTarget.innerText
   }
 
-  get ordinal() {
-    if (this.hasOrdinalTarget) {
-      return parseInt(this.ordinalTarget.innerText.trim(), 10)
-    } else {
-      return 0
-    }
+  set title(value) {
+    this.titleTarget.innerText = value
   }
 
-  set ordinal(value) {
-    if (this.hasOrdinalTarget) {
-      this.ordinalTarget.innerText = value
-    }
-  }
-
-  onOrdinalChange(e) {
-    // Triggered by drag 'n' drop event.
+  onTitleFocus(e) {
     e.preventDefault()
-    if (this.hasDoUpdateValue) {
+    this.titleChar = this.title
+  }
+
+  onTitleLostFocus(e) {
+    e.preventDefault()
+    e.target.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: "smooth",
+    })
+    if (this.titleChar !== this.title) {
       this.doUpdate = true
     }
   }

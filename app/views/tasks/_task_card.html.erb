@@ -2,29 +2,20 @@
   data: {
     sortable_target: 'dragable',
     controller: "task",
-    task_sortable_outlet: ".#{ @turbo_frame_id }",
+    task_sortable_outlet: "##{ turbo_frame_id }",
     task_subtask_outlet: ".subtask-of-#{ (dom_id task).gsub('_', '-') }",
     task_url_value: "#{ task_url task }",
-    task_checked_value: "#{ task.completed }",
+    task_checked_value: task.completed,
+    task_start_time_value: task.start_date.nil? ? "" : task.start_date.strftime("%H:%M"),
+    task_start_date_time_value: task.start_date.nil? ? "" : task.start_date.strftime("%Y-%m-%d %H:%M"),
   },
   class: "dragable-item card task parent-#{ (dom_id task).gsub('_', '-') } #{ task.completed ? ' card-checked' : '' }" do %>
 
-  <div>
+  <div data-task-target="cardTitle" title="<%= task.start_date.nil? ? "" : task.start_date.strftime("%H:%M %d/%m/%Y %A") %>">
 
     <div class="card-header d-flex justify-content-between align-items-center">
 
       <h3 class="card-title d-flex justify-content-between align-items-center flex-grow-1 overflow-fade">
-
-        <% if false %>
-        <span id="<%= "#{dom_id task}_order" %>"
-          class="order-wrapper pe-2"
-          data-task-target="ordinal"
-          data-action="change->task#onOrdinalChange">
-
-          <%= task.order %>
-
-        </span>
-        <% end %>
 
         <i class="fa-solid fa-grip-vertical handle pe-2" data-action="mousedown->task#onHandleGrabbed"></i>
 
@@ -58,7 +49,8 @@
 
           <input class="d-none" type="text"
             data-task-target="startDateTime"
-            value="<%= task.start_date.nil? ? "" : task.start_date.strftime("%Y-%m-%d %H:%M") %>">
+            value="<%= task.start_date.nil? ? "" : task.start_date.strftime("%Y-%m-%d %H:%M") %>"
+          />
 
           <span
             data-task-target="startTime"
@@ -82,79 +74,91 @@
 
       </h3>
 
+
       <div class="card-controls d-flex justify-content-end">
 
-        <%= link_to(new_task_subtask_path(task),
-          data: {
-            turbo_frame: "new_subtask_for_#{ dom_id task }",
-            action: "task#doSubtasksOpenForNewSubtask"
-          },
-          class: "add-new-subtask btn btn-secondary m-1",
-          title: "Add a subtask?"
-        ) do %>
+        <div class="btn-group">
+          <button type="button" class="btn btn-secondary dropdown-toggle task-menu-toggle" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
+            <i class="fa-solid fa-bars"></i>
+          </button>
+          <ul class="task-menu-dropdown dropdown-menu dropdown-menu-end">
+            <li class="d-flex justify-content-between align-items-center">
 
-          <i class="fa-solid fa-square-plus"></i>
+              <%= link_to(new_task_subtask_path(task),
+                data: {
+                  turbo_frame: "new_subtask_for_#{ dom_id task }",
+                  action: "task#doSubtasksOpenForNewSubtask"
+                },
+                class: "add-new-subtask btn btn-secondary m-1",
+                title: "Add a subtask?"
+              ) do %>
 
-        <% end %>
+                <i class="fa-solid fa-square-plus"></i>
 
-        <% if policy(task).edit? %>
+              <% end %>
 
-          <%= link_to(edit_task_path(task),
-            data: {
-              turbo_frame: "edit_#{ dom_id task }"
-            },
-            class: "btn btn-quarternary m-1",
-            title: "Edit this task"
-          ) do %>
+              <% if policy(task).edit? %>
 
-            <i class="fa-solid fa-pen-to-square"></i>
+                <%= link_to(edit_task_path(task),
+                  data: {
+                    turbo_frame: "edit_#{ dom_id task }"
+                  },
+                  class: "btn btn-quarternary m-1",
+                  title: "Edit this task"
+                ) do %>
 
-          <% end %>
+                  <i class="fa-solid fa-pen-to-square"></i>
 
-        <% end %>
+                <% end %>
 
-        <a href="#" type="button"
-          class="collapser btn btn-success m-1"
-          title="View task description"
-          data-bs-toggle="collapse"
-          data-bs-target="#<%= dom_id task %>_description"
-          data-task-target="descBtn"
-          aria-expanded="false"
-          aria-controls="<%= dom_id task %>_description">
+              <% end %>
 
-          <i data-task-target="descBtnIcon" class="fa-solid fa-chevron-down"></i>
+              <a href="#" type="button"
+                class="collapser btn btn-success m-1"
+                title="View task description"
+                data-bs-toggle="collapse"
+                data-bs-target="#<%= dom_id task %>_description"
+                data-task-target="descBtn"
+                aria-expanded="false"
+                aria-controls="<%= dom_id task %>_description">
 
-        </a>
+                <i data-task-target="descBtnIcon" class="fa-solid fa-chevron-down"></i>
 
-        <a href="#" type="button"
-          class="collapser btn btn-warning m-1"
-          title="View all subtasks"
-          data-bs-toggle="collapse"
-          data-bs-target="#<%= dom_id task %>_subtasks"
-          data-task-target="subtasksBtn"
-          aria-expanded="false"
-          aria-controls="<%= dom_id task %>_subtasks">
+              </a>
 
-          <i data-task-target="subtasksBtnIcon" class="fa-solid fa-angles-down"></i>
+              <a href="#" type="button"
+                class="collapser btn btn-warning m-1"
+                title="View all subtasks"
+                data-bs-toggle="collapse"
+                data-bs-target="#<%= dom_id task %>_subtasks"
+                data-task-target="subtasksBtn"
+                aria-expanded="false"
+                aria-controls="<%= dom_id task %>_subtasks">
 
-        </a>
+                <i data-task-target="subtasksBtnIcon" class="fa-solid fa-angles-down"></i>
 
-        <% if policy(task).destroy? %>
+              </a>
 
-          <%= link_to(task_path(task),
-            data: {
-              turbo_method: :delete,
-              turbo_confirm: "Are you sure?"
-            },
-            class: "btn btn-danger m-1",
-            title: "Delete this task?"
-          ) do %>
+              <% if policy(task).destroy? %>
 
-            <i class="fa-solid fa-trash"></i>
+                <%= link_to(task_path(task),
+                  data: {
+                    turbo_method: :delete,
+                    turbo_confirm: "Are you sure?"
+                  },
+                  class: "btn btn-danger m-1",
+                  title: "Delete this task?"
+                ) do %>
 
-          <% end %>
+                  <i class="fa-solid fa-trash"></i>
 
-        <% end %>
+                <% end %>
+
+              <% end %>
+
+            </li>
+          </ul>
+        </div>
 
       </div>
 
@@ -189,7 +193,7 @@
       <%= turbo_frame_tag "new_subtask_for_#{ dom_id task }",
         data: {
           controller: 'sortable',
-          sortable_subtask_outlet: '.subtask',
+          sortable_subtask_outlet: ".subtask.subtask-of-#{ (dom_id task).gsub('_', '-') }",
           sortable_group_value: "new_subtask_for_#{ dom_id task }"
         },
         class: "subtasks-container" do %>

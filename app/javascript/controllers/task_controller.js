@@ -1,13 +1,11 @@
 import AbstractTask from "controllers/abstract_task_controller"
+
 import { log } from "controllers/abstract_task_controller"
+
 export default class extends AbstractTask {
   static targets = ["subtasksBtn", "subtasksBtnIcon", "subtasksContainer"]
 
-<<<<<<< HEAD
-  static outlets = ["subtask"]
-=======
-  static outlets = ["subtask", "task-manager"]
->>>>>>> parent of d53e783 (Remove task_manager_controller)
+  static outlets = ["subtask", "sortable"]
 
   initialize() {
     super.initialize()
@@ -19,9 +17,18 @@ export default class extends AbstractTask {
 
   disconnect() {}
 
-  update(e) {
-    e.preventDefault()
-    this.taskManagerOutlet.updateBackEnd(this)
+  onStartDateTimePickerClose(selectedDates, dateStr, instance) {
+    // log("Task onStartDateTimePickerClose")
+    super.onStartDateTimePickerClose(selectedDates, dateStr, instance)
+    if (this.hasSortableOutlet) {
+      this.sortableOutlet.sort()
+    }
+  }
+
+  doUpdateValueChanged(newValue, oldValue) {
+    if (newValue === true) {
+      this.update(this)
+    }
   }
 
   onHandleGrabbed(e) {
@@ -173,30 +180,30 @@ export default class extends AbstractTask {
             return response.json() // Parse the response as JSON
           })
           .then((data) => {
-            // Icons: warning, error, success, info, and question
-            Swal.fire({
-              position: "top-end",
-              icon: data.status,
-              title: this.capitalise(data.status),
-              text: data.message,
-              showConfirmButton: false,
-              timer: 1500,
-              showClass: {
-                popup: `
-                  animate__animated
-                  animate__fadeInDown
-                  animate__faster
-                `,
-              },
-              hideClass: {
-                popup: `
-                  animate__animated
-                  animate__fadeOutDown
-                  animate__faster
-                `,
-              },
-            })
-            // log(`${this.element.id}, ${data.message}`)
+            // // Icons: warning, error, success, info, and question
+            // Swal.fire({
+            //   position: "top-end",
+            //   icon: data.status,
+            //   title: this.capitalise(data.status),
+            //   text: data.message,
+            //   showConfirmButton: false,
+            //   timer: 1500,
+            //   showClass: {
+            //     popup: `
+            //       animate__animated
+            //       animate__fadeInDown
+            //       animate__faster
+            //     `,
+            //   },
+            //   hideClass: {
+            //     popup: `
+            //       animate__animated
+            //       animate__fadeOutDown
+            //       animate__faster
+            //     `,
+            //   },
+            // })
+            log(`${this.element.id}, updated.`)
             this.form.remove()
             this.doUpdate = false
           })
