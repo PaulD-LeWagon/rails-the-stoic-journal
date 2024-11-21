@@ -2,7 +2,7 @@
   data: {
     sortable_target: 'dragable',
     controller: "task",
-    task_sortable_outlet: "##{ @turbo_frame_id }",
+    task_sortable_outlet: "##{ turbo_frame_id }",
     task_subtask_outlet: ".subtask-of-#{ (dom_id task).gsub('_', '-') }",
     task_url_value: "#{ task_url task }",
     task_checked_value: task.completed,
