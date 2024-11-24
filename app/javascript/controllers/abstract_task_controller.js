@@ -2,17 +2,18 @@ import { Controller } from "@hotwired/stimulus"
 
 import flatpickr from "flatpickr"
 
-export const log = console.log
+import { log, hasCls, addCls, remCls, replCls } from "utilities"
+
+import logHotwireEvents from "expts/hotwire-events"
 
 // Connects to data-controller="abstract-task"
 export default class extends Controller {
   static targets = [
+    "cardTitle",
     "startTime",
     "startDateTime",
 
     "title",
-
-    "cardTitle",
 
     "checkbox",
     "realCheckbox",
@@ -25,6 +26,8 @@ export default class extends Controller {
     "descContainer",
   ]
 
+  static outlets = ["sortable"]
+
   static values = {
     url: String,
     checked: Boolean,
@@ -33,11 +36,41 @@ export default class extends Controller {
     doUpdate: { type: Boolean, default: false },
   }
 
-  initialize() {}
+  initialize() {
+    super.initialize()
+    // Time format: HH:MM
+    this.timeRegex = /^\d{2}:\d{2}$/
+    // Date format: YYYY-MM-DD HH:MM
+    this.dateTimeRegex = /^\d{4}-\d{2}-\d{2}\s\d{2}:\d{2}$/
+    // Listen for when a task/subtask form has been edited (submitted via turbo)
+    this.element.addEventListener("turbo:frame-load", (e) => {
+      this.checkStartDateTime(e)
+    })
+  }
 
-  connect() {}
+  connect() {
+    if (this.domReady()) {
+      super.connect()
+      if (
+        this.timeRegex.test(this.startTime) &&
+        this.dateTimeRegex.test(this.startDateTime) &&
+        this.startTime != this.startTimeValue &&
+        this.startDateTime != this.startDateTimeValue
+      ) {
+        this.startTimeValue = this.startTime
+        this.startDateTimeValue = this.startDateTime
+        this.updateCardTitleDate(this.startDateTime)
+      }
+    } else {
+      setTimeout(() => {
+        this.connect()
+      }, 100)
+    }
+  }
 
-  disconnect() {}
+  domReady() {
+    return document.readyState == "complete"
+  }
 
   // StartTime functionality
 
@@ -62,31 +95,30 @@ export default class extends Controller {
 
   onStartTimeClick(e) {
     e.preventDefault()
-    // this.startDateTimeTarget.classList.toggle("d-none")
+    // Open the date picker
     this.startDateTimeTarget.click()
   }
 
   // StartDateTime functionality
 
   startDateTimeValueChanged(theValue, oldValue) {
-    if (
-      typeof theValue === "string" &&
-      theValue.length > 0 &&
-      this.hasStartDateTime() &&
-      theValue !== oldValue
-    ) {
+    if (this.domReady()) {
+      this.updateCardTitleDate(theValue)
       this.doUpdate = true
     }
-    this.updateCardTitleDate(theValue)
   }
 
   updateCardTitleDate(theDate) {
-    if (this.hasCardTitleTarget) {
-      const fmt = new Intl.DateTimeFormat("en-GB", {
-        dateStyle: "full",
-        timeStyle: "short",
-      }).format(new Date(theDate))
-      this.cardTitleTarget.title = fmt
+    try {
+      if (this.hasCardTitleTarget) {
+        const fmt = new Intl.DateTimeFormat("en-GB", {
+          dateStyle: "full",
+          timeStyle: "short",
+        }).format(theDate.toDate())
+        this.cardTitleTarget.title = fmt
+      }
+    } catch (error) {
+      console.error("AbstractTaskController.updateCardTitleDate:\n", error)
     }
   }
 
@@ -108,10 +140,25 @@ export default class extends Controller {
     }
   }
 
+  checkStartDateTime(e) {
+    if (
+      this.timeRegex.test(this.startTime) &&
+      this.dateTimeRegex.test(this.startDateTime) &&
+      this.startTime != this.startTimeValue &&
+      this.startDateTime != this.startDateTimeValue
+    ) {
+      this.startTimeValue = this.startTime
+      this.startDateTimeValue = this.startDateTime
+      this.updateCardTitleDate(this.startDateTime)
+      this.doUpdate = true
+
+      this.sortableOutlet.sort()
+    }
+  }
+
   onStartDateTimePickerClose(selectedDates, dateStr, instance) {
     if (this.hasStartDateTime()) {
-      // this.startDateTimeTarget.classList.toggle("d-none")
-      const newDate = new Date(dateStr)
+      const newDate = dateStr.toDate()
       const formatter = new Intl.DateTimeFormat("en-GB", {
         hour: "2-digit",
         minute: "2-digit",
@@ -119,8 +166,10 @@ export default class extends Controller {
       this.startTime = formatter.format(newDate)
       if (this.startDateTime !== this.startDateTimeValue) {
         this.startDateTimeValue = this.startDateTime
-        // log("startDateTimeValue changed in onStartDateTimePickerClose")
-        // this.doUpdate = true
+        this.updateCardTitleDate(this.startDateTime)
+      }
+      if (this.hasSortableOutlet) {
+        this.sortableOutlet.sort()
       }
     }
   }
@@ -157,10 +206,11 @@ export default class extends Controller {
 
   onHandleGrabbed(e) {
     // Do not cancel the event: e.preventDefault()
-    if (this.descContainerTarget.classList.contains("show")) {
+    if (hasCls(this.descContainerTarget, "show")) {
       // Then close it
-      const event = new Event("click")
-      this.descBtnTarget.dispatchEvent(event)
+      // const event = new Event("click")
+      // this.descBtnTarget.dispatchEvent(event)
+      this.descBtnTarget.click()
     }
   }
 
@@ -169,8 +219,10 @@ export default class extends Controller {
   }
 
   set doUpdate(value) {
-    if (typeof value == "boolean" && this.hasDoUpdateValue) {
+    if (this.hasDoUpdateValue) {
       this.doUpdateValue = value
+    } else {
+      throw new Error(`${this.identifier} doUpdateValue not set`)
     }
   }
 
@@ -205,15 +257,15 @@ export default class extends Controller {
   }
 
   checkIt() {
-    this.fauxCheckIconTarget.classList.remove("fa-square")
-    this.fauxCheckIconTarget.classList.add("fa-square-check")
-    this.realCheckboxTarget.checked = true // Do we need this?
+    remCls(this.fauxCheckIconTarget, "fa-square")
+    addCls(this.fauxCheckIconTarget, "fa-square-check")
+    this.realCheckboxTarget.checked = true // Do we need this, the real checkbox, I mean?
     this.checked = true
   }
 
   uncheckIt() {
-    this.fauxCheckIconTarget.classList.remove("fa-square-check")
-    this.fauxCheckIconTarget.classList.add("fa-square")
+    remCls(this.fauxCheckIconTarget, "fa-square-check")
+    addCls(this.fauxCheckIconTarget, "fa-square")
     this.realCheckboxTarget.checked = false // Do we need this?
     this.checked = false
   }
@@ -230,8 +282,8 @@ export default class extends Controller {
 
   checkedValueChanged() {
     this.checked
-      ? this.element.classList.add("card-checked")
-      : this.element.classList.remove("card-checked")
+      ? addCls(this.element, "card-checked")
+      : remCls(this.element, "card-checked")
   }
 
   // Title functionality
@@ -265,17 +317,30 @@ export default class extends Controller {
 
   onDescOpen(e) {
     e.preventDefault()
-    this.descBtnIconTarget.classList.replace("fa-chevron-down", "fa-chevron-up")
+    replCls(this.descBtnIconTarget, "fa-chevron-down", "fa-chevron-up")
   }
 
   onDescClose(e) {
     e.preventDefault()
-    this.descBtnIconTarget.classList.replace("fa-chevron-up", "fa-chevron-down")
+    replCls(this.descBtnIconTarget, "fa-chevron-up", "fa-chevron-down")
   }
 
-  onDescChange(e) {
+  onDescFocus(e) {
     e.preventDefault()
-    this.doUpdate = true
+    this.descChar = this.desc
+  }
+
+  onDescLostFocus(e) {
+    e.preventDefault()
+    e.target.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: "smooth",
+    })
+
+    if (this.descChar != this.desc) {
+      this.doUpdate = true
+    }
   }
 
   haveDesc() {

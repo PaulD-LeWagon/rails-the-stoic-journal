@@ -1,4 +1,5 @@
 <%= turbo_frame_tag "edit_#{ dom_id task }",
+  # refresh: "morph",
   data: {
     sortable_target: 'dragable',
     controller: "task",
@@ -11,7 +12,7 @@
   },
   class: "dragable-item card task parent-#{ (dom_id task).gsub('_', '-') } #{ task.completed ? ' card-checked' : '' }" do %>
 
-  <div data-task-target="cardTitle" title="<%= task.start_date.nil? ? "" : task.start_date.strftime("%H:%M %d/%m/%Y %A") %>">
+  <div data-task-target="cardTitle" title="<%= task.start_date.nil? ? "" : task.start_date.strftime("%A %d %B %Y at %H:%M") %>">
 
     <div class="card-header d-flex justify-content-between align-items-center">
 
@@ -165,7 +166,7 @@
       <p class="card-text p-2"
         contenteditable="true"
         data-task-target="desc"
-        data-action="focusout->task#onDescChange">
+        data-action="focus->task#onDescFocus focusout->task#onDescLostFocus">
 
         <%= task.description %>
 

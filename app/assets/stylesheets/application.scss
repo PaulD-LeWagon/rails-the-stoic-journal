@@ -25,6 +25,16 @@
   );
 }
 
+// input:invalid + span::after {
+//   content: "✖";
+//   padding-left: 5px;
+// }
+
+// input:valid + span::after {
+//   content: "✓";
+//   padding-left: 5px;
+// }
+
 .task-menu-toggle::after,
 .subtask-menu-toggle::after {
   content: none;
@@ -58,7 +68,7 @@
   background-color: lighten($quinary, 20%);
   border: solid 2px $quinary;
   border-radius: 1.5rem;
-  padding: 0.5rem 1.5rem;
+  padding: 0.25rem 0.75rem;
   margin: 0 0.5rem 0 0;
 }
 .recurs-on-days.form-group fieldset .form-check-input:checked + label {

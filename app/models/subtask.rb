@@ -7,7 +7,7 @@ class Subtask < ApplicationRecord
     subtask.order = subtask.order.to_i
   end
 
-  default_scope -> { order(:order) }
+  # default_scope -> { order(:order) }
 
   scope :completed, -> { where(completed: true) }
   scope :pending, -> { where(completed: false) }

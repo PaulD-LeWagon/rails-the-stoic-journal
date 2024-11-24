@@ -1,5 +1,6 @@
 import { Controller } from "@hotwired/stimulus"
-const log = console.log
+
+import { log } from "utilities"
 
 // Connects to data-controller="form"
 export default class extends Controller {

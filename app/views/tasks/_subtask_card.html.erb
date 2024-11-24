@@ -1,4 +1,5 @@
 <%= turbo_frame_tag "edit_#{ dom_id subtask }_for_#{ dom_id subtask.task }",
+  # refresh: "morph",
   data: {
     sortable_target: 'dragable',
     controller: "subtask",
@@ -6,10 +7,12 @@
     subtask_task_outlet: ".parent-#{ (dom_id subtask.task).gsub("_", "-") }",
     subtask_url_value: "#{ task_subtask_url(subtask.task, subtask) }",
     subtask_checked_value: "#{ subtask.completed }",
+    subtask_start_time_value: subtask.start_date? ? subtask.start_date.strftime("%H:%M") : "",
+    subtask_start_date_time_value: subtask.start_date? ? subtask.start_date.strftime("%Y-%m-%d %H:%M") : "",
   },
   class: "dragable-item card subtask subtask-of-#{ (dom_id subtask.task).gsub('_', '-') } #{ subtask.completed ? ' card-checked' : '' }" do %>
 
-  <div data-subtask-target="card-title" title="<%= subtask.task.start_date.nil? ? "" : subtask.task.start_date.strftime("%H:%M %d/%m/%Y %A") %>">
+  <div data-subtask-target="cardTitle" title="<%= subtask.start_date? ? subtask.start_date.strftime("%A %d %B %Y at %H:%M") : "" %>">
 
     <div class="card-header d-flex justify-content-between align-items-center">
 
@@ -46,7 +49,7 @@
 
         </span>
 
-        <span class="start-date-time pe-2">
+        <span class="start-date-time pe-2<%= subtask.start_date? ? "" : " d-none" %>">
 
           <input class="d-none" type="text"
             data-subtask-target="startDateTime"
@@ -55,11 +58,7 @@
 
           <span
             data-subtask-target="startTime"
-            data-action="click->subtask#onStartTimeClick">
-
-            <%= subtask.start_date? ? subtask.start_date.strftime("%H:%M") : "" %>
-
-          </span>
+            data-action="click->subtask#onStartTimeClick"><%= subtask.start_date? ? subtask.start_date.strftime("%H:%M") : "" %></span>
 
         </span>
 
