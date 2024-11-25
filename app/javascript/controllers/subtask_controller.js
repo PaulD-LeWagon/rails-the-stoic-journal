@@ -1,5 +1,6 @@
 import AbstractTask from "controllers/abstract_task_controller"
-import { log } from "controllers/abstract_task_controller"
+
+import { log } from "utilities"
 
 export default class extends AbstractTask {
   static targets = ["ordinal"]
@@ -12,6 +13,10 @@ export default class extends AbstractTask {
 
   connect() {
     super.connect()
+  }
+
+  disconnect() {
+    super.disconnect()
   }
 
   get parentTask() {
@@ -62,9 +67,14 @@ export default class extends AbstractTask {
   set doUpdate(value) {
     if (this.hasDoUpdateValue) {
       this.doUpdateValue = value
-      if (typeof value === "boolean" && value === true && this.parentTask) {
-        this.parentTask.doUpdate = value
-      }
+    } else {
+      throw new Error(`${this.identifier} doUpdateValue not set`)
+    }
+  }
+
+  doUpdateValueChanged(newValue, oldValue) {
+    if (typeof newValue === "boolean" && newValue === true && this.parentTask) {
+      this.parentTask.doUpdate = newValue
     }
   }
 }

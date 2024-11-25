@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_10_15_145351) do
+ActiveRecord::Schema[7.1].define(version: 2024_11_24_220106) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -58,7 +58,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_10_15_145351) do
     t.json "recurs_on", default: {"monday"=>"0", "tuesday"=>"0", "wednesday"=>"0", "thursday"=>"0", "friday"=>"0", "saturday"=>"0", "sunday"=>"0"}, null: false
     t.boolean "active", default: true, null: false
     t.integer "task_type", default: 0, null: false
-    t.integer "order", default: 0, null: false
     t.string "title", default: "", null: false
     t.text "description", default: "", null: false
     t.text "comment", default: "", null: false

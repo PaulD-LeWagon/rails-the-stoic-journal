@@ -8,8 +8,6 @@ class Task < ApplicationRecord
 
   after_initialize :set_default_start_date, if: :new_record?
 
-  before_save :set_initial_order, if: :new_record?
-
   NONE_ROUTINE_NAME = :not_recuring
 
   enum routine: [NONE_ROUTINE_NAME, :morning, :day, :evening]
@@ -24,9 +22,6 @@ class Task < ApplicationRecord
 
   validates :title, presence: true
   validates :user_id, presence: true
-
-  # validates_date_of :start_date, before: :due_date, message: "Must be before 'Due Date!'"
-  # validates_date_of :start_date, after_or_equal_to: Proc.new { Time.now }, message: "Valid 'Start Date' must be from today onwards!"
 
   def routine?
     self.routine != NONE_ROUTINE_NAME.to_s
@@ -84,8 +79,8 @@ class Task < ApplicationRecord
 
   def find_next_occurence
     # Need to work out when the next occurence is...
-    time = self.start_date.strftime("%k:%M")
-    date = Time.now.strftime("%d/%m/%Y")
+    time = self.start_date.strftime("%H:%M")
+    date = Time.now.strftime("%d-%m-%Y")
     today = Time.parse("#{date} #{time}")
     7.times do |i|
       j = i + 1
@@ -97,15 +92,5 @@ class Task < ApplicationRecord
         return the_date
       end
     end
-  end
-
-  # May remove this field as it makes more sense to order tasks by time.
-  # Will return the highest order number for the task
-  # If no tasks exist for the user and routine, will return 1
-  def set_initial_order
-    # Think we will need to revisit when we start working on the journal
-    #   logs i.e. daily log, etc. with different days...
-    count = Task.where(user_id: self.user_id, routine: self.routine).maximum(:order)
-    self.order = count.nil? ? 1 : count + 1
   end
 end

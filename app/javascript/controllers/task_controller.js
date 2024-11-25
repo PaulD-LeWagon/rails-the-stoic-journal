@@ -1,11 +1,13 @@
 import AbstractTask from "controllers/abstract_task_controller"
 
-import { log } from "controllers/abstract_task_controller"
+import logHotwireEvents from "expts/hotwire-events"
+
+import { log, creEl, qs } from "utilities"
 
 export default class extends AbstractTask {
   static targets = ["subtasksBtn", "subtasksBtnIcon", "subtasksContainer"]
 
-  static outlets = ["subtask", "sortable"]
+  static outlets = ["subtask"]
 
   initialize() {
     super.initialize()
@@ -13,17 +15,16 @@ export default class extends AbstractTask {
 
   connect() {
     super.connect()
+    this.createFormCont()
   }
 
-  disconnect() {}
-
-  onStartDateTimePickerClose(selectedDates, dateStr, instance) {
-    // log("Task onStartDateTimePickerClose")
-    super.onStartDateTimePickerClose(selectedDates, dateStr, instance)
-    if (this.hasSortableOutlet) {
-      this.sortableOutlet.sort()
-    }
+  disconnect() {
+    super.disconnect()
   }
+
+  subtaskOutletConnected(el) {}
+
+  subtaskOutletDisconnected(el) {}
 
   doUpdateValueChanged(newValue, oldValue) {
     if (newValue === true) {
@@ -36,8 +37,7 @@ export default class extends AbstractTask {
     super.onHandleGrabbed(e)
     if (this.subtasksContainerTarget.classList.contains("show")) {
       // Then close it
-      const event = new Event("click")
-      this.subtasksBtnTarget.dispatchEvent(event)
+      this.subtasksBtnTarget.click()
     }
   }
 
@@ -45,8 +45,9 @@ export default class extends AbstractTask {
     // e.preventDefault()
     if (!this.subtasksContainerTarget.classList.contains("show")) {
       // Then open it
-      const event = new Event("click")
-      this.subtasksBtnTarget.dispatchEvent(event)
+      // const event = new Event("click")
+      // this.subtasksBtnTarget.dispatchEvent(event)
+      this.subtasksBtnTarget.click()
     }
   }
 
@@ -126,7 +127,7 @@ export default class extends AbstractTask {
       .then((response) => {
         if (!response.ok) {
           throw new Error(
-            `HTTP error on GET edit form! status: ${response.statusText} ${response.status}`
+            `AJAX [GET] Exception: ${response.status} ${response.statusText}`
           )
         }
         return response.json() // Parse the response as JSON
@@ -140,7 +141,6 @@ export default class extends AbstractTask {
         formData.set("task[title]", this.title.trim())
         formData.set("task[description]", this.desc.trim())
         formData.set("task[completed]", this.checked ? 1 : 0)
-        formData.set("task[order]", this.ordinal)
         formData.set("task[start_date]", this.startDateTime)
 
         if (this.subtasks) {
@@ -161,6 +161,10 @@ export default class extends AbstractTask {
               `task[subtasks_attributes][${i}][order]`,
               subtask.ordinal
             )
+            formData.set(
+              `task[subtasks_attributes][${i}][start_date]`,
+              subtask.startDateTime
+            )
           })
         }
 
@@ -174,7 +178,7 @@ export default class extends AbstractTask {
           .then((response) => {
             if (!response.ok) {
               throw new Error(
-                `HTTP error on update fetch call! status: ${response.statusText} ${response.status}`
+                `AJAX [PATCH] Exception: ${response.status} ${response.statusText}}`
               )
             }
             return response.json() // Parse the response as JSON
@@ -203,33 +207,24 @@ export default class extends AbstractTask {
             //     `,
             //   },
             // })
-            log(`${this.element.id}, updated.`)
+            log(`${this.element.id}, ${this.title.elipsize(13)}, updated.`)
             this.form.remove()
             this.doUpdate = false
           })
           .catch((error) => {
-            console.error("Error fetching data:", error)
+            console.error("TaskController.update:\n", error)
           })
       })
       .catch((error) => {
-        console.error("Error fetching data:", error)
+        console.error("TaskController.update:\n", error)
       })
-  }
-
-  capitalise(strOfWords) {
-    const words = strOfWords.split(" ")
-    return words
-      .map((word) => {
-        return word[0].toUpperCase() + word.substring(1)
-      })
-      .join(" ")
   }
 
   createFormCont() {
-    this.hiddenFormCont = document.createElement("div")
-    this.hiddenFormCont.classList.add("d-none")
-    document
-      .getElementsByTagName("body")[0]
-      .insertAdjacentElement("beforeend", this.hiddenFormCont)
+    this.hiddenFormCont = creEl("div", {
+      id: `${this.element.id}_update_form_container`,
+      class: "d-none",
+    })
+    qs("body").insertAdjacentElement("beforeend", this.hiddenFormCont)
   }
 }

@@ -4,7 +4,8 @@
     id: "#{ dom_id task }",
     class: "task-form m-3 p-2",
     data: {
-      controller: "form"
+      controller: "form",
+      sortable_target: "form",
     },
   }) do |f| %>
 
@@ -13,13 +14,6 @@
   <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
   <div class="form-inputs">
-
-    <%= f.input :order,
-      label: false,
-      input_html: {
-        id: "#{dom_id task}_order",
-        class: "d-none order"
-      } %>
 
     <%= f.input :routine,
       label: false,
@@ -82,13 +76,17 @@
     <%= f.input :start_date, html5: true,
       label: false,
       input_html: {
-        class: "form-control mb-3"
+        class: "form-control mb-3",
+        value: task.start_date? ? task.start_date.strftime("%Y-%m-%d %H:%M") : "",
+        min: Time.zone.now.strftime("%Y-%m-%d %H:%M"),
       } %>
 
     <%= f.input :due_date, html5: true,
       label: false,
       input_html: {
-        class: "d-none form-control"
+        class: "d-none form-control",
+        value: task.start_date? ? task.start_date.strftime("%Y-%m-%d %H:%M") : "",
+        min: Time.zone.now.strftime("%Y-%m-%d %H:%M"),
       },
       wrapper_html: {
         class: "d-none m-0"

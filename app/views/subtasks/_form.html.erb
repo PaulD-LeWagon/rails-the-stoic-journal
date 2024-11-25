@@ -3,7 +3,8 @@
     id: "#{ dom_id subtask }",
     class: "subtask subtask-form m-3 p-2",
     data: {
-      controller: "cards"
+      controller: "form",
+      sortable_target: "form",
     }
   }) do |f| %>
 
@@ -53,13 +54,17 @@
         <%= f.input :start_date, html5: true,
           label: false,
           input_html: {
-            class: "form-control mb-3"
+            class: "form-control mb-3",
+            value: subtask.start_date? ? subtask.start_date.strftime("%Y-%m-%d %H:%M") : "",
+            min: Time.zone.now.strftime("%Y-%m-%d %H:%M"),
           } %>
 
         <%= f.input :due_date, html5: true,
           label: false,
           input_html: {
-            class: "d-none form-control"
+            class: "d-none form-control",
+            value: subtask.due_date? ? subtask.due_date.strftime("%Y-%m-%d %H:%M") : "",
+            min: Time.zone.now.strftime("%Y-%m-%d %H:%M"),
           },
           wrapper_html: {
             class: "d-none m-0"

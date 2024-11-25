@@ -40,7 +40,7 @@ class TasksController < ApplicationController
             errors: "",
             message: "Task, #{@task.title}, created successfully with #{@task.subtasks.count} sub tasks!",
           }
-          render json: resp.to_json, notice: "Task, #{@task.title}, created successfully with #{@task.subtasks.count} sub tasks!", status: :see_other
+          render json: resp.to_json, notice: "Task, #{@task.title}, created successfully with #{@task.subtasks.count} sub tasks!", status: :see_other # :ok for AJAX when needed
         end
       else
         format.html { render :new, alert: "Could not create task #{@task.title}", status: :unprocessable_entity }
@@ -90,7 +90,7 @@ class TasksController < ApplicationController
             errors: "",
             message: "Task, #{@task.title}, successfully updated with #{@task.subtasks.count} sub tasks!",
           }
-          render json: resp.to_json, notice: "Task, #{@task.title}, successfully updated with #{@task.subtasks.count} sub tasks!", status: :see_other
+          render json: resp.to_json, notice: "Task, #{@task.title}, successfully updated with #{@task.subtasks.count} sub tasks!", status: :ok # :ok for AJAX
         end
       else
         format.html { render :edit, alert: "Server error", status: :unprocessable_entity }

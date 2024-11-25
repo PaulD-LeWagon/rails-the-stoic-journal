@@ -54,7 +54,7 @@ class SubtasksController < ApplicationController
             errors: "",
             message: "Sub-task, #{@subtask.title}, updated!",
           }
-          render json: resp.to_json, notice: "Sub-task, #{@subtask.title} updated!", status: :see_other
+          render json: resp.to_json, notice: "Sub-task, #{@subtask.title} updated!", status: :ok
         end
       else
         format.html { render :edit, alert: "Server error", status: :unprocessable_entity }

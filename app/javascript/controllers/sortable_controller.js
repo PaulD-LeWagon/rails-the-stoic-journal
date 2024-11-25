@@ -1,14 +1,25 @@
 import { Controller } from "@hotwired/stimulus"
 
-const log = console.log
+import { log, qs, qsa, creEl, hasCls } from "utilities"
+import { sleep } from "../utilities"
 
 // Connects to data-controller="sortable"
 export default class extends Controller {
-  static targets = ["dragable"]
+  static targets = ["dragable", "form"]
 
   static outlets = ["task", "subtask"]
 
-  static values = { group: String }
+  static values = {
+    taskOutletCount: { type: Number, default: 0 },
+    group: String,
+  }
+
+  initialize() {
+    super.initialize()
+    // If you want to manipulate targets or outlets @ initialization time or on
+    // connect wrap them in a setTimeout
+    setTimeout(() => {}, 100)
+  }
 
   connect() {
     setTimeout(() => {
@@ -21,41 +32,66 @@ export default class extends Controller {
     }, 100)
   }
 
-  sort() {
-    // log("# sorting...")
-    const tasks = []
-    Array.from(this.element.querySelectorAll(".task")).forEach((child) => {
-      if (child.classList.contains("task")) {
-        tasks.push(child.parentNode.removeChild(child))
-      }
-    })
-    tasks.sort((a, b) => {
-      const d1 = Date.parse(a.dataset.taskStartDateTimeValue)
-      const d2 = Date.parse(b.dataset.taskStartDateTimeValue)
-      const answer = d1 < d2 ? -1 : 1
-      // log(a.dataset.taskStartDateTimeValue, b.dataset.taskStartDateTimeValue)
-      // log(d1, d2, answer)
-      return answer
-    })
-    tasks.forEach((task) => {
-      this.element.appendChild(task)
-    })
-    // log("# done sorting")
+  domReady() {
+    return document.readyState == "complete"
   }
 
-  redoStartTimes() {
-    // log("  >> redoStartTimes")
-    if (this.tasks) {
+  sort() {
+    try {
+      let selector
+      if (this.hasTaskOutlet) {
+        selector = `.${this.taskOutlet.identifier}`
+      } else if (this.hasSubtaskOutlet) {
+        selector = `.${this.subtaskOutlet.identifier}`
+      } else {
+        throw new Error("No task/subtaskOutlet to #sort")
+      }
+
+      const tasks = []
+
+      qsa(selector, this.element).forEach((child) => {
+        tasks.push(child.parentNode.removeChild(child))
+      })
+
+      tasks.sort((a, b) => {
+        let d1, d2
+        if (selector === ".task") {
+          d1 = a.dataset.taskStartDateTimeValue.toDate()
+          d2 = b.dataset.taskStartDateTimeValue.toDate()
+        } else {
+          d1 = a.dataset.subtaskStartDateTimeValue.toDate()
+          d2 = b.dataset.subtaskStartDateTimeValue.toDate()
+        }
+        // return d1 < d2 ? -1 : 1
+        // log(
+        //   qs(".title-wrapper", a).textContent.trim(),
+        //   qs(".title-wrapper", b).textContent.trim()
+        // )
+        // log(`SortableController.sort:`, d1, d2, d1 - d2)
+        return d1 - d2
+      })
+      tasks.forEach((task) => {
+        this.element.appendChild(task)
+      })
+    } catch (error) {
+      console.error("SortableController.sort:\n", error)
+      return false
+    }
+    return true
+  }
+
+  redoStartTimes(tasks) {
+    if (tasks) {
       const dateObjs = []
-      this.tasks.forEach((task, i) => {
+      tasks.forEach((task, i) => {
         if (task.hasStartTime() && task.hasStartDateTime()) {
           dateObjs.push({ time: task.startTime, dateTime: task.startDateTime })
         }
       })
       dateObjs.sort((a, b) => {
-        return a.dateTime < b.dateTime ? -1 : 1
+        return a.dateTime.toDate() - b.dateTime.toDate()
       })
-      this.tasks.forEach((task, i) => {
+      tasks.forEach((task, i) => {
         if (task.hasStartTime() && task.hasStartDateTime()) {
           if (
             task.startTime !== dateObjs[i].time &&
@@ -64,16 +100,15 @@ export default class extends Controller {
             task.startTime = dateObjs[i].time
             task.startDateTime = dateObjs[i].dateTime
             task.startDateTimeValue = dateObjs[i].dateTime
+            task.updateCardTitleDate(task.startDateTime)
             task.doUpdate = true
           }
         }
       })
     }
-    // log("  << done redoStartTimes")
   }
 
   redoOrdinals(tasks) {
-    // log("  > redoOrdinals")
     // Processes tasks and subtasks
     if (tasks) {
       tasks.forEach((task, i) => {
@@ -89,7 +124,6 @@ export default class extends Controller {
         }
       })
     }
-    // log("  < done redoOrdinals")
   }
 
   dragableTargetConnected(el) {
@@ -103,24 +137,24 @@ export default class extends Controller {
   dtConDiscSetUp() {
     setTimeout(() => {
       const tasks = this.tasks ? this.tasks : this.subtasks
-      this.disconnectFlatpickrs()
+      this.disconnectFlatpickrs(tasks)
       this.redoOrdinals(tasks)
       this.redoStartTimes(tasks)
-      this.connectFlatpickrs()
+      this.connectFlatpickrs(tasks)
     }, 100)
   }
 
-  connectFlatpickrs() {
-    if (this.tasks && this.tasks.length > 0) {
-      this.tasks.forEach((task) => {
+  connectFlatpickrs(tasks) {
+    if (tasks && tasks.length > 0) {
+      tasks.forEach((task) => {
         task.flatpickr = task.constructFlatpickr()
       })
     }
   }
 
-  disconnectFlatpickrs() {
-    if (this.tasks && this.tasks.length > 0) {
-      this.tasks.forEach((task) => {
+  disconnectFlatpickrs(tasks) {
+    if (tasks && tasks.length > 0) {
+      tasks.forEach((task) => {
         if (task.flatpickr != null) {
           task.flatpickr.destroy()
           task.flatpickr = null
