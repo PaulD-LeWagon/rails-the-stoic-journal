@@ -1,11 +1,23 @@
-Rails app generated with [lewagon/rails-templates](https://github.com/lewagon/rails-templates), created by the [Le Wagon coding bootcamp](https://www.lewagon.com) team.
+# README
 
-Features to Implement:
+This app is my attempt to build an app that will allow me to manage my life on a
+practical level and to enrich my life with meaning (Stoic Philosophy). It is
+essentially a bullet journal for logging daily tasks with the ability to add
+routines and structured stoic exercises both of which are just specialised tasks.
+
+## To Do
+
+### Features to Implement:
+
 x Change the thumbs-up icon to a tick.
 x Add spacing between tasks.
 x Remove the # from the numbers on tasks and make the priority numbers bolder.
+
 - Display the active/completed status or send completed tasks to a dedicated page.
 
+[comment]: <> ("This is a comment(Can u see me?)")
+
+<!--
 // var myAnimation = anime({
 //   targets: ['.task'],
 //   translateX: '13rem',
@@ -35,3 +47,4 @@ x Remove the # from the numbers on tasks and make the priority numbers bolder.
 //     })
 //   }
 // })
+-->

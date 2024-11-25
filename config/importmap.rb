@@ -14,4 +14,4 @@ pin "classList"
 pin "flatpickr" # @4.6.13
 pin "confirmDate" # @3.3.0
 pin "utilities"
-pin "expts/hotwire-events"
+pin "hotwire-events"

@@ -4,7 +4,7 @@ import flatpickr from "flatpickr"
 
 import { log, hasCls, addCls, remCls, replCls } from "utilities"
 
-import logHotwireEvents from "expts/hotwire-events"
+import logHotwireEvents from "hotwire-events"
 
 // Connects to data-controller="abstract-task"
 export default class extends Controller {

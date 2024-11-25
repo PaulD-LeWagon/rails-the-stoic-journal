@@ -1,6 +1,6 @@
 import { Controller } from "@hotwired/stimulus"
 
-import { log } from "utilities"
+import { log, addCls, hasCls, remCls } from "utilities"
 
 // Connects to data-controller="form"
 export default class extends Controller {
@@ -11,14 +11,14 @@ export default class extends Controller {
   onRoutineChange(e) {
     const routine = this.routineTarget.value
     const regex = new RegExp("morning|day|evening")
-    const recCl = this.recursOnContTarget.classList
+    const recursOn = this.recursOnContTarget
     if (routine.match(regex)) {
-      if (recCl.contains("d-none")) {
-        recCl.remove("d-none")
+      if (hasCls(recursOn, "d-none")) {
+        remCls(recursOn, "d-none")
       }
     } else {
-      if (!recCl.contains("d-none")) {
-        recCl.add("d-none")
+      if (!hasCls(recursOn, "d-none")) {
+        addCls(recursOn, "d-none")
       }
     }
   }

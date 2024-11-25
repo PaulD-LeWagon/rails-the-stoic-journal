@@ -12,3 +12,6 @@ export { application }
 // document.addEventListener("turbo:load", (event) => {
 //   const isInitialPageLoad = Object.keys(event.detail.timing).length === 0
 // })
+// Or just use the following:
+//
+//  document.readyState === "complete" ???
