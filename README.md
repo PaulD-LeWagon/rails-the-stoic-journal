@@ -9,11 +9,17 @@ routines and structured stoic exercises both of which are just specialised tasks
 
 ### Features to Implement:
 
-x Change the thumbs-up icon to a tick.
-x Add spacing between tasks.
-x Remove the # from the numbers on tasks and make the priority numbers bolder.
-
+- Change the thumbs-up icon to a tick. [complete]
+- Add spacing between tasks. [complete]
+- Remove the # from the numbers on tasks and make the priority numbers bolder. [complete]
 - Display the active/completed status or send completed tasks to a dedicated page.
+- Implement Daily Log.
+- Implement Weekly Log.
+- Implement Monthly Log.
+- Implement Future Log.
+- Add Stoic Philosophy info. (What it is and examples of stoic exercises)
+- Redesign the 'Profile Page'
+- Research AI capabilities.
 
 [comment]: <> ("This is a comment(Can u see me?)")
 
