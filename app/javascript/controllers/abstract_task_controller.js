@@ -74,10 +74,6 @@ export default class extends Controller {
 
   // StartTime functionality
 
-  hasStartTime() {
-    return this.hasStartTimeTarget
-  }
-
   get startTime() {
     if (this.hasStartTimeTarget) {
       return this.startTimeTarget.innerText
@@ -93,6 +89,10 @@ export default class extends Controller {
     }
   }
 
+  hasStartTime() {
+    return this.hasStartTimeTarget
+  }
+
   onStartTimeClick(e) {
     e.preventDefault()
     // Open the date picker
@@ -100,6 +100,40 @@ export default class extends Controller {
   }
 
   // StartDateTime functionality
+
+  get startDateTime() {
+    if (this.hasStartDateTimeTarget) {
+      return this.startDateTimeTarget.value
+    } else {
+      return false
+    }
+  }
+
+  set startDateTime(value) {
+    if (this.hasStartDateTimeTarget) {
+      this.startDateTimeTarget.value = value
+    }
+  }
+
+  hasStartDateTime() {
+    return this.hasStartDateTimeTarget
+  }
+
+  checkStartDateTime(e) {
+    if (
+      this.timeRegex.test(this.startTime) &&
+      this.dateTimeRegex.test(this.startDateTime) &&
+      this.startTime != this.startTimeValue &&
+      this.startDateTime != this.startDateTimeValue
+    ) {
+      this.startTimeValue = this.startTime
+      this.startDateTimeValue = this.startDateTime
+      this.updateCardTitleDate(this.startDateTime)
+      this.doUpdate = true
+
+      this.sortableOutlet.sort()
+    }
+  }
 
   startDateTimeValueChanged(theValue, oldValue) {
     if (this.domReady()) {
@@ -119,40 +153,6 @@ export default class extends Controller {
       }
     } catch (error) {
       console.error("AbstractTaskController.updateCardTitleDate:\n", error)
-    }
-  }
-
-  hasStartDateTime() {
-    return this.hasStartDateTimeTarget
-  }
-
-  get startDateTime() {
-    if (this.hasStartDateTimeTarget) {
-      return this.startDateTimeTarget.value
-    } else {
-      return false
-    }
-  }
-
-  set startDateTime(value) {
-    if (this.hasStartDateTimeTarget) {
-      this.startDateTimeTarget.value = value
-    }
-  }
-
-  checkStartDateTime(e) {
-    if (
-      this.timeRegex.test(this.startTime) &&
-      this.dateTimeRegex.test(this.startDateTime) &&
-      this.startTime != this.startTimeValue &&
-      this.startDateTime != this.startDateTimeValue
-    ) {
-      this.startTimeValue = this.startTime
-      this.startDateTimeValue = this.startDateTime
-      this.updateCardTitleDate(this.startDateTime)
-      this.doUpdate = true
-
-      this.sortableOutlet.sort()
     }
   }
 
@@ -214,16 +214,14 @@ export default class extends Controller {
     }
   }
 
+  // Do Update Value
+
   get doUpdate() {
     return this.doUpdateValue
   }
 
   set doUpdate(value) {
-    if (this.hasDoUpdateValue) {
-      this.doUpdateValue = value
-    } else {
-      throw new Error(`${this.identifier} doUpdateValue not set`)
-    }
+    this.doUpdateValue = value
   }
 
   // Checkbox functionality
@@ -234,18 +232,6 @@ export default class extends Controller {
 
   set checkbox(value) {
     this.checkboxTarget = value
-  }
-
-  onCheckboxClicked(e) {
-    e.preventDefault()
-    // Toggle the check icons
-    if (this.isChecked()) {
-      this.uncheckIt()
-    } else {
-      // If it's not checked
-      this.checkIt()
-    }
-    this.doUpdate = true
   }
 
   isChecked() {
@@ -268,6 +254,18 @@ export default class extends Controller {
     addCls(this.fauxCheckIconTarget, "fa-square")
     this.realCheckboxTarget.checked = false // Do we need this?
     this.checked = false
+  }
+
+  onCheckboxClicked(e) {
+    e.preventDefault()
+    // Toggle the check icons
+    if (this.isChecked()) {
+      this.uncheckIt()
+    } else {
+      // If it's not checked
+      this.checkIt()
+    }
+    this.doUpdate = true
   }
 
   // Checked Value

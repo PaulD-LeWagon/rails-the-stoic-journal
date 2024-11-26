@@ -62,7 +62,9 @@ export default class extends AbstractTask {
   }
 
   onCheckboxClicked(e) {
-    super.onCheckboxClicked(e)
+    e.preventDefault()
+    // Toggle the check icons
+    this.isChecked() ? this.uncheckIt() : this.checkIt()
     // Toggle the check icons
     if (
       this.isNotChecked() &&
@@ -76,6 +78,7 @@ export default class extends AbstractTask {
         subtask.checkIt()
       })
     }
+    this.doUpdate = true
   }
 
   verifySubtasksCheckedState() {
@@ -111,6 +114,14 @@ export default class extends AbstractTask {
     } else {
       return []
     }
+  }
+
+  resetSubtasksDoUpdate() {
+    this.subtasks.forEach((subtask) => {
+      if (subtask.doUpdate) {
+        subtask.doUpdate = false
+      }
+    })
   }
 
   update() {
@@ -205,6 +216,7 @@ export default class extends AbstractTask {
             log(`${this.element.id}, ${this.title.elipsize(13)}, updated.`)
             this.form.remove()
             this.doUpdate = false
+            this.resetSubtasksDoUpdate()
           })
           .catch((error) => {
             console.error("TaskController.update:\n", error)
