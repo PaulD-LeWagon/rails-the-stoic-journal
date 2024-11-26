@@ -21,8 +21,6 @@ routines and structured stoic exercises both of which are just specialised tasks
 - Redesign the 'Profile Page'
 - Research AI capabilities.
 
-[comment]: <> ("This is a comment(Can u see me?)")
-
 <!--
 // var myAnimation = anime({
 //   targets: ['.task'],

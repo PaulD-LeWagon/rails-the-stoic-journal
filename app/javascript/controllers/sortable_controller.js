@@ -1,7 +1,6 @@
 import { Controller } from "@hotwired/stimulus"
 
-import { log, qs, qsa, creEl, hasCls } from "utilities"
-import { sleep } from "../utilities"
+import { log, qsa } from "utilities"
 
 // Connects to data-controller="sortable"
 export default class extends Controller {

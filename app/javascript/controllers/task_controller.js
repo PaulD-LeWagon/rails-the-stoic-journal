@@ -1,8 +1,8 @@
 import AbstractTask from "controllers/abstract_task_controller"
 
-import logHotwireEvents from "expts/hotwire-events"
+import logHotwireEvents from "hotwire-events"
 
-import { log, creEl, qs } from "utilities"
+import { log, creEl, qs, hasCls, replCls, iae } from "utilities"
 
 export default class extends AbstractTask {
   static targets = ["subtasksBtn", "subtasksBtnIcon", "subtasksContainer"]
@@ -35,7 +35,7 @@ export default class extends AbstractTask {
   onHandleGrabbed(e) {
     // Do not cancel the event: e.preventDefault()
     super.onHandleGrabbed(e)
-    if (this.subtasksContainerTarget.classList.contains("show")) {
+    if (hasCls(this.subtasksContainerTarget, "show")) {
       // Then close it
       this.subtasksBtnTarget.click()
     }
@@ -43,7 +43,7 @@ export default class extends AbstractTask {
 
   doSubtasksOpenForNewSubtask(e) {
     // e.preventDefault()
-    if (!this.subtasksContainerTarget.classList.contains("show")) {
+    if (!hasCls(this.subtasksContainerTarget, "show")) {
       // Then open it
       // const event = new Event("click")
       // this.subtasksBtnTarget.dispatchEvent(event)
@@ -53,34 +53,32 @@ export default class extends AbstractTask {
 
   onSubtasksOpen(e) {
     e.preventDefault()
-    this.subtasksBtnIconTarget.classList.replace(
-      "fa-angles-down",
-      "fa-angles-up"
-    )
+    replCls(this.subtasksBtnIconTarget, "fa-angles-down", "fa-angles-up")
   }
 
   onSubtasksClose(e) {
     e.preventDefault()
-    this.subtasksBtnIconTarget.classList.replace(
-      "fa-angles-up",
-      "fa-angles-down"
-    )
+    replCls(this.subtasksBtnIconTarget, "fa-angles-up", "fa-angles-down")
   }
 
   onCheckboxClicked(e) {
-    super.onCheckboxClicked(e)
+    e.preventDefault()
+    // Toggle the check icons
+    this.isChecked() ? this.uncheckIt() : this.checkIt()
     // Toggle the check icons
     if (
       this.isNotChecked() &&
       this.subtasks.length &&
       this.allSubtasksChecked()
     ) {
+      // Would not '-1' sufice?
       this.subtasks[this.subtasks.length - 1].uncheckIt()
     } else if (this.isChecked() && this.allSubtasksNotChecked()) {
       this.subtasks.forEach((subtask) => {
         subtask.checkIt()
       })
     }
+    this.doUpdate = true
   }
 
   verifySubtasksCheckedState() {
@@ -118,6 +116,14 @@ export default class extends AbstractTask {
     }
   }
 
+  resetSubtasksDoUpdate() {
+    this.subtasks.forEach((subtask) => {
+      if (subtask.doUpdate) {
+        subtask.doUpdate = false
+      }
+    })
+  }
+
   update() {
     // Fetch the edit form
     fetch(`${this.urlValue}/edit`, {
@@ -134,7 +140,7 @@ export default class extends AbstractTask {
       })
       .then((data) => {
         this.hiddenFormCont.innerHTML = data.form
-        this.form = this.hiddenFormCont.getElementsByTagName("form")[0]
+        this.form = qs("form", this.hiddenFormCont)
 
         const formData = new FormData(this.form)
 
@@ -210,6 +216,7 @@ export default class extends AbstractTask {
             log(`${this.element.id}, ${this.title.elipsize(13)}, updated.`)
             this.form.remove()
             this.doUpdate = false
+            this.resetSubtasksDoUpdate()
           })
           .catch((error) => {
             console.error("TaskController.update:\n", error)
@@ -225,6 +232,6 @@ export default class extends AbstractTask {
       id: `${this.element.id}_update_form_container`,
       class: "d-none",
     })
-    qs("body").insertAdjacentElement("beforeend", this.hiddenFormCont)
+    iae("beforeend", this.hiddenFormCont, qs("body"))
   }
 }

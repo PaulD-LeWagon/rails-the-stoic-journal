@@ -76,6 +76,18 @@ function creEl(type, options = {}) {
 }
 export { creEl }
 
+/**
+ * Method iae (insert adjacent element)
+ * Inserts an element adjacent to another element.
+ * @param {string} position - Where to insert the element - e.g. 'beforebegin', 'afterend' etc.
+ * @param {HTMLElement} element - The element to be inserted
+ * @param {HTMLElement} parent - The parent element, defaults to document.
+ */
+function iae(position, element, parent = document) {
+  parent.insertAdjacentElement(position, element)
+}
+export { iae }
+
 // ClassList functions
 
 function hasCls(el, cls) {

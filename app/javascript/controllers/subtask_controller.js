@@ -27,11 +27,11 @@ export default class extends AbstractTask {
     }
   }
 
-  // Ordinal functionality
-
-  hasOrdinal() {
-    return this.hasOrdinalTarget
+  hasParentTask() {
+    return this.hasTaskOutlet
   }
+
+  // Ordinal functionality
 
   get ordinal() {
     if (this.hasOrdinalTarget) {
@@ -47,6 +47,10 @@ export default class extends AbstractTask {
     }
   }
 
+  hasOrdinal() {
+    return this.hasOrdinalTarget
+  }
+
   onOrdinalChange(e) {
     // Triggered by drag 'n' drop event.
     e.preventDefault()
@@ -56,25 +60,18 @@ export default class extends AbstractTask {
   }
 
   onCheckboxClicked(e) {
-    super.onCheckboxClicked(e)
+    e.preventDefault()
+    // Toggle the check icons
+    this.isChecked() ? this.uncheckIt() : this.checkIt()
     this.parentTask.verifySubtasksCheckedState()
     this.doUpdate = true
   }
 
-  /**
-   * @param {boolean} value
-   */
-  set doUpdate(value) {
-    if (this.hasDoUpdateValue) {
-      this.doUpdateValue = value
-    } else {
-      throw new Error(`${this.identifier} doUpdateValue not set`)
-    }
-  }
-
   doUpdateValueChanged(newValue, oldValue) {
-    if (typeof newValue === "boolean" && newValue === true && this.parentTask) {
-      this.parentTask.doUpdate = newValue
+    if (this.domReady()) {
+      if (this.hasParentTask()) {
+        this.parentTask.doUpdate = newValue
+      }
     }
   }
 }
