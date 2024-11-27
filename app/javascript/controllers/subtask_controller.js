@@ -13,18 +13,25 @@ export default class extends AbstractTask {
 
   connect() {
     super.connect()
+    if (this.domReady()) {
+      this.doUpdateValue = false
+    } else {
+      setTimeout(() => {
+        this.connect()
+      }, 100)
+    }
   }
 
   disconnect() {
     super.disconnect()
   }
 
+  domReady() {
+    return super.domReady()
+  }
+
   get parentTask() {
-    if (this.hasTaskOutlet) {
-      return this.taskOutlet
-    } else {
-      return null
-    }
+    return this.taskOutlet
   }
 
   hasParentTask() {
@@ -64,13 +71,13 @@ export default class extends AbstractTask {
     // Toggle the check icons
     this.isChecked() ? this.uncheckIt() : this.checkIt()
     this.parentTask.verifySubtasksCheckedState()
-    this.doUpdate = true
+    this.doUpdateValue = true
   }
 
   doUpdateValueChanged(newValue, oldValue) {
     if (this.domReady()) {
       if (this.hasParentTask()) {
-        this.parentTask.doUpdate = newValue
+        this.parentTask.doUpdate = newValue || false
       }
     }
   }

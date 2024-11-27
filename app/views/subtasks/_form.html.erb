@@ -8,90 +8,107 @@
     }
   }) do |f| %>
 
-      <%= f.error_notification %>
-      <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+  <%= f.error_notification %>
+  <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
-       <%# :title, :description, :task_type, :routine, :order, :comment, :start_date, :due_date, :completed, :active %>
+  <div class="form-inputs">
+    <%= f.input :order,
+      label: false,
+      input_html: {
+        id: "#{ dom_id subtask }_order",
+        class: "d-none form-control"
+      }, wrapper_html: {
+        class: "d-none m-0",
+      } %>
 
-      <div class="form-inputs">
+    <%= f.input :title,
+      label: false,
+      placeholder: "Subtask title here...",
+      input_html: {
+        class: "form-control mb-3"
+      } %>
 
-        <%= f.input :order,
-          label: false,
-          input_html: {
-            id: "#{ dom_id subtask }_order",
-            class: "d-none form-control"
-          }, wrapper_html: {
-            class: "d-none m-0",
-          } %>
+    <%= f.input :description, as: :text,
+      label: false,
+      placeholder: "Add a description...",
+      input_html: {
+        class: "form-control mb-3",
+        rows: 3,
+        cols: 10
+      } %>
 
-        <%= f.input :title,
-          label: false,
-          placeholder: "Subtask title here...",
-          input_html: {
-            class: "form-control mb-3"
-          } %>
+    <%= f.input :comment, as: :text,
+      label: false,
+      input_html: {
+        class: "d-none form-control",
+        rows: 3,
+        cols: 10
+      },
+      wrapper_html: {
+        class: "d-none m-0"
+      } %>
 
-        <%= f.input :description, as: :text,
-          label: false,
-          placeholder: "Add a description...",
-          input_html: {
-            class: "form-control mb-3",
-            rows: 3,
-            cols: 10
-          } %>
+    <%= f.input :ai_feedback, as: :text,
+      label: false,
+      input_html: {
+        class: "d-none form-control",
+        rows: 3,
+        cols: 10
+      },
+      wrapper_html: {
+        class: "d-none m-0"
+      } %>
 
-        <%= f.input :comment, as: :text,
-          label: false,
-          input_html: {
-            class: "d-none form-control",
-            rows: 3,
-            cols: 10
-          },
-          wrapper_html: {
-            class: "d-none m-0"
-          } %>
+    <%= f.input :start_date, html5: true,
+      label: false,
+      input_html: {
+        class: "form-control mb-3",
+        value: subtask.start_date? ? subtask.start_date.strftime("%Y-%m-%d %H:%M") : "",
+        min: Time.zone.now.strftime("%Y-%m-%d %H:%M"),
+      } %>
 
-        <%= f.input :start_date, html5: true,
-          label: false,
-          input_html: {
-            class: "form-control mb-3",
-            value: subtask.start_date? ? subtask.start_date.strftime("%Y-%m-%d %H:%M") : "",
-            min: Time.zone.now.strftime("%Y-%m-%d %H:%M"),
-          } %>
+    <%= f.input :duration, html5: true, as: :time,
+      label: false,
+      input_html: {
+        class: "form-control mb-3",
+        value: subtask.duration? ? subtask.duration_to_hms : "",
+        min: Time.zone.now.strftime("%H:%M"),
+        step: 900,
+      } %>
 
-        <%= f.input :due_date, html5: true,
-          label: false,
-          input_html: {
-            class: "d-none form-control",
-            value: subtask.due_date? ? subtask.due_date.strftime("%Y-%m-%d %H:%M") : "",
-            min: Time.zone.now.strftime("%Y-%m-%d %H:%M"),
-          },
-          wrapper_html: {
-            class: "d-none m-0"
-          } %>
+    <%= f.input :end_date, html5: true,
+      label: false,
+      input_html: {
+        class: "d-none form-control",
+        value: subtask.end_date? ? subtask.end_date.strftime("%Y-%m-%d %H:%M") : "",
+        min: Time.zone.now.strftime("%Y-%m-%d %H:%M"),
+      },
+      wrapper_html: {
+        class: "d-none m-0"
+      } %>
 
-        <%= f.input :completed, as: :boolean,
-          label: false,
-          input_html: {
-            id: "#{dom_id subtask}_completed",
-            class: "d-none form-control"
-          },
-          wrapper_html: {
-            class: "d-none m-0"
-          } %>
+    <%= f.input :completed, as: :boolean,
+      label: false,
+      input_html: {
+        id: "#{dom_id subtask}_completed",
+        class: "d-none form-control"
+      },
+      wrapper_html: {
+        class: "d-none m-0"
+      } %>
 
-      </div>
+  </div>
 
-      <div class="form-actions links d-flex justify-content-end align-items-center">
+  <div class="form-actions links d-flex justify-content-end align-items-center">
 
-        <%= button_tag type: 'submit', class: "btn btn-primary" do %>
+    <%= button_tag type: 'submit', class: "btn btn-primary" do %>
 
-          <%# <i class="fa-solid fa-thumbs-up"></i> %>
+      <%# <i class="fa-solid fa-thumbs-up"></i> %>
 
-          <i class="fa-solid fa-circle-check"></i>  Done!
-
-        <% end %>
-
-      </div>
+      <i class="fa-solid fa-circle-check"></i>  Done!
 
     <% end %>
+
+  </div>
+
+<% end %>

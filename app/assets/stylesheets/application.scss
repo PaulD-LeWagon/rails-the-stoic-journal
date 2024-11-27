@@ -68,8 +68,10 @@
   background-color: lighten($quinary, 20%);
   border: solid 2px $quinary;
   border-radius: 1.5rem;
-  padding: 0.25rem 0.75rem;
-  margin: 0 0.5rem 0 0;
+  padding: 0.2rem 0.7rem;
+  margin: 0 0.25rem 0 0;
+
+  font-size: 0.9rem;
 }
 .recurs-on-days.form-group fieldset .form-check-input:checked + label {
   color: lighten($quinary, 20%);
@@ -162,7 +164,7 @@
   position: relative;
 }
 .card .card-body .card-text {
-  font-weight: 600 !important;
+  font-weight: 500 !important;
 }
 
 .card.task {
@@ -188,20 +190,6 @@
   font-size: 1em !important;
 }
 
-#profile-page .card.task .card-header h3.card-title,
-#profile-page .card.subtask .card-header h3.card-title {
-  font-weight: 500;
-  font-size: 1.2em !important;
-}
-#profile-page .card.task .card-body .card-text,
-#profile-page .card.subtask .card-body .card-text {
-  font-weight: 500;
-  font-size: 0.9em !important;
-}
-#profile-page h2 button {
-  border: none !important;
-}
-
 .card.task,
 .card.subtask {
   max-width: 100%;
@@ -217,6 +205,20 @@
 .card.subtask:hover {
   text-shadow: 0 0 0 rgba(0, 0, 0, 0);
   border: solid 1px $success;
+}
+
+#profile-page .card.task .card-header h3.card-title,
+#profile-page .card.subtask .card-header h3.card-title {
+  font-weight: 500;
+  font-size: 1.2em !important;
+}
+#profile-page .card.task .card-body .card-text,
+#profile-page .card.subtask .card-body .card-text {
+  font-weight: 500;
+  font-size: 0.9em !important;
+}
+#profile-page h2 button {
+  border: none !important;
 }
 
 #profile-page .card.task .card-header h3.card-title,

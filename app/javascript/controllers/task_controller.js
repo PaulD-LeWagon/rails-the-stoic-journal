@@ -144,13 +144,25 @@ export default class extends AbstractTask {
 
         const formData = new FormData(this.form)
 
-        formData.set("task[title]", this.title.trim())
-        formData.set("task[description]", this.desc.trim())
         formData.set("task[completed]", this.checked ? 1 : 0)
         formData.set("task[start_date]", this.startDateTime)
+        formData.set("task[title]", this.title.trim())
+        formData.set("task[description]", this.desc.trim())
 
         if (this.subtasks) {
           this.subtasks.forEach((subtask, i) => {
+            formData.set(
+              `task[subtasks_attributes][${i}][order]`,
+              subtask.ordinal
+            )
+            formData.set(
+              `task[subtasks_attributes][${i}][completed]`,
+              subtask.checked ? 1 : 0
+            )
+            formData.set(
+              `task[subtasks_attributes][${i}][start_date]`,
+              subtask.startDateTime
+            )
             formData.set(
               `task[subtasks_attributes][${i}][title]`,
               subtask.title.trim()
@@ -158,18 +170,6 @@ export default class extends AbstractTask {
             formData.set(
               `task[subtasks_attributes][${i}][description]`,
               subtask.desc.trim()
-            )
-            formData.set(
-              `task[subtasks_attributes][${i}][completed]`,
-              subtask.checked ? 1 : 0
-            )
-            formData.set(
-              `task[subtasks_attributes][${i}][order]`,
-              subtask.ordinal
-            )
-            formData.set(
-              `task[subtasks_attributes][${i}][start_date]`,
-              subtask.startDateTime
             )
           })
         }

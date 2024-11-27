@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_11_24_220106) do
+ActiveRecord::Schema[7.1].define(version: 2024_11_26_195152) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -45,10 +45,12 @@ ActiveRecord::Schema[7.1].define(version: 2024_11_24_220106) do
     t.text "description", default: "", null: false
     t.text "comment", default: "", null: false
     t.datetime "start_date"
-    t.datetime "due_date"
     t.boolean "completed", default: false, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.text "ai_feedback"
+    t.datetime "end_date"
+    t.string "duration", default: "PT15M"
     t.index ["task_id"], name: "index_subtasks_on_task_id"
   end
 
@@ -62,10 +64,12 @@ ActiveRecord::Schema[7.1].define(version: 2024_11_24_220106) do
     t.text "description", default: "", null: false
     t.text "comment", default: "", null: false
     t.datetime "start_date"
-    t.datetime "due_date"
     t.boolean "completed", default: false, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.text "ai_feedback"
+    t.datetime "end_date"
+    t.string "duration", default: "PT30M"
     t.index ["user_id"], name: "index_tasks_on_user_id"
   end
 

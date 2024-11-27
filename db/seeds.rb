@@ -74,8 +74,7 @@ these_days = {
 
 # Make some routine tasks
 users.each_with_index do |user, i|
-  start_date = Date.tomorrow
-
+  start_date = Date.today
   # Cold Shower (Stoic Discipline)
   task = Task.new(
     routine: "morning",
@@ -84,6 +83,7 @@ users.each_with_index do |user, i|
     title: "Cold Shower",
     description: "A quick shower to get your body ready for the day.",
     start_date: Time.parse("#{start_date} 06:00"),
+    duration: 15.minutes,
   )
   task.user = user
   task.save!
@@ -99,14 +99,16 @@ users.each_with_index do |user, i|
   task.user = user
   task.save!
   [
-    "Hand 2 Hand Swings - 5x15 Reps",
-    "One Handed Cleans - 5x10 Reps",
-    "Full Snatch - 5x20 Reps",
+    { title: "Hand 2 Hand Swings - 5x15 Reps", duration: 10.minutes },
+    { title: "One Handed Cleans - 5x10 Reps", duration: 10.minutes },
+    { title: "Full Snatch - 5x20 Reps", duration: 10.minutes },
+    { title: "Hand 2 Hand Swings - 5x15 Reps", duration: 10.minutes },
   ]
-    .each_with_index do |exercise, i|
+    .each do |details|
     subtask = Subtask.new(
-      title: exercise,
+      title: details[:title],
       description: Faker::Lorem.paragraph(sentence_count: rand(2..3)),
+      duration: details[:duration],
     )
     subtask.task = task
     subtask.save!
@@ -124,20 +126,20 @@ users.each_with_index do |user, i|
   task.user = user
   task.save!
   [
-    "Find a calm and quiet place.",
-    "Make yourself comfortable.",
-    "Now, empty your mind!!!",
+    { title: "Find a calm and quiet place.", duration: 2.minutes },
+    { title: "Make yourself comfortable.", duration: 2.minutes },
+    { title: "Now, empty your mind and meditate!", duration: 21.minutes },
   ]
-    .each_with_index do |step, i|
+    .each do |details|
     subtask = Subtask.new(
-      title: step,
+      title: details[:title],
+      duration: details[:duration],
     )
     subtask.task = task
     subtask.save!
   end
 
   # Evening Routine - Stoic Exercise (Review the Day)
-  # Reset the 'order' to 1 (as it's a new Routine type)
   task = Task.new(
     routine: "evening",
     recurs_on: these_days,
@@ -149,32 +151,116 @@ users.each_with_index do |user, i|
   task.user = user
   task.save!
   [
-    "Mentally review the day three times from beginning to end.",
-    "What mistakes did you make today?",
-    "What virtue, that is, what strength or wisdom did you show today?",
-    "What have you omitted or what could have been done better?",
-    "Gratitude - What are you grateful for today?",
+    { title: "Mentally review the day three times from beginning to end.", duration: 10.minutes },
+    { title: "What mistakes did you make today?", duration: 5.minutes },
+    { title: "What virtue, that is, what strength or wisdom did you show today?", duration: 5.minutes },
+    { title: "What have you omitted or what could have been done better?", duration: 5.minutes },
+    { title: "Gratitude - What are you grateful for today?", duration: 10.minutes },
   ]
-    .each_with_index do |step, i|
+    .each do |details|
     subtask = Subtask.new(
-      title: step,
+      title: details[:title],
+      duration: details[:duration],
     )
     subtask.task = task
     subtask.save!
   end
 end
 
+these_days = Hash[days.map { |day| [day, "0"] }]
+routine = Task::NONE_ROUTINE_NAME.to_s
+
+# Example Task (Explaining/hinting at the features)
+task = Task.new(
+  routine: routine,
+  recurs_on: these_days,
+  task_type: "general",
+  title: "This is a TASK - Click me and edit me. I'll autoupdate when I lose focus!",
+  description: %{
+    I am also editable in-situ no need to redirect to the uber edit form! I'll
+    also autoupdate when I lose focus like any other element, switch or clicky
+    thing on me 'the task card'! Also, If you want to drag me to a different
+    place on the page. I'll auto-close the moment you click the grab handle.
+    And, if you click on the time I'll open a datepicker so you can pick a new
+    date/time for me. If you check me as complete I'll make sure all my subtasks
+    have been checked aswell. And, if you change your mind and uncheck me, I'll
+    uncheck the last subtask for you! However, if you want to configure the
+    durations of any subtasks you'll have to open the Edit form for that, sorry.
+  }.gsub(/\s+/, " ").strip,
+  start_date: Time.parse("#{Date.today} 07:00"),
+)
+task.user = users[0]
+task.save!
+[
+  {
+    title: "I am the Alpha Task!",
+    description: "I am the first task in the list. That makes me the Alpha but not the Omega!",
+    duration: 15.minutes,
+  },
+  {
+    title: "I am Secundus - the second task!",
+    description: "I am the piggy in the middle of the list. That makes me the Beta but not the Omega!",
+    duration: 15.minutes,
+  },
+  {
+    title: "I am the Omega Task!",
+    description: "I am the last task in the list. That makes me the Omega but not the Alpha!",
+    duration: 15.minutes,
+  },
+]
+  .each do |details|
+  subtask = Subtask.new(
+    title: details[:title],
+    description: details[:description],
+    duration: details[:duration],
+  )
+  subtask.task = task
+  subtask.save!
+end
+
+# Dragon Bootcamp
+task = Task.new(
+  routine: routine,
+  recurs_on: these_days,
+  task_type: "stoic_discipline",
+  title: "Dragon Bootcamp - F8ck Yeah!",
+  description: "All things to do with dragons and riding them. Drakaris!!!",
+  start_date: Time.parse("#{Date.today} 07:30"),
+)
+task.user = users[0]
+task.save!
+[
+  { title: "Dragon Thoery 101.",
+    description: "Just all the boring stuff!",
+    duration: 30.minutes },
+  {
+    title: "Dressage with Vermithor - The Bronze Fury!",
+    description: "Teaching the beast to dance!",
+    duration: 60.minutes,
+  },
+  {
+    title: "Dragon Riding",
+    description: "'Riding' Lessons with the Dragon Queen (Rhaenyra of course!).",
+    duration: 120.minutes,
+  },
+]
+  .each do |details|
+  subtask = Subtask.new(
+    title: details[:title],
+    description: details[:description],
+    duration: details[:duration],
+  )
+  subtask.task = task
+  subtask.save!
+end
+
 # Create some non-routine tasks - actual core-day tasks
-25.times do
-  start_date = Date.tomorrow
-
-  these_days = Hash[days.map { |day| [day, "0"] }]
-  routine = Task::NONE_ROUTINE_NAME.to_s
-
+15.times do
+  start_date = Date.today
   # Randomise the start time
   start_time = "#{rand(8..18)}:#{["00", "15", "30", "45"].sample}"
 
-  start_date = start_time.chars.count == 4 ? Time.parse("#{start_date} 0#{start_time}:00") : Time.parse("#{start_date} #{start_time}:00")
+  start_date = start_time.chars.count == 4 ? Time.parse("#{start_date} 0#{start_time}") : Time.parse("#{start_date} #{start_time}")
   task = Task.new(
     routine: routine,
     recurs_on: these_days,
@@ -186,12 +272,14 @@ end
   )
   task.user = users.sample
   task.save!
+  duration = [15, 30, 45, 60].sample.minutes
   # Add subtasks
   rand(2..3).times do
     subtask = Subtask.new(
       title: Faker::Hobby.activity,
       description: Faker::Lorem.paragraph(sentence_count: rand(15..30)),
       comment: Faker::Quote.famous_last_words,
+      duration: duration,
     )
     subtask.task = task
     subtask.save!
@@ -236,4 +324,4 @@ end
 #     end
 #   end
 # end
-puts "...seeding Database Complete!"
+puts "...database seeded successfully!"
