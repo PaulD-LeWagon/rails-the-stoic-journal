@@ -97,8 +97,10 @@ class SubtasksController < ApplicationController
       :title,
       :description,
       :comment,
+      :ai_feedback,
       :start_date,
-      :due_date,
+      :duration,
+      :end_date,
       :completed,
       :task_id
     )

@@ -127,7 +127,6 @@ class TasksController < ApplicationController
 
   def task_params
     params.require(:task).permit(
-      :order,
       :routine,
       :monday,
       :tuesday,
@@ -140,8 +139,10 @@ class TasksController < ApplicationController
       :title,
       :description,
       :comment,
+      :ai_feedback,
       :start_date,
-      :due_date,
+      :duration,
+      :end_date,
       :completed,
       :active,
       subtasks_attributes: [
@@ -150,6 +151,9 @@ class TasksController < ApplicationController
         :title,
         :description,
         :comment,
+        :ai_feedback,
+        :duration,
+        :end_date,
         :start_date,
         :due_date,
         :completed,

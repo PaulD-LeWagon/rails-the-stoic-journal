@@ -41,7 +41,7 @@ export default class extends Controller {
     // Time format: HH:MM
     this.timeRegex = /^\d{2}:\d{2}$/
     // Date format: YYYY-MM-DD HH:MM
-    this.dateTimeRegex = /^\d{4}-\d{2}-\d{2}\s\d{2}:\d{2}$/
+    this.dateTimeRegex = /^\d{4}-\d{2}-\d{2}\s+\d{2}:\d{2}$/
     // Listen for when a task/subtask form has been edited (submitted via turbo)
     this.element.addEventListener("turbo:frame-load", (e) => {
       this.checkStartDateTime(e)
@@ -144,15 +144,20 @@ export default class extends Controller {
 
   updateCardTitleDate(theDate) {
     try {
+      const newDate = theDate.trim().toDate()
       if (this.hasCardTitleTarget) {
         const fmt = new Intl.DateTimeFormat("en-GB", {
           dateStyle: "full",
           timeStyle: "short",
-        }).format(theDate.toDate())
+        }).format(newDate)
         this.cardTitleTarget.title = fmt
       }
     } catch (error) {
-      console.error("AbstractTaskController.updateCardTitleDate:\n", error)
+      console.error(
+        `AbstractTaskController.updateCardTitleDate:\n[${newDate}] [${fmt}]\n`,
+        error.name,
+        error.message
+      )
     }
   }
 
@@ -186,6 +191,7 @@ export default class extends Controller {
         positionElement: this.startTimeTarget,
         position: "above center",
         dateFormat: "Y-m-d H:i",
+        minDate: new Date(),
         enableTime: true,
         time_24hr: true,
         minTime: "06:00",
@@ -256,17 +262,17 @@ export default class extends Controller {
     this.checked = false
   }
 
-  onCheckboxClicked(e) {
-    e.preventDefault()
-    // Toggle the check icons
-    if (this.isChecked()) {
-      this.uncheckIt()
-    } else {
-      // If it's not checked
-      this.checkIt()
-    }
-    this.doUpdate = true
-  }
+  // onCheckboxClicked(e) {
+  //   e.preventDefault()
+  //   // Toggle the check icons
+  //   if (this.isChecked()) {
+  //     this.uncheckIt()
+  //   } else {
+  //     // If it's not checked
+  //     this.checkIt()
+  //   }
+  //   this.doUpdate = true
+  // }
 
   // Checked Value
 
@@ -287,11 +293,11 @@ export default class extends Controller {
   // Title functionality
 
   get title() {
-    return this.titleTarget.innerText
+    return this.titleTarget.innerText.trim()
   }
 
   set title(value) {
-    this.titleTarget.innerText = value
+    this.titleTarget.innerText = value.trim()
   }
 
   onTitleFocus(e) {
@@ -350,6 +356,6 @@ export default class extends Controller {
   }
 
   set desc(value) {
-    this.descTarget.innerText = value
+    this.descTarget.innerText = value.trim()
   }
 }
