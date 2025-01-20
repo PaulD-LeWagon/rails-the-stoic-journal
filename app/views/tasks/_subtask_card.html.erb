@@ -1,5 +1,5 @@
 <%= turbo_frame_tag "edit_#{ dom_id subtask }_for_#{ dom_id subtask.task }",
-  # refresh: "morph",
+  refresh: "morph",
   data: {
     sortable_target: 'dragable',
     controller: "subtask",

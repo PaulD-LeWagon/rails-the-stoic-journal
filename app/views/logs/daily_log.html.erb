@@ -4,46 +4,23 @@
     <div class="col-md-10 p-3">
 
       <h1 class="mt-5 mb-2">
-        <%= DateTime.now.strftime("Today: it's %I:%M%p on %d/%m/%Y")  %>
-      </h1>
-
-      <h1 class="mt-5 mb-2">
         <span class="badge bg-secondary">
+          <i class="fa-solid fa-calendar-days"></i>
           <%= DateTime.now.strftime("%A") %>
         </span>
-        <%= @today.beginning_of_day.strftime("%I:%M%p")  %>
-        <br>
-        <%= @today.end_of_day.strftime("%I:%M%p")  %>
+        <span class="badge bg-secondary">
+          <i class="fa-solid fa-clock"></i>
+          <%= DateTime.now.strftime("%I:%M%p") %>
+        </span>
+        <span class="badge bg-secondary">
+          <i class="fa-solid fa-calendar"></i>
+          <%= DateTime.now.strftime("%d/%m/%Y") %>
+        </span>
       </h1>
 
       <hr>
 
-<% if false %>
-    <% @todays_tasks_and_day_routines.each do |task| %>
-      <div class="card mb-3">
-        <div class="card-header">
-          <h3 class="card-title">
-            <%= task.title %>
-          </h3>
-          <h4 class="card-text mb-1">
-            <%= task.user.full_name %>
-          </h4>
-          <h4>
-            <%= task.start_date.strftime("%d/%m/%Y - %I:%M%p") %>
-          </h4>
-        </div>
-        <div class="card-body">
-          <p class="card-text">
-            <%= task.description %>
-          </p>
-        </div>
-      </div>
-    <% end %>
-<% end %>
-
-    <div id="task-manager" class="accordion"
-      data-controller="task-manager"
-      data-task-manager-task-outlet=".task">
+    <div id="task-manager" class="accordion">
 
       <div class="card">
 
