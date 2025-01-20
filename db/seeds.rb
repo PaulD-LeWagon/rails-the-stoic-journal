@@ -38,25 +38,14 @@ users << User.create(
 )
 
 users << User.create(
-  email: "jondriveuk@gmail.com",
+  email: "test@test.com",
   password: "password",
-  username: "jon",
-  first_name: "jon",
-  last_name: "hollingsworth",
+  username: "user",
+  first_name: "Test",
+  last_name: "User",
   admin: false,
-  image_url: "https://d26jy9fbi4q9wx.cloudfront.net/rails/active_storage/representations/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBLzFKQXc9PSIsImV4cCI6bnVsbCwicHVyIjoiYmxvYl9pZCJ9fQ==--f8872b71011e210ae17fc973906c1e365fa78db0/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJY0c1bkJqb0dSVlE2RTNKbGMybDZaVjkwYjE5bWFXeHNXd2hwQWNocEFjaDdCam9KWTNKdmNEb09ZWFIwWlc1MGFXOXUiLCJleHAiOm51bGwsInB1ciI6InZhcmlhdGlvbiJ9fQ==--df4f7d63fe19fb30952f52eed6dffc392a97578c/MEZOOM.png",
-  bio: "Spent the last 5 years selling on Etsy, Amazon & ebay ",
-)
-
-users << User.create(
-  email: "rehyan92@gmail.com",
-  password: "Rehyan",
-  username: "Rehyan",
-  first_name: "Rehyan",
-  last_name: "Rhoden",
-  admin: false,
-  image_url: "https://d26jy9fbi4q9wx.cloudfront.net/rails/active_storage/representations/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBMFo0QXc9PSIsImV4cCI6bnVsbCwicHVyIjoiYmxvYl9pZCJ9fQ==--b438ec06c005cb9215b3125338bc5a7055c6e8be/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lKYW5CbFp3WTZCa1ZVT2hOeVpYTnBlbVZmZEc5ZlptbHNiRnNJYVFISWFRSElld1k2Q1dOeWIzQTZEbUYwZEdWdWRHbHZiZz09IiwiZXhwIjpudWxsLCJwdXIiOiJ2YXJpYXRpb24ifX0=--23cdbdf9871e44adeb4d843a03b0793a5f08394b/IMG_4770.jpeg",
-  bio: "I want to further develop my knowledge of front-end and immerse myself in to back end web development. I would love to be a freelance developer working on projects for clients in a diverse creative way.",
+  image_url: "https://www.w3schools.com/howto/img_avatar.png",
+  bio: "I am the test user.",
 )
 
 # Try get better data (English as opposed to 'Lorem Ipsum')
@@ -170,13 +159,14 @@ end
 these_days = Hash[days.map { |day| [day, "0"] }]
 routine = Task::NONE_ROUTINE_NAME.to_s
 
-# Example Task (Explaining/hinting at the features)
-task = Task.new(
-  routine: routine,
-  recurs_on: these_days,
-  task_type: "general",
-  title: "This is a TASK - Click me and edit me. I'll autoupdate when I lose focus!",
-  description: %{
+users.each_with_index do |user, i|
+  # Example Task (Explaining/hinting at the features)
+  task = Task.new(
+    routine: routine,
+    recurs_on: these_days,
+    task_type: "general",
+    title: "This is a TASK - Click me and edit me. I'll autoupdate when I lose focus!",
+    description: %{
     I am also editable in-situ no need to redirect to the uber edit form! I'll
     also autoupdate when I lose focus like any other element, switch or clicky
     thing on me 'the task card'! Also, If you want to drag me to a different
@@ -187,86 +177,86 @@ task = Task.new(
     uncheck the last subtask for you! However, if you want to configure the
     durations of any subtasks you'll have to open the Edit form for that, sorry.
   }.gsub(/\s+/, " ").strip,
-  start_date: Time.parse("#{Date.today} 07:00"),
-)
-task.user = users[0]
-task.save!
-[
-  {
-    title: "I am the Alpha Task!",
-    description: "I am the first task in the list. That makes me the Alpha but not the Omega!",
-    duration: 15.minutes,
-  },
-  {
-    title: "I am Secundus - the second task!",
-    description: "I am the piggy in the middle of the list. That makes me the Beta but not the Omega!",
-    duration: 15.minutes,
-  },
-  {
-    title: "I am the Omega Task!",
-    description: "I am the last task in the list. That makes me the Omega but not the Alpha!",
-    duration: 15.minutes,
-  },
-]
-  .each do |details|
-  subtask = Subtask.new(
-    title: details[:title],
-    description: details[:description],
-    duration: details[:duration],
+    start_date: Time.parse("#{Date.today} 07:00"),
   )
-  subtask.task = task
-  subtask.save!
+  task.user = user
+  task.save!
+  [
+    {
+      title: "I am the Alpha Task!",
+      description: "I am the first task in the list. That makes me the Alpha but not the Omega!",
+      duration: 15.minutes,
+    },
+    {
+      title: "I am Secundus - the second task!",
+      description: "I am the piggy in the middle of the list. That makes me the Beta but not the Omega!",
+      duration: 15.minutes,
+    },
+    {
+      title: "I am the Omega Task!",
+      description: "I am the last task in the list. That makes me the Omega but not the Alpha!",
+      duration: 15.minutes,
+    },
+  ].each do |details|
+    subtask = Subtask.new(
+      title: details[:title],
+      description: details[:description],
+      duration: details[:duration],
+    )
+    subtask.task = task
+    subtask.save!
+  end
+
+  # Dragon Bootcamp
+  task = Task.new(
+    routine: routine,
+    recurs_on: these_days,
+    task_type: "stoic_discipline",
+    title: "Dragon Bootcamp - F8ck Yeah!",
+    description: "All things to do with dragons and riding them. Drakaris!!!",
+    start_date: Time.parse("#{Date.today} 07:30"),
+  )
+  task.user = user
+  task.save!
+  [
+    { title: "Dragon Thoery 101.",
+      description: "Just all the boring stuff!",
+      duration: 30.minutes },
+    {
+      title: "Dressage with Vermithor - The Bronze Fury!",
+      description: "Teaching the beast to dance!",
+      duration: 60.minutes,
+    },
+    {
+      title: "Dragon Riding",
+      description: "'Riding' Lessons with the Dragon Queen (Rhaenyra of course!).",
+      duration: 120.minutes,
+    },
+  ].each do |details|
+    subtask = Subtask.new(
+      title: details[:title],
+      description: details[:description],
+      duration: details[:duration],
+    )
+    subtask.task = task
+    subtask.save!
+  end
 end
 
-# Dragon Bootcamp
-task = Task.new(
-  routine: routine,
-  recurs_on: these_days,
-  task_type: "stoic_discipline",
-  title: "Dragon Bootcamp - F8ck Yeah!",
-  description: "All things to do with dragons and riding them. Drakaris!!!",
-  start_date: Time.parse("#{Date.today} 07:30"),
-)
-task.user = users[0]
-task.save!
-[
-  { title: "Dragon Thoery 101.",
-    description: "Just all the boring stuff!",
-    duration: 30.minutes },
-  {
-    title: "Dressage with Vermithor - The Bronze Fury!",
-    description: "Teaching the beast to dance!",
-    duration: 60.minutes,
-  },
-  {
-    title: "Dragon Riding",
-    description: "'Riding' Lessons with the Dragon Queen (Rhaenyra of course!).",
-    duration: 120.minutes,
-  },
-]
-  .each do |details|
-  subtask = Subtask.new(
-    title: details[:title],
-    description: details[:description],
-    duration: details[:duration],
-  )
-  subtask.task = task
-  subtask.save!
-end
-
+start_date = Date.today
+one_in_three_days = [start_date, start_date - 1.day, start_date + 1.days]
 # Create some non-routine tasks - actual core-day tasks
-15.times do
-  start_date = Date.today
+45.times do
   # Randomise the start time
   start_time = "#{rand(8..18)}:#{["00", "15", "30", "45"].sample}"
+  start_date = start_time.chars.count == 4 ? Time.parse("#{one_in_three_days.sample} 0#{start_time}") : Time.parse("#{one_in_three_days.sample} #{start_time}")
 
-  start_date = start_time.chars.count == 4 ? Time.parse("#{start_date} 0#{start_time}") : Time.parse("#{start_date} #{start_time}")
   task = Task.new(
     routine: routine,
     recurs_on: these_days,
     task_type: Task.task_types.keys[rand(0..(Task.task_types.length - 1))],
     title: Faker::Hobby.activity,
-    description: Faker::Quote.famous_last_words + " " + Faker::Lorem.paragraph(sentence_count: rand(15..30)),
+    description: Faker::Quote.famous_last_words + "\n " + Faker::Lorem.paragraph(sentence_count: rand(15..30)),
     comment: Faker::Quote.famous_last_words,
     start_date: start_date,
   )
@@ -324,4 +314,5 @@ end
 #     end
 #   end
 # end
+
 puts "...database seeded successfully!"

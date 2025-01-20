@@ -1,15 +1,247 @@
 <main class="container">
-<div class="d-flex justify-content-center align-items-start min-vh-100">
+  <div class="d-flex justify-content-center align-items-start min-vh-100">
 
-  <div class="col-md-10 p-3">
+    <div class="col-md-10 p-3">
 
-    <h1 class="mt-5 mb-2">
-      <%= DateTime.now.strftime("Today it's %I:%M%p on %d/%m/%Y")  %>
-    </h1>
+      <h1 class="mt-5 mb-2">
+        <%= DateTime.now.strftime("Today: it's %I:%M%p on %d/%m/%Y")  %>
+      </h1>
 
-    <hr>
+      <h1 class="mt-5 mb-2">
+        <span class="badge bg-secondary">
+          <%= DateTime.now.strftime("%A") %>
+        </span>
+        <%= @today.beginning_of_day.strftime("%I:%M%p")  %>
+        <br>
+        <%= @today.end_of_day.strftime("%I:%M%p")  %>
+      </h1>
+
+      <hr>
+
+<% if false %>
+    <% @todays_tasks_and_day_routines.each do |task| %>
+      <div class="card mb-3">
+        <div class="card-header">
+          <h3 class="card-title">
+            <%= task.title %>
+          </h3>
+          <h4 class="card-text mb-1">
+            <%= task.user.full_name %>
+          </h4>
+          <h4>
+            <%= task.start_date.strftime("%d/%m/%Y - %I:%M%p") %>
+          </h4>
+        </div>
+        <div class="card-body">
+          <p class="card-text">
+            <%= task.description %>
+          </p>
+        </div>
+      </div>
+    <% end %>
+<% end %>
+
+    <div id="task-manager" class="accordion"
+      data-controller="task-manager"
+      data-task-manager-task-outlet=".task">
+
+      <div class="card">
+
+        <div class="card-header" id="morning-routine">
+
+          <%= turbo_frame_tag "morning_routine" do %>
+
+            <div class="header d-flex justify-content-between align-items-center">
+
+              <h2 class="my-5 mb-3 fst-bold">
+                <button type="button"
+                  data-toggle="collapse"
+                  data-target="#collapseOne"
+                  aria-expanded="true"
+                  aria-controls="collapseOne">
+                  Morning Routine
+                </button>
+              </h2>
+
+              <%= link_to new_task_path(routine: 'morning'),
+                data: {
+                  turbo_frame: "new_morning_routine_turbo_frame",
+                },
+                class: "btn bg-quinary btn-lg",
+                title: "Add a new Routine" do %>
+
+                <i class="fa-solid fa-square-plus"></i>
+
+              <% end %>
+
+            </div>
+
+          <% end %>
+
+        </div>
+
+        <div id="collapseOne"
+          class="collapse show"
+          aria-labelledby="morning-routine"
+          data-parent="#task-manager">
+
+          <div class="card-body">
+
+            <% @turbo_frame_id = "new_morning_routine_turbo_frame" %>
+
+            <%= turbo_frame_tag @turbo_frame_id,
+              data: {
+                controller: "sortable",
+                sortable_task_outlet: '.task',
+                sortable_group_value: @turbo_frame_id
+              } do %>
+
+              <% @todays_am_routines.each do |routine| %>
+
+                <%= render 'tasks/task_card', task: routine, turbo_frame_id: @turbo_frame_id %>
+
+              <% end %>
+
+            <% end %>
+
+          </div>
+        </div>
+
+      </div>
+
+      <div class="card">
+
+        <div class="card-header" id="core-day">
+
+          <%= turbo_frame_tag "core_day_routine" do %>
+
+            <div class="header d-flex justify-content-between align-items-center">
+
+              <h2 class="my-5 mb-3 fst-bold">
+                <button
+                  class="collapsed"
+                  type="button"
+                  data-toggle="collapse"
+                  data-target="#collapseTwo"
+                  aria-expanded="false"
+                  aria-controls="collapseTwo">
+                  Core Day Routines
+                </button>
+              </h2>
+
+              <%= link_to new_task_path(routine: 'day'),
+                data: {
+                  turbo_frame: "new_day_routine_turbo_frame",
+                },
+                class: "btn bg-quinary btn-lg",
+                title: "Add a new Routine" do %>
+
+                <i class="fa-solid fa-square-plus"></i>
+
+              <% end %>
+
+            </div>
+
+          <% end %>
+
+        </div>
+        <div id="collapseTwo"
+          class="collapse"
+          aria-labelledby="core-day"
+          data-parent="#task-manager">
+
+          <div class="card-body">
+
+            <% @turbo_frame_id = "new_day_routine_turbo_frame" %>
+
+            <%= turbo_frame_tag @turbo_frame_id,
+              data: {
+                controller: "sortable",
+                sortable_task_outlet: '.task',
+                sortable_group_value: @turbo_frame_id
+              } do %>
+
+              <% @todays_tasks_and_day_routines.each do |routine| %>
+
+                <%= render 'tasks/task_card', task: routine, turbo_frame_id: @turbo_frame_id %>
+
+              <% end %>
+
+            <% end %>
+
+
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+
+        <div class="card-header" id="evening-routine">
+
+          <%= turbo_frame_tag "evening_routine" do %>
+
+            <div class="header d-flex justify-content-between align-items-center">
+
+              <h2 class="my-5 mb-3 fst-bold">
+                <button
+                  class="collapsed"
+                  type="button"
+                  data-toggle="collapse"
+                  data-target="#collapseThree"
+                  aria-expanded="false"
+                  aria-controls="collapseThree">
+                  Evening Routine
+                </button>
+              </h2>
+
+              <%= link_to new_task_path(routine: 'evening'),
+                data: {
+                  turbo_frame: "new_evening_routine_turbo_frame",
+                },
+                class: "btn bg-quinary btn-lg",
+                title: "Add a new Routine" do %>
+
+                <i class="fa-solid fa-square-plus"></i>
+
+              <% end %>
+
+            </div>
+
+          <% end %>
+
+        </div>
+        <div id="collapseThree"
+          class="collapse"
+          aria-labelledby="evening-routine"
+          data-parent="#task-manager">
+
+          <div class="card-body">
+
+            <% @turbo_frame_id = "new_evening_routine_turbo_frame" %>
+
+            <%= turbo_frame_tag @turbo_frame_id,
+              data: {
+                controller: "sortable",
+                sortable_task_outlet: '.task',
+                sortable_group_value: @turbo_frame_id
+              } do %>
+
+              <% @todays_pm_routines.each do |routine| %>
+
+                <%= render 'tasks/task_card', task: routine, turbo_frame_id: @turbo_frame_id %>
+
+              <% end %>
+
+            <% end %>
 
 
 
-</div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
 </main>

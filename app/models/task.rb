@@ -11,7 +11,7 @@ class Task < ApplicationRecord
   before_save :hms_to_duration
 
   after_find do |task|
-    p task.duration.class, task.duration
+    # p task.duration.class, task.duration
   end
 
   after_initialize :set_default_start_date, if: :new_record?
