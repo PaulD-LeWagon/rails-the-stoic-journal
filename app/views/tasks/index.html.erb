@@ -10,7 +10,8 @@
 
         <%= link_to new_task_path,
           data: {
-            turbo_frame: "new_task_turbo_frame"
+            # turbo_frame: "new_task_turbo_frame"
+            turbo_frame: @turbo_frame_id
           },
           class: "btn bg-quinary btn-lg",
           title: "Add a new task" do %>

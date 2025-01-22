@@ -34,15 +34,17 @@
                 <button type="button"
                   data-toggle="collapse"
                   data-target="#collapseOne"
-                  aria-expanded="true"
+                  aria-expanded="false"
                   aria-controls="collapseOne">
                   Morning Routine
                 </button>
               </h2>
 
+              <% @turbo_frame_id = "new_morning_routine_turbo_frame" %>
+
               <%= link_to new_task_path(routine: 'morning'),
                 data: {
-                  turbo_frame: "new_morning_routine_turbo_frame",
+                  turbo_frame: @turbo_frame_id,
                 },
                 class: "btn bg-quinary btn-lg",
                 title: "Add a new Routine" do %>
@@ -58,13 +60,11 @@
         </div>
 
         <div id="collapseOne"
-          class="collapse show"
+          class="collapse"
           aria-labelledby="morning-routine"
           data-parent="#task-manager">
 
           <div class="card-body">
-
-            <% @turbo_frame_id = "new_morning_routine_turbo_frame" %>
 
             <%= turbo_frame_tag @turbo_frame_id,
               data: {
@@ -100,15 +100,17 @@
                   type="button"
                   data-toggle="collapse"
                   data-target="#collapseTwo"
-                  aria-expanded="false"
+                  aria-expanded="true"
                   aria-controls="collapseTwo">
-                  Core Day Routines
+                  Core Day Tasks
                 </button>
               </h2>
 
-              <%= link_to new_task_path(routine: 'day'),
+              <% @turbo_frame_id = "new_#{ Task::NONE_ROUTINE_NAME }_routine_turbo_frame" %>
+
+              <%= link_to new_task_path(routine: Task::NONE_ROUTINE_NAME),
                 data: {
-                  turbo_frame: "new_day_routine_turbo_frame",
+                  turbo_frame: @turbo_frame_id,
                 },
                 class: "btn bg-quinary btn-lg",
                 title: "Add a new Routine" do %>
@@ -123,13 +125,11 @@
 
         </div>
         <div id="collapseTwo"
-          class="collapse"
+          class="collapse show"
           aria-labelledby="core-day"
           data-parent="#task-manager">
 
           <div class="card-body">
-
-            <% @turbo_frame_id = "new_day_routine_turbo_frame" %>
 
             <%= turbo_frame_tag @turbo_frame_id,
               data: {
@@ -171,9 +171,11 @@
                 </button>
               </h2>
 
+              <% @turbo_frame_id = "new_evening_routine_turbo_frame" %>
+
               <%= link_to new_task_path(routine: 'evening'),
                 data: {
-                  turbo_frame: "new_evening_routine_turbo_frame",
+                  turbo_frame: @turbo_frame_id,
                 },
                 class: "btn bg-quinary btn-lg",
                 title: "Add a new Routine" do %>
@@ -194,8 +196,6 @@
 
           <div class="card-body">
 
-            <% @turbo_frame_id = "new_evening_routine_turbo_frame" %>
-
             <%= turbo_frame_tag @turbo_frame_id,
               data: {
                 controller: "sortable",
@@ -210,8 +210,6 @@
               <% end %>
 
             <% end %>
-
-
 
           </div>
         </div>
