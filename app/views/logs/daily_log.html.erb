@@ -1,43 +1,39 @@
-<main class="container">
-  <div class="d-flex justify-content-center align-items-start min-vh-100">
+<main>
+  <div  id="daily-log" class="container-md">
 
-    <div class="col-md-10 p-3">
+    <h1 class="mt-4 mb-0">
+      <span class="display-5 d-flex justify-content-end align-items-center">
 
-      <h1 class="mt-5 mb-2">
-        <span class="badge bg-secondary">
-          <i class="fa-solid fa-calendar-days"></i>
-          <%= DateTime.now.strftime("%A") %>
-        </span>
-        <span class="badge bg-secondary">
-          <i class="fa-solid fa-clock"></i>
-          <%= DateTime.now.strftime("%I:%M%p") %>
-        </span>
-        <span class="badge bg-secondary">
-          <i class="fa-solid fa-calendar"></i>
-          <%= DateTime.now.strftime("%d/%m/%Y") %>
-        </span>
-      </h1>
+        Daily Log: <%= DateTime.now.strftime("%A, %I:%M%P, %d-%m-%Y") %>
 
-      <hr>
+      </span>
+    </h1>
 
-    <div id="task-manager" class="accordion">
+    <hr>
+
+    <div id="task-accordian" class="accordian">
 
       <div class="card">
 
-        <div class="card-header" id="morning-routine">
+        <div id="morning-routine" class="card-header badge bg-secondary p-0 px-2">
 
           <%= turbo_frame_tag "morning_routine" do %>
 
             <div class="header d-flex justify-content-between align-items-center">
 
-              <h2 class="my-5 mb-3 fst-bold">
-                <button type="button"
+              <h2 class="my-3 fst-bold">
+                <a class="accordian-toggle-button"
+                  href="#collapseOne"
+                  type="button"
                   data-toggle="collapse"
                   data-target="#collapseOne"
-                  aria-expanded="false"
+                  aria-expanded="true"
                   aria-controls="collapseOne">
-                  Morning Routine
-                </button>
+                  <span class="badge">
+                    <i class="fa-solid fa-clock"></i>
+                    Morning Routine
+                  </span>
+                </a>
               </h2>
 
               <% @turbo_frame_id = "new_morning_routine_turbo_frame" %>
@@ -46,10 +42,11 @@
                 data: {
                   turbo_frame: @turbo_frame_id,
                 },
-                class: "btn bg-quinary btn-lg",
+                class: "btn btn-transparent btn-lg",
+                style: "color: #fff;",
                 title: "Add a new Routine" do %>
 
-                <i class="fa-solid fa-square-plus"></i>
+                <i class="fa-regular fa-calendar-plus"></i>
 
               <% end %>
 
@@ -60,9 +57,9 @@
         </div>
 
         <div id="collapseOne"
-          class="collapse"
+          class="collapse show"
           aria-labelledby="morning-routine"
-          data-parent="#task-manager">
+          data-parent="#task-accordian">
 
           <div class="card-body">
 
@@ -88,22 +85,26 @@
 
       <div class="card">
 
-        <div class="card-header" id="core-day">
+        <div id="core-day" class="card-header badge bg-secondary p-0 px-2">
 
           <%= turbo_frame_tag "core_day_routine" do %>
 
             <div class="header d-flex justify-content-between align-items-center">
 
-              <h2 class="my-5 mb-3 fst-bold">
-                <button
+              <h2 class="my-3 fst-bold">
+                <a class="accordian-toggle-button"
+                  href="#collapseTwo"
                   class="collapsed"
                   type="button"
                   data-toggle="collapse"
                   data-target="#collapseTwo"
-                  aria-expanded="true"
-                  aria-controls="collapseTwo">
-                  Core Day Tasks
-                </button>
+                  aria-expanded="false"
+                button aria-controls="collapseTwo">
+                  <span class="badge bg-secondary">
+                    <i class="fa-solid fa-clock"></i>
+                    Core Day Tasks
+                  </span>
+                </a>
               </h2>
 
               <% @turbo_frame_id = "new_#{ Task::NONE_ROUTINE_NAME }_routine_turbo_frame" %>
@@ -112,10 +113,11 @@
                 data: {
                   turbo_frame: @turbo_frame_id,
                 },
-                class: "btn bg-quinary btn-lg",
+                class: "btn bg-transparent btn-lg",
+                style: "color: #fff;",
                 title: "Add a new Routine" do %>
 
-                <i class="fa-solid fa-square-plus"></i>
+                <i class="fa-regular fa-calendar-plus"></i>
 
               <% end %>
 
@@ -125,9 +127,9 @@
 
         </div>
         <div id="collapseTwo"
-          class="collapse show"
+          class="collapse"
           aria-labelledby="core-day"
-          data-parent="#task-manager">
+          data-parent="#task-accordian">
 
           <div class="card-body">
 
@@ -153,22 +155,26 @@
 
       <div class="card">
 
-        <div class="card-header" id="evening-routine">
+        <div id="evening-routine" class="card-header badge bg-secondary p-0 px-2">
 
           <%= turbo_frame_tag "evening_routine" do %>
 
             <div class="header d-flex justify-content-between align-items-center">
 
-              <h2 class="my-5 mb-3 fst-bold">
-                <button
+              <h2 class="my-3 fst-bold">
+                <a class="accordian-toggle-button"
+                  href="#collapseThree"
                   class="collapsed"
                   type="button"
                   data-toggle="collapse"
                   data-target="#collapseThree"
                   aria-expanded="false"
                   aria-controls="collapseThree">
-                  Evening Routine
-                </button>
+                  <span class="badge bg-secondary">
+                    <i class="fa-solid fa-clock"></i>
+                    Evening Routine
+                  </span>
+                </a>
               </h2>
 
               <% @turbo_frame_id = "new_evening_routine_turbo_frame" %>
@@ -177,10 +183,11 @@
                 data: {
                   turbo_frame: @turbo_frame_id,
                 },
-                class: "btn bg-quinary btn-lg",
+                class: "btn bg-transparent btn-lg",
+                style: "color: #fff;",
                 title: "Add a new Routine" do %>
 
-                <i class="fa-solid fa-square-plus"></i>
+                <i class="fa-regular fa-calendar-plus"></i>
 
               <% end %>
 
@@ -192,7 +199,7 @@
         <div id="collapseThree"
           class="collapse"
           aria-labelledby="evening-routine"
-          data-parent="#task-manager">
+          data-parent="#task-accordian">
 
           <div class="card-body">
 
@@ -217,6 +224,8 @@
       </div>
 
     </div>
+
+    <hr>
 
   </div>
 </main>

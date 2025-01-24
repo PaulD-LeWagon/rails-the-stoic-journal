@@ -20,7 +20,7 @@ class TasksController < ApplicationController
       @task = Task.new(routine: routine, user: current_user)
     else
       @task = Task.new(user: current_user)
-      # Not needed as the form will create the subtasks via <button>
+      # Not needed as the form will create the subtasks via + <button>
       # @task.subtasks.build
     end
     authorize @task

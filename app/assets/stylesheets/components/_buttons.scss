@@ -105,3 +105,16 @@
     border-color: $disabled-border;
   }
 }
+
+.btn-xs {
+  @include button-size(0.15rem, 0.4rem, $btn-font-size-sm, 1px);
+}
+
+.btn-sm {
+  @include button-size(
+    $btn-padding-y-sm,
+    $btn-padding-x-sm,
+    $btn-font-size-sm,
+    $btn-border-radius-sm
+  );
+}

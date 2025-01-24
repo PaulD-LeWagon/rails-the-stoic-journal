@@ -1,0 +1,42 @@
+/* Headings */
+.RR-form h2,
+.RR-form h3 {
+  font-family: "Arial", sans-serif;
+  color: #333;
+  margin-bottom: 15px;
+}
+
+#profile-page .left {
+  width: 43% !important;
+}
+
+#profile-page .right {
+  width: 57% !important;
+}
+
+// Task card modifications for the profile page
+//
+#profile-page .card.task .card-header h3.card-title,
+#profile-page .card.subtask .card-header h3.card-title > * {
+  // font-weight: 500 !important;
+  font-size: 1.1em !important;
+}
+#profile-page .card.task .card-body .card-text,
+#profile-page .card.subtask .card-body .card-text {
+  // font-weight: 500 !important;
+  font-size: 0.9em !important;
+}
+
+#profile-page .card.task .card-header h3.card-title,
+#profile-page .card.subtask .card-header h3.card-title {
+  font-weight: 500;
+  font-size: 1.2em !important;
+}
+#profile-page .card.task .card-body .card-text,
+#profile-page .card.subtask .card-body .card-text {
+  font-weight: 500;
+  font-size: 0.9em !important;
+}
+#profile-page h2 button {
+  border: none !important;
+}
