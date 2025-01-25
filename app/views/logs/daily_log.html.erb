@@ -1,15 +1,231 @@
-<main class="container">
-<div class="d-flex justify-content-center align-items-start min-vh-100">
+<main>
+  <div  id="daily-log" class="container-md">
 
-  <div class="col-md-10 p-3">
+    <h1 class="mt-4 mb-0">
+      <span class="display-5 d-flex justify-content-end align-items-center">
 
-    <h1 class="mt-5 mb-2">
-      <%= DateTime.now.strftime("Today it's %I:%M%p on %d/%m/%Y")  %>
+        Daily Log: <%= DateTime.now.strftime("%A, %I:%M%P, %d-%m-%Y") %>
+
+      </span>
     </h1>
 
     <hr>
 
+    <div id="task-accordian" class="accordian">
+
+      <div class="card">
+
+        <div id="morning-routine" class="card-header badge bg-secondary p-0 px-2">
+
+          <%= turbo_frame_tag "morning_routine" do %>
+
+            <div class="header d-flex justify-content-between align-items-center">
+
+              <h2 class="my-3 fst-bold">
+                <a class="accordian-toggle-button"
+                  href="#collapseOne"
+                  type="button"
+                  data-toggle="collapse"
+                  data-target="#collapseOne"
+                  aria-expanded="true"
+                  aria-controls="collapseOne">
+                  <span class="badge">
+                    <i class="fa-solid fa-clock"></i>
+                    Morning Routine
+                  </span>
+                </a>
+              </h2>
+
+              <% @turbo_frame_id = "new_morning_routine_turbo_frame" %>
+
+              <%= link_to new_task_path(routine: 'morning'),
+                data: {
+                  turbo_frame: @turbo_frame_id,
+                },
+                class: "btn btn-transparent btn-lg",
+                style: "color: #fff;",
+                title: "Add a new Routine" do %>
+
+                <i class="fa-regular fa-calendar-plus"></i>
+
+              <% end %>
+
+            </div>
+
+          <% end %>
+
+        </div>
+
+        <div id="collapseOne"
+          class="collapse show"
+          aria-labelledby="morning-routine"
+          data-parent="#task-accordian">
+
+          <div class="card-body">
+
+            <%= turbo_frame_tag @turbo_frame_id,
+              data: {
+                controller: "sortable",
+                sortable_task_outlet: '.task',
+                sortable_group_value: @turbo_frame_id
+              } do %>
+
+              <% @todays_am_routines.each do |routine| %>
+
+                <%= render 'tasks/task_card', task: routine, turbo_frame_id: @turbo_frame_id %>
+
+              <% end %>
+
+            <% end %>
+
+          </div>
+        </div>
+
+      </div>
+
+      <div class="card">
+
+        <div id="core-day" class="card-header badge bg-secondary p-0 px-2">
+
+          <%= turbo_frame_tag "core_day_routine" do %>
+
+            <div class="header d-flex justify-content-between align-items-center">
+
+              <h2 class="my-3 fst-bold">
+                <a class="accordian-toggle-button"
+                  href="#collapseTwo"
+                  class="collapsed"
+                  type="button"
+                  data-toggle="collapse"
+                  data-target="#collapseTwo"
+                  aria-expanded="false"
+                button aria-controls="collapseTwo">
+                  <span class="badge bg-secondary">
+                    <i class="fa-solid fa-clock"></i>
+                    Core Day Tasks
+                  </span>
+                </a>
+              </h2>
+
+              <% @turbo_frame_id = "new_#{ Task::NONE_ROUTINE_NAME }_routine_turbo_frame" %>
+
+              <%= link_to new_task_path(routine: Task::NONE_ROUTINE_NAME),
+                data: {
+                  turbo_frame: @turbo_frame_id,
+                },
+                class: "btn bg-transparent btn-lg",
+                style: "color: #fff;",
+                title: "Add a new Routine" do %>
+
+                <i class="fa-regular fa-calendar-plus"></i>
+
+              <% end %>
+
+            </div>
+
+          <% end %>
+
+        </div>
+        <div id="collapseTwo"
+          class="collapse"
+          aria-labelledby="core-day"
+          data-parent="#task-accordian">
+
+          <div class="card-body">
+
+            <%= turbo_frame_tag @turbo_frame_id,
+              data: {
+                controller: "sortable",
+                sortable_task_outlet: '.task',
+                sortable_group_value: @turbo_frame_id
+              } do %>
+
+              <% @todays_tasks_and_day_routines.each do |routine| %>
+
+                <%= render 'tasks/task_card', task: routine, turbo_frame_id: @turbo_frame_id %>
+
+              <% end %>
+
+            <% end %>
 
 
-</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+
+        <div id="evening-routine" class="card-header badge bg-secondary p-0 px-2">
+
+          <%= turbo_frame_tag "evening_routine" do %>
+
+            <div class="header d-flex justify-content-between align-items-center">
+
+              <h2 class="my-3 fst-bold">
+                <a class="accordian-toggle-button"
+                  href="#collapseThree"
+                  class="collapsed"
+                  type="button"
+                  data-toggle="collapse"
+                  data-target="#collapseThree"
+                  aria-expanded="false"
+                  aria-controls="collapseThree">
+                  <span class="badge bg-secondary">
+                    <i class="fa-solid fa-clock"></i>
+                    Evening Routine
+                  </span>
+                </a>
+              </h2>
+
+              <% @turbo_frame_id = "new_evening_routine_turbo_frame" %>
+
+              <%= link_to new_task_path(routine: 'evening'),
+                data: {
+                  turbo_frame: @turbo_frame_id,
+                },
+                class: "btn bg-transparent btn-lg",
+                style: "color: #fff;",
+                title: "Add a new Routine" do %>
+
+                <i class="fa-regular fa-calendar-plus"></i>
+
+              <% end %>
+
+            </div>
+
+          <% end %>
+
+        </div>
+        <div id="collapseThree"
+          class="collapse"
+          aria-labelledby="evening-routine"
+          data-parent="#task-accordian">
+
+          <div class="card-body">
+
+            <%= turbo_frame_tag @turbo_frame_id,
+              data: {
+                controller: "sortable",
+                sortable_task_outlet: '.task',
+                sortable_group_value: @turbo_frame_id
+              } do %>
+
+              <% @todays_pm_routines.each do |routine| %>
+
+                <%= render 'tasks/task_card', task: routine, turbo_frame_id: @turbo_frame_id %>
+
+              <% end %>
+
+            <% end %>
+
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <hr>
+
+  </div>
 </main>

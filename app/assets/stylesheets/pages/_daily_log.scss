@@ -1,0 +1,10 @@
+@import "components/task_card";
+@import "components/task_form";
+
+#daily-log {
+  #task-accordian {
+    .accordian-toggle-button {
+      border: none !important;
+    }
+  }
+}

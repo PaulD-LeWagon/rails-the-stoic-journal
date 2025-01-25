@@ -1,0 +1,160 @@
+body {
+  // Should be: font-family: "Playwrite DE Grund", cursive;
+  // see config/_fonts.scs to change this globally
+  background-color: $body-bg;
+  font-optical-sizing: auto;
+  font-weight: 500;
+  font-style: normal;
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    // Should be: Urbanist, see config/_fonts.scs to change this globally
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
+  }
+  // input:invalid + span::after {
+  //   content: "✖";
+  //   padding-left: 5px;
+  // }
+
+  // input:valid + span::after {
+  //   content: "✓";
+  //   padding-left: 5px;
+  // }
+
+  .btn {
+    font-weight: 900;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  }
+
+  .btn-transparent {
+    background-color: inherit;
+    border: none;
+  }
+
+  .element {
+    /* Red background with 50% opacity */
+    background: hsla(0, 100%, 50%, 0.5);
+    /* Text color remains fully opaque */
+    color: #000;
+  }
+
+  .bg-red {
+    background-color: $red !important;
+  }
+  .bg-blue {
+    background-color: $blue !important;
+  }
+  .bg-yellow {
+    background-color: $yellow !important;
+  }
+
+  // Theme class definitions
+  .hd-font {
+    font-family: $headers-font !important;
+  }
+  .bd-font {
+    font-family: $body-font !important;
+  }
+
+  .bg-primary {
+    background-color: $primary !important;
+  }
+  .text-primary {
+    color: $primary !important;
+  }
+
+  .bg-secondary {
+    background-color: $secondary !important;
+  }
+  .text-secondary {
+    color: $secondary !important;
+  }
+
+  .bg-tertiary {
+    background-color: $tertiary !important;
+  }
+  .text-tertiary {
+    color: $tertiary !important;
+  }
+
+  .bg-quarternary {
+    background-color: $quarternary !important;
+  }
+  .text-quarternary {
+    color: $quarternary;
+  }
+
+  .bg-quinary {
+    background-color: $quinary !important;
+  }
+  .text-quinary {
+    color: $quinary !important;
+  }
+
+  .navbar {
+    font-family: $body-font;
+    font-weight: 300;
+    .sticky-top {
+      border-bottom: 7px solid $success;
+    }
+    .nav-item {
+      .avatar {
+        font-size: 1.5rem;
+        color: var(--bs-nav-link-color);
+        margin-left: 5px;
+        img.avatar {
+          border: solid 3px $success;
+        }
+      }
+    }
+  }
+
+  .animate-shadow {
+    box-shadow: 0 0 0 rgba(0, 0, 0, 0.2);
+    transition: box-shadow 0.3s ease-in-out;
+  }
+  .animate-shadow:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.45);
+  }
+  .animate-inset-shadow {
+    box-shadow: inset 0 0 0 rgba(0, 0, 0, 0.15);
+    transition: box-shadow 0.3s ease-in-out;
+  }
+  .animate-inset-shadow:hover {
+    box-shadow: inset 0 4px 8px rgba(0, 0, 0, 0.5);
+  }
+  .animate-text-shadow {
+    text-shadow: 0 0 0 rgba(0, 0, 0, 0.15);
+    transition: text-shadow 0.3s ease-in-out;
+  }
+  .animate-text-shadow:hover {
+    text-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+  }
+
+  .text-nowrap {
+    white-space: nowrap;
+  }
+
+  .form {
+    font-size: 0.75rem !important;
+  }
+
+  .devise-signup-links a {
+    color: $gray;
+    text-decoration: none;
+    font-size: 0.75rem;
+    font-style: italic;
+  }
+
+  footer {
+    margin-top: 75px;
+    height: 300px;
+    background-color: $secondary;
+  }
+}

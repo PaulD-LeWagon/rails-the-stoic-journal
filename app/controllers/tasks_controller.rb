@@ -4,9 +4,9 @@ class TasksController < ApplicationController
 
   def index
     if has_valid_routine?
-      @tasks = policy_scope(Task.filter_by_user_routines(current_user, params[:routine]))
+      @tasks = policy_scope(Task).where(user: current_user, routine: params[:routine])
     else
-      @tasks = policy_scope(Task).where(routine: Task::NONE_ROUTINE_NAME)
+      @tasks = policy_scope(Task).where(user: current_user, routine: Task::NONE_ROUTINE_NAME)
     end
   end
 
@@ -16,13 +16,14 @@ class TasksController < ApplicationController
 
   def new
     if has_valid_routine?
-      @task = Task.new(routine: params[:routine].to_sym, user: current_user)
-      authorize @task
+      routine = params[:routine].is_a?(Array) ? Task::NONE_ROUTINE_NAME : params[:routine].to_sym
+      @task = Task.new(routine: routine, user: current_user)
     else
       @task = Task.new(user: current_user)
-      @task.subtasks.build
-      authorize @task
+      # Not needed as the form will create the subtasks via + <button>
+      # @task.subtasks.build
     end
+    authorize @task
   end
 
   def create
@@ -31,7 +32,11 @@ class TasksController < ApplicationController
     authorize @task
     respond_to do |format|
       if @task.save
-        path = @task.routine? ? tasks_path(routine: @task.routine) : tasks_path
+        if (request.referer.include?("log"))
+          path = request.referer
+        else
+          path = @task.routine? ? tasks_path(routine: @task.routine) : tasks_path
+        end
         format.html { redirect_to path, notice: "Task, #{@task.title}, created successfully with #{@task.subtasks.count} sub tasks!", status: :see_other }
         format.json do
           resp = {
@@ -163,10 +168,17 @@ class TasksController < ApplicationController
   end
 
   def has_valid_routine?
-    defined?(params[:routine]) && Task.routines.include?(params[:routine])
+    if defined?(params[:routine])
+      routine = params[:routine]
+      routine.is_a?(Array) ? (Task.routines.keys & routine).any? : Task.routines.include?(routine)
+    else
+      false
+    end
   end
 
   def set_dynamic_routine_turbo_frame_id
-    @turbo_frame_id = has_valid_routine? ? "new_#{params[:routine]}_routine_turbo_frame" : "new_task_turbo_frame"
+    routine = params[:routine]
+    routine_name = routine.is_a?(Array) ? "non_recuring" : routine
+    @turbo_frame_id = has_valid_routine? ? "new_#{routine_name}_routine_turbo_frame" : "new_task_turbo_frame"
   end
 end

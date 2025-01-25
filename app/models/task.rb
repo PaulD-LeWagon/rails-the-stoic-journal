@@ -11,7 +11,7 @@ class Task < ApplicationRecord
   before_save :hms_to_duration
 
   after_find do |task|
-    p task.duration.class, task.duration
+    # p task.duration.class, task.duration
   end
 
   after_initialize :set_default_start_date, if: :new_record?
@@ -19,8 +19,24 @@ class Task < ApplicationRecord
 
   NONE_ROUTINE_NAME = :not_recuring
 
-  enum routine: [NONE_ROUTINE_NAME, :morning, :day, :evening]
-  enum task_type: [:general, :event, :fitness, :admin, :work, :self_development, :spiritual, :stoic_exercise, :stoic_discipline]
+  enum routine: [
+    NONE_ROUTINE_NAME,
+    :morning,
+    :day,
+    :evening,
+  ]
+
+  enum task_type: [
+         :general,
+         :event,
+         :fitness,
+         :admin,
+         :work,
+         :self_development,
+         :spiritual,
+         :stoic_exercise,
+         :stoic_discipline,
+       ]
 
   default_scope { where(active: true).order(:start_date) } # completed: false ???
 

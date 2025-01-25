@@ -1,6 +1,7 @@
 /**
  * @file Utilities
- * Just a few useful functions collected from elsewhere and tweaked.
+ * Just a few useful functions collected from elsewhere and tweaked Oh, 
+ * and one or two of my own.
  */
 
 const log = console.log

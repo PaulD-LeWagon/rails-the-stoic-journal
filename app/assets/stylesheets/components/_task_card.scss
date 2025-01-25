@@ -1,0 +1,144 @@
+// All the styles for the task cards
+// Cards are used for both tasks and subtasks
+
+.card {
+  // Drag 'n' drop handle
+  .handle:hover {
+    cursor: pointer;
+  }
+  h3.card-title {
+    display: inline-block;
+    vertical-align: middle;
+  }
+  h3.card-title.overflow-fade {
+    overflow: hidden;
+    // max-width: 69%;
+    position: relative;
+    white-space: nowrap;
+
+    &::after {
+      content: "";
+      position: absolute;
+
+      // left: 33%;
+      right: 0;
+      margin-left: -40px;
+      width: 40px;
+      height: 100%;
+      top: 0;
+      background: linear-gradient(
+        to right,
+        rgba(240, 244, 245, 0),
+        rgba(240, 244, 245, 1)
+      );
+    }
+    span[contenteditable="true"] {
+      display: inline-block;
+      // width: auto;
+      white-space: nowrap;
+      overflow: hidden;
+    }
+  }
+  .card-header {
+    & > * {
+      margin: 0;
+      font-weight: 600;
+    }
+    & > h3 > span > label {
+      display: inline-block;
+    }
+    h3.card-title {
+      & > i,
+      .order-wrapper {
+        padding: 0 0.4rem;
+      }
+      .start-date-time {
+        position: relative;
+      }
+    }
+    // For the Faux-checkbox and drag 'n' drop handle
+    h3 {
+      &.card-title .start-date-time,
+      &.card-title .title-wrapper,
+      &.card-title > i,
+      & > span > label:hover,
+      & > span > label:hover i {
+        cursor: pointer;
+      }
+    }
+  }
+  .card-body .card-text {
+    font-weight: 500 !important;
+  }
+  .task-menu-toggle::after,
+  .subtask-menu-toggle::after {
+    content: none;
+  }
+  .task-menu-dropdown.dropdown-menu.dropdown-menu-end {
+    min-width: 17rem;
+    padding: 0.5rem;
+  }
+  .subtask-menu-dropdown.dropdown-menu.dropdown-menu-end {
+    min-width: 9rem;
+    padding: 0.5rem;
+  }
+}
+.card.task {
+  margin: 1em 0.5em 0.5em 0.5em;
+  .card-header {
+    h3.card-title {
+      font-size: 1.7em !important;
+    }
+  }
+  .card-body {
+    .card-text {
+      font-size: 1.2em !important;
+    }
+  }
+}
+.card.subtask {
+  margin: 0.75em 0.5em 0em 3em !important;
+  &:last-of-type {
+    margin-bottom: 0.75em !important;
+  }
+  .card-header {
+    h3.card-title {
+      font-size: 1.5em !important;
+    }
+  }
+  .card-body {
+    .card-text {
+      font-size: 1em !important;
+    }
+  }
+}
+.card.task,
+.card.subtask {
+  max-width: 100%;
+  text-shadow: 0 4px 6px rgba(0, 0, 0, 0.25);
+  box-shadow: 0 0 0 rgba(0, 0, 0, 0);
+  transition: all 0.5s ease-in-out allow-discrete;
+}
+.card.task:hover {
+  text-shadow: 0 0 0 rgba(0, 0, 0, 0);
+  box-shadow: 0 4px 7px rgba(0, 0, 0, 0.25);
+  border: solid 2px $success;
+}
+.card.subtask:hover {
+  text-shadow: 0 0 0 rgba(0, 0, 0, 0);
+  border: solid 1px $success;
+}
+.card.card-checked {
+  background-color: $quinary;
+  color: white;
+
+  h3.card-title.overflow-fade {
+    &::after {
+      background: linear-gradient(
+        to right,
+        rgba(240, 244, 245, 0),
+        rgba(red($quinary), green($quinary), blue($quinary), 1)
+      );
+    }
+  }
+}

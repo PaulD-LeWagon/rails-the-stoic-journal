@@ -1,0 +1,35 @@
+.recurs-on-days.form-group fieldset {
+  display: inline-block !important;
+  margin: 0;
+  padding: 0;
+}
+.recurs-on-days.form-group fieldset .form-check {
+  margin: 0;
+  padding: 0;
+}
+.recurs-on-days.form-group fieldset .form-check-input {
+  position: absolute;
+  transform: scale(0);
+}
+.recurs-on-days.form-group fieldset .form-check-input + label {
+  display: inline-block;
+  cursor: pointer;
+  color: $quinary;
+  background-color: lighten($quinary, 20%);
+  border: solid 2px $quinary;
+  border-radius: 1.5rem;
+  padding: 0.2rem 0.7rem;
+  margin: 0 0.25rem 0 0;
+
+  font-size: 0.9rem;
+}
+.recurs-on-days.form-group fieldset .form-check-input:checked + label {
+  color: lighten($quinary, 20%);
+  background-color: $quinary;
+  border: solid 2px lighten($quinary, 20%);
+}
+
+// Totally hide the subtask card if user clicks 'remove' button
+.subtask-fields.removed-by-vanilla-nested {
+  display: none !important;
+}

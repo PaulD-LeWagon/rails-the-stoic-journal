@@ -1,5 +1,5 @@
 <%= turbo_frame_tag "edit_#{ dom_id task }",
-  # refresh: "morph",
+  refresh: "morph",
   data: {
     sortable_target: 'dragable',
     controller: "task",
@@ -10,7 +10,7 @@
     task_start_time_value: task.start_date.nil? ? "" : task.start_date.strftime("%H:%M"),
     task_start_date_time_value: task.start_date.nil? ? "" : task.start_date.strftime("%Y-%m-%d %H:%M"),
   },
-  class: "dragable-item card task parent-#{ (dom_id task).gsub('_', '-') } #{ task.completed ? ' card-checked' : '' }" do %>
+  class: "dragable-item card task #{task.routine} #{task.task_type} parent-#{ (dom_id task).gsub('_', '-') } #{ task.completed ? ' card-checked' : '' }" do %>
 
   <div data-task-target="cardTitle" title="<%= task.start_date.nil? ? "" : task.start_date.strftime("%A %d %B %Y at %H:%M") %>">
 
