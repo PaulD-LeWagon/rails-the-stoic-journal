@@ -16,6 +16,9 @@ module RailsAuthorization
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 7.0
 
+    config.assets.enabled = true
+    config.assets.paths << Rails.root.join("vendor", "css")
+
     # Configuration for the application, engines, and railties goes here.
     #
     # These settings can be overridden in specific environments using the files
@@ -23,5 +26,6 @@ module RailsAuthorization
     #
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
+    config.beginning_of_week = :monday
   end
 end

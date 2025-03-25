@@ -1,0 +1,27 @@
+/*
+  This is the main SCSS file that imports all the partials (see below)
+  author: Devanny, Paul E. - Harry
+  email: pauldevanny92@gmail.com
+  github: https://github.com/PaulD-LeWagon
+  date: 2025-01-24
+*/
+
+/* Custom Graphical Variables */
+@import "config/index";
+/* External libraries */
+@import "bootstrap/bootstrap";
+@import "font-awesome/font-awesome";
+@import "simple_calendar/simple_calendar";
+
+// Static External Libraries
+@import "flatpickr/flatpickr.min";
+@import "flatpickr/confirmDate.css";
+@import "flatpickr/material_green.css";
+
+/* Custom CSS/SCSS Components */
+@import "components/index";
+
+/* Page-specific styles */
+@import "pages/_index";
+
+/* This is a test: 1, 2, 3... */

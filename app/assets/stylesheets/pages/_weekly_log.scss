@@ -1,0 +1,78 @@
+// Import Weekly Log page-specific CSS files here.
+
+div#weekly-log {
+  display: none !important;
+
+  div.card {
+    height: fit-content;
+    display: none !important;
+
+    * {
+      font-size: 0.8rem !important;
+      font-weight: 500;
+    }
+    div.card-header {
+      h3.card-title {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        .handle {
+          display: none;
+        }
+        .handle:hover {
+          cursor: pointer;
+        }
+      }
+    }
+    .card-body {
+      .card-text {
+        font-weight: 500 !important;
+      }
+    }
+    .task-menu-toggle::after,
+    .subtask-menu-toggle::after {
+      content: none;
+    }
+    .task-menu-dropdown.dropdown-menu.dropdown-menu-end {
+      min-width: 17rem;
+      padding: 0.5rem;
+    }
+    .subtask-menu-dropdown.dropdown-menu.dropdown-menu-end {
+      min-width: 9rem;
+      padding: 0.5rem;
+    }
+    &.task {
+      margin: 1em 0.5em 0.5em 0.5em;
+      .card-header {
+        .card-title {
+          font-size: 0.8em !important;
+        }
+      }
+    }
+    &.task {
+      max-width: 100%;
+      text-shadow: 0 4px 6px rgba(0, 0, 0, 0.25);
+      box-shadow: 0 0 0 rgba(0, 0, 0, 0);
+      transition: all 0.5s ease-in-out allow-discrete;
+    }
+    &.task:hover {
+      text-shadow: 0 0 0 rgba(0, 0, 0, 0);
+      box-shadow: 0 4px 7px rgba(0, 0, 0, 0.25);
+      border: solid 2px $success;
+    }
+    &.card-checked {
+      background-color: $quinary;
+      color: white;
+
+      h3.card-title.overflow-fade {
+        &::after {
+          background: linear-gradient(
+            to right,
+            rgba(240, 244, 245, 0),
+            rgba(red($quinary), green($quinary), blue($quinary), 1)
+          );
+        }
+      }
+    }
+  }
+}

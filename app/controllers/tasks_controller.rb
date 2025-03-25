@@ -3,6 +3,7 @@ class TasksController < ApplicationController
   before_action :set_dynamic_routine_turbo_frame_id, except: %i[ edit update ]
 
   def index
+    @test = "Hello World! Salve Mundi! This is a test: 1, 2, 3... !!!"
     if has_valid_routine?
       @tasks = policy_scope(Task).where(user: current_user, routine: params[:routine])
     else

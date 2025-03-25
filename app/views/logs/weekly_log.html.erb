@@ -1,0 +1,42 @@
+<main>
+  <div  id="weekly-log" class="container-xxl">
+
+    <h1 class="mt-4 mb-0">
+      <span class="display-5 d-flex justify-content-end align-items-center">
+
+        Weekly Log: <%= DateTime.now.strftime("W%V, %A, %I:%M%P, %d-%m-%Y") %>
+
+      </span>
+    </h1>
+
+    <hr>
+
+    <%= week_calendar  events: @the_weeks_tasks do |date, tasks| %>
+
+      <% tasks.each do |task| %>
+
+        <% turbo_frame_id = dom_id(task) %>
+
+        <%= turbo_frame_tag turbo_frame_id do %>
+
+          <%= render "tasks/task_card", task: task, turbo_frame_id: turbo_frame_id %>
+
+          <div class="d-none weekly calendar-card">
+            <div class="card-header">
+              <h6 class="card-title">
+                <span><%= task.start_time.strftime("%H:%M") %></span>
+                <span><%= task.title %></span>
+              </h6>
+            </div>
+          </div>
+
+        <% end %>
+
+      <% end %>
+
+    <% end %>
+
+    <hr>
+
+  </div>
+</main>

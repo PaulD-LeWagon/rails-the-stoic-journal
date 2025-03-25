@@ -1,3 +1,4 @@
+
 // This is where you override default Bootstrap variables
 // 1. Find all Bootstrap variables that you can override at the end of each component's documentation under the `Sass variables` anchor
 // e.g. here are the ones you can override for the navbar https://getbootstrap.com/docs/5.2/components/navbar/#sass-variables
@@ -6,9 +7,9 @@
 
 // General style
 $font-family-sans-serif: $body-font;
-$headings-font-family:   $headers-font;
-$body-bg:                $light-gray;
-$font-size-base:         1rem;
+$headings-font-family: $headers-font;
+$body-bg: $light-gray;
+$font-size-base: 1rem;
 
 // Colors
 $body-color: $gray;
@@ -19,13 +20,13 @@ $body-color: $gray;
 // $danger:     $red;
 // $warning:    $orange;
 
-$success:    #00c9ba;
-$info:       #f9f871;
-$danger:     #c45744;
-$warning:    #e38946;
+$success: #00c9ba;
+$info: #f9f871;
+$danger: #c45744;
+$warning: #e38946;
 
 // Buttons & inputs' radius
-$border-radius:    2px;
+$border-radius: 2px;
 $border-radius-lg: 2px;
 $border-radius-sm: 2px;
 
@@ -34,8 +35,8 @@ $border-radius-sm: 2px;
 $spacer: 1rem;
 $spacers: (
   0: 0,
-  1: $spacer * .25,
-  2: $spacer * .5,
+  1: $spacer * 0.25,
+  2: $spacer * 0.5,
   3: $spacer,
   4: $spacer * 1.5,
   5: $spacer * 3,

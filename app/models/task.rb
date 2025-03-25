@@ -47,6 +47,14 @@ class Task < ApplicationRecord
 
   validates :title, :user_id, :start_date, presence: true
 
+  def start_time
+    start_date
+  end
+
+  def end_time
+    start_date + duration
+  end
+
   def duration_to_hms
     sec = self.duration.to_i
     "%02d:%02d:%02d" % [sec / 3600, sec / 60 % 60, sec % 60]
