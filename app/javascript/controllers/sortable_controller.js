@@ -15,7 +15,8 @@ export default class extends Controller {
 
   initialize() {
     super.initialize()
-    // If you want to manipulate targets or outlets @ initialization time or on
+    // If you want to manipulate targets
+    // or outlets @ initialization time or on
     // connect wrap them in a setTimeout
     setTimeout(() => {}, 100)
   }
